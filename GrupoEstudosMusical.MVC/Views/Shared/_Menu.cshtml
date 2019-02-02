@@ -1,0 +1,114 @@
+﻿@{
+    string controller = ViewContext.RouteData.Values["controller"].ToString();
+    string rota = Url.RouteUrl(ViewContext.RouteData.Values);
+}
+<!-- SIDEBAR - START -->
+<div class="page-sidebar pagescroll">
+
+    <!-- MAIN MENU - START -->
+    <div class="page-sidebar-wrapper" id="main-menu-wrapper">
+
+        <!-- USER INFO - START -->
+        <div class="profile-info row">
+
+            <div class="profile-image col-xs-4">
+                <a href="ui-profile.html">
+                    <img alt="" src="~/Content/images/user.png" class="img-responsive img-circle">
+                </a>
+            </div>
+
+            <div class="profile-details col-xs-8">
+
+                <h3>
+                    <a href="ui-profile.html">Prof. Nicolas</a>
+
+                    <!-- Available statuses: online, idle, busy, away and offline -->
+                    <span class="profile-status online"></span>
+                </h3>
+
+                <p class="profile-title">Professor.</p>
+
+            </div>
+
+        </div>
+        <!-- USER INFO - END -->
+
+
+
+        <ul class='wraplist'>
+
+
+            <li class="@(controller == "Home" ? "open" : "" )">
+                <a href="@Url.Action("Index", "Home")">
+                    <i class="fa fa-dashboard"></i>
+                    <span class="title">Dashboard</span>
+                </a>
+            </li>
+            <li class="@(controller == "Professores" ? "open" : "" )">
+                    <a href="javascript:;">
+                        <i class="fa fa-users"></i>
+                        <span class="title">Professores</span>
+                        <span class="arrow "></span>
+                    </a>
+                    <ul class="sub-menu" style="@(controller == "Professores" ? "display-block" : "" )">
+                        <li>
+                            <a class="@(rota == "/Professores/Index" || rota == "/Professores" ? "active" : "" )" href="@Url.Action("Index", "Professores")">Todos Professores</a>
+                        </li>
+                        <li>
+                            <a class="@(rota == "/Professores/Novo" ? "active" : "" )" href="@Url.Action("Novo", "Professores")">Cadastrar Professor</a>
+                        </li>
+                    </ul>
+                </li>
+            <li class="@(controller == "Alunos" ? "open" : "" )">
+                <a href="javascript:;">
+                    <i class="fa fa-user"></i>
+                    <span class="title">Alunos</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu" style="@(controller == "Alunos" ? "display-block" : "" )">
+                    <li>
+                        <a class="@(rota == "/Alunos/Index" || rota == "/Alunos" ? "active" : "" )" href="@Url.Action("Index", "Alunos")">Todos Alunos</a>
+                    </li>
+                    <li>
+                        <a class="@(rota == "/Alunos/Novo" ? "active" : "" ))" href="@Url.Action("Novo", "Alunos")">Cadastrar Aluno</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="@(controller == "Modulos" ? "open" : "" )">
+                    <a href="javascript:;">
+                        <i class="fa fa-graduation-cap"></i>
+                        <span class="title">Módulos</span>
+                        <span class="arrow "></span>
+                    </a>
+                    <ul class="sub-menu" style="@(controller == "Modulos" ? "display-block" : "" )">
+                        <li>
+                            <a class="@(rota == "/Modulos/Index" || rota == "/Modulos" ? "active" : "" )" href="@Url.Action("Index", "Modulos")">Todos Módulos</a>
+                        </li>
+                        <li>
+                            <a class="@(rota == "/Novo/Index" ? "active" : "" )" href="@Url.Action("Novo", "Modulos")">Cadastrar Módulo</a>
+                        </li>
+                    </ul>
+                </li>
+            <li class="">
+                <a href="javascript:;">
+                    <i class="fa fa-bar-chart"></i>
+                    <span class="title">Relatórios</span>
+                    <span class="arrow "></span>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a class="" href="uni-report-student.html">Alunos</a>
+                    </li>
+                    <li>
+                        <a class="" href="uni-report-professors.html">Professores</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <!-- MAIN MENU - END -->
+
+
+
+</div>
+<!--  SIDEBAR - END -->
