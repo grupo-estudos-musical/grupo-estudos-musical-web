@@ -24,19 +24,19 @@ namespace GrupoEstudosMusical.Data.Mappings
                 .IsRequired();
 
             builder.Property(a => a.Telefone)
-                .HasColumnType("varchar(10)");
+                .HasColumnType("varchar(14)");
 
             builder.Property(a => a.Celular)
-                .HasColumnType("varchar(11)");
+                .HasColumnType("varchar(15)");
 
             builder.Property(a => a.Rg)
-                .HasColumnType("varchar(9)");
+                .HasColumnType("varchar(12)");
 
             builder.HasIndex(a => a.Rg)
                 .IsUnique();
 
             builder.Property(a => a.Cpf)
-                .HasColumnType("varchar(11)");
+                .HasColumnType("varchar(14)");
 
             builder.HasIndex(a => a.Cpf)
                 .IsUnique();
@@ -46,7 +46,7 @@ namespace GrupoEstudosMusical.Data.Mappings
                 .IsRequired();
 
             builder.Property(a => a.Cep)
-                .HasColumnType("varchar(8)");
+                .HasColumnType("varchar(9)");
 
             builder.Property(a => a.Endereco)
                 .HasColumnType("varchar(180)")

@@ -147,6 +147,18 @@
     <Compile Include="Migrations\20190201162243_TabelaDeAlunos.designer.cs">
       <DependentUpon>20190201162243_TabelaDeAlunos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20190202183953_AlterandoCampoTelefoneECelularAluno.cs" />
+    <Compile Include="Migrations\20190202183953_AlterandoCampoTelefoneECelularAluno.designer.cs">
+      <DependentUpon>20190202183953_AlterandoCampoTelefoneECelularAluno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20190202184337_AlterandoCampoCpfERgAluno.cs" />
+    <Compile Include="Migrations\20190202184337_AlterandoCampoCpfERgAluno.designer.cs">
+      <DependentUpon>20190202184337_AlterandoCampoCpfERgAluno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20190202184540_AlterandoCampoCepAluno.cs" />
+    <Compile Include="Migrations\20190202184540_AlterandoCampoCepAluno.designer.cs">
+      <DependentUpon>20190202184540_AlterandoCampoCepAluno.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\GemContextModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\RepositoryAluno.cs" />

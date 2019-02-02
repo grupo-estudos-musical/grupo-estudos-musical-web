@@ -13,5 +13,6 @@ namespace GrupoEstudosMusical.Bussines
             _repositoryAluno = repositoryAluno;
         }
 
+        public Aluno ObterPorCpf(string cpf) => _repositoryAluno.ObterPorCpf(cpf);
     }
 }

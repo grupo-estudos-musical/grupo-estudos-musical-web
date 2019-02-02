@@ -250,6 +250,7 @@
     <Content Include="Content\lib\datatables\extensions\Responsive\bootstrap3\dataTables.bootstrap.css" />
     <Content Include="Content\lib\datatables\extensions\Responsive\css\dataTables.responsive.css" />
     <Content Include="Content\lib\datatables\extensions\TableTools\css\dataTables.tableTools.min.css" />
+    <Content Include="Content\lib\datepicker\css\datepicker.css" />
     <Content Include="Content\lib\perfect-scrollbar\perfect-scrollbar.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\font-awesome\css\font-awesome.css" />
@@ -274,6 +275,11 @@
     <Content Include="Scripts\lib\datatables\extensions\Responsive\js\dataTables.responsive.min.js" />
     <Content Include="Scripts\lib\datatables\extensions\TableTools\js\dataTables.tableTools.min.js" />
     <Content Include="Scripts\lib\datatables\js\jquery.dataTables.min.js" />
+    <Content Include="Scripts\lib\datepicker\js\datepicker.js" />
+    <Content Include="Scripts\lib\inputmask\min\jquery.inputmask.bundle.min.js" />
+    <Content Include="Scripts\lib\jquery-validation\js\additional-methods.min.js" />
+    <Content Include="Scripts\lib\jquery-validation\js\jquery.validate.min.js" />
+    <Content Include="Scripts\lib\jquery-validation\js\jquey.validate.pt-br.js" />
     <Content Include="Scripts\lib\pace\pace.min.js" />
     <Content Include="Scripts\lib\perfect-scrollbar\perfect-scrollbar.min.js" />
     <Content Include="Scripts\lib\viewport\viewportchecker.js" />
@@ -307,6 +313,8 @@
     <Content Include="Views\Shared\_TopBar.cshtml" />
     <Content Include="Views\Shared\_Menu.cshtml" />
     <Content Include="Views\Alunos\Index.cshtml" />
+    <Content Include="Views\Alunos\Novo.cshtml" />
+    <Content Include="Views\Alunos\Editar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GrupoEstudosMusical.IoC\GrupoEstudosMusical.IoC.csproj">

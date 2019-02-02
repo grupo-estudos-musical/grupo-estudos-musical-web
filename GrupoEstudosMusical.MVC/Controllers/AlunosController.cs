@@ -17,11 +17,62 @@ namespace GrupoEstudosMusical.MVC.Controllers
             _bussinesAluno = bussinesAluno;
         }
 
-        // GET: Aluno
         public async Task<ActionResult> Index()
         {
             var alunosViewModel = Mapper.Map<IList<Aluno>, IList<AlunoVM>>(await _bussinesAluno.ObterTodosAsync());
             return View(alunosViewModel);
+        }
+
+        public ActionResult Novo()
+        {
+            return View(new AlunoVM());
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Novo(AlunoVM alunoVM)
+        {
+            var alunoCpf = _bussinesAluno.ObterPorCpf(alunoVM.Cpf);
+            if (alunoCpf != null)
+            {
+                TempData["Mensagem"] = "Já existe aluno com o mesmo CPF.";
+                return View(alunoVM);
+            }
+            var alunoModel = Mapper.Map<AlunoVM, Aluno>(alunoVM);
+            await _bussinesAluno.InserirAsync(alunoModel);
+            TempData["Mensagem"] = "Aluno cadastrado com sucesso.";
+            return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<ActionResult> Editar(int id)
+        {
+            var alunoModel = Mapper.Map<Aluno, AlunoVM>(await _bussinesAluno.ObterPorIdAsync(id));
+            if (alunoModel == null)
+            {
+                return HttpNotFound();
+            }
+            return View(alunoModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Editar(AlunoVM alunoVM)
+        {
+            var alunoModel = Mapper.Map<AlunoVM, Aluno>(alunoVM);
+            await _bussinesAluno.AlterarAsync(alunoModel);
+            TempData["Mensagem"] = "Aluno alterado com sucesso.";
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Deletar(FormCollection formCollection)
+        {
+            int.TryParse(formCollection["id"], out int id);
+            var alunoModel = await _bussinesAluno.ObterPorIdAsync(id);
+            await _bussinesAluno.DeletarAsync(alunoModel);
+            TempData["Mensagem"] = "Aluno apagado com sucesso.";
+            return RedirectToAction(nameof(Index));
         }
     }
 }

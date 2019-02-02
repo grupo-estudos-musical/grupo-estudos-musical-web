@@ -136,32 +136,31 @@ $(document).ready(function() {
             focusInvalid: false,
             ignore: "",
             rules: {
-                nome: {
+                Nome: {
                     required: true
                 },
-                dataNascimento: {
+                DataNascimento: {
                     required: true
                 },
-                telefone: {
-                    required: true                    
-                },
-                email: {
+                Email: {
                     email: true,
                     required: true
                 },
-                endereco: {                    
+                Endereco: {                    
                     required: true
                 },
-                bairro: {
+                Bairro: {
                     required: true
                 },
-                cidade: {
+                Cidade: {
                     required: true
                 },
-                cpf: {
+                Uf: {
+                    required: true
+                },
+                Cpf: {
                     cpf: true
                 }
-
             },
 
             // invalidHandler: function(event, validator) {

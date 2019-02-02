@@ -3,14 +3,16 @@ using System;
 using GrupoEstudosMusical.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GrupoEstudosMusical.Data.Migrations
 {
     [DbContext(typeof(GemContext))]
-    partial class GemContextModelSnapshot : ModelSnapshot
+    [Migration("20190202183953_AlterandoCampoTelefoneECelularAluno")]
+    partial class AlterandoCampoTelefoneECelularAluno
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,7 +32,7 @@ namespace GrupoEstudosMusical.Data.Migrations
                         .HasColumnType("varchar(15)");
 
                     b.Property<string>("Cep")
-                        .HasColumnType("varchar(9)");
+                        .HasColumnType("varchar(8)");
 
                     b.Property<string>("Cidade")
                         .IsRequired()
@@ -40,7 +42,7 @@ namespace GrupoEstudosMusical.Data.Migrations
                         .HasColumnType("varchar(50)");
 
                     b.Property<string>("Cpf")
-                        .HasColumnType("varchar(14)");
+                        .HasColumnType("varchar(11)");
 
                     b.Property<DateTime>("DataCadastro")
                         .HasColumnType("date");
@@ -61,7 +63,7 @@ namespace GrupoEstudosMusical.Data.Migrations
                         .HasColumnType("varchar(100)");
 
                     b.Property<string>("Rg")
-                        .HasColumnType("varchar(12)");
+                        .HasColumnType("varchar(9)");
 
                     b.Property<string>("Telefone")
                         .HasColumnType("varchar(14)");

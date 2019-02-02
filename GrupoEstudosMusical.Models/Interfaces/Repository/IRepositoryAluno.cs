@@ -4,5 +4,6 @@ namespace GrupoEstudosMusical.Models.Interfaces.Repository
 {
     public interface IRepositoryAluno : IRepositoryGeneric<Aluno>
     {
+        Aluno ObterPorCpf(string cpf);
     }
 }
