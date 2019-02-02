@@ -1587,7 +1587,10 @@ jQuery(function($) {
                         "sSortAscending": ": Ordenar colunas de forma ascendente",
                         "sSortDescending": ": Ordenar colunas de forma descendente"
                     }
-                }
+                },
+                "columnDefs": [
+                    { "className": "dt-center", "targets": "_all" }
+                ]
             });
 
             /*--- end ---*/

@@ -1,4 +1,5 @@
 ﻿using GrupoEstudosMusical.IoC;
+using GrupoEstudosMusical.MVC.AutoMapper;
 using SimpleInjector.Integration.Web.Mvc;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,7 @@ namespace GrupoEstudosMusical.MVC
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(DiContainer.RegisterDependencies()));
+            AutoMapperConfig.RegisterMappings();
         }
     }
 }

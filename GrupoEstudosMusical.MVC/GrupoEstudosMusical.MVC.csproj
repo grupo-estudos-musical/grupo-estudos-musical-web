@@ -46,6 +46,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.1.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="Google.Protobuf, Version=3.5.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Protobuf.3.5.1\lib\net45\Google.Protobuf.dll</HintPath>
     </Reference>
@@ -226,11 +229,15 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="AutoMapper\AutoMapperConfig.cs" />
+    <Compile Include="AutoMapper\DomainToViewModelMappingProfile.cs" />
+    <Compile Include="AutoMapper\ViewModelToDomainMappingProfile.cs" />
     <Compile Include="Controllers\AlunosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AlunoVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -239,6 +246,10 @@
     <Content Include="Content\css\style.css" />
     <Content Include="Content\lib\bootstrap\css\bootstrap-theme.min.css" />
     <Content Include="Content\lib\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\lib\datatables\css\jquery.dataTables.css" />
+    <Content Include="Content\lib\datatables\extensions\Responsive\bootstrap3\dataTables.bootstrap.css" />
+    <Content Include="Content\lib\datatables\extensions\Responsive\css\dataTables.responsive.css" />
+    <Content Include="Content\lib\datatables\extensions\TableTools\css\dataTables.tableTools.min.css" />
     <Content Include="Content\lib\perfect-scrollbar\perfect-scrollbar.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\font-awesome\css\font-awesome.css" />
@@ -249,12 +260,20 @@
     <Content Include="Content\images\logo-folded.png" />
     <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\user.png" />
+    <Content Include="Scripts\js\app.js" />
     <Content Include="Scripts\js\form-validation.js" />
     <Content Include="Scripts\js\jquery-1.11.2.min.js" />
     <Content Include="Scripts\js\jquery.easing.min.js" />
     <Content Include="Scripts\js\scripts.js" />
     <Content Include="Scripts\lib\bootstrap\js\bootstrap.min.js" />
     <Content Include="Content\lib\pace\pace-theme-flash.css" />
+    <Content Include="Scripts\lib\datatables\extensions\Responsive\bootstrap3\dataTables.bootstrap.js" />
+    <Content Include="Content\lib\datatables\extensions\Responsive\images\sort_asc.png" />
+    <Content Include="Content\lib\datatables\extensions\Responsive\images\sort_both.png" />
+    <Content Include="Content\lib\datatables\extensions\Responsive\images\sort_desc.png" />
+    <Content Include="Scripts\lib\datatables\extensions\Responsive\js\dataTables.responsive.min.js" />
+    <Content Include="Scripts\lib\datatables\extensions\TableTools\js\dataTables.tableTools.min.js" />
+    <Content Include="Scripts\lib\datatables\js\jquery.dataTables.min.js" />
     <Content Include="Scripts\lib\pace\pace.min.js" />
     <Content Include="Scripts\lib\perfect-scrollbar\perfect-scrollbar.min.js" />
     <Content Include="Scripts\lib\viewport\viewportchecker.js" />
@@ -277,7 +296,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
     <Folder Include="Views\Aluno\" />
   </ItemGroup>
   <ItemGroup>

@@ -9,7 +9,7 @@ namespace GrupoEstudosMusical.Data.Context
     {
         public DbSet<Aluno> Alunos { get; set; }
 
-        public GemContext() { }
+        public GemContext() : base() { }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
