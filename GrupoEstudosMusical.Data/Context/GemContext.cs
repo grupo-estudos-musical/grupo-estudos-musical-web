@@ -8,6 +8,7 @@ namespace GrupoEstudosMusical.Data.Context
     public class GemContext : DbContext
     {
         public DbSet<Aluno> Alunos { get; set; }
+        public DbSet<Modulo> Modulos { get; set; }
 
         public GemContext() : base() { }
 
@@ -18,7 +19,8 @@ namespace GrupoEstudosMusical.Data.Context
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {            
+        {
+            modelBuilder.ApplyConfiguration(new ModuloMap());
             modelBuilder.ApplyConfiguration(new AlunoMap());
             modelBuilder.ApplyConfiguration(new ProfessorMap());
         }

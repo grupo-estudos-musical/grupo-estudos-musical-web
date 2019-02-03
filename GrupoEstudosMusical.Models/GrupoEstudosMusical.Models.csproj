@@ -44,12 +44,15 @@
   <ItemGroup>
     <Compile Include="Entities\Aluno.cs" />
     <Compile Include="Entities\BaseEntity.cs" />
+    <Compile Include="Entities\Modulo.cs" />
     <Compile Include="Entities\Professor.cs" />
     <Compile Include="Interfaces\Bussines\IBussinesAluno.cs" />
     <Compile Include="Interfaces\Bussines\IBussinesGeneric.cs" />
+    <Compile Include="Interfaces\Bussines\IBussinesModulo.cs" />
     <Compile Include="Interfaces\Bussines\IBussinesProfessor.cs" />
     <Compile Include="Interfaces\Repository\IRepositoryAluno.cs" />
     <Compile Include="Interfaces\Repository\IRepositoryGeneric.cs" />
+    <Compile Include="Interfaces\Repository\IRepositoryModulo.cs" />
     <Compile Include="Interfaces\Repository\IRepositoryProfessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

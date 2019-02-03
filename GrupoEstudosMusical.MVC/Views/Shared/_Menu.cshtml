@@ -74,18 +74,18 @@
                     </li>
                 </ul>
             </li>
-            <li class="@(controller == "Modulos" ? "open" : "" )">
+            <li class="@(controller == "Modulo" ? "open" : "" )">
                     <a href="javascript:;">
                         <i class="fa fa-graduation-cap"></i>
                         <span class="title">Módulos</span>
                         <span class="arrow "></span>
                     </a>
-                    <ul class="sub-menu" style="@(controller == "Modulos" ? "display-block" : "" )">
+                    <ul class="sub-menu" style="@(controller == "Modulo" ? "display-block" : "" )">
                         <li>
-                            <a class="@(rota == "/Modulos/Index" || rota == "/Modulos" ? "active" : "" )" href="@Url.Action("Index", "Modulos")">Todos Módulos</a>
+                            <a class="@(rota == "/Modulo/Index" || rota == "/Modulo" ? "active" : "" )" href="@Url.Action("Index", "Modulo")">Todos Módulos</a>
                         </li>
                         <li>
-                            <a class="@(rota == "/Novo/Index" ? "active" : "" )" href="@Url.Action("Novo", "Modulos")">Cadastrar Módulo</a>
+                            <a class="@(rota == "/Cadastrar/Index" ? "active" : "" )" href="@Url.Action("Cadastrar", "Modulo")">Cadastrar Módulo</a>
                         </li>
                     </ul>
                 </li>
