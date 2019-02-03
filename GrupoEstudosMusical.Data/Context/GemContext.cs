@@ -20,6 +20,7 @@ namespace GrupoEstudosMusical.Data.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {            
             modelBuilder.ApplyConfiguration(new AlunoMap());
+            modelBuilder.ApplyConfiguration(new ProfessorMap());
         }
     }
 }

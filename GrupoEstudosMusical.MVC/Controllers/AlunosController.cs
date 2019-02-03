@@ -46,12 +46,12 @@ namespace GrupoEstudosMusical.MVC.Controllers
 
         public async Task<ActionResult> Editar(int id)
         {
-            var alunoModel = Mapper.Map<Aluno, AlunoVM>(await _bussinesAluno.ObterPorIdAsync(id));
-            if (alunoModel == null)
+            var alunoVM = Mapper.Map<Aluno, AlunoVM>(await _bussinesAluno.ObterPorIdAsync(id));
+            if (alunoVM == null)
             {
                 return HttpNotFound();
             }
-            return View(alunoModel);
+            return View(alunoVM);
         }
 
         [HttpPost]

@@ -8,7 +8,8 @@ namespace GrupoEstudosMusical.MVC.AutoMapper
     {
         public ViewModelToDomainMappingProfile()
         {
-            CreateMap<AlunoVM, Aluno>(); 
+            CreateMap<AlunoVM, Aluno>();
+            CreateMap<ProfessorVM, Professor>();
         }
     }
 }

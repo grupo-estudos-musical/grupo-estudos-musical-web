@@ -9,6 +9,7 @@ namespace GrupoEstudosMusical.MVC.AutoMapper
         public DomainToViewModelMappingProfile()
         {
             CreateMap<Aluno, AlunoVM>();
+            CreateMap<Professor, ProfessorVM>();
         }
     }
 }

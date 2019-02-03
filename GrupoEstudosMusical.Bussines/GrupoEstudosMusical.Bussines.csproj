@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="BussinesAluno.cs" />
     <Compile Include="BussinesGeneric.cs" />
+    <Compile Include="BussinesProfessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
