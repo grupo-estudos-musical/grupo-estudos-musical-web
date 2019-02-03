@@ -36,6 +36,10 @@ namespace GrupoEstudosMusical.MVC.Models
         public string Cidade { get; set; }
 
         [DisplayName("UF")]
-        public string Uf { get; set; } = "SP";        
+        public string Uf { get; set; } = "SP";
+
+        [DisplayName("Data de Cadastro")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        public DateTime DataCadastro { get; set; }
     }
 }

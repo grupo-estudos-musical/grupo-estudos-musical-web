@@ -50,6 +50,7 @@
                                 <th>@Html.DisplayNameFor(m => m.Nome)</th>
                                 <th>@Html.DisplayNameFor(m => m.DataNascimento)</th>
                                 <th>@Html.DisplayNameFor(m => m.Telefone)</th>
+                                <th>@Html.DisplayNameFor(m => m.DataCadastro)</th>
                                 <th>Opções</th>
                             </tr>
                         </thead>
@@ -58,23 +59,25 @@
                                 <th>@Html.DisplayNameFor(m => m.Nome)</th>
                                 <th>@Html.DisplayNameFor(m => m.DataNascimento)</th>
                                 <th>@Html.DisplayNameFor(m => m.Telefone)</th>
+                                <th>@Html.DisplayNameFor(m => m.DataCadastro)</th>
                                 <th>Opções</th>
                             </tr>
                         </tfoot>
                         <tbody>
                             @foreach (var model in Model)
                             {
-                                <tr>
-                                    <td>@Html.DisplayFor(item => model.Nome)</td>
-                                    <td>@Html.DisplayFor(item => model.DataNascimento)</td>
-                                    <td>@Html.DisplayFor(item => model.Telefone)</td>
-                                    <td style="width: 160px">
-                                        @Html.ActionLink("Editar", "Editar", "Alunos", new { id = model.Id }, new { @class = "btn btn-primary" })
+                            <tr>
+                                <td>@Html.DisplayFor(item => model.Nome)</td>
+                                <td>@Html.DisplayFor(item => model.DataNascimento)</td>
+                                <td>@Html.DisplayFor(item => model.Telefone)</td>
+                                <td>@Html.DisplayFor(item => model.DataCadastro)</td>
+                                <td style="width: 160px">
+                                    @Html.ActionLink("Editar", "Editar", "Alunos", new { id = model.Id }, new { @class = "btn btn-primary" })
 
-                                        <a class="btn btn-danger" data-toggle="modal" href="#section-settings"
-                                           onclick="apagar(this, '@(model.Id)', '@(model.Nome)')">Apagar</a>
-                                    </td>
-                                </tr>
+                                    <a class="btn btn-danger" data-toggle="modal" href="#section-settings"
+                                       onclick="apagar(this, '@(model.Id)', '@(model.Nome)')">Apagar</a>
+                                </td>
+                            </tr>
                             }
                         </tbody>
                     </table>
