@@ -165,6 +165,10 @@
     <Compile Include="Migrations\20190203125513_TabelaDeProfessores.designer.cs">
       <DependentUpon>20190203125513_TabelaDeProfessores.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20190203150025_AlterandoCampoTelefoneProfessores.cs" />
+    <Compile Include="Migrations\20190203150025_AlterandoCampoTelefoneProfessores.designer.cs">
+      <DependentUpon>20190203150025_AlterandoCampoTelefoneProfessores.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\20190203164350_Modulo.cs" />
     <Compile Include="Migrations\20190203164350_Modulo.designer.cs">
       <DependentUpon>20190203164350_Modulo.cs</DependentUpon>

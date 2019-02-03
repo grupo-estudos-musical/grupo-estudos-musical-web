@@ -2,6 +2,7 @@
 using GrupoEstudosMusical.Models.Entities;
 using GrupoEstudosMusical.Models.Interfaces.Bussines;
 using GrupoEstudosMusical.MVC.Models;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -32,16 +33,18 @@ namespace GrupoEstudosMusical.MVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Novo(AlunoVM alunoVM)
         {
-            var alunoCpf = _bussinesAluno.ObterPorCpf(alunoVM.Cpf);
-            if (alunoCpf != null)
+            try
             {
-                TempData["Mensagem"] = "Já existe aluno com o mesmo CPF.";
+                var alunoModel = Mapper.Map<AlunoVM, Aluno>(alunoVM);
+                await _bussinesAluno.InserirAsync(alunoModel);
+                TempData["Mensagem"] = "Aluno cadastrado com sucesso.";
+                return RedirectToAction(nameof(Index));
+            }
+            catch (ArgumentException ex)
+            {
+                TempData["Mensagem"] = ex.Message;
                 return View(alunoVM);
             }
-            var alunoModel = Mapper.Map<AlunoVM, Aluno>(alunoVM);
-            await _bussinesAluno.InserirAsync(alunoModel);
-            TempData["Mensagem"] = "Aluno cadastrado com sucesso.";
-            return RedirectToAction(nameof(Index));
         }
 
         public async Task<ActionResult> Editar(int id)
@@ -58,10 +61,18 @@ namespace GrupoEstudosMusical.MVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Editar(AlunoVM alunoVM)
         {
-            var alunoModel = Mapper.Map<AlunoVM, Aluno>(alunoVM);
-            await _bussinesAluno.AlterarAsync(alunoModel);
-            TempData["Mensagem"] = "Aluno alterado com sucesso.";
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                var alunoModel = Mapper.Map<AlunoVM, Aluno>(alunoVM);
+                await _bussinesAluno.AlterarAsync(alunoModel);
+                TempData["Mensagem"] = "Aluno alterado com sucesso.";
+                return RedirectToAction(nameof(Index));
+            }
+            catch (ArgumentException ex)
+            {
+                TempData["Mensagem"] = ex.Message;
+                return View(alunoVM);
+            }
         }
 
         [HttpPost]

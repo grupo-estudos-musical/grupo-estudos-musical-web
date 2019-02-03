@@ -20,8 +20,7 @@ namespace GrupoEstudosMusical.Data.Mappings
                 .IsRequired();
 
             builder.Property(p => p.Telefone)
-                .HasColumnType("varchar(14)")
-                .IsRequired();
+                .HasColumnType("varchar(14)");                
 
             builder.Property(p => p.Celular)
                 .HasColumnType("varchar(15)");

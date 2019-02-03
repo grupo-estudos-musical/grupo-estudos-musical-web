@@ -2,6 +2,7 @@
 using GrupoEstudosMusical.Models.Entities;
 using GrupoEstudosMusical.Models.Interfaces.Bussines;
 using GrupoEstudosMusical.MVC.Models;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -33,10 +34,18 @@ namespace GrupoEstudosMusical.MVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Novo(ProfessorVM professorVM)
         {
-            var professorModel = Mapper.Map<ProfessorVM, Professor>(professorVM);
-            await _bussinesProfessor.InserirAsync(professorModel);
-            TempData["Mensagem"] = "Professor Cadastrado com Sucesso.";
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                var professorModel = Mapper.Map<ProfessorVM, Professor>(professorVM);
+                await _bussinesProfessor.InserirAsync(professorModel);
+                TempData["Mensagem"] = "Professor Cadastrado com Sucesso.";
+                return RedirectToAction(nameof(Index));
+            }
+            catch (ArgumentException ex)
+            {
+                TempData["Mensagem"] = ex.Message;
+                return View(professorVM);
+            }
         }
 
         public async Task<ActionResult> Editar(int id)
@@ -53,10 +62,18 @@ namespace GrupoEstudosMusical.MVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Editar(ProfessorVM professorVM)
         {
-            var professorModel = Mapper.Map<ProfessorVM, Professor>(professorVM);
-            await _bussinesProfessor.AlterarAsync(professorModel);
-            TempData["Mensagem"] = "Professor Alterado com Sucesso.";
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                var professorModel = Mapper.Map<ProfessorVM, Professor>(professorVM);
+                await _bussinesProfessor.AlterarAsync(professorModel);
+                TempData["Mensagem"] = "Professor Alterado com Sucesso.";
+                return RedirectToAction(nameof(Index));
+            }
+            catch (ArgumentException ex)
+            {
+                TempData["Mensagem"] = ex.Message;
+                return View(professorVM);
+            }
         }
 
         [HttpPost]
