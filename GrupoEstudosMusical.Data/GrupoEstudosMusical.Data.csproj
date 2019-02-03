@@ -164,6 +164,10 @@
     <Compile Include="Migrations\20190203125513_TabelaDeProfessores.designer.cs">
       <DependentUpon>20190203125513_TabelaDeProfessores.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20190203150025_AlterandoCampoTelefoneProfessores.cs" />
+    <Compile Include="Migrations\20190203150025_AlterandoCampoTelefoneProfessores.designer.cs">
+      <DependentUpon>20190203150025_AlterandoCampoTelefoneProfessores.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\GemContextModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\RepositoryAluno.cs" />

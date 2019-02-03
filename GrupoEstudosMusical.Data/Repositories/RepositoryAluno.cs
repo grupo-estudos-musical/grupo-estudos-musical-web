@@ -1,5 +1,6 @@
 ﻿using GrupoEstudosMusical.Models.Entities;
 using GrupoEstudosMusical.Models.Interfaces.Repository;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
 namespace GrupoEstudosMusical.Data.Repositories
@@ -8,7 +9,10 @@ namespace GrupoEstudosMusical.Data.Repositories
     {
         public Aluno ObterPorCpf(string cpf)
         {
-            return DbSet.FirstOrDefault(a => a.Cpf == cpf);
+            var aluno = DbSet.FirstOrDefault(a => a.Cpf != null && a.Cpf == cpf);
+            if (aluno != null)
+                Context.Entry(aluno).State = EntityState.Detached;
+            return aluno;
         }
     }
 }
