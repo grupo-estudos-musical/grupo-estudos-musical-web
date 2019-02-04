@@ -131,7 +131,37 @@ $(document).ready(function() {
              return this.optional(element) || retorno;
          
          }, "Informe um CPF válido");
+        $('#turma_validate').validate({
+            focusInvalid: false,
+            ignore="",
+            rules: {
+                Nome: {
+                    required=true
+                },
+                DataInicio: {
+                    required=true
+                },
+                TerminoAula: {
+                    required=true
+                }      
+            },
 
+
+            highlight: function (element) { // hightlight error inputs
+                var parent = $(element).parent().parent('.form-group');
+                parent.removeClass('has-success').addClass('has-error');
+            },
+
+            // unhighlight: function(element) { // revert the change done by hightlight
+
+            // },
+
+            success: function (label, element) {
+                var parent = $(element).parent().parent('.form-group');
+                parent.removeClass('has-error').addClass('has-success');
+            },
+
+        });
         $('#general_validate').validate({
             focusInvalid: false,
             ignore: "",
@@ -165,6 +195,8 @@ $(document).ready(function() {
                     required: true
                 }
             },
+
+
 
             // invalidHandler: function(event, validator) {
             //     //display error alert on form submit    

@@ -1,11 +1,7 @@
 ﻿using GrupoEstudosMusical.Models.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace GrupoEstudosMusical.Data.Mappings
 {
@@ -14,6 +10,8 @@ namespace GrupoEstudosMusical.Data.Mappings
         public void Configure(EntityTypeBuilder<Turma> builder)
         {
             builder.ToTable("Turmas");
+
+            
 
             builder.HasKey(t => t.Id);
 
@@ -40,9 +38,15 @@ namespace GrupoEstudosMusical.Data.Mappings
 
             builder.Property(t => t.QuantidadeAlunos).HasColumnType("int").HasDefaultValue("0");
 
+            builder.Property(t => t.Semestre).HasColumnType("int").IsRequired();
+            builder.OwnsMany(typeof(Modulo), "Modulo");
 
 
         }
+
+        
+
+
 
     }
 }

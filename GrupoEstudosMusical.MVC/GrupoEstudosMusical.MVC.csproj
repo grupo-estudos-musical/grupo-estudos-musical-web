@@ -236,12 +236,14 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ModulosController.cs" />
     <Compile Include="Controllers\ProfessoresController.cs" />
+    <Compile Include="Controllers\TurmasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AlunoVM.cs" />
     <Compile Include="Models\ModuloVM.cs" />
     <Compile Include="Models\ProfessorVM.cs" />
+    <Compile Include="Models\TurmaVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -324,6 +326,7 @@
     <Content Include="Views\Modulos\Novo.cshtml" />
     <Content Include="Views\Modulos\Index.cshtml" />
     <Content Include="Views\Modulos\Editar.cshtml" />
+    <Content Include="Views\Turmas\Novo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GrupoEstudosMusical.IoC\GrupoEstudosMusical.IoC.csproj">

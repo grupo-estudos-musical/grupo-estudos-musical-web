@@ -14,9 +14,12 @@ namespace GrupoEstudosMusical.Models.Entities
         public int Periodo { get; set; }
         public string Nivel { get; set; }
         public Professor Professor { get; set; }
+        public int ProfessorID { get; set; }
         public string Status { get; set; }
         public int QuantidadeAlunos { get; set; }
         public Modulo Modulo { get; set; }
-       
+        public int ModuloID { get; set; }
+        public int Semestre { get; set; }
+
     }
 }
