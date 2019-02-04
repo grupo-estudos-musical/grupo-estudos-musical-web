@@ -10,6 +10,7 @@ namespace GrupoEstudosMusical.Data.Context
         public DbSet<Aluno> Alunos { get; set; }
         public DbSet<Professor> Professores { get; set; }
         public DbSet<Modulo> Modulos { get; set; }
+        public DbSet<Turma> Turmas { get; set; }
 
         public GemContext() : base() { }
 

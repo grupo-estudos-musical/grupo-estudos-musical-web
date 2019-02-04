@@ -145,6 +145,7 @@
     <Compile Include="Mappings\AlunoMap.cs" />
     <Compile Include="Mappings\ModuloMap.cs" />
     <Compile Include="Mappings\ProfessorMap.cs" />
+    <Compile Include="Mappings\TurmaMap.cs" />
     <Compile Include="Migrations\20190201162243_TabelaDeAlunos.cs" />
     <Compile Include="Migrations\20190201162243_TabelaDeAlunos.designer.cs">
       <DependentUpon>20190201162243_TabelaDeAlunos.cs</DependentUpon>
@@ -179,6 +180,7 @@
     <Compile Include="Repositories\RepositoryGeneric.cs" />
     <Compile Include="Repositories\RepositoryModulo.cs" />
     <Compile Include="Repositories\RepositoryProfessor.cs" />
+    <Compile Include="Repositories\RepositoryTurma.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

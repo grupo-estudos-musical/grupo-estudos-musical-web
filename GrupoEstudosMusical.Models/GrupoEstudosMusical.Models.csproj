@@ -46,10 +46,13 @@
     <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\Modulo.cs" />
     <Compile Include="Entities\Professor.cs" />
+    <Compile Include="Entities\Turma.cs" />
     <Compile Include="Interfaces\Bussines\IBussinesAluno.cs" />
     <Compile Include="Interfaces\Bussines\IBussinesGeneric.cs" />
     <Compile Include="Interfaces\Bussines\IBussinesModulo.cs" />
     <Compile Include="Interfaces\Bussines\IBussinesProfessor.cs" />
+    <Compile Include="Interfaces\Bussines\IBussinesTurma.cs" />
+    <Compile Include="Interfaces\Repository\IRepositoryTurma.cs" />
     <Compile Include="Interfaces\Repository\IRepositoryAluno.cs" />
     <Compile Include="Interfaces\Repository\IRepositoryGeneric.cs" />
     <Compile Include="Interfaces\Repository\IRepositoryModulo.cs" />

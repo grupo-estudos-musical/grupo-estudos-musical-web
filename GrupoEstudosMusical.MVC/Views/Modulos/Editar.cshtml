@@ -1,6 +1,6 @@
 ﻿@model GrupoEstudosMusical.MVC.Models.ModuloVM
 @{
-    ViewBag.Title = "Cadastar";
+    ViewBag.Title = "Alterar";
 }
 
 
@@ -26,7 +26,7 @@
     </div>
 </div>
 
-@using (Html.BeginForm("Editar", "Modulo", FormMethod.Post, new { id = "general_validate" }))
+@using (Html.BeginForm("Editar", "Modulos", FormMethod.Post, new { id = "general_validate" }))
 {
     @Html.AntiForgeryToken()
     <div class="col-lg-12">
@@ -67,7 +67,7 @@
                         <div class="pull-right ">
                             <input type="submit" class="btn btn-success" value="Salvar">
                             <!-- <button type="submit" class="btn btn-success">Salvar</button> -->
-                            <a type="button" class="btn" href="@Url.Action("Index", "Modulo")">Cancelar</a>
+                            <a type="button" class="btn" href="@Url.Action("Index", "Modulos")">Cancelar</a>
                         </div>
                     </div>
                 </div>

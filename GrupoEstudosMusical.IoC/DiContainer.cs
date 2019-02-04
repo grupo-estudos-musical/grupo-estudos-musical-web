@@ -16,6 +16,7 @@ namespace GrupoEstudosMusical.IoC
             container.Register<IRepositoryAluno, RepositoryAluno>();
             container.Register<IRepositoryProfessor, RepositoryProfessor>();
             container.Register<IRepositoryModulo, RepositoryModulo>();
+            
 
             container.Register(typeof(IBussinesGeneric<>), typeof(BussinesGeneric<>));
             container.Register<IBussinesAluno, BussinesAluno>();

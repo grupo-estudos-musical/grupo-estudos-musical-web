@@ -48,8 +48,7 @@
                     <table id="example-1" class="table table-striped dt-responsive display">
                         <thead>
                             <tr>
-                                <th>@Html.DisplayNameFor( m => m.Nome)</th>
-                                <th>@Html.DisplayNameFor(m => m.Observacoes)</th>
+                                <th>@Html.DisplayNameFor(m => m.Nome)</th>
                                 <th>@Html.DisplayNameFor(m => m.DataCadastro)</th>
                                 <th>Opções</th>
                             </tr>
@@ -57,7 +56,6 @@
                         <tfoot>
                             <tr>
                                 <th>@Html.DisplayNameFor(m => m.Nome)</th>
-                                <th>@Html.DisplayNameFor(m => m.Observacoes)</th>
                                 <th>@Html.DisplayNameFor(m => m.DataCadastro)</th>
                                 <th>Opções</th>
                             </tr>
@@ -67,10 +65,9 @@
                             {
                                 <tr>
                                     <td>@Html.DisplayFor(item => model.Nome)</td>
-                                    <td>@Html.DisplayFor(item => model.Observacoes)</td>
                                     <td>@Html.DisplayFor(item => model.DataCadastro)</td>
                                     <td style="width: 160px">
-                                        @Html.ActionLink("Editar", "Editar", "Modulo", new { id = model.Id }, new { @class = "btn btn-primary" })
+                                        @Html.ActionLink("Editar", "Editar", "Modulos", new { id = model.Id }, new { @class = "btn btn-primary" })
 
                                         <a class="btn btn-danger" data-toggle="modal" href="#section-settings"
                                            onclick="apagar(this, '@(model.Id)', '@(model.Nome)')">Apagar</a>
@@ -88,7 +85,7 @@
 <div class="modal" id="section-settings" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog animated bounceInDown">
         <div class="modal-content">
-            @using (Html.BeginForm("Deletar", "Modulo"))
+            @using (Html.BeginForm("Deletar", "Modulos"))
             {
                 @Html.AntiForgeryToken()
                 <div class="modal-header">

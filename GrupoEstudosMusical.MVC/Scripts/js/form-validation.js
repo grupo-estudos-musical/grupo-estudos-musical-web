@@ -160,6 +160,9 @@ $(document).ready(function() {
                 },
                 Cpf: {
                     cpf: true
+                },
+                Observacoes: {
+                    required: true
                 }
             },
 

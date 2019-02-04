@@ -45,6 +45,7 @@
     <Compile Include="BussinesGeneric.cs" />
     <Compile Include="BussinesModulo.cs" />
     <Compile Include="BussinesProfessor.cs" />
+    <Compile Include="BussinesTurma.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

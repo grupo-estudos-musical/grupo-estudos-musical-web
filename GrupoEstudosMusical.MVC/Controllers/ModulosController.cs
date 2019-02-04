@@ -2,19 +2,16 @@
 using GrupoEstudosMusical.Models.Entities;
 using GrupoEstudosMusical.Models.Interfaces.Bussines;
 using GrupoEstudosMusical.MVC.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 
 namespace GrupoEstudosMusical.MVC.Controllers
 {
-    public class ModuloController : Controller
+    public class ModulosController : Controller
     {
         private readonly IBussinesModulo _bussinesModulo;
-        public ModuloController(IBussinesModulo bussinesModulo)
+        public ModulosController(IBussinesModulo bussinesModulo)
         {
             _bussinesModulo = bussinesModulo;
         }
@@ -24,14 +21,14 @@ namespace GrupoEstudosMusical.MVC.Controllers
             var modulosViewModel = Mapper.Map<IList<Modulo>, IList<ModuloVM>>(await _bussinesModulo.ObterTodosAsync());
             return View(modulosViewModel);
         }
-        public ActionResult Cadastrar()
+        public ActionResult Novo()
         {
             return View(new ModuloVM());
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Cadastrar(ModuloVM moduloVM)
+        public async Task<ActionResult> Novo(ModuloVM moduloVM)
         {
             var moduloModel = Mapper.Map<ModuloVM, Modulo>(moduloVM);
             await _bussinesModulo.InserirAsync(moduloModel);

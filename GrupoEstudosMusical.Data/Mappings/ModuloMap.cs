@@ -1,11 +1,6 @@
 ﻿using GrupoEstudosMusical.Models.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GrupoEstudosMusical.Data.Mappings
 {
@@ -22,7 +17,7 @@ namespace GrupoEstudosMusical.Data.Mappings
             builder.Property(m => m.Nome).HasColumnType("varchar(60)")
                 .IsRequired();
 
-            builder.Property(m => m.Observacoes).HasColumnType("varchar(300)");
+            builder.Property(m => m.Observacoes).HasColumnType("varchar(300)").IsRequired();
 
             builder.Property(m => m.DataCadastro).HasColumnType("date");
 

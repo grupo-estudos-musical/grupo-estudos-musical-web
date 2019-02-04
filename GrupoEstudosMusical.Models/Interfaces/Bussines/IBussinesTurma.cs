@@ -1,7 +1,10 @@
 ﻿using GrupoEstudosMusical.Models.Entities;
+
+
 namespace GrupoEstudosMusical.Models.Interfaces.Bussines
 {
-    public interface IBussinesModulo:IBussinesGeneric<Modulo>
+    public interface IBussinesTurma : IBussinesGeneric<Turma>
     {
+        
     }
 }

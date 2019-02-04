@@ -234,7 +234,7 @@
     <Compile Include="AutoMapper\ViewModelToDomainMappingProfile.cs" />
     <Compile Include="Controllers\AlunosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ModuloController.cs" />
+    <Compile Include="Controllers\ModulosController.cs" />
     <Compile Include="Controllers\ProfessoresController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -321,10 +321,9 @@
     <Content Include="Views\Professores\Index.cshtml" />
     <Content Include="Views\Professores\Novo.cshtml" />
     <Content Include="Views\Professores\Editar.cshtml" />
-    <Content Include="Views\Modulo\Cadastar.cshtml" />
-    <Content Include="Views\Modulo\Cadastrar.cshtml" />
-    <Content Include="Views\Modulo\Index.cshtml" />
-    <Content Include="Views\Modulo\Editar.cshtml" />
+    <Content Include="Views\Modulos\Novo.cshtml" />
+    <Content Include="Views\Modulos\Index.cshtml" />
+    <Content Include="Views\Modulos\Editar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GrupoEstudosMusical.IoC\GrupoEstudosMusical.IoC.csproj">
