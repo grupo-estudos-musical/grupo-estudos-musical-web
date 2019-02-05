@@ -3,14 +3,16 @@ using System;
 using GrupoEstudosMusical.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GrupoEstudosMusical.Data.Migrations
 {
     [DbContext(typeof(GemContext))]
-    partial class GemContextModelSnapshot : ModelSnapshot
+    [Migration("20190205132440_Turma")]
+    partial class Turma
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -177,9 +179,7 @@ namespace GrupoEstudosMusical.Data.Migrations
                     b.Property<int>("ProfessorID");
 
                     b.Property<int>("QuantidadeAlunos")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasDefaultValue(0);
+                        .HasColumnType("int");
 
                     b.Property<int>("Semestre")
                         .HasColumnType("int");
@@ -188,7 +188,7 @@ namespace GrupoEstudosMusical.Data.Migrations
                         .IsRequired()
                         .ValueGeneratedOnAdd()
                         .HasColumnType("varchar(11)")
-                        .HasDefaultValue("Ativo");
+                        .HasDefaultValueSql("Ativo");
 
                     b.Property<DateTime>("TerminoAula")
                         .HasColumnType("date");

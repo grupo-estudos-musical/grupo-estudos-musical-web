@@ -3,14 +3,16 @@ using System;
 using GrupoEstudosMusical.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GrupoEstudosMusical.Data.Migrations
 {
     [DbContext(typeof(GemContext))]
-    partial class GemContextModelSnapshot : ModelSnapshot
+    [Migration("20190205120326_Alteracao_Modulos")]
+    partial class Alteracao_Modulos
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -148,71 +150,6 @@ namespace GrupoEstudosMusical.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Professores");
-                });
-
-            modelBuilder.Entity("GrupoEstudosMusical.Models.Entities.Turma", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<DateTime>("DataCadastro")
-                        .HasColumnType("date");
-
-                    b.Property<DateTime>("DataInicio")
-                        .HasColumnType("date");
-
-                    b.Property<int>("ModuloID");
-
-                    b.Property<string>("Nivel")
-                        .IsRequired()
-                        .HasColumnType("varchar(15)");
-
-                    b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasColumnType("varchar(60)");
-
-                    b.Property<int>("Periodo")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProfessorID");
-
-                    b.Property<int>("QuantidadeAlunos")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasDefaultValue(0);
-
-                    b.Property<int>("Semestre")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("varchar(11)")
-                        .HasDefaultValue("Ativo");
-
-                    b.Property<DateTime>("TerminoAula")
-                        .HasColumnType("date");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ModuloID");
-
-                    b.HasIndex("ProfessorID");
-
-                    b.ToTable("Turmas");
-                });
-
-            modelBuilder.Entity("GrupoEstudosMusical.Models.Entities.Turma", b =>
-                {
-                    b.HasOne("GrupoEstudosMusical.Models.Entities.Modulo", "Modulo")
-                        .WithMany("Turmas")
-                        .HasForeignKey("ModuloID")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("GrupoEstudosMusical.Models.Entities.Professor", "Professor")
-                        .WithMany("Turmas")
-                        .HasForeignKey("ProfessorID")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

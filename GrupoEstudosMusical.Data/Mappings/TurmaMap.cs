@@ -11,8 +11,6 @@ namespace GrupoEstudosMusical.Data.Mappings
         {
             builder.ToTable("Turmas");
 
-            
-
             builder.HasKey(t => t.Id);
 
             builder.Property(t => t.Id).ValueGeneratedOnAdd();
@@ -26,27 +24,21 @@ namespace GrupoEstudosMusical.Data.Mappings
 
             builder.Property(t => t.DataCadastro).HasColumnType("date");
 
-            builder.Property(t => t.Modulo).HasColumnType("int").IsRequired();
-
             builder.Property(t => t.Nivel).HasColumnType("varchar(15)").IsRequired();
 
             builder.Property(t => t.Periodo).HasColumnType("int").IsRequired();
-
-            builder.Property(t => t.Professor).HasColumnType("int").IsRequired();
 
             builder.Property(t => t.Status).HasColumnType("varchar(11)").HasDefaultValue("Ativo").IsRequired();
 
             builder.Property(t => t.QuantidadeAlunos).HasColumnType("int").HasDefaultValue("0");
 
             builder.Property(t => t.Semestre).HasColumnType("int").IsRequired();
-            builder.OwnsMany(typeof(Modulo), "Modulo");
+            
+            builder.HasOne(t => t.Modulo)
+                .WithMany(m => m.Turmas);
 
-
+            builder.HasOne(t => t.Professor)
+                .WithMany(p => p.Turmas);   
         }
-
-        
-
-
-
     }
 }

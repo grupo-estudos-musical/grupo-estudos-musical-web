@@ -23,7 +23,8 @@ namespace GrupoEstudosMusical.Data.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            
+          
+                
             modelBuilder.ApplyConfiguration(new TurmaMap());
             modelBuilder.ApplyConfiguration(new ModuloMap());
             modelBuilder.ApplyConfiguration(new AlunoMap());

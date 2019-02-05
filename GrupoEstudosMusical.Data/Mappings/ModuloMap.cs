@@ -8,7 +8,7 @@ namespace GrupoEstudosMusical.Data.Mappings
     {
         public void Configure(EntityTypeBuilder<Modulo> builder)
         {
-            builder.ToTable("Modulo");
+            builder.ToTable("Modulos");
 
             builder.HasKey(m => m.Id);
 
