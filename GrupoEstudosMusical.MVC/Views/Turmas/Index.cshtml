@@ -47,14 +47,12 @@
                         <thead>
                             <tr>
                                 <th>@Html.DisplayNameFor(m => m.Nome)</th>
-                                <th>@Html.DisplayNameFor(m => m.NomeModulo)</th>
-                                <th>@Html.DisplayNameFor(m => m.Semestre)</th>
-                                <th>@Html.DisplayNameFor(m => m.Periodo)</th>
+                                <th>Módulo</th>
                                 <th>@Html.DisplayNameFor(m => m.Nivel)</th>
                                 <th>@Html.DisplayNameFor(m => m.DataInicio)</th>
                                 <th>@Html.DisplayNameFor(m => m.TerminoAula)</th>
-                                <th>@Html.DisplayNameFor(m => m.NomeProfessor)</th>
-                                <th>@Html.DisplayNameFor(m => m.QuantidadeAlunos)</th>
+                                <th>Professor</th>
+                                <th>Quantidade de Alunos</th>
                                 <th>@Html.DisplayNameFor(m => m.Status)</th>
                                 <th>Opções</th>
                             </tr>
@@ -62,37 +60,33 @@
                         <tfoot>
                             <tr>
                                 <th>@Html.DisplayNameFor(m => m.Nome)</th>
-                                <th>@Html.DisplayNameFor(m => m.NomeModulo)</th>
-                                <th>@Html.DisplayNameFor(m => m.Semestre)</th>
-                                <th>@Html.DisplayNameFor(m => m.Periodo)</th>
+                                <th>Módulo</th>
                                 <th>@Html.DisplayNameFor(m => m.Nivel)</th>
                                 <th>@Html.DisplayNameFor(m => m.DataInicio)</th>
                                 <th>@Html.DisplayNameFor(m => m.TerminoAula)</th>
-                                <th>@Html.DisplayNameFor(m => m.NomeProfessor)</th>
-                                <th>@Html.DisplayNameFor(m => m.QuantidadeAlunos)</th>
+                                <th>Professor</th>
+                                <th>Quantidade de Alunos</th>
                                 <th>@Html.DisplayNameFor(m => m.Status)</th>
                                 <th>Opções</th>
                             </tr>
                         </tfoot>
                         <tbody>
-                            @foreach (var model in Model)
+                            @foreach (var turma in Model)
                             {
                             <tr>
-                                <td>@Html.DisplayFor(item => model.Nome)</td>
-                                <td>@Html.DisplayFor(item => model.NomeModulo)</td>
-                                <td>@Html.DisplayFor(item => model.Semestre)</td>
-                                <td>@Html.DisplayFor(item => model.Periodo)</td>
-                                <td>@Html.DisplayFor(item => model.Nivel)</td>
-                                <td>@Html.DisplayFor(item => model.DataInicio)</td>
-                                <td>@Html.DisplayFor(item => model.TerminoAula)</td>
-                                <td>@Html.DisplayFor(item => model.NomeProfessor)</td>
-                                <td>@Html.DisplayFor(item => model.QuantidadeAlunos)</td>
-                                <td>@Html.DisplayFor(item => model.Status)</td>
+                                <td>@Html.DisplayFor(item => turma.Nome)</td>
+                                <td>@Html.DisplayFor(item => turma.Modulo.Nome)</td>
+                                <td>@Html.DisplayFor(item => turma.Nivel)</td>
+                                <td>@turma.DataInicio.ToString("dd/MM/yyyy")</td>
+                                <td>@turma.TerminoAula.ToString("dd/MM/yyyy")</td>
+                                <td>@Html.DisplayFor(item => turma.Professor.Nome)</td>
+                                <td>@Html.DisplayFor(item => turma.QuantidadeAlunos)</td>
+                                <td>@Html.DisplayFor(item => turma.Status)</td>
                                 <td style="width: 160px">
-                                    @Html.ActionLink("Editar", "Editar", "Turmas", new { id = model.Id }, new { @class = "btn btn-primary" })
+                                    @Html.ActionLink("Editar", "Editar", "Turmas", new { id = turma.Id }, new { @class = "btn btn-primary" })
 
                                     <a class="btn btn-danger" data-toggle="modal" href="#section-settings"
-                                       onclick="apagar(this, '@(model.Id)', '@(model.Nome)')">Apagar</a>
+                                       onclick="apagar(this, '@(turma.Id)', '@(turma.Nome)')">Apagar</a>
                                 </td>
                             </tr>
                             }

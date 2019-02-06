@@ -15,8 +15,7 @@ namespace GrupoEstudosMusical.Data.Mappings
 
             builder.Property(t => t.Id).ValueGeneratedOnAdd();
 
-            builder.Property(t => t.Nome).HasColumnType("varchar(60)")
-                .IsRequired();
+            builder.Property(t => t.Nome).HasColumnType("varchar(60)");
 
             builder.Property(t => t.DataInicio).HasColumnType("date");
 

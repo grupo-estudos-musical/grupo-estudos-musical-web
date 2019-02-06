@@ -18,7 +18,6 @@ namespace GrupoEstudosMusical.Models.Entities
         public string Bairro { get; set; }
         public string Cidade { get; set; }
         public string Uf { get; set; }
-
         public List<Turma> Turmas { get; set; }
     }
 }

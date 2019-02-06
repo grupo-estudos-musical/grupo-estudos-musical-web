@@ -328,6 +328,7 @@
     <Content Include="Views\Modulos\Editar.cshtml" />
     <Content Include="Views\Turmas\Novo.cshtml" />
     <Content Include="Views\Turmas\Index.cshtml" />
+    <Content Include="Views\Turmas\Editar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GrupoEstudosMusical.IoC\GrupoEstudosMusical.IoC.csproj">

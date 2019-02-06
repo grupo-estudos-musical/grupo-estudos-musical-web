@@ -36,8 +36,8 @@ namespace GrupoEstudosMusical.Data.Repositories
             await Context.SaveChangesAsync();
         }
 
-        public async Task<TEntity> ObterPorIdAsync(int id) => await DbSet.FindAsync(id);
+        public virtual async Task<TEntity> ObterPorIdAsync(int id) => await DbSet.FindAsync(id);
 
-        public async Task<IList<TEntity>> ObterTodosAsync() => await DbSet.ToListAsync();
+        public virtual async Task<IList<TEntity>> ObterTodosAsync() => await DbSet.ToListAsync();
     }
 }

@@ -1,10 +1,20 @@
 ﻿using GrupoEstudosMusical.Models.Entities;
 using GrupoEstudosMusical.Models.Interfaces.Repository;
-
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace GrupoEstudosMusical.Data.Repositories
 {
     public class RepositoryTurma : RepositoryGeneric<Turma>, IRepositoryTurma
     {
+        public override async Task<IList<Turma>> ObterTodosAsync() =>
+            await DbSet.Include(t => t.Professor).Include(t => t.Modulo).ToListAsync();
+
+        public override async Task<Turma> ObterPorIdAsync(int id) =>
+            await DbSet.Include(t => t.Professor).Include(t => t.Modulo).FirstOrDefaultAsync( t => t.Id==id);
+            
+        
+
     }
 }

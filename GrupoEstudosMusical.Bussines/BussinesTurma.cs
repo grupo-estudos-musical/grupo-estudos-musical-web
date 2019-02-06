@@ -2,7 +2,6 @@
 using GrupoEstudosMusical.Models.Interfaces.Bussines;
 using GrupoEstudosMusical.Models.Interfaces.Repository;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace GrupoEstudosMusical.Bussines
@@ -27,15 +26,12 @@ namespace GrupoEstudosMusical.Bussines
                 throw new ArgumentException("A data de início não pode ser superior do término das aulas!");
             }
         }
-
         public async override Task AlterarAsync(Turma entity)
         {
             VerificaDatas(entity.DataInicio, entity.TerminoAula);
             await base.AlterarAsync(entity);
         }
 
-        
 
-       
     }
 }
