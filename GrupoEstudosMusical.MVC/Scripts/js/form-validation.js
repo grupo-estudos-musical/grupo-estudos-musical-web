@@ -53,10 +53,11 @@ $(document).ready(function() {
 
         $('#turma_validate').validate({
             focusInvalid: false,
-            ignore="",
+            ignore: "",
             rules: {
                 Nome: {
-                    required=true
+                    maxlength: 60,
+                    required:true
                 }
 
             },
@@ -234,7 +235,7 @@ $(document).ready(function() {
                     maxlength: 60
                 },
                 detalhes: {
-                    required: true,
+                    required: false,
                     maxlength: 300
                 }
             },
