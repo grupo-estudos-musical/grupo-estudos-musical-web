@@ -2,6 +2,7 @@
 using GrupoEstudosMusical.Models.Entities;
 using GrupoEstudosMusical.Models.Interfaces.Bussines;
 using GrupoEstudosMusical.MVC.Models;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -30,10 +31,18 @@ namespace GrupoEstudosMusical.MVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Novo(ModuloVM moduloVM)
         {
-            var moduloModel = Mapper.Map<ModuloVM, Modulo>(moduloVM);
-            await _bussinesModulo.InserirAsync(moduloModel);
-            TempData["Mensagem"] = "Modulo cadastrado com sucesso.";
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                var moduloModel = Mapper.Map<ModuloVM, Modulo>(moduloVM);
+                await _bussinesModulo.InserirAsync(moduloModel);
+                TempData["Mensagem"] = "Modulo cadastrado com sucesso.";
+                return RedirectToAction(nameof(Index));
+            }
+            catch (ArgumentException ex)
+            {
+                TempData["Mensagem"] = ex.Message;
+                return View(moduloVM);
+            }
         }
         public async Task<ActionResult> Editar(int Id)
         {
@@ -48,10 +57,17 @@ namespace GrupoEstudosMusical.MVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Editar(ModuloVM moduloVM)
         {
-            var moduloModel = Mapper.Map<ModuloVM, Modulo>(moduloVM);
-            await _bussinesModulo.AlterarAsync(moduloModel);
-            TempData["Mensagem"] = "Módulo alterado com sucesso";
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                var moduloModel = Mapper.Map<ModuloVM, Modulo>(moduloVM);
+                await _bussinesModulo.AlterarAsync(moduloModel);
+                TempData["Mensagem"] = "Módulo alterado com sucesso";
+                return RedirectToAction(nameof(Index));
+            }catch(ArgumentException ex)
+            {
+                TempData["Mensagem"] = ex.Message;
+                return View(moduloVM);
+            }
         }
 
         public async Task<ActionResult> Deletar(FormCollection formCollection)

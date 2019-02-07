@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
+using GrupoEstudosMusical.Bussines.Exceptions;
 using GrupoEstudosMusical.Models.Entities;
 using GrupoEstudosMusical.Models.Interfaces.Bussines;
 using GrupoEstudosMusical.MVC.Models;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -58,15 +60,14 @@ namespace GrupoEstudosMusical.MVC.Controllers
                 await _bussinesTurma.AlterarAsync(turmaModel);
                 TempData["Mensagem"] = "Turma alterada com sucessso";
                 return RedirectToAction(nameof(Index));
-            }catch(ArgumentException ex)
+            }catch(CrudTurmaException ex)
             {
                 TempData["Mensagem"] = ex.Message;
                 return View(turma);
             }
 
         }
-
-
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Novo(TurmaVM entity)
@@ -78,12 +79,12 @@ namespace GrupoEstudosMusical.MVC.Controllers
                 await _bussinesTurma.InserirAsync(turmaModel);
                 TempData["Mensagem"] = "Turma cadastrada com sucesso";
                 return RedirectToAction(nameof(Index));
-            }
-            catch (ArgumentException ex)
+            }catch(CrudTurmaException ex)
             {
                 TempData["Mensagem"] = ex.Message;
                 return View(entity);
             }
+            
         }
 
         public async Task InicializarViewBagAsync()

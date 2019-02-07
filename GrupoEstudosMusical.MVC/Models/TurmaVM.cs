@@ -12,7 +12,7 @@ namespace GrupoEstudosMusical.MVC.Models
         public string Nome { get; set; }
 
         [DisplayName("Data Início")]
-        public DateTime DataInicio { get; set; } = DateTime.Now;
+        public DateTime DataInicio { get; set; }
 
         [DisplayName("Término da Aula")]
         public DateTime TerminoAula { get; set; }
