@@ -186,6 +186,14 @@
     <Compile Include="Migrations\20190205132728_Alteracao_Turma.designer.cs">
       <DependentUpon>20190205132728_Alteracao_Turma.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20190207115128_te.cs" />
+    <Compile Include="Migrations\20190207115128_te.designer.cs">
+      <DependentUpon>20190207115128_te.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20190207135207_Modulos.cs" />
+    <Compile Include="Migrations\20190207135207_Modulos.designer.cs">
+      <DependentUpon>20190207135207_Modulos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\GemContextModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\RepositoryAluno.cs" />

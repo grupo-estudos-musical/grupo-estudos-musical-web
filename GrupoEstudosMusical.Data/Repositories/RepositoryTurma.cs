@@ -2,6 +2,7 @@
 using GrupoEstudosMusical.Models.Interfaces.Repository;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace GrupoEstudosMusical.Data.Repositories
@@ -13,8 +14,10 @@ namespace GrupoEstudosMusical.Data.Repositories
 
         public override async Task<Turma> ObterPorIdAsync(int id) =>
             await DbSet.Include(t => t.Professor).Include(t => t.Modulo).FirstOrDefaultAsync( t => t.Id==id);
-            
-        
 
+        public Turma VerificarExistenciaDaTurmaPorNomePeriodoSemestre(string nomeTurma, int periodo, int semestre) =>
+            DbSet.Where(t => t.Nome == nomeTurma & t.Periodo==periodo & t.Semestre==semestre).FirstOrDefault();
+            
+       
     }
 }

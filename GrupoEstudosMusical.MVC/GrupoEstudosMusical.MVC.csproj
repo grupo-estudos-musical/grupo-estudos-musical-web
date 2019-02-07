@@ -331,6 +331,10 @@
     <Content Include="Views\Turmas\Editar.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GrupoEstudosMusical.Bussines\GrupoEstudosMusical.Bussines.csproj">
+      <Project>{5F8E319F-2C99-4336-BDCF-B3B1A70C2C56}</Project>
+      <Name>GrupoEstudosMusical.Bussines</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GrupoEstudosMusical.IoC\GrupoEstudosMusical.IoC.csproj">
       <Project>{e63208ff-b539-4b50-a259-73b42f6e7bd8}</Project>
       <Name>GrupoEstudosMusical.IoC</Name>

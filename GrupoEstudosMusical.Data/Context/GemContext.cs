@@ -17,7 +17,7 @@ namespace GrupoEstudosMusical.Data.Context
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             // var connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-            var connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString; ;
+            var connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             optionsBuilder.UseMySql(connectionString);
         }
 
