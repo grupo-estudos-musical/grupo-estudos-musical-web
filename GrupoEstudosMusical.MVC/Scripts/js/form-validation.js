@@ -53,10 +53,10 @@ $(document).ready(function() {
 
         $('#turma_validate').validate({
             focusInvalid: false,
-            ignore="",
+            ignore: "",
             rules: {
                 Nome: {
-                    required=true
+                    required: true
                 }
 
             },
