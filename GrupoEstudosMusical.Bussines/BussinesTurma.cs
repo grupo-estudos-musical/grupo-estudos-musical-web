@@ -18,7 +18,7 @@ namespace GrupoEstudosMusical.Bussines
         public async override Task InserirAsync(Turma entity)
         {
             VerificaDatas(entity.DataInicio, entity.TerminoAula);
-            VerificaExistenciaDaTurmaPorNomePeriodoSemestre(entity.Nome, entity.Periodo, entity.Semestre);
+            VerificaExistenciaDaTurmaPorNomePeriodoSemestre(entity.Nome, entity.Periodo, entity.Semestre, entity.Id);
             await base.InserirAsync(entity);
         }
         public void VerificaDatas(DateTime dataInicio, DateTime terminoAula)
@@ -31,12 +31,12 @@ namespace GrupoEstudosMusical.Bussines
         public async override Task AlterarAsync(Turma entity)
         {
             VerificaDatas(entity.DataInicio, entity.TerminoAula);
-            VerificaExistenciaDaTurmaPorNomePeriodoSemestre(entity.Nome, entity.Periodo, entity.Semestre);
+            VerificaExistenciaDaTurmaPorNomePeriodoSemestre(entity.Nome, entity.Periodo, entity.Semestre, entity.Id);
             await base.AlterarAsync(entity);
         }
-        public void VerificaExistenciaDaTurmaPorNomePeriodoSemestre(string nomeTurma, int periodo, int semestre)
+        public void VerificaExistenciaDaTurmaPorNomePeriodoSemestre(string nomeTurma, int periodo, int semestre, int Id)
         {
-            var turmaFiltrada = _repositoryTurma.VerificarExistenciaDaTurmaPorNomePeriodoSemestre(nomeTurma, periodo, semestre);
+            var turmaFiltrada = _repositoryTurma.VerificarExistenciaDaTurmaPorNomePeriodoSemestre(nomeTurma, periodo, semestre, Id);
 
             if (turmaFiltrada != null)
             {

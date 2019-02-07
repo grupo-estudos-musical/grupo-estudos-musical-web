@@ -10,8 +10,8 @@ namespace GrupoEstudosMusical.Data.Repositories
 {
     public class RepositoryModulo : RepositoryGeneric<Modulo>, IRepositoryModulo
     {
-        public Modulo VerificaExistenciaDoModuloPorNome(string nomeModulo) =>
-            DbSet.Where(m => m.Nome == nomeModulo).FirstOrDefault();
+        public Modulo VerificaExistenciaDoModuloPorNome(string nomeModulo, int Id) =>
+            DbSet.Where(m => m.Nome == nomeModulo & m.Id != Id).FirstOrDefault();
        
     }
 }

@@ -16,18 +16,18 @@ namespace GrupoEstudosMusical.Bussines
 
         public override async Task InserirAsync(Modulo modulo)
         {
-            VerificaExistenciaDoModuloPorNome(modulo.Nome);
+            VerificaExistenciaDoModuloPorNome(modulo.Nome, modulo.Id);
             await base.InserirAsync(modulo);
         }
         public override Task AlterarAsync(Modulo entity)
         {
-            VerificaExistenciaDoModuloPorNome(entity.Nome);
+            VerificaExistenciaDoModuloPorNome(entity.Nome, entity.Id);
             return base.AlterarAsync(entity);
         }
 
-        public void VerificaExistenciaDoModuloPorNome(string nomeModulo)
+        public void VerificaExistenciaDoModuloPorNome(string nomeModulo, int Id)
         {
-            var moduloFiltrado = _repositoryModulo.VerificaExistenciaDoModuloPorNome(nomeModulo);
+            var moduloFiltrado = _repositoryModulo.VerificaExistenciaDoModuloPorNome(nomeModulo,Id);
             if (moduloFiltrado != null) throw new ArgumentException("Já existe um módulo cadastrado com este nome!");
         }
             

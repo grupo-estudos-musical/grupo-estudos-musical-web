@@ -272,6 +272,7 @@
     <Content Include="Scripts\js\jquery-1.11.2.min.js" />
     <Content Include="Scripts\js\jquery.easing.min.js" />
     <Content Include="Scripts\js\scripts.js" />
+    <Content Include="Scripts\js\TurmasIndex.js" />
     <Content Include="Scripts\lib\bootstrap\js\bootstrap.min.js" />
     <Content Include="Content\lib\pace\pace-theme-flash.css" />
     <Content Include="Scripts\lib\datatables\extensions\Responsive\bootstrap3\dataTables.bootstrap.js" />
