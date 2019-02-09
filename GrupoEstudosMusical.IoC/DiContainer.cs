@@ -2,6 +2,9 @@
 using GrupoEstudosMusical.Data.Repositories;
 using GrupoEstudosMusical.Models.Interfaces.Bussines;
 using GrupoEstudosMusical.Models.Interfaces.Repository;
+using MosaicoSolutions.ViaCep;
+using MosaicoSolutions.ViaCep.Net;
+using MosaicoSolutions.ViaCep.Util;
 using SimpleInjector;
 
 namespace GrupoEstudosMusical.IoC
@@ -23,6 +26,13 @@ namespace GrupoEstudosMusical.IoC
             container.Register<IBussinesProfessor, BussinesProfessor>();
             container.Register<IBussinesModulo, BussinesModulo>();
             container.Register<IBussinesTurma, BussinesTurma>();
+
+            container.Register<IViaCepService, ViaCepService>();
+            container.Register<IViaCepCliente, ViaCepCliente>();
+            container.Register<IEnderecoConvert, EnderecoConvert>();
+            container.Register<IViaCepRequisicaoPorCepFactory, ViaCepRequisicaoPorCepFactory>();
+            container.Register<IViaCepRequisicaoPorEnderecoFactory, ViaCepRequisicaoPorEnderecoFactory>();
+
             return container;
         }
     }
