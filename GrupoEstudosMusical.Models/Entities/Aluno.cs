@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace GrupoEstudosMusical.Models.Entities
 {
@@ -17,5 +18,6 @@ namespace GrupoEstudosMusical.Models.Entities
         public string Complemento { get; set; }
         public string Cidade { get; set; }
         public string Uf { get; set; }
+        public List<Matricula> Matriculas { get; set; }
     }
 }

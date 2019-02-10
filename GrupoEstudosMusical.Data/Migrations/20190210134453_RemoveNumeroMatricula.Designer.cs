@@ -3,14 +3,16 @@ using System;
 using GrupoEstudosMusical.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GrupoEstudosMusical.Data.Migrations
 {
     [DbContext(typeof(GemContext))]
-    partial class GemContextModelSnapshot : ModelSnapshot
+    [Migration("20190210134453_RemoveNumeroMatricula")]
+    partial class RemoveNumeroMatricula
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -133,41 +135,6 @@ namespace GrupoEstudosMusical.Data.Migrations
                     b.ToTable("Modulos");
                 });
 
-            modelBuilder.Entity("GrupoEstudosMusical.Models.Entities.Ocorrencia", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<DateTime>("DataCadastro")
-                        .HasColumnType("date");
-
-                    b.Property<DateTime>("DataOcorrido")
-                        .HasColumnType("date");
-
-                    b.Property<string>("NomeProfessor")
-                        .IsRequired()
-                        .HasColumnType("varchar(100)");
-
-                    b.Property<string>("Resumo")
-                        .IsRequired()
-                        .HasColumnType("varchar(300)");
-
-                    b.Property<int>("Tipo")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Titulo")
-                        .IsRequired()
-                        .HasColumnType("varchar(70)");
-
-                    b.Property<int>("TurmaID");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("TurmaID");
-
-                    b.ToTable("Ocorrencias");
-                });
-
             modelBuilder.Entity("GrupoEstudosMusical.Models.Entities.Professor", b =>
                 {
                     b.Property<int>("Id")
@@ -270,11 +237,16 @@ namespace GrupoEstudosMusical.Data.Migrations
                     b.ToTable("Turmas");
                 });
 
-            modelBuilder.Entity("GrupoEstudosMusical.Models.Entities.Ocorrencia", b =>
+            modelBuilder.Entity("GrupoEstudosMusical.Models.Entities.Matricula", b =>
                 {
+                    b.HasOne("GrupoEstudosMusical.Models.Entities.Aluno", "Aluno")
+                        .WithMany("Matriculas")
+                        .HasForeignKey("AlunoId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("GrupoEstudosMusical.Models.Entities.Turma", "Turma")
-                        .WithMany("Ocorrencias")
-                        .HasForeignKey("TurmaID")
+                        .WithMany("Matriculas")
+                        .HasForeignKey("TurmaId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

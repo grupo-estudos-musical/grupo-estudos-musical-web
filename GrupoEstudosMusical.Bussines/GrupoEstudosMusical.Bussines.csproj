@@ -48,6 +48,8 @@
     <Compile Include="BussinesProfessor.cs" />
     <Compile Include="BussinesTurma.cs" />
     <Compile Include="Exceptions\CrudTurmaException.cs" />
+    <Compile Include="BussinesMatricula.cs" />
+    <Compile Include="Exceptions\TurmaMatriculaExeception.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
