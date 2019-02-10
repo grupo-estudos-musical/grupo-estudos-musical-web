@@ -17,12 +17,14 @@ namespace GrupoEstudosMusical.IoC
             container.Register<IRepositoryProfessor, RepositoryProfessor>();
             container.Register<IRepositoryModulo, RepositoryModulo>();
             container.Register<IRepositoryTurma, RepositoryTurma>();
+            container.Register<IRepositoryOcorrencia, RepositoryOcorrencia>();
 
             container.Register(typeof(IBussinesGeneric<>), typeof(BussinesGeneric<>));
             container.Register<IBussinesAluno, BussinesAluno>();
             container.Register<IBussinesProfessor, BussinesProfessor>();
             container.Register<IBussinesModulo, BussinesModulo>();
             container.Register<IBussinesTurma, BussinesTurma>();
+            container.Register<IBussinesOcorrencia, BussinesOcorrencia>();
             return container;
         }
     }

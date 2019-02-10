@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Collections.Generic;
 
 namespace GrupoEstudosMusical.Models.Entities
 {
@@ -17,6 +17,7 @@ namespace GrupoEstudosMusical.Models.Entities
         public int ModuloID { get; set; }
         public virtual Modulo Modulo { get; set; }
         public int Semestre { get; set; }
+        public List<Ocorrencia> Ocorrencias { get; set; }
 
     }
 }

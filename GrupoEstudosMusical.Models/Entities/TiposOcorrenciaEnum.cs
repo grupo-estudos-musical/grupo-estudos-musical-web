@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace GrupoEstudosMusical.Models.Entities
 {
     public enum TiposOcorrenciaEnum
     {
-        
-        
+        Disciplinar = 1,
+        AusenciaDeMaterial =2,
+        Outras =3
     }
 }

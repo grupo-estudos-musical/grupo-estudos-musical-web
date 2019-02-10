@@ -11,7 +11,7 @@ namespace GrupoEstudosMusical.Data.Context
         public DbSet<Professor> Professores { get; set; }
         public DbSet<Modulo> Modulos { get; set; }
         public DbSet<Turma> Turmas { get; set; }
-
+        public DbSet<Ocorrencia> Ocorrencias { get; set; }
         public GemContext() : base() { }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -23,8 +23,7 @@ namespace GrupoEstudosMusical.Data.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-          
-                
+            modelBuilder.ApplyConfiguration(new OcorrenciaMap());                
             modelBuilder.ApplyConfiguration(new TurmaMap());
             modelBuilder.ApplyConfiguration(new ModuloMap());
             modelBuilder.ApplyConfiguration(new AlunoMap());
