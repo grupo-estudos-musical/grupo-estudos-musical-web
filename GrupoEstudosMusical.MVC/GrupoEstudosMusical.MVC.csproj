@@ -248,6 +248,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AlunoVM.cs" />
+    <Compile Include="Models\MatriculaVM.cs" />
     <Compile Include="Models\ModuloVM.cs" />
     <Compile Include="Models\ProfessorVM.cs" />
     <Compile Include="Models\TurmaVM.cs" />
@@ -264,7 +265,9 @@
     <Content Include="Content\lib\datatables\extensions\Responsive\css\dataTables.responsive.css" />
     <Content Include="Content\lib\datatables\extensions\TableTools\css\dataTables.tableTools.min.css" />
     <Content Include="Content\lib\datepicker\css\datepicker.css" />
+    <Content Include="Content\lib\jquery-ui\smoothness\jquery-ui.min.css" />
     <Content Include="Content\lib\perfect-scrollbar\perfect-scrollbar.css" />
+    <Content Include="Content\lib\switchery\dist\switchery.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\font-awesome\css\font-awesome.css" />
     <Content Include="fonts\font-awesome\css\font-awesome.min.css" />
@@ -280,6 +283,7 @@
     <Content Include="Scripts\js\jquery.easing.min.js" />
     <Content Include="Scripts\js\scripts.js" />
     <Content Include="Scripts\js\TurmasIndex.js" />
+    <Content Include="Scripts\lib\bootstrap-wizard\jquery.bootstrap.wizard.min.js" />
     <Content Include="Scripts\lib\bootstrap\js\bootstrap.min.js" />
     <Content Include="Content\lib\pace\pace-theme-flash.css" />
     <Content Include="Scripts\lib\datatables\extensions\Responsive\bootstrap3\dataTables.bootstrap.js" />
@@ -296,6 +300,7 @@
     <Content Include="Scripts\lib\jquery-validation\js\jquey.validate.pt-br.js" />
     <Content Include="Scripts\lib\pace\pace.min.js" />
     <Content Include="Scripts\lib\perfect-scrollbar\perfect-scrollbar.min.js" />
+    <Content Include="Scripts\lib\switchery\dist\switchery.js" />
     <Content Include="Scripts\lib\viewport\viewportchecker.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -338,6 +343,7 @@
     <Content Include="Views\Turmas\Novo.cshtml" />
     <Content Include="Views\Turmas\Index.cshtml" />
     <Content Include="Views\Turmas\Editar.cshtml" />
+    <Content Include="Views\Alunos\Matricular.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GrupoEstudosMusical.Bussines\GrupoEstudosMusical.Bussines.csproj">

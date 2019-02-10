@@ -8199,3 +8199,8 @@ table.dataTable.display tbody tr:first-child td {
 .menu-block{
     display: block;
 }
+
+.btn-turmas {
+    width: 100%;
+    height: 100px;
+}

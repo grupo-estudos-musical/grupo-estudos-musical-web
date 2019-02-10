@@ -143,6 +143,7 @@
   <ItemGroup>
     <Compile Include="Context\GemContext.cs" />
     <Compile Include="Mappings\AlunoMap.cs" />
+    <Compile Include="Mappings\MatriculaMap.cs" />
     <Compile Include="Mappings\ModuloMap.cs" />
     <Compile Include="Mappings\ProfessorMap.cs" />
     <Compile Include="Mappings\TurmaMap.cs" />
@@ -194,10 +195,19 @@
     <Compile Include="Migrations\20190207135207_Modulos.designer.cs">
       <DependentUpon>20190207135207_Modulos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20190210005255_TabelaDeMatriculas.cs" />
+    <Compile Include="Migrations\20190210005255_TabelaDeMatriculas.designer.cs">
+      <DependentUpon>20190210005255_TabelaDeMatriculas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20190210134453_RemoveNumeroMatricula.cs" />
+    <Compile Include="Migrations\20190210134453_RemoveNumeroMatricula.designer.cs">
+      <DependentUpon>20190210134453_RemoveNumeroMatricula.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\GemContextModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\RepositoryAluno.cs" />
     <Compile Include="Repositories\RepositoryGeneric.cs" />
+    <Compile Include="Repositories\RepositoryMatricula.cs" />
     <Compile Include="Repositories\RepositoryModulo.cs" />
     <Compile Include="Repositories\RepositoryProfessor.cs" />
     <Compile Include="Repositories\RepositoryTurma.cs" />
