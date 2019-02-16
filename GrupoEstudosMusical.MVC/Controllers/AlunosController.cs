@@ -12,12 +12,10 @@ namespace GrupoEstudosMusical.MVC.Controllers
     public class AlunosController : Controller
     {
         private readonly IBussinesAluno _bussinesAluno;
-        private readonly IBussinesTurma _bussinesTurma;
 
-        public AlunosController(IBussinesAluno bussinesAluno, IBussinesTurma bussinesTurma)
+        public AlunosController(IBussinesAluno bussinesAluno)
         {
-            _bussinesAluno = bussinesAluno;
-            _bussinesTurma = bussinesTurma;
+            _bussinesAluno = bussinesAluno;            
         }
 
         public async Task<ActionResult> Index()
@@ -86,13 +84,6 @@ namespace GrupoEstudosMusical.MVC.Controllers
             await _bussinesAluno.DeletarAsync(alunoModel);
             TempData["Mensagem"] = "Aluno apagado com sucesso.";
             return RedirectToAction(nameof(Index));
-        }
-
-        public async Task<ActionResult> Matricular()
-        {
-            var matriculaVM = new MatriculaVM();
-            matriculaVM.Turmas = Mapper.Map<IList<Turma>, List<TurmaVM>>(await _bussinesTurma.ObterTodosAsync());
-            return View(matriculaVM);
         }
     }
 }

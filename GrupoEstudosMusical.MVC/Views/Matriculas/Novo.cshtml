@@ -165,7 +165,7 @@
                                             @foreach (var turma in turmasLinha)
                                             {
                                                 <div class="col-md-3">
-                                                    <button type="button" class="btn btn-primary btn-lg btn-border btn-turmas">@turma.Nome <br /><br /> Alunos 10/30</button>
+                                                    <button type="button" class="btn btn-primary btn-lg btn-border btn-turmas">@turma.Nome <br /><br /> Alunos @turma.Matriculas.Count/@turma.QuantidadeAlunos</button>
                                                 </div>
                                             }
                                         </div>
