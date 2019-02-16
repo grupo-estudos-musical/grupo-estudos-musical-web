@@ -18,6 +18,7 @@ namespace GrupoEstudosMusical.Models.Entities
         public virtual Modulo Modulo { get; set; }
         public int Semestre { get; set; }
         public List<Matricula> Matriculas { get; set; }
+        public List<Ocorrencia> Ocorrencias { get; set; }
 
         public bool VerificarQuantidadeDeAlunosMatriculados() => Matriculas.Count < QuantidadeAlunos;
     }

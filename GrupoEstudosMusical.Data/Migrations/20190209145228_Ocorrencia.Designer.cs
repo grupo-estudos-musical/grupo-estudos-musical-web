@@ -3,14 +3,16 @@ using System;
 using GrupoEstudosMusical.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GrupoEstudosMusical.Data.Migrations
 {
     [DbContext(typeof(GemContext))]
-    partial class GemContextModelSnapshot : ModelSnapshot
+    [Migration("20190209145228_Ocorrencia")]
+    partial class Ocorrencia
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -79,38 +81,6 @@ namespace GrupoEstudosMusical.Data.Migrations
                         .IsUnique();
 
                     b.ToTable("Alunos");
-                });
-
-            modelBuilder.Entity("GrupoEstudosMusical.Models.Entities.Matricula", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("AlunoId");
-
-                    b.Property<bool>("ComprovanteResidencia")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("Cpf")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("DataCadastro");
-
-                    b.Property<bool>("Pendente")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("Rg")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("TurmaId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AlunoId");
-
-                    b.HasIndex("TurmaId");
-
-                    b.ToTable("Matriculas");
                 });
 
             modelBuilder.Entity("GrupoEstudosMusical.Models.Entities.Modulo", b =>
