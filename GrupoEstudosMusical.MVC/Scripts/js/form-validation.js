@@ -249,8 +249,21 @@ $(document).ready(function() {
             }
         });
 
+        jQuery.validator.addMethod('turma', function (value, element) {
+            value = jQuery.trim(value);
+
+            retorno = false;
+
+            if (value !== "0") {
+                retorno = true;
+            }
+
+            return this.optional(element) || retorno;
+        }, "Por favor selecione uma Turma.");
+
         //Form Wizard Validations
         var $validator = $("#commentForm").validate({
+            ignore: "",
             rules: {
                 txtFullName: {
                     required: true,
@@ -263,6 +276,9 @@ $(document).ready(function() {
                 txtPhone: {
                     number: true,
                     required: true,
+                },
+                TurmaId: {
+                    turma: true
                 }
             },
             errorPlacement: function(label, element) {
@@ -285,9 +301,12 @@ $(document).ready(function() {
                 console.log('onShow');
             },
             onNext: function(tab, navigation, index) {
-                console.log('onNext');
+                //console.log('onNext');
                 if ($.isFunction($.fn.validate)) {
-                    var $valid = $("#commentForm").valid();
+                    var $valid = true;
+                    if (index === 3) {
+                        $valid = $("#commentForm").valid();
+                    }
                     if (!$valid) {
                         $validator.focusInvalid();
                         return false;
@@ -315,6 +334,10 @@ $(document).ready(function() {
                 $('#pills .progress-bar').css({
                     width: $percent + '%'
                 });
+                $('.next').removeClass('disabled');
+                //if ($current === 3) {
+                //    $('#TurmaId').removeAttr('value');
+                //}
             }
         });
 

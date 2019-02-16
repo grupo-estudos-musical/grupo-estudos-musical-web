@@ -284,6 +284,7 @@
     <Content Include="Scripts\js\form-validation.js" />
     <Content Include="Scripts\js\jquery-1.11.2.min.js" />
     <Content Include="Scripts\js\jquery.easing.min.js" />
+    <Content Include="Scripts\js\matricula.js" />
     <Content Include="Scripts\js\scripts.js" />
     <Content Include="Scripts\js\TurmasIndex.js" />
     <Content Include="Scripts\lib\bootstrap-wizard\jquery.bootstrap.wizard.min.js" />

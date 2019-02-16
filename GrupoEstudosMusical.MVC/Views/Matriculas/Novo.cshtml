@@ -147,30 +147,38 @@
                                 <div class="tab-pane" id="pills-tab3">
                                     <h4>Turmas Disponíveis</h4>
                                     <p>Escolha uma turma para o aluno ser matrículado</p><br />
-                                    @Html.HiddenFor(model => model.TurmaId)
-
-                                    @{
-                                        const int TAMANHO_LINHA = 4;
-                                        int quantLinhas = (int)Math.Ceiling((double)Model.Turmas.Count / TAMANHO_LINHA);
-                                    }
-                                    @for (int pagina = 0; pagina < quantLinhas; pagina++)
-                                    {
-                                        <div class="row">
-                                            @{
-                                                var turmasLinha =
-                                                    Model.Turmas
-                                                    .Skip(TAMANHO_LINHA * pagina)
-                                                    .Take(TAMANHO_LINHA);
-                                            }
-                                            @foreach (var turma in turmasLinha)
-                                            {
-                                                <div class="col-md-3">
-                                                    <button type="button" class="btn btn-primary btn-lg btn-border btn-turmas">@turma.Nome <br /><br /> Alunos @turma.Matriculas.Count/@turma.QuantidadeAlunos</button>
-                                                </div>
-                                            }
+                                    <div class="form-group">
+                                        <div class="controls">
+                                            @Html.HiddenFor(model => model.TurmaId)
                                         </div>
-                                        <br />
-                                    }
+                                    </div>
+
+                                    <div id="turmas">
+                                        @{
+                                            const int TAMANHO_LINHA = 4;
+                                            int quantLinhas = (int)Math.Ceiling((double)Model.Turmas.Count / TAMANHO_LINHA);
+                                        }
+                                        @for (int pagina = 0; pagina < quantLinhas; pagina++)
+                                        {
+                                            <div class="row">
+                                                @{
+                                                    var turmasLinha =
+                                                        Model.Turmas
+                                                        .Skip(TAMANHO_LINHA * pagina)
+                                                        .Take(TAMANHO_LINHA);
+                                                }
+                                                @foreach (var turma in turmasLinha)
+                                                {
+                                                    <div class="col-md-3">
+                                                        <button type="button" class="btn btn-primary btn-lg btn-border btn-turmas" turma-id="@turma.Id" onclick="selecionarTurma(this)">
+                                                            @turma.Nome <br /><br /> Alunos @turma.Matriculas.Count/@turma.QuantidadeAlunos
+                                                        </button>
+                                                    </div>
+                                                }
+                                            </div>
+                                            <br />
+                                        }
+                                    </div>
 
                                     <div class="clearfix"></div>
                                 </div>
@@ -207,4 +215,5 @@
     <script src="~/Scripts/lib/bootstrap-wizard/jquery.bootstrap.wizard.min.js" type="text/javascript"></script>
     <script src="~/Scripts/js/form-validation.js" type="text/javascript"></script>
     <script src="~/Scripts/lib/switchery/dist/switchery.js" type="text/javascript"></script>
+    <script src="~/Scripts/js/matricula.js" type="text/javascript"></script>
 }
