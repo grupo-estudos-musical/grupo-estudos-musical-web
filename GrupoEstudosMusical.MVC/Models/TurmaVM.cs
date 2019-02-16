@@ -1,5 +1,6 @@
 ﻿using GrupoEstudosMusical.Models.Entities;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 
 
@@ -35,8 +36,11 @@ namespace GrupoEstudosMusical.MVC.Models
 
         public Modulo Modulo { get; set; }
 
+        [DisplayName("Quantidade de Alunos")]
         public int QuantidadeAlunos { get; set; }
 
         public int Semestre { get; set; }
+
+        public List<Matricula> Matriculas { get; set; }
     }
 }
