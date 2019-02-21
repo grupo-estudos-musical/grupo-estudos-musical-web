@@ -1,12 +1,14 @@
 ﻿using GrupoEstudosMusical.Data.Context;
+using GrupoEstudosMusical.Models.Entities;
 using GrupoEstudosMusical.Models.Interfaces.Repository;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace GrupoEstudosMusical.Data.Repositories
 {
-    public class RepositoryGeneric<TEntity> : IRepositoryGeneric<TEntity> where TEntity : class
+    public class RepositoryGeneric<TEntity> : IRepositoryGeneric<TEntity> where TEntity : BaseEntity
     {
         protected GemContext Context;
         protected DbSet<TEntity> DbSet;
@@ -39,5 +41,11 @@ namespace GrupoEstudosMusical.Data.Repositories
         public virtual async Task<TEntity> ObterPorIdAsync(int id) => await DbSet.FindAsync(id);
 
         public virtual async Task<IList<TEntity>> ObterTodosAsync() => await DbSet.ToListAsync();
+
+        public async Task<int> ObterUltimoIdAsync()
+        {
+            var registro = await DbSet.OrderByDescending(e => e.Id).FirstOrDefaultAsync();
+            return registro.Id;
+        }
     }
 }

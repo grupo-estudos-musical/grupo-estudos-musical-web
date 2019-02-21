@@ -36,7 +36,7 @@ namespace GrupoEstudosMusical.MVC.Models
 
         public Modulo Modulo { get; set; }
 
-        [DisplayName("Quantidade de Alunos")]
+        [DisplayName("Quantidade Máximo de Alunos")]
         public int QuantidadeAlunos { get; set; }
 
         public int Semestre { get; set; }

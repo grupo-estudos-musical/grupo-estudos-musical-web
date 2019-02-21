@@ -10,5 +10,6 @@ namespace GrupoEstudosMusical.Models.Interfaces.Bussines
         Task DeletarAsync(TEntity entity);
         Task<TEntity> ObterPorIdAsync(int id);
         Task<IList<TEntity>> ObterTodosAsync();
+        Task<int> ObterUltimoIdAsync();
     }
 }

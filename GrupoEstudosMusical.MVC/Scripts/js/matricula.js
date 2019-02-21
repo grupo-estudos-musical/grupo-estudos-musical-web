@@ -17,4 +17,34 @@
     btn.removeClass('btn-border');
     let turmaId = btn.attr('turma-id');
     inputTurmaId.val(turmaId);
+
+    let nomeTurma = btn.attr('turma-nome');
+    $('#TurmaNome').val(nomeTurma);
+}
+
+function exibirCofirmacao(event) {
+    console.log('teste');
+    let divTurma = $('#pills-tab3');
+    if (!divTurma.hasClass('active')) {
+        let divConfirmacao = $('#pills-tab4');
+        if (!divConfirmacao.hasClass('active')) {
+            return;
+        }
+        else {
+            submeterFormularioMatricula();
+        }
+    }
+
+    let inputNome = $('#Aluno_Nome');
+    let inputTurma = $('#TurmaNome');
+    let nomeAluno = $('#nome-aluno');
+    let nomeTurma = $('#nome-turma');
+
+    nomeAluno.text(inputNome.val());
+    nomeTurma.text(inputTurma.val());
+}
+
+function submeterFormularioMatricula() {
+    let form = $('#commentForm');
+    form.submit();
 }

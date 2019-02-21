@@ -1,7 +1,9 @@
 ﻿@model GrupoEstudosMusical.MVC.Models.MatriculaVM
 
 @{
-    ViewBag.Title = "Processo de Matrícula";
+                /**/
+
+                ViewBag.Title = "Processo de Matrícula";
 }
 
 <div class='col-xs-12'>
@@ -43,9 +45,10 @@
             <div class="row">
                 <div class="col-xs-12">
 
-                    @using (Html.BeginForm("Matricular", "Alunos", FormMethod.Post, new { id = "commentForm" }))
+                    @using (Html.BeginForm("Novo", "Matriculas", FormMethod.Post, new { id = "commentForm" }))
                     {
                         @Html.AntiForgeryToken()
+                        @Html.HiddenFor(model => model.AlunoId)
                         <div id="pills" class='wizardpills'>
                             <ul class="form-wizard">
                                 <li><a href="#pills-tab1" data-toggle="tab"><span>Aluno</span></a></li>
@@ -58,7 +61,6 @@
                             </div>
                             <div class="tab-content">
                                 <div class="tab-pane" id="pills-tab1">
-
                                     <h4>Informações do Aluno</h4>
                                     <p>Confirme as informações do aluno</p><br />
                                     <div class="row">
@@ -109,7 +111,7 @@
                                             </div>
                                         </div>
                                         <div class="col-xs-12">
-                                            @Html.ActionLink("Editar Aluno", "Editar", new { id = 1 }, new { @class = "btn btn-primary" })
+                                            @Html.ActionLink("Editar Aluno", "Editar", "Alunos", new { id = Model.Aluno.Id, returnUrl = Url.RouteUrl("Matricular", new { idAluno = Model.Aluno.Id }) }, new { @class = "btn btn-primary" })
                                         </div>
                                         <br />
                                     </div>
@@ -152,6 +154,11 @@
                                             @Html.HiddenFor(model => model.TurmaId)
                                         </div>
                                     </div>
+                                    <div class="form-group">
+                                        <div class="controls">
+                                            <input type="hidden" id="TurmaNome" />
+                                        </div>
+                                    </div>
 
                                     <div id="turmas">
                                         @{
@@ -170,7 +177,7 @@
                                                 @foreach (var turma in turmasLinha)
                                                 {
                                                     <div class="col-md-3">
-                                                        <button type="button" class="btn btn-primary btn-lg btn-border btn-turmas" turma-id="@turma.Id" onclick="selecionarTurma(this)">
+                                                        <button type="button" class="btn btn-primary btn-lg btn-border btn-turmas" turma-id="@turma.Id" turma-nome="@turma.Nome" onclick="selecionarTurma(this)">
                                                             @turma.Nome <br /><br /> Alunos @turma.Matriculas.Count/@turma.QuantidadeAlunos
                                                         </button>
                                                     </div>
@@ -187,13 +194,15 @@
                                     <p>Confirme as informações antes de realizar a matrícula</p>
                                     <br />
 
-                                    <h3>Aluno:<span>Nome do Aluno</span></h3>
-                                    <h3 class="semi-bold">Turma: <span>Nome da Turma</span></h3>
+                                    <h3>Aluno: <span id="nome-aluno">Nome do Aluno</span></h3>
+                                    <h3>Turma: <span id="nome-turma">Nome da Turma</span></h3>
                                     <br />
                                 </div>
                                 <ul class="pager wizard">
                                     <li class="previous"><a href="javascript:;">Voltar</a></li>
-                                    <li class="next"><a href="javascript:;">Avançar</a></li>
+                                    <li class="next">
+                                        <a href="javascript:;" onclick="exibirCofirmacao(this)">Avançar</a>
+                                    </li>
                                     @*<li class="finish"><a href="javascript:;">Finish</a></li>*@
                                 </ul>
                             </div>

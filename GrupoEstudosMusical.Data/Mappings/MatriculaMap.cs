@@ -38,6 +38,10 @@ namespace GrupoEstudosMusical.Data.Mappings
             builder.HasOne(m => m.Aluno)
                 .WithMany(a => a.Matriculas)
                 .HasForeignKey(m => m.AlunoId);
+
+            builder.Ignore(m => m.Aluno);
+
+            builder.Ignore(m => m.Turma);
         }
     }
 }

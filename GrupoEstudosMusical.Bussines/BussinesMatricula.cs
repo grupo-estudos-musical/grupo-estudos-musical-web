@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using GrupoEstudosMusical.Bussines.Exceptions;
 using GrupoEstudosMusical.Models.Entities;
 using GrupoEstudosMusical.Models.Interfaces.Bussines;
@@ -11,22 +10,24 @@ namespace GrupoEstudosMusical.Bussines
     {
         private readonly IRepositoryMatricula _repositoryMatricula;
         private readonly IRepositoryTurma _repositoryTurma;
+        private readonly IRepositoryAluno _repositoryAluno;
 
         public BussinesMatricula(IRepositoryMatricula repositoryMatricula, 
-            IRepositoryTurma repositoryTurma) : base(repositoryMatricula)
+            IRepositoryTurma repositoryTurma, IRepositoryAluno repositoryAluno) : base(repositoryMatricula)
         {
             _repositoryMatricula = repositoryMatricula;
             _repositoryTurma = repositoryTurma;
+            _repositoryAluno = repositoryAluno;
         }
 
         public async override Task InserirAsync(Matricula entity)
         {
-            var turma = await _repositoryTurma.ObterPorIdAsync(entity.Id);
+            var turma = await _repositoryTurma.ObterPorIdAsync(entity.TurmaId);
             if (!turma.VerificarQuantidadeDeAlunosMatriculados())
                 throw new TurmaMatriculaExeception("Não existe vagas para esta turma.");
 
-            if (entity.VerificarMatriculaPendente())
-                throw new ArgumentException("Matrícula ficará pendente.");
+            entity.VerificarMatriculaPendente();
+
             await base.InserirAsync(entity);
         }
     }

@@ -348,7 +348,6 @@
     <Content Include="Views\Turmas\Index.cshtml" />
     <Content Include="Views\Turmas\Editar.cshtml" />
     <Content Include="Views\Matriculas\Novo.cshtml" />
-    <Content Include="Views\Alunos\Matricular.cshtml" />
     <Content Include="Views\Ocorrencias\Novo.cshtml" />
   </ItemGroup>
   <ItemGroup>

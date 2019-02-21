@@ -283,7 +283,7 @@ $(document).ready(function() {
             },
             errorPlacement: function(label, element) {
                 $('<span class="arrow"></span>').insertBefore(element);
-                $('<span class="error"></span>').insertAfter(element).append(label)
+                $('<span class="error"></span>').insertAfter(element).append(label);
             }
         });
 

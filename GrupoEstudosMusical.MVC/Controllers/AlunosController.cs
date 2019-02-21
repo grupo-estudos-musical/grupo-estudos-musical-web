@@ -37,8 +37,9 @@ namespace GrupoEstudosMusical.MVC.Controllers
             {
                 var alunoModel = Mapper.Map<AlunoVM, Aluno>(alunoVM);
                 await _bussinesAluno.InserirAsync(alunoModel);
-                TempData["Mensagem"] = "Aluno cadastrado com sucesso.";
-                return RedirectToAction(nameof(Index));
+                var id = await _bussinesAluno.ObterUltimoIdAsync();
+                //TempData["Mensagem"] = "Aluno cadastrado com sucesso.";
+                return RedirectToRoute("Matricular", new { controller = "Matriculas", idAluno = id });
             }
             catch (ArgumentException ex)
             {
@@ -47,26 +48,34 @@ namespace GrupoEstudosMusical.MVC.Controllers
             }
         }
 
-        public async Task<ActionResult> Editar(int id)
+        [Route("Alunos/Editar/{id}")]
+        public async Task<ActionResult> Editar(int id, string returnUrl = "")
         {
             var alunoVM = Mapper.Map<Aluno, AlunoVM>(await _bussinesAluno.ObterPorIdAsync(id));
             if (alunoVM == null)
             {
                 return HttpNotFound();
             }
+            ViewBag.ReturnUrl = returnUrl;
             return View(alunoVM);
         }
 
+        [Route("Alunos/Editar/{id}")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Editar(AlunoVM alunoVM)
+        public async Task<ActionResult> Editar(AlunoVM alunoVM, string returnUrl = "")
         {
             try
             {
                 var alunoModel = Mapper.Map<AlunoVM, Aluno>(alunoVM);
                 await _bussinesAluno.AlterarAsync(alunoModel);
-                TempData["Mensagem"] = "Aluno alterado com sucesso.";
-                return RedirectToAction(nameof(Index));
+                if (string.IsNullOrEmpty(returnUrl))
+                {
+                    TempData["Mensagem"] = "Aluno alterado com sucesso.";
+                    return RedirectToAction(nameof(Index));
+                }
+
+                return Redirect(returnUrl);
             }
             catch (ArgumentException ex)
             {

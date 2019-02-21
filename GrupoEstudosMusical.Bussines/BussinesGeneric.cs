@@ -23,5 +23,7 @@ namespace GrupoEstudosMusical.Bussines
         public async Task<TEntity> ObterPorIdAsync(int id) => await _repository.ObterPorIdAsync(id);
 
         public async Task<IList<TEntity>> ObterTodosAsync() => await _repository.ObterTodosAsync();
+
+        public async Task<int> ObterUltimoIdAsync() => await _repository.ObterUltimoIdAsync();
     }
 }
