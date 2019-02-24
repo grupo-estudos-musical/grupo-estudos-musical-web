@@ -47,7 +47,7 @@ namespace GrupoEstudosMusical.MVC.Controllers
             {
                 var matriculaModel = Mapper.Map<MatriculaVM, Matricula>(matriculaVM);
                 await _bussinesMatricula.InserirAsync(matriculaModel);
-                TempData["Mensagem"] = "Aluno matrícula com sucesso.";
+                TempData["Mensagem"] = "Aluno matrículado com sucesso.";
                 return RedirectToAction("Index", "Alunos");
             }
             catch (ArgumentException ex)
