@@ -208,6 +208,18 @@
     <Compile Include="Migrations\20190209145228_Ocorrencia.designer.cs">
       <DependentUpon>20190209145228_Ocorrencia.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20190223032934_Criação das ocorrencias.cs" />
+    <Compile Include="Migrations\20190223032934_Criação das ocorrencias.designer.cs">
+      <DependentUpon>20190223032934_Criação das ocorrencias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20190302135622_alteracao_campoTIpo.cs" />
+    <Compile Include="Migrations\20190302135622_alteracao_campoTIpo.designer.cs">
+      <DependentUpon>20190302135622_alteracao_campoTIpo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20190302164341_alteracao_campoTIp5.cs" />
+    <Compile Include="Migrations\20190302164341_alteracao_campoTIp5.designer.cs">
+      <DependentUpon>20190302164341_alteracao_campoTIp5.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\GemContextModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\RepositoryAluno.cs" />

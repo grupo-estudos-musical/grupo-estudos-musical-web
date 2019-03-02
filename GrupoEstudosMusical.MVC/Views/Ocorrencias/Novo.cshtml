@@ -25,7 +25,7 @@
     </div>
 </div>
 
-@using (Html.BeginForm("Novo", "Ocorrências", FormMethod.Post, new { id = "general_validate" }))
+@using (Html.BeginForm("Novo", "Ocorrencias", FormMethod.Post, new { id = "ocorrencia_validate" }))
 {
     @Html.AntiForgeryToken()
     <div class="col-lg-12">
@@ -38,6 +38,67 @@
                 </div>
             </header>
             <div class="content-body">
+                @if (TempData["Mensagem"] != null && TempData["Mensagem"].ToString() != "")
+                {
+                    <div class="alert alert-danger alert-dismissible fade in">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                        <strong>Atenção:</strong> @TempData["Mensagem"].ToString()
+                    </div>
+                }
+                    @Html.HiddenFor(model => model.AlunoID)
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Tipo, htmlAttributes: new { @class = "form-label" })
+                                <div class="controls">
+                                    @*<select name="@Model.TipoID">
+                        <option v></option>
+                    </select>*@
+                                    @Html.DropDownListFor(model => model.Tipo, new SelectList(ViewBag.Tipos, "TiposOcorrenciaEnum"), new { @class = "form-control m-bot15" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Titulo, htmlAttributes: new { @class = "form-label" })
+                                <div class="controls">
+                                    @Html.EditorFor(model => model.Titulo, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.DataOcorrido, htmlAttributes: new { @class = "form-label" })
+                                <div class="controls">
+                                    @Html.EditorFor(model => model.DataOcorrido, new { htmlAttributes = new { @class = "form-control datepicker", @data_format = "dd/mm/yyyy" } })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.TurmaID, htmlAttributes: new { @class = "form-label" })
+                                <div class="controls">
+                                    @Html.DropDownListFor(model => model.TurmaID, new SelectList(ViewBag.Turmas, "Id", "Nome"), new { @class = "form-control m-bot15" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Resumo, htmlAttributes: new { @class = "form-label" })
+                                <div class="controls">
+                                    @Html.TextAreaFor(model => model.Resumo, new { htmlAttributes = new { @class = "form-control datepicker", @data_format = "dd/mm/yyyy" } })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="pull-right ">
+                                <input type="submit" class="btn btn-success" value="Salvar">
+                                <!-- <button type="submit" class="btn btn-success">Salvar</button> -->
+                                <a type="button" class="btn" href="@Url.Action("Index", "Modulo")">Cancelar</a>
+                            </div>
+                        </div>
+                    </div>
                 @Html.Partial("_MensagemErro")
                 <div class="row">
                     <div class="col-xs-6">
@@ -69,19 +130,23 @@
     </div>
 }
 <style>
-    #Observacoes {
+    #Resumo {
         height: 200px;
-        width: 470px;
+        width: 100%;
         resize: none;
     }
 </style>
 
+@section Styles{
+    <link href="~/Content/lib/datepicker/css/datepicker.css" rel="stylesheet" type="text/css" media="screen">
+}
 
 @section Scripts{
     <script src="~/Scripts/lib/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
     <script src="~/Scripts/lib/jquery-validation/js/additional-methods.min.js" type="text/javascript"></script>
     <script src="~/Scripts/js/form-validation.js" type="text/javascript"></script>
     <script src="~/Scripts/lib/jquery-validation/js/jquey.validate.pt-br.js" type="text/javascript"></script>
+    <script src="~/Scripts/lib/datepicker/js/datepicker.js" type="text/javascript"></script>
 
 }
 

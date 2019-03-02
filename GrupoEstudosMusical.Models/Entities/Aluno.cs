@@ -19,5 +19,6 @@ namespace GrupoEstudosMusical.Models.Entities
         public string Cidade { get; set; }
         public string Uf { get; set; }
         public List<Matricula> Matriculas { get; set; }
+        public List<Ocorrencia> Ocorrencias { get; set; }
     }
 }

@@ -3,14 +3,16 @@ using System;
 using GrupoEstudosMusical.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GrupoEstudosMusical.Data.Migrations
 {
     [DbContext(typeof(GemContext))]
-    partial class GemContextModelSnapshot : ModelSnapshot
+    [Migration("20190302135622_alteracao_campoTIpo")]
+    partial class alteracao_campoTIpo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -152,7 +154,7 @@ namespace GrupoEstudosMusical.Data.Migrations
 
                     b.Property<string>("Tipo")
                         .IsRequired()
-                        .HasColumnType("varchar(30)");
+                        .HasColumnType("varchar(15)");
 
                     b.Property<string>("Titulo")
                         .IsRequired()

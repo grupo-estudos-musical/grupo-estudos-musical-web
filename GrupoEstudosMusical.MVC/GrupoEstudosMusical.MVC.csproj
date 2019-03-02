@@ -353,6 +353,9 @@
     <Content Include="Views\Shared\_MensagemErro.cshtml" />
     <Content Include="Views\Shared\_MensagemSucesso.cshtml" />
     <Content Include="Views\Matriculas\Index.cshtml" />
+    <Content Include="Views\Alunos\VisualizarDados.cshtml" />
+    <Content Include="Views\Ocorrencias\Index.cshtml" />
+    <Content Include="Views\Ocorrencias\Editar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GrupoEstudosMusical.Bussines\GrupoEstudosMusical.Bussines.csproj">

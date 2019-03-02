@@ -23,12 +23,11 @@ namespace GrupoEstudosMusical.Data.Mappings
 
             builder.Property(o => o.DataOcorrido).HasColumnType("date").IsRequired();
 
-            builder.Property(o => o.NomeProfessor).HasColumnType("varchar(100)").IsRequired();
+            builder.Property(o => o.Tipo).HasColumnType("varchar(30)").IsRequired();
 
-            builder.Property(o => o.Tipo).HasColumnType("int").IsRequired();
+            builder.HasOne(o => o.Aluno).WithMany(a => a.Ocorrencias);
 
             builder.HasOne(o => o.Turma).WithMany(t => t.Ocorrencias);
-
 
         }
     }

@@ -60,6 +60,16 @@ namespace GrupoEstudosMusical.MVC.Controllers
             return View(alunoVM);
         }
 
+        public async Task<ActionResult> VisualizarDados(int Id)
+        {
+            var obterDadosDoAlunoVm = Mapper.Map<Aluno, AlunoVM>(await _bussinesAluno.ObterPorIdAsync(Id));
+            if(obterDadosDoAlunoVm == null)
+            {
+                return HttpNotFound();
+            }
+            return View(obterDadosDoAlunoVm);
+        }
+
         [Route("Alunos/Editar/{id}")]
         [HttpPost]
         [ValidateAntiForgeryToken]
