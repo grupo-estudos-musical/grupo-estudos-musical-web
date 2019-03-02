@@ -250,6 +250,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AlunoVM.cs" />
+    <Compile Include="Models\MatriculaListaVM.cs" />
     <Compile Include="Models\MatriculaVM.cs" />
     <Compile Include="Models\ModuloVM.cs" />
     <Compile Include="Models\OcorrenciaVM.cs" />
@@ -351,6 +352,7 @@
     <Content Include="Views\Ocorrencias\Novo.cshtml" />
     <Content Include="Views\Shared\_MensagemErro.cshtml" />
     <Content Include="Views\Shared\_MensagemSucesso.cshtml" />
+    <Content Include="Views\Matriculas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GrupoEstudosMusical.Bussines\GrupoEstudosMusical.Bussines.csproj">

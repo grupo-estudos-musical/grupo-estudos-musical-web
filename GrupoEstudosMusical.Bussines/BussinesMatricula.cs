@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using GrupoEstudosMusical.Bussines.Exceptions;
 using GrupoEstudosMusical.Models.Entities;
 using GrupoEstudosMusical.Models.Interfaces.Bussines;
@@ -27,8 +28,11 @@ namespace GrupoEstudosMusical.Bussines
                 throw new TurmaMatriculaExeception("Não existe vagas para esta turma.");
 
             entity.VerificarMatriculaPendente();
-
+            entity.Aluno = null;
             await base.InserirAsync(entity);
         }
+
+        public Task<IList<Matricula>> ObterMatriculasPorAluno(int idAluno) =>
+            _repositoryMatricula.ObterMatriculasPorAluno(idAluno);
     }
 }

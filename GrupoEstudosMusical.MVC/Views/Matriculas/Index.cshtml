@@ -1,0 +1,93 @@
+﻿@model IList<GrupoEstudosMusical.MVC.Models.MatriculaListaVM>
+
+@{
+    ViewBag.Title = "Matrículas";
+}
+
+<div class='col-xs-12'>
+    <div class="page-title">
+        <div class="pull-left">
+            <h1 class="title">Matrículas</h1>
+        </div>
+        <div class="pull-right hidden-xs">
+            <ol class="breadcrumb">
+                <li>
+                    <a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i>Home</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index")">Alunos</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index")">Visão Geral do Aluno</a>
+                </li>
+                <li class="active">
+                    <strong>Matrículas</strong>
+                </li>
+            </ol>
+        </div>
+    </div>
+</div>
+<div class="col-lg-12">
+    <section class="box ">
+        <header class="panel_header">
+            <h2 class="title pull-left">Lista de matrículas do(a) aluno(a) @Model[0].Aluno.Nome</h2>
+            <div class="actions panel_actions pull-right">
+                <a class="box_toggle fa fa-chevron-down"></a>
+                <a class="box_close fa fa-times"></a>
+            </div>
+        </header>
+        <div class="content-body">
+            @Html.Partial("_MensagemSucesso")
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="table table-responsive">
+                        <table class="table table-bordered texto-centralizado">
+                            <thead>
+                                <tr>
+                                    <th>Período</th>
+                                    <th>Módulo</th>
+                                    <th>Turma</th>
+                                    <th>Situação da Turma</th>
+                                    <th>Situação da Matrícula</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var matricula in Model)
+                                {
+                                    <tr class="@(matricula.Pendente ? "warning" : "")">
+                                        <td>
+                                            @matricula.Turma.Periodo/@matricula.Turma.Semestre
+                                        </td>
+                                        <td>@matricula.Turma.Modulo.Nome</td>
+                                        <td>@matricula.Turma.Nome</td>
+                                        <td>@matricula.Turma.Status</td>
+                                        <td>@matricula.SituacaoMatricula</td>
+                                        <td>
+                                            @*@Html.ActionLink("Consultar", "Detalhes", new { id = matricula.Id}, new { @class = "btn btn-purple btn-icon bottom15"})*@
+                                            <a href="Matriculas/Detalhes/@matricula.Id" class="btn btn-primary btn-iconic bottom">
+                                                <i class="fa fa-search"> &nbsp; <span>Consultar</span></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="pull-right">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="legenda legenda-amarela">
+                                </div>
+                            </div>
+                            <div class="col-md-10">
+                                <span>Matrícula Pendente</span>
+                            </div>
+                        </div>    
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

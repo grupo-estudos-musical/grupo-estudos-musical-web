@@ -2,8 +2,8 @@
 {
     public class Matricula : BaseEntity
     {
-        public Turma Turma { get; set; }
-        public int TurmaId { get; set; }
+        public virtual Turma Turma { get; set; }
+        public virtual int TurmaId { get; set; }
         public Aluno Aluno { get; set; }
         public int AlunoId { get; set; }
         public bool Cpf { get; set; }

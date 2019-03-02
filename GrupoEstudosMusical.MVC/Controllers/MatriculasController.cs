@@ -23,6 +23,18 @@ namespace GrupoEstudosMusical.MVC.Controllers
             _bussinesMatricula = bussinesMatricula;
         }
 
+        public async Task<ActionResult> Index(int idAluno)
+        {
+            var aluno = await _bussinesAluno.ObterPorIdAsync(idAluno);
+            if (aluno == null)
+                return HttpNotFound("Aluno não encontrado");
+
+            IList<Matricula> alunosModel = await _bussinesMatricula.ObterMatriculasPorAluno(idAluno);
+            var matriculasVM = Mapper.Map<IList<Matricula>, List<MatriculaListaVM>>(alunosModel);            
+
+            return View(matriculasVM);
+        }
+
         [HttpGet]
         [Route("Aluno/Matricular/{idAluno}", Name = "Matricular")]
         public async Task<ActionResult> Novo(int idAluno)
