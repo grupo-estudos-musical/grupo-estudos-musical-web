@@ -23,7 +23,6 @@
 }
 
 function exibirCofirmacao(event) {
-    console.log('teste');
     let divTurma = $('#pills-tab3');
     if (!divTurma.hasClass('active')) {
         let divConfirmacao = $('#pills-tab4');
@@ -31,7 +30,12 @@ function exibirCofirmacao(event) {
             return;
         }
         else {
-            submeterFormularioMatricula();
+            if (!verificarDocumentos()) {
+                $('#modal-confirmar-matricula').modal();
+            }
+            else {
+                submeterFormularioMatricula();
+            }
         }
     }
 
@@ -44,7 +48,25 @@ function exibirCofirmacao(event) {
     nomeTurma.text(inputTurma.val());
 }
 
+//verifica se todos os documentos estão selecionados
+function verificarDocumentos() {
+    let divDocumentos = $('#pills-tab2');
+    let checkDocumentos = divDocumentos.find('span');
+    for (var i = 0; i < checkDocumentos.length; i++) {
+        let span = $(checkDocumentos[i]);
+        let style = span.attr('style');
+        if (style.includes('rgb(255, 255, 255)')) {
+            return false;
+        }
+    }
+    return true;
+}
+
 function submeterFormularioMatricula() {
     let form = $('#commentForm');
     form.submit();
+}
+
+function confirmarModal() {
+    submeterFormularioMatricula();
 }

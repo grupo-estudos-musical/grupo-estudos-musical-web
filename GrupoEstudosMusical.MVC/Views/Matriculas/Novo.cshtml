@@ -1,9 +1,9 @@
 ﻿@model GrupoEstudosMusical.MVC.Models.MatriculaVM
 
 @{
-                /**/
+    /**/
 
-                ViewBag.Title = "Processo de Matrícula";
+    ViewBag.Title = "Processo de Matrícula";
 }
 
 <div class='col-xs-12'>
@@ -35,13 +35,14 @@
 <div class="col-lg-12">
     <section class="box ">
         <header class="panel_header">
-            <h2 class="title pull-left">Processo de Matrícula do Aluno</h2>
+            <h2 class="title pull-left">Processo de Matrícula do(a) Aluno(a) @Model.Aluno.Nome</h2>
             <div class="actions panel_actions pull-right">
                 <a class="box_toggle fa fa-chevron-down"></a>
                 <a class="box_close fa fa-times"></a>
             </div>
         </header>
         <div class="content-body">
+            @Html.Partial("_MensagemErro")
             <div class="row">
                 <div class="col-xs-12">
 
@@ -214,6 +215,25 @@
     </section>
 </div>
 
+<!-- modal start -->
+<div class="modal fade col-xs-12" id="modal-confirmar-matricula" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Matrícula Pendente</h4>
+            </div>
+            <div class="modal-body">
+                Não foram apresentados todos os documentos, por isso a matrícula do aluno ficará pendente. Dejesa realmente matricular aluno?
+            </div>
+            <div class="modal-footer">
+                <button data-dismiss="modal" class="btn btn-default" type="button">Fechar</button>
+                <button class="btn btn-warning" type="button" id="btn-confirmar-matricula" onclick="confirmarModal()"> Confirmar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- modal end -->
 @section styles{
     <link href="~/Content/lib/jquery-ui/smoothness/jquery-ui.min.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="~/Content/lib/switchery/dist/switchery.css" rel="stylesheet" type="text/css" media="screen" />

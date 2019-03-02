@@ -89,6 +89,7 @@ namespace GrupoEstudosMusical.MVC.Controllers
             }
             catch (ArgumentException ex)
             {
+                ViewBag.ReturnUrl = returnUrl;
                 TempData["Mensagem"] = ex.Message;
                 return View(alunoVM);
             }

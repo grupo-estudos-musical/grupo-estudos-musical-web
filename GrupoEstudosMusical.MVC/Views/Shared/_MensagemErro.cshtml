@@ -1,0 +1,7 @@
+﻿@if (TempData["Mensagem"] != null && TempData["Mensagem"].ToString() != "")
+{
+    <div class="alert alert-danger alert-dismissible fade in">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+        <strong>Atenção:</strong> @TempData["Mensagem"].ToString()
+    </div>
+}
