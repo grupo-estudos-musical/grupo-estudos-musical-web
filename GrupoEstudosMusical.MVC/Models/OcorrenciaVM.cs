@@ -1,7 +1,7 @@
 ﻿using GrupoEstudosMusical.Models.Entities;
 using System;
 using System.ComponentModel;
-
+using System.ComponentModel.DataAnnotations;
 
 namespace GrupoEstudosMusical.MVC.Models
 {
@@ -12,7 +12,8 @@ namespace GrupoEstudosMusical.MVC.Models
         public string Titulo { get; set; }
 
         [DisplayName("Data Ocorrido")]
-        public DateTime DataOcorrido { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        public DateTime DataOcorrido { get; set; } = DateTime.Now;
 
         [DisplayName("Tipo de Ocorrência")]
         public string Tipo { get; set; }

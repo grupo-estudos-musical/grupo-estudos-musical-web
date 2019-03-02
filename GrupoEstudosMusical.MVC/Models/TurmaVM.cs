@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-
+using System.ComponentModel.DataAnnotations;
 
 namespace GrupoEstudosMusical.MVC.Models
 {
@@ -13,10 +13,12 @@ namespace GrupoEstudosMusical.MVC.Models
         public string Nome { get; set; }
 
         [DisplayName("Data Início")]
-        public DateTime DataInicio { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        public DateTime DataInicio { get; set; } = DateTime.Now;
 
         [DisplayName("Término da Aula")]
-        public DateTime TerminoAula { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        public DateTime TerminoAula { get; set; } = DateTime.Now;
 
         [DisplayName("Período")]
         public int Periodo { get; set; }

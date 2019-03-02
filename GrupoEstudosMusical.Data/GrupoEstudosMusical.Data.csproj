@@ -204,10 +204,6 @@
     <Compile Include="Migrations\20190210134453_RemoveNumeroMatricula.designer.cs">
       <DependentUpon>20190210134453_RemoveNumeroMatricula.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20190209145228_Ocorrencia.cs" />
-    <Compile Include="Migrations\20190209145228_Ocorrencia.designer.cs">
-      <DependentUpon>20190209145228_Ocorrencia.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\20190223032934_Criação das ocorrencias.cs" />
     <Compile Include="Migrations\20190223032934_Criação das ocorrencias.designer.cs">
       <DependentUpon>20190223032934_Criação das ocorrencias.cs</DependentUpon>
