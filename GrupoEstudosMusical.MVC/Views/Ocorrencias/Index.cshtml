@@ -1,24 +1,20 @@
-﻿@model IEnumerable<GrupoEstudosMusical.MVC.Models.AlunoVM>
-
+﻿@model List<GrupoEstudosMusical.MVC.Models.OcorrenciaVM>
 @{
-    ViewBag.Title = "Lista de Alunos";
+    ViewBag.Title = "Index";
 }
 
 <div class='col-xs-12'>
     <div class="page-title">
         <div class="pull-left">
-            <h1 class="title">Alunos</h1>
+            <h1 class="title">Ocorrências</h1>
         </div>
         <div class="pull-right hidden-xs">
             <ol class="breadcrumb">
                 <li>
-                    <a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i>Home</a>
-                </li>
-                <li>
-                    <a href="@Url.Action("Index")">Alunos</a>
+                    <a href="@Url.Action("VisualizarDados", "Alunos", new { Id = Model.FirstOrDefault().Id  })"><i class="fa fa-home"></i>Dados do Aluno</a>
                 </li>
                 <li class="active">
-                    <strong>Todos Alunos</strong>
+                    <strong>Ocorrências</strong>
                 </li>
             </ol>
         </div>
@@ -28,14 +24,14 @@
 <div class="col-lg-12">
     <section class="box ">
         <header class="panel_header">
-            <h2 class="title pull-left">Lista de Alunos</h2>
+            <h2 class="title pull-left">Ocorrências</h2>
             <div class="actions panel_actions pull-right">
                 <a class="box_toggle fa fa-chevron-down"></a>
                 <a class="box_close fa fa-times"></a>
             </div>
         </header>
         <div class="content-body">
-            @if(TempData["Mensagem"] != null && TempData["Mensagem"].ToString() != "")
+            @if (TempData["Mensagem"] != null && TempData["Mensagem"].ToString() != "")
             {
                 <div class="alert alert-success alert-dismissible fade in">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
@@ -43,41 +39,45 @@
                 </div>
             }
             <div class="row">
+                <div class="col-md-3">
+                    <a href="@Url.Action("Novo","Ocorrencias", new { Model.FirstOrDefault().AlunoID })" class="btn btn-primary">Novo</a>
+                </div>
+            </div>
+            <br />
+            <div class="row">
                 <div class="col-xs-12">
                     <table id="example-1" class="table table-striped dt-responsive display">
                         <thead>
                             <tr>
-                                <th>@Html.DisplayNameFor(m => m.Nome)</th>
-                                <th>@Html.DisplayNameFor(m => m.DataNascimento)</th>
-                                <th>@Html.DisplayNameFor(m => m.Telefone)</th>
-                                <th>@Html.DisplayNameFor(m => m.DataCadastro)</th>
+                                <th>Título</th>
+                                <th>Data do Ocorrido</th>
+                                <th>Tipo</th>
                                 <th>Opções</th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
-                                <th>@Html.DisplayNameFor(m => m.Nome)</th>
-                                <th>@Html.DisplayNameFor(m => m.DataNascimento)</th>
-                                <th>@Html.DisplayNameFor(m => m.Telefone)</th>
-                                <th>@Html.DisplayNameFor(m => m.DataCadastro)</th>
+                                <th>Título</th>
+                                <th>Data do Ocorrido</th>
+                                <th>Tipo</th>
                                 <th>Opções</th>
                             </tr>
                         </tfoot>
                         <tbody>
                             @foreach (var model in Model)
                             {
-                            <tr>
-                                  <td><a href="@Url.Action("VisualizarDados","Alunos", new { model.Id })">@Html.DisplayFor(item => model.Nome)</a></td>
-                                <td>@Html.DisplayFor(item => model.DataNascimento)</td>
-                                <td>@Html.DisplayFor(item => model.Telefone)</td>
-                                <td>@Html.DisplayFor(item => model.DataCadastro)</td>
-                                <td style="width: 160px">
-                                    @Html.ActionLink("Editar", "Editar", "Alunos", new { id = model.Id }, new { @class = "btn btn-primary" })
+                                <tr>
+                                    <td>@Html.DisplayFor(item => model.Titulo)</td>
+                                    <td>@Html.DisplayFor(item => model.DataOcorrido)</td>
+                                    <td>@Html.DisplayFor(item => model.Tipo)</td>
 
-                                    <a class="btn btn-danger" data-toggle="modal" href="#section-settings"
-                                       onclick="apagar(this, '@(model.Id)', '@(model.Nome)')">Apagar</a>
-                                </td>
-                            </tr>
+                                    <td style="width: 160px">
+                                        @Html.ActionLink("Editar", "Editar", "Ocorrencias", new { Id = model.Id }, new { @class = "btn btn-primary" })
+
+                                        <a class="btn btn-danger" data-toggle="modal" href="#section-settings"
+                                           onclick="apagar(this, '@(model.Id)', '@(model.Titulo)')">Apagar</a>
+                                    </td>
+                                </tr>
                             }
                         </tbody>
                     </table>
@@ -90,16 +90,16 @@
 <div class="modal" id="section-settings" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog animated bounceInDown">
         <div class="modal-content">
-            @using (Html.BeginForm("Deletar", "Alunos"))
+            @using (Html.BeginForm("Deletar", "Ocorrencias"))
             {
                 @Html.AntiForgeryToken()
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">Deletar Aluno</h4>
+                    <h4 class="modal-title">Deletar Ocorrência</h4>
                 </div>
                 <div class="modal-body">
-                    Deseja realmente deletar aluno?
-                    <input type="hidden" name="id" id="id">
+                    Deseja realmente deletar a ocorrência?
+                    <input type="hidden" name="Id" id="Id">
                 </div>
                 <div class="modal-footer">
                     <button data-dismiss="modal" class="btn btn-default" type="button">Não</button>
@@ -122,4 +122,4 @@
     <script src="~/Scripts/lib/datatables/extensions/TableTools/js/dataTables.tableTools.min.js" type="text/javascript"></script>
     <script src="~/Scripts/lib/datatables/extensions/Responsive/js/dataTables.responsive.min.js" type="text/javascript"></script>
     <script src="~/Scripts/lib/datatables/extensions/Responsive/bootstrap3/dataTables.bootstrap.js" type="text/javascript"></script>
-}
+    }

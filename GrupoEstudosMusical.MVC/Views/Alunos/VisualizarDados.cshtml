@@ -1,0 +1,47 @@
+﻿@model GrupoEstudosMusical.MVC.Models.AlunoVM
+@{
+    ViewBag.Title = "VisualizarDados";
+}
+
+
+<div class='col-xs-12'>
+    <div class="page-title">
+        <div class="pull-left">
+            <h1 class="title">Aluno: @Model.Nome</h1>
+        </div>
+        <div class="pull-right hidden-xs">
+            <ol class="breadcrumb">
+                <li>
+                    <a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i>Home</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index")">Alunos</a>
+                </li>
+                <li class="active">
+                    <strong>Dados</strong>
+                </li>
+            </ol>
+        </div>
+    </div>
+</div>
+<br /></br><br /><br />
+<div class="row">
+
+    @if (TempData["Mensagem"] != null && TempData["Mensagem"].ToString() != "")
+    {
+        <div class="alert alert-warning alert-dismissible fade in">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+            <strong>Atenção:</strong> @TempData["Mensagem"].ToString()
+        </div>
+    }
+</div>
+
+<div class="row">
+  
+
+    <div class="col-md-3">
+        <a href="@Url.Action("Index","Ocorrencias", new { AlunoId = Model.Id })" class="btn btn-success">Visualizar Ocorrências</a>
+        <a href="@Url.Action("Novo","Ocorrencias", new { AlunoId = Model.Id })" class="btn btn-success">Criar Ocorrência</a>
+    </div>
+</div>
+

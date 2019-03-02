@@ -3,6 +3,50 @@ $(document).ready(function() {
 
     if ($.isFunction($.fn.validate)) {
 
+        $('#ocorrencia_validate').validate({
+            focusInvalid: false,
+            ignore: "",
+            rules: {
+                Titulo: {
+                    maxlength: 70,
+                    required: true
+                },
+                DataOcorrido: {
+                    required: true
+                },
+                Resumo: {
+                    maxlength:300,
+                    required: true
+                },
+                TipoID: {
+                    required: true
+                }
+
+
+
+            },
+
+
+            highlight: function (element) { // hightlight error inputs
+                var parent = $(element).parent().parent('.form-group');
+                parent.removeClass('has-success').addClass('has-error');
+            },
+
+            // unhighlight: function(element) { // revert the change done by hightlight
+
+            // },
+
+            success: function (label, element) {
+                var parent = $(element).parent().parent('.form-group');
+                parent.removeClass('has-error').addClass('has-success');
+            },
+
+        });
+
+
+
+
+
         $('#msg_validate').validate({
             focusInvalid: false,
             ignore: "",

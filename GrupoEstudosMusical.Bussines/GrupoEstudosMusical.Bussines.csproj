@@ -53,6 +53,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GrupoEstudosMusical.Data\GrupoEstudosMusical.Data.csproj">
+      <Project>{ba8820e8-b1b2-45a2-8de7-9b771aa68e56}</Project>
+      <Name>GrupoEstudosMusical.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GrupoEstudosMusical.Models\GrupoEstudosMusical.Models.csproj">
       <Project>{81d9e0fd-4555-4144-8511-0db3279751fb}</Project>
       <Name>GrupoEstudosMusical.Models</Name>

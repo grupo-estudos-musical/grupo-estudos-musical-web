@@ -14,15 +14,20 @@ namespace GrupoEstudosMusical.MVC.Models
         [DisplayName("Data Ocorrido")]
         public DateTime DataOcorrido { get; set; }
 
-        public int TipoID { get; set; }
+        [DisplayName("Tipo de Ocorrência")]
+        public string Tipo { get; set; }
 
         public string Resumo { get; set; }
+
 
         public Turma Turma { get; set; }
 
         [DisplayName("Turma")]
         public int TurmaID { get; set; }
 
-        public string NomeProfessor { get; set; }
+        public Aluno Aluno { get; set; }
+
+        [DisplayName("Aluno")]
+        public int AlunoID { get; set; }
     }
 }
