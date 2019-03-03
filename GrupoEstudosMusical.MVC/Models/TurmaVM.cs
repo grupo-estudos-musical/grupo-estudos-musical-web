@@ -43,6 +43,11 @@ namespace GrupoEstudosMusical.MVC.Models
 
         public int Semestre { get; set; }
 
+        public string PeriodoSemestre
+        {
+            get { return $"{Periodo}/{Semestre}"; }
+        }
+
         public List<Matricula> Matriculas { get; set; }
     }
 }

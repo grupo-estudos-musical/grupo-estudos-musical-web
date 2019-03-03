@@ -68,5 +68,15 @@ namespace GrupoEstudosMusical.MVC.Controllers
                 return View(matriculaVM);
             }
         }
+
+        public async Task<ActionResult> Detalhes(int id)
+        {
+            var matriculaModel = await _bussinesMatricula.ObterPorIdAsync(id);
+            if (matriculaModel == null)
+                return HttpNotFound("Matrícula não encontrada");
+
+            var matriculaVM = Mapper.Map<Matricula, MatriculaVM>(matriculaModel);
+            return View(matriculaVM);
+        }
     }
 }

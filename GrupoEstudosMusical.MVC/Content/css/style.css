@@ -8223,3 +8223,13 @@ table.dataTable.display tbody tr:first-child td {
 .legenda-amarela {
     background-color: #fcf8e3;
 }
+
+.status-ativo {
+    color: #FFD700;
+    font-weight: bold;
+}
+
+.status-concluida {
+    color: #00CD00;
+    font-weight: bold;
+}

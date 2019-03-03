@@ -356,6 +356,8 @@
     <Content Include="Views\Alunos\VisualizarDados.cshtml" />
     <Content Include="Views\Ocorrencias\Index.cshtml" />
     <Content Include="Views\Ocorrencias\Editar.cshtml" />
+    <Content Include="Views\Matriculas\Detalhes.cshtml" />
+    <Content Include="Views\Shared\_DocumentosApresentados.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GrupoEstudosMusical.Bussines\GrupoEstudosMusical.Bussines.csproj">

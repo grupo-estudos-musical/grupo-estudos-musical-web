@@ -1,0 +1,174 @@
+﻿@model GrupoEstudosMusical.MVC.Models.MatriculaVM
+
+@{
+    ViewBag.Title = "Detalhes da Matrícula";
+}
+
+<div class='col-xs-12'>
+    <div class="page-title">
+        <div class="pull-left">
+            <h1 class="title">Matrícula</h1>
+        </div>
+        <div class="pull-right hidden-xs">
+            <ol class="breadcrumb">
+                <li>
+                    <a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i>Home</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index")">Alunos</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("VisaoGeral", "Alunos")">Visão Geral do Aluno</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Matriculas", new { idAluno = Model.AlunoId})">Matrículas</a>
+                </li>
+                <li class="active">
+                    <strong>Detalhes da Matrícula</strong>
+                </li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-12">
+    <section class="box ">
+        <header class="panel_header">
+            <h2 class="title pull-left">Detalhes da matrícula</h2>
+            <div class="actions panel_actions pull-right">
+                <a class="box_toggle fa fa-chevron-down"></a>
+                <a class="box_close fa fa-times"></a>
+            </div>
+        </header>
+        <div class="content-body">
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="input-group primary">
+                        <span class="input-group-addon">
+                            <span class="arrow"></span>
+                            <i class="fa fa-user"></i>
+                        </span>
+                        @Html.EditorFor(model => model.Aluno.Nome, new { htmlAttributes = new { @class = "form-control", @readonly = "true" } })
+                    </div>
+                    <br />
+                    <div class="input-group primary">
+                        <span class="input-group-addon">
+                            <span class="arrow"></span>
+                            <i class="fa fa-mortar-board"></i>
+                        </span>
+                        @Html.EditorFor(model => model.Turma.Nome, new { htmlAttributes = new { @class = "form-control", @readonly = "true" } })
+                    </div>
+                    <br />
+                    <div class="input-group primary">
+                        <span class="input-group-addon">
+                            <span class="arrow"></span>
+                            <i class="fa fa-calendar"></i>
+                        </span>
+                        @Html.EditorFor(model => model.Turma.DataInicio, new { htmlAttributes = new { @class = "form-control", @readonly = "true" } })
+                    </div>
+                    <br />
+                    <div class="input-group primary">
+                        <span class="input-group-addon">
+                            <span class="arrow"></span>
+                            <i class="fa fa-book"></i>
+                        </span>
+                        @Html.EditorFor(model => model.Turma.Modulo.Nome, new { htmlAttributes = new { @class = "form-control", @readonly = "true" } })
+                    </div>
+                    <br />
+                </div>
+                <div class="col-xs-6">
+                    <div class="input-group primary">
+                        <span class="input-group-addon">
+                            <span class="arrow"></span>
+                            <i class="fa fa-users"></i>
+                        </span>
+                        @Html.EditorFor(model => model.Turma.Professor.Nome, new { htmlAttributes = new { @class = "form-control", @readonly = "true" } })
+                    </div>
+                    <br />
+                    <div class="input-group primary">
+                        <span class="input-group-addon">
+                            <span class="arrow"></span>
+                            <i class="fa fa-calendar-o"></i>
+                        </span>
+                        @Html.EditorFor(model => model.Turma.PeriodoSemestre, new { htmlAttributes = new { @class = "form-control", @readonly = "true" } })
+                    </div>
+                    <br />
+                    <div class="input-group primary">
+                        <span class="input-group-addon">
+                            <span class="arrow"></span>
+                            <i class="fa fa-calendar"></i>
+                        </span>
+                        @Html.EditorFor(model => model.Turma.TerminoAula, new { htmlAttributes = new { @class = "form-control", @readonly = "true" } })
+                    </div>
+                    <br />
+                    <div class="input-group primary">
+                        <span class="input-group-addon">
+                            <span class="arrow"></span>
+                            <i class="fa fa-level-up"></i>
+                        </span>
+                        @Html.EditorFor(model => model.Turma.Nivel, new { htmlAttributes = new { @class = "form-control", @readonly = "true" } })
+                    </div>
+                    <br />
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div class="col-lg-12">
+    <section class="box ">
+        <header class="panel_header">
+            <h2 class="title pull-left">Documentos apresentados</h2>
+            <div class="actions panel_actions pull-right">
+                <a class="box_toggle fa fa-chevron-down"></a>
+                <a class="box_close fa fa-times"></a>
+            </div>
+        </header>
+        <div class="content-body">
+            @Html.Partial("_DocumentosApresentados")
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="pull-right ">
+                        @Html.AntiForgeryToken()
+                        <button class="btn btn-success">Alterar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div class="col-lg-12">
+    <section class="box ">
+        <header class="panel_header">
+            @*<h2 class="title pull-left">Status</h2>*@
+            <div class="actions panel_actions pull-right">
+                <a class="box_toggle fa fa-chevron-down"></a>
+                <a class="box_close fa fa-times"></a>
+            </div>
+        </header>
+        <div class="content-body">
+            <div class="row">
+                <div class="col-xs-6">
+                    <h3 class="texto-centralizado">Situação da Turma</h3>
+                    @{
+                        var status = Model.Turma.Status;
+                    }
+                    <h3 class="texto-centralizado @(status == "Ativo" ? "status-ativo" : "status-concluida")"><span id="status-turma">@status</span></h3>
+                </div>
+                <div class="col-xs-6">
+                    <h3 class="texto-centralizado">Situação da Matrícula</h3>
+                    <h3 class="texto-centralizado @(Model.Pendente ? "status-ativo" : "status-concluida") "><span id="status-matricula">@(Model.Pendente ? "Pendente" : "Em ordem")</span></h3>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+@section styles {
+    <link href="~/Content/lib/switchery/dist/switchery.css" rel="stylesheet" type="text/css" media="screen" />
+}
+
+@section scripts  {
+    <script src="~/Scripts/lib/switchery/dist/switchery.js" type="text/javascript"></script>
+}

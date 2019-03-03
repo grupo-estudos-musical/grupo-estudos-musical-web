@@ -120,32 +120,7 @@
                                 <div class="tab-pane" id="pills-tab2">
                                     <h4>Documentos Apresentados</h4>
                                     <p>Marque os documentos apresentados no momento da matrícula</p><br />
-                                    <div class='row'>
-                                        <div class='col-md-3 col-sm-4 col-xs-6'>
-                                            <div class="form-group">
-                                                @Html.LabelFor(model => model.Cpf, new { @class = "form-label" })
-                                                <div class="form-block bottom15">
-                                                    @Html.CheckBoxFor(model => model.Cpf, new { @class = "js-switch" })
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3 col-sm-4 col-xs-6">
-                                            <div class="form-group">
-                                                @Html.LabelFor(model => model.Rg, new { @class = "form-label" })
-                                                <div class="form-block bottom15">
-                                                    @Html.CheckBoxFor(model => model.Rg, new { @class = "js-switch" })
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3 col-sm-4 col-xs-6">
-                                            <div class="form-group">
-                                                @Html.LabelFor(model => model.ComprovanteResidencia, new { @class = "form-label" })
-                                                <div class="form-block bottom15">
-                                                    @Html.CheckBoxFor(model => model.ComprovanteResidencia, new { @class = "js-switch" })
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    @Html.Partial("_DocumentosApresentados")
                                 </div>
                                 <div class="tab-pane" id="pills-tab3">
                                     <h4>Turmas Disponíveis</h4>

@@ -21,6 +21,10 @@ namespace GrupoEstudosMusical.MVC.Models
         [DisplayName("Comprovante de Residência")]
         public bool ComprovanteResidencia { get; set; }
 
+        public bool Pendente { get; set; }
+
+        public TurmaVM Turma { get; set; }
+
         public List<TurmaVM> Turmas { get; set; }
     }
 }
