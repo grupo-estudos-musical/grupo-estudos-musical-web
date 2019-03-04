@@ -32,6 +32,12 @@ namespace GrupoEstudosMusical.Bussines
             await base.InserirAsync(entity);
         }
 
+        public override Task AlterarAsync(Matricula entity)
+        {
+            entity.VerificarMatriculaPendente();
+            return base.AlterarAsync(entity);
+        }
+
         public Task<IList<Matricula>> ObterMatriculasPorAluno(int idAluno) =>
             _repositoryMatricula.ObterMatriculasPorAluno(idAluno);
     }

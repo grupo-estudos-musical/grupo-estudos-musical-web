@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using GrupoEstudosMusical.Models.Entities;
 using GrupoEstudosMusical.Models.Interfaces.Bussines;
+using GrupoEstudosMusical.MVC.App_Start;
 using GrupoEstudosMusical.MVC.Models;
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -77,6 +79,26 @@ namespace GrupoEstudosMusical.MVC.Controllers
 
             var matriculaVM = Mapper.Map<Matricula, MatriculaVM>(matriculaModel);
             return View(matriculaVM);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> AlterarDocumentosApresentados(DocumentosApresentadosVM documentosApresentados)
+        {
+            try
+            {
+                var matriculaModel = await _bussinesMatricula.ObterPorIdAsync(documentosApresentados.IdMatricula);
+                if (matriculaModel == null)
+                    return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+                matriculaModel.Cpf = documentosApresentados.Cpf;
+                matriculaModel.Rg = documentosApresentados.Rg;
+                matriculaModel.ComprovanteResidencia = documentosApresentados.ComprovanteResidencia;
+                await _bussinesMatricula.AlterarAsync(matriculaModel);
+                return Json(new { mensagem = "Sucesso", pendente = matriculaModel.Pendente }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.InternalServerError);
+            }
         }
     }
 }
