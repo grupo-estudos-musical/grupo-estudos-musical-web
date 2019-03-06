@@ -8233,3 +8233,7 @@ table.dataTable.display tbody tr:first-child td {
     color: #00CD00;
     font-weight: bold;
 }
+
+.imagem-centralizada {
+    text-align: center;
+}

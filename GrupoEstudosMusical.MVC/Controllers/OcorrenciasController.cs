@@ -26,7 +26,7 @@ namespace GrupoEstudosMusical.MVC.Controllers
             if (ocorrenciasDoAlunoVm.Count == 0)
             {
                 TempData["Mensagem"] = "Este aluno não possui nenhuma ocorrência!";
-                return RedirectToAction("VisualizarDados", "Alunos", new { Id = AlunoId });
+                return RedirectToAction("VisaoGeral", "Alunos", new { Id = AlunoId });
             }
             return View(ocorrenciasDoAlunoVm);
         }

@@ -18,7 +18,7 @@
                     <a href="@Url.Action("Index")">Alunos</a>
                 </li>
                 <li>
-                    <a href="@Url.Action("Index")">Visão Geral do Aluno</a>
+                    <a href="@Url.Action("VisaoGeral", "Alunos", new { id = Model[0].Aluno.Id})">Visão Geral do Aluno</a>
                 </li>
                 <li class="active">
                     <strong>Matrículas</strong>
