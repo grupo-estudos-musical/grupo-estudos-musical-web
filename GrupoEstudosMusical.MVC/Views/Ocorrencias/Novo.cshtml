@@ -38,67 +38,6 @@
                 </div>
             </header>
             <div class="content-body">
-                @if (TempData["Mensagem"] != null && TempData["Mensagem"].ToString() != "")
-                {
-                    <div class="alert alert-danger alert-dismissible fade in">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
-                        <strong>Atenção:</strong> @TempData["Mensagem"].ToString()
-                    </div>
-                }
-                    @Html.HiddenFor(model => model.AlunoID)
-                    <div class="row">
-                        <div class="col-xs-3">
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.Tipo, htmlAttributes: new { @class = "form-label" })
-                                <div class="controls">
-                                    @*<select name="@Model.TipoID">
-                        <option v></option>
-                    </select>*@
-                                    @Html.DropDownListFor(model => model.Tipo, new SelectList(ViewBag.Tipos, "TiposOcorrenciaEnum"), new { @class = "form-control m-bot15" })
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xs-3">
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.Titulo, htmlAttributes: new { @class = "form-label" })
-                                <div class="controls">
-                                    @Html.EditorFor(model => model.Titulo, new { htmlAttributes = new { @class = "form-control" } })
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xs-3">
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.DataOcorrido, htmlAttributes: new { @class = "form-label" })
-                                <div class="controls">
-                                    @Html.EditorFor(model => model.DataOcorrido, new { htmlAttributes = new { @class = "form-control datepicker", @data_format = "dd/mm/yyyy" } })
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xs-3">
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.TurmaID, htmlAttributes: new { @class = "form-label" })
-                                <div class="controls">
-                                    @Html.DropDownListFor(model => model.TurmaID, new SelectList(ViewBag.Turmas, "Id", "Nome"), new { @class = "form-control m-bot15" })
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-xs-12">
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.Resumo, htmlAttributes: new { @class = "form-label" })
-                                <div class="controls">
-                                    @Html.TextAreaFor(model => model.Resumo, new { htmlAttributes = new { @class = "form-control datepicker", @data_format = "dd/mm/yyyy" } })
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xs-12">
-                            <div class="pull-right ">
-                                <input type="submit" class="btn btn-success" value="Salvar">
-                                <!-- <button type="submit" class="btn btn-success">Salvar</button> -->
-                                <a type="button" class="btn" href="@Url.Action("Index", "Modulo")">Cancelar</a>
-                            </div>
-                        </div>
-                    </div>
                 @Html.Partial("_MensagemErro")
                 <div class="row">
                     <div class="col-xs-6">
