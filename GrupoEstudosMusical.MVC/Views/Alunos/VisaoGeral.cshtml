@@ -1,0 +1,49 @@
+﻿@model GrupoEstudosMusical.MVC.Models.AlunoVM
+@{
+    ViewBag.Title = "Visão Geral";
+}
+
+<div class='col-xs-12'>
+    <div class="page-title">
+        <div class="pull-left">
+            <h1 class="title">Visão Geral do aluno <span style="font-weight: bold">@Model.Nome</span></h1>
+        </div>
+        <div class="pull-right hidden-xs">
+            <ol class="breadcrumb">
+                <li>
+                    <a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i>Home</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index")">Alunos</a>
+                </li>
+                <li class="active">
+                    <strong>Visão Geral</strong>
+                </li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+@Html.Hidden("mensagem", TempData["Mensagem"])
+
+@Html.Partial("_VisaoGeralAlunoMenu", new ViewDataDictionary { { "titulo", "Editar Aluno" }, { "link", @Url.Action("Editar", new { id = Model.Id }) }, { "imagem", "/Content/images/menu_student_edit.png" }, { "alt", "student-edit" } })
+
+@Html.Partial("_VisaoGeralAlunoMenu", new ViewDataDictionary { { "titulo", "Matrículas" }, { "link", Url.Action("Index", "Matriculas", new { idAluno = Model.Id }) }, { "imagem", "/Content/images/menu_matriculas.png" }, { "alt", "matriculas" } })
+
+@Html.Partial("_VisaoGeralAlunoMenu", new ViewDataDictionary { { "titulo", "Ocorrências" }, { "link", Url.Action("Index", "Ocorrencias", new { alunoId = Model.Id }) }, { "imagem", "/Content/images/menu_ocorrencias.png" }, { "alt", "ocorrencias" } })
+
+@Html.Partial("_VisaoGeralAlunoMenu", new ViewDataDictionary { { "titulo", "Nova Ocorrência" }, { "link", Url.Action("Novo", "Ocorrencias", new { alunoId = Model.Id }) }, { "imagem", "/Content/images/menu_nova_ocorrencia.png" }, { "alt", "nova-ocorrencia" } })
+
+@section styles {
+    <link href="~/Content/lib/messenger/messenger.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="~/Content/lib/messenger/messenger-theme-future.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="~/Content/lib/messenger/messenger-theme-flat.css" rel="stylesheet" type="text/css" media="screen" />
+}
+
+@section scripts {
+    <script src="~/Scripts/lib/messenger/messenger.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/lib/messenger/messenger-theme-future.js" type="text/javascript"></script>
+    <script src="~/Scripts/lib/messenger/messenger-theme-flat.js" type="text/javascript"></script>
+    <script src="~/Scripts/js/messenger.js" type="text/javascript"></script>
+    <script src="~/Scripts/js/visao-geral-aluno.js"></script>
+}

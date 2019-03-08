@@ -60,18 +60,15 @@
                         <tbody>
                             @foreach (var model in Model)
                             {
-                            <tr>
-                                  <td><a href="@Url.Action("VisualizarDados","Alunos", new { model.Id })">@Html.DisplayFor(item => model.Nome)</a></td>
-                                <td>@Html.DisplayFor(item => model.DataNascimento)</td>
-                                <td>@Html.DisplayFor(item => model.Telefone)</td>
-                                <td>@Html.DisplayFor(item => model.DataCadastro)</td>
-                                <td style="width: 160px">
-                                    @Html.ActionLink("Editar", "Editar", "Alunos", new { id = model.Id }, new { @class = "btn btn-primary" })
-
-                                    <a class="btn btn-danger" data-toggle="modal" href="#section-settings"
-                                       onclick="apagar(this, '@(model.Id)', '@(model.Nome)')">Apagar</a>
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td><a href="@Url.Action("VisualizarDados","Alunos", new { model.Id })">@Html.DisplayFor(item => model.Nome)</a></td>
+                                    <td>@Html.DisplayFor(item => model.DataNascimento)</td>
+                                    <td>@Html.DisplayFor(item => model.Telefone)</td>
+                                    <td>@Html.DisplayFor(item => model.DataCadastro)</td>
+                                    <td>
+                                        @Html.ActionLink("Visão Geral", "VisaoGeral", "Alunos", new { id = model.Id }, new { @class = "btn btn-primary" })
+                                    </td>
+                                </tr>
                             }
                         </tbody>
                     </table>
@@ -81,7 +78,7 @@
     </section>
 </div>
 
-<div class="modal" id="section-settings" tabindex="-1" role="dialog" aria-hidden="true">
+@*<div class="modal" id="section-settings" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog animated bounceInDown">
         <div class="modal-content">
             @using (Html.BeginForm("Deletar", "Alunos"))
@@ -102,7 +99,7 @@
             }
         </div>
     </div>
-</div>
+</div>*@
 
 @section Styles{
     <link href="~/Content/lib/datatables/css/jquery.dataTables.css" rel="stylesheet" type="text/css" media="screen" />

@@ -15,10 +15,13 @@
                     <a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i>Home</a>
                 </li>
                 <li>
-                    <a href="@Url.Action("Index", "Ocorrencias")">Ocorrências</a>
+                    <a href="@Url.Action("Index", "Alunos")">Alunos</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("VisaoGeral", "Alunos", new { id = Model.AlunoID})">Visão Geral</a>
                 </li>
                 <li class="active">
-                    <strong>Registrar uma Ocorrência</strong>
+                    <strong>Nova Ocorrência</strong>
                 </li>
             </ol>
         </div>
@@ -39,8 +42,20 @@
             </header>
             <div class="content-body">
                 @Html.Partial("_MensagemErro")
+                @Html.HiddenFor(model => model.AlunoID)
                 <div class="row">
-                    <div class="col-xs-6">
+                    <div class="col-xs-3">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Tipo, htmlAttributes: new { @class = "form-label" })
+                            <div class="controls">
+                                @*<select name="@Model.TipoID">
+                                        <option v></option>
+                                    </select>*@
+                                @Html.DropDownListFor(model => model.Tipo, new SelectList(ViewBag.Tipos, "TiposOcorrenciaEnum"), new { @class = "form-control m-bot15" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
                         <div class="form-group">
                             @Html.LabelFor(model => model.Titulo, htmlAttributes: new { @class = "form-label" })
                             <div class="controls">
@@ -48,11 +63,28 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xs-12">
+                    <div class="col-xs-3">
                         <div class="form-group">
                             @Html.LabelFor(model => model.DataOcorrido, htmlAttributes: new { @class = "form-label" })
                             <div class="controls">
-                                @Html.EditorFor(model => model.DataOcorrido, new { htmlAttributes = new { @class = "form-control datepicker", @data_format = "dd/mm/yyyy"} })
+                                @Html.EditorFor(model => model.DataOcorrido, new { htmlAttributes = new { @class = "form-control datepicker", @data_format = "dd/mm/yyyy" } })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.TurmaID, htmlAttributes: new { @class = "form-label" })
+                            <div class="controls">
+                                @Html.DropDownListFor(model => model.TurmaID, new SelectList(ViewBag.Turmas, "Id", "Nome"), new { @class = "form-control m-bot15" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Resumo, htmlAttributes: new { @class = "form-label" })
+                            <div class="controls">
+                                @Html.TextAreaFor(model => model.Resumo, new { htmlAttributes = new { @class = "form-control datepicker", @data_format = "dd/mm/yyyy" } })
                             </div>
                         </div>
                     </div>
@@ -60,7 +92,7 @@
                         <div class="pull-right ">
                             <input type="submit" class="btn btn-success" value="Salvar">
                             <!-- <button type="submit" class="btn btn-success">Salvar</button> -->
-                            <a type="button" class="btn" href="@Url.Action("Index", "Modulo")">Cancelar</a>
+                            <a type="button" class="btn" href="@Url.Action("VisaoGeral", "Alunos", new { id = Model.AlunoID})">Cancelar</a>
                         </div>
                     </div>
                 </div>

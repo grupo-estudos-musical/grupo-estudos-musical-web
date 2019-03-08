@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using GrupoEstudosMusical.Models.Entities;
 using GrupoEstudosMusical.Models.Interfaces.Bussines;
 using GrupoEstudosMusical.Models.Interfaces.Repository;
-
 
 namespace GrupoEstudosMusical.Bussines
 {
@@ -14,15 +14,7 @@ namespace GrupoEstudosMusical.Bussines
             _repositoryOcorrencia = repository;
         }
 
-        public List<Ocorrencia> ObterOcorrenciasPorAluno(int AlunoId)
-        {
-            var ocorrenciasDoAluno = _repositoryOcorrencia.ObterOcorrenciasPorAluno(AlunoId);
-            if (ocorrenciasDoAluno.Count == 0)
-            {
-                throw new System.Exception("Ocorrências não encotradas para este aluno");
-            }
-
-            return ocorrenciasDoAluno;
-        }
+        public List<Ocorrencia> ObterOcorrenciasPorAluno(int AlunoId) => 
+            _repositoryOcorrencia.ObterOcorrenciasPorAluno(AlunoId);
     }
 }

@@ -20,19 +20,15 @@ namespace GrupoEstudosMusical.MVC.Controllers
             _bussinesTurma = bussinesTurma;
         }
         // GET: Ocorrencias
-        public async Task<ActionResult> Index(int AlunoId)
+        public ActionResult Index(int AlunoId)
         {
-            try
-            {
-                var ocorrenciasDoAlunoVm = Mapper.Map<IList<Ocorrencia>, IList<OcorrenciaVM>>(_bussinesOcorrencia.ObterOcorrenciasPorAluno(AlunoId));
-                return View(ocorrenciasDoAlunoVm);
-            }
-            catch(Exception ex)
+            var ocorrenciasDoAlunoVm = Mapper.Map<IList<Ocorrencia>, IList<OcorrenciaVM>>(_bussinesOcorrencia.ObterOcorrenciasPorAluno(AlunoId));
+            if (ocorrenciasDoAlunoVm.Count == 0)
             {
                 TempData["Mensagem"] = "Este aluno não possui nenhuma ocorrência!";
-                return RedirectToAction("VisualizarDados", "Alunos", new { Id = AlunoId });
+                return RedirectToAction("VisaoGeral", "Alunos", new { Id = AlunoId });
             }
-            
+            return View(ocorrenciasDoAlunoVm);
         }
 
         public async Task<ActionResult> Editar(int Id)

@@ -1,0 +1,28 @@
+﻿@model GrupoEstudosMusical.MVC.Models.MatriculaVM
+
+<div class='row'>
+    <div class='col-md-3 col-sm-4 col-xs-6'>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Cpf, new { @class = "form-label" })
+            <div class="form-block bottom15">
+                @Html.CheckBoxFor(model => model.Cpf, new { @class = "js-switch" })
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-4 col-xs-6">
+        <div class="form-group">
+            @Html.LabelFor(model => model.Rg, new { @class = "form-label" })
+            <div class="form-block bottom15">
+                @Html.CheckBoxFor(model => model.Rg, new { @class = "js-switch" })
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-4 col-xs-6">
+        <div class="form-group">
+            @Html.LabelFor(model => model.ComprovanteResidencia, new { @class = "form-label" })
+            <div class="form-block bottom15">
+                @Html.CheckBoxFor(model => model.ComprovanteResidencia, new { @class = "js-switch" })
+            </div>
+        </div>
+    </div>
+</div>

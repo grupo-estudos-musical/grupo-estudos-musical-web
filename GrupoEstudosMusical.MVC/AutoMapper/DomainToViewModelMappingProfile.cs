@@ -14,6 +14,7 @@ namespace GrupoEstudosMusical.MVC.AutoMapper
             CreateMap<Modulo, ModuloVM>();
             CreateMap<Ocorrencia, OcorrenciaVM>();
             CreateMap<Matricula, MatriculaVM>();
+            CreateMap<Matricula, MatriculaListaVM>();
         }
     }
 }

@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using GrupoEstudosMusical.Models.Entities;
 using GrupoEstudosMusical.Models.Interfaces.Bussines;
+using GrupoEstudosMusical.MVC.App_Start;
 using GrupoEstudosMusical.MVC.Models;
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -21,6 +23,18 @@ namespace GrupoEstudosMusical.MVC.Controllers
             _bussinesTurma = bussinesTurma;
             _bussinesAluno = bussinesAluno;
             _bussinesMatricula = bussinesMatricula;
+        }
+
+        public async Task<ActionResult> Index(int idAluno)
+        {
+            var aluno = await _bussinesAluno.ObterPorIdAsync(idAluno);
+            if (aluno == null)
+                return HttpNotFound("Aluno não encontrado");
+
+            IList<Matricula> alunosModel = await _bussinesMatricula.ObterMatriculasPorAluno(idAluno);
+            var matriculasVM = Mapper.Map<IList<Matricula>, List<MatriculaListaVM>>(alunosModel);            
+
+            return View(matriculasVM);
         }
 
         [HttpGet]
@@ -54,6 +68,36 @@ namespace GrupoEstudosMusical.MVC.Controllers
             {
                 ViewData["Mensagem"] = ex.Message;
                 return View(matriculaVM);
+            }
+        }
+
+        public async Task<ActionResult> Detalhes(int id)
+        {
+            var matriculaModel = await _bussinesMatricula.ObterPorIdAsync(id);
+            if (matriculaModel == null)
+                return HttpNotFound("Matrícula não encontrada");
+
+            var matriculaVM = Mapper.Map<Matricula, MatriculaVM>(matriculaModel);
+            return View(matriculaVM);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> AlterarDocumentosApresentados(DocumentosApresentadosVM documentosApresentados)
+        {
+            try
+            {
+                var matriculaModel = await _bussinesMatricula.ObterPorIdAsync(documentosApresentados.IdMatricula);
+                if (matriculaModel == null)
+                    return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+                matriculaModel.Cpf = documentosApresentados.Cpf;
+                matriculaModel.Rg = documentosApresentados.Rg;
+                matriculaModel.ComprovanteResidencia = documentosApresentados.ComprovanteResidencia;
+                await _bussinesMatricula.AlterarAsync(matriculaModel);
+                return Json(new { mensagem = "Sucesso", pendente = matriculaModel.Pendente }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.InternalServerError);
             }
         }
     }
