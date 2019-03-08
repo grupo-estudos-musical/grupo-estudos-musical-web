@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FastReport, Version=1.8.2.0, Culture=neutral, PublicKeyToken=db7e5ce63278458c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>FastReport\FastReport.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -51,6 +55,8 @@
     <Compile Include="BussinesMatricula.cs" />
     <Compile Include="Exceptions\TurmaMatriculaExeception.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Relatorios.cs" />
+    <Compile Include="TiposDeRelatorios.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GrupoEstudosMusical.Data\GrupoEstudosMusical.Data.csproj">
@@ -61,6 +67,13 @@
       <Project>{81d9e0fd-4555-4144-8511-0db3279751fb}</Project>
       <Name>GrupoEstudosMusical.Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="FastReport\FastReport.Bars.dll" />
+    <Content Include="FastReport\FastReport.dll" />
+    <Content Include="FastReport\FastReport.Editor.dll" />
+    <Content Include="FastReport\FastReport.VSDesign.dll" />
+    <Content Include="FastReport\FastReport.Web.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

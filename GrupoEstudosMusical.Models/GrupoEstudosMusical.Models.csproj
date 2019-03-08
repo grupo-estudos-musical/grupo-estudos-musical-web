@@ -48,6 +48,7 @@
     <Compile Include="Entities\Modulo.cs" />
     <Compile Include="Entities\Ocorrencia.cs" />
     <Compile Include="Entities\Professor.cs" />
+    <Compile Include="Entities\Relatorios\OcorrenciasParaRelatorio.cs" />
     <Compile Include="Entities\TiposOcorrenciaEnum.cs" />
     <Compile Include="Entities\Turma.cs" />
     <Compile Include="Interfaces\Bussines\IBussinesAluno.cs" />
