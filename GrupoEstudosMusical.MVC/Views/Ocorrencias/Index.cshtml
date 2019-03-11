@@ -17,7 +17,7 @@
                     <a href="@Url.Action("Index", "Alunos")">Alunos</a>
                 </li>
                 <li>
-                    <a href="@Url.Action("VisaoGeral", "Alunos", new { Id = Model.FirstOrDefault().AlunoID  })">Visão Geral</a>
+                    <a href="@Url.Action("VisaoGeral", "Alunos", new { Id = ViewBag.IDALUNO  })">Visão Geral</a>
                 </li>
                 <li class="active">
                     <strong>Ocorrências</strong>

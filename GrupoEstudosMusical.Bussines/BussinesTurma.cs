@@ -3,6 +3,7 @@ using GrupoEstudosMusical.Models.Entities;
 using GrupoEstudosMusical.Models.Interfaces.Bussines;
 using GrupoEstudosMusical.Models.Interfaces.Repository;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace GrupoEstudosMusical.Bussines
@@ -44,6 +45,8 @@ namespace GrupoEstudosMusical.Bussines
             }
         }
 
+        public List<Turma> ObterTurmasDoAluno(int IdAluno) =>
+            _repositoryTurma.ObterTurmasDoAluno(IdAluno);
 
 
 

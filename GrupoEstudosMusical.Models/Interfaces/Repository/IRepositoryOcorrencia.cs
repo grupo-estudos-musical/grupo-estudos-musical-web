@@ -8,6 +8,6 @@ namespace GrupoEstudosMusical.Models.Interfaces.Repository
     public interface IRepositoryOcorrencia:IRepositoryGeneric<Ocorrencia>
     {
         List<Ocorrencia> ObterOcorrenciasPorAluno(int AlunoId);
-        List<OcorrenciasParaRelatorio> ObterOcorrenciasParaRelatorio(int AlunoId, int IdOcorrencia);
+        List<OcorrenciasParaRelatorio> ObterOcorrenciasParaRelatorio(int AlunoId);
     }
 }
