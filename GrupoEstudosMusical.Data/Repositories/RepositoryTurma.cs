@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Dapper;
+using System;
 
 namespace GrupoEstudosMusical.Data.Repositories
 {
@@ -27,13 +28,9 @@ namespace GrupoEstudosMusical.Data.Repositories
 
         public List<Turma> ObterTurmasDoAluno(int IdAluno)
         {
-            var sql = @"Select * From Turmas
-                           Inner Join matriculas
-                                   On matriculas.TurmaId = turmas.Id
-                           Inner Join alunos
-                                   On alunos.Id = matriculas.Id
-                         Where alunos.Id = @Id";
-           
+            
+            throw new Exception("");
+        }    
            
     }
 }

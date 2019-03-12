@@ -1,5 +1,6 @@
 ﻿using GrupoEstudosMusical.Models.Entities;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
@@ -7,6 +8,10 @@ namespace GrupoEstudosMusical.MVC.Models
 {
     public class OcorrenciaVM
     {
+        public OcorrenciaVM()
+        {
+            Turmas = new List<Turma>();
+        }
         public int Id { get; set; }
 
         public string Titulo { get; set; }
@@ -30,5 +35,7 @@ namespace GrupoEstudosMusical.MVC.Models
 
         [DisplayName("Aluno")]
         public int AlunoID { get; set; }
+
+        public List<Turma> Turmas { get; set; }
     }
 }

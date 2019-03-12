@@ -13,11 +13,12 @@ namespace GrupoEstudosMusical.MVC.Controllers
     {
         readonly IBussinesOcorrencia _bussinesOcorrencia;
         readonly IBussinesTurma _bussinesTurma;
-
-        public OcorrenciasController(IBussinesOcorrencia bussinesOcorrencia, IBussinesTurma bussinesTurma)
+        readonly IBussinesMatricula _bussinesMatricula;
+        public OcorrenciasController(IBussinesOcorrencia bussinesOcorrencia, IBussinesTurma bussinesTurma, IBussinesMatricula bussinesMatricula)
         {
             _bussinesOcorrencia = bussinesOcorrencia;
             _bussinesTurma = bussinesTurma;
+            _bussinesMatricula = bussinesMatricula;
         }
         // GET: Ocorrencias
         public ActionResult Index(int AlunoId)
@@ -60,8 +61,8 @@ namespace GrupoEstudosMusical.MVC.Controllers
         public async Task<ActionResult> Novo(int AlunoId)
         {
             await InicializarViewBagAsync();
-            var turmasDoAluno = _bussinesTurma.ObterTurmasDoAluno(AlunoId);
-
+            ViewBag.Turmas = _bussinesTurma.ObterTurmasDoAluno(AlunoId);
+            
 
             return View(new OcorrenciaVM() { AlunoID = AlunoId });
         }

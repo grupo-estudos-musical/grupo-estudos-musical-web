@@ -75,8 +75,5 @@
     <Content Include="FastReport\FastReport.VSDesign.dll" />
     <Content Include="FastReport\FastReport.Web.dll" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

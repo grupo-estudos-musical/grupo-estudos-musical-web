@@ -11,9 +11,11 @@ namespace GrupoEstudosMusical.Bussines
     public class BussinesTurma : BussinesGeneric<Turma>, IBussinesTurma
     {
         private readonly IRepositoryTurma _repositoryTurma;
-        public BussinesTurma(IRepositoryTurma repositoryTurma) : base(repositoryTurma)
+        private readonly IBussinesMatricula _bussinesMatricula;
+        public BussinesTurma(IRepositoryTurma repositoryTurma, IBussinesMatricula bussinesMatricula) : base(repositoryTurma)
         {
             _repositoryTurma = repositoryTurma;
+            _bussinesMatricula = bussinesMatricula;
         }
 
         public async override Task InserirAsync(Turma entity)
@@ -45,8 +47,20 @@ namespace GrupoEstudosMusical.Bussines
             }
         }
 
-        public List<Turma> ObterTurmasDoAluno(int IdAluno) =>
-            _repositoryTurma.ObterTurmasDoAluno(IdAluno);
+        public List<Turma> ObterTurmasDoAluno(int IdAluno)
+        {
+            var matriculas = _bussinesMatricula.ObterTurmasDoAluno(IdAluno);
+
+            var turmas = new List<Turma>();
+
+            foreach(var matricula in matriculas)
+            {
+                turmas.Add(new Turma() { Id = matricula.TurmaId, Nome = matricula.Turma.Nome });
+            }
+
+            return turmas;
+        }
+            
 
 
 

@@ -40,5 +40,8 @@ namespace GrupoEstudosMusical.Bussines
 
         public Task<IList<Matricula>> ObterMatriculasPorAluno(int idAluno) =>
             _repositoryMatricula.ObterMatriculasPorAluno(idAluno);
+
+        public List<Matricula> ObterTurmasDoAluno(int idAluno) =>
+            _repositoryMatricula.ObterTurmasDoAluno(idAluno);
     }
 }
