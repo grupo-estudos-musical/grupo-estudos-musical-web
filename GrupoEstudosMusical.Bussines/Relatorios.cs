@@ -7,7 +7,7 @@ using System.Collections;
 using FastReport;
 
 
-namespace Cadastro_Cliente_Ponto
+namespace GrupoEstudosMusical.Bussines
 {
     public class Relatorios
     {

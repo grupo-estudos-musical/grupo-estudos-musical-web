@@ -1,5 +1,5 @@
 ﻿
-namespace Cadastro_Cliente_Ponto
+namespace GrupoEstudosMusical.Bussines
 {
     public enum TiposDeRelatorios
     {

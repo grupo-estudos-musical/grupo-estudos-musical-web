@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrupoEstudosMusical.IoC", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrupoEstudosMusical.MVC", "GrupoEstudosMusical.MVC\GrupoEstudosMusical.MVC.csproj", "{EDD1FE32-7F4E-478E-B0C3-6AA8E6D28517}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrupoEstudosMusical.POC", "GrupoEstudosMusical.POC\GrupoEstudosMusical.POC.csproj", "{1C1B8815-C07A-4DEC-9FB6-079C95108B4F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{EDD1FE32-7F4E-478E-B0C3-6AA8E6D28517}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EDD1FE32-7F4E-478E-B0C3-6AA8E6D28517}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EDD1FE32-7F4E-478E-B0C3-6AA8E6D28517}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C1B8815-C07A-4DEC-9FB6-079C95108B4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C1B8815-C07A-4DEC-9FB6-079C95108B4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C1B8815-C07A-4DEC-9FB6-079C95108B4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C1B8815-C07A-4DEC-9FB6-079C95108B4F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
