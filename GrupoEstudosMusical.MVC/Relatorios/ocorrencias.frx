@@ -1,0 +1,643 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="03/15/2019 01:45:23" ReportInfo.Modified="03/15/2019 01:46:48" ReportInfo.CreatorVersion="1.8.2.0">
+  <Dictionary>
+    <BusinessObjectDataSource Name="Dados" ReferenceName="Dados" DataType="System.Collections.Generic.List`1[[GrupoEstudosMusical.Models.Entities.Ocorrencia, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" Enabled="true">
+      <Column Name="Titulo" DataType="System.String"/>
+      <Column Name="DataOcorrido" DataType="System.DateTime"/>
+      <Column Name="Tipo" DataType="System.String"/>
+      <Column Name="Resumo" DataType="System.String"/>
+      <Column Name="Turma" DataType="GrupoEstudosMusical.Models.Entities.Turma, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <Column Name="Nome" DataType="System.String"/>
+        <Column Name="DataInicio" DataType="System.DateTime"/>
+        <Column Name="TerminoAula" DataType="System.DateTime"/>
+        <Column Name="Periodo" DataType="System.Int32"/>
+        <Column Name="Nivel" DataType="System.String"/>
+        <Column Name="Professor" DataType="GrupoEstudosMusical.Models.Entities.Professor, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <Column Name="Nome" DataType="System.String"/>
+          <Column Name="Telefone" DataType="System.String"/>
+          <Column Name="Celular" DataType="System.String"/>
+          <Column Name="Email" DataType="System.String"/>
+          <Column Name="Cep" DataType="System.String"/>
+          <Column Name="Endereco" DataType="System.String"/>
+          <Column Name="Complemento" DataType="System.String"/>
+          <Column Name="Bairro" DataType="System.String"/>
+          <Column Name="Cidade" DataType="System.String"/>
+          <Column Name="Uf" DataType="System.String"/>
+          <BusinessObjectDataSource Name="Turmas" DataType="System.Collections.Generic.List`1[[GrupoEstudosMusical.Models.Entities.Turma, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" Enabled="true">
+            <Column Name="Nome" DataType="System.String"/>
+            <Column Name="DataInicio" DataType="System.DateTime"/>
+            <Column Name="TerminoAula" DataType="System.DateTime"/>
+            <Column Name="Periodo" DataType="System.Int32"/>
+            <Column Name="Nivel" DataType="System.String"/>
+            <Column Name="Professor" DataType="GrupoEstudosMusical.Models.Entities.Professor, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+              <Column Name="Nome" DataType="System.String"/>
+              <Column Name="Telefone" DataType="System.String"/>
+              <Column Name="Celular" DataType="System.String"/>
+              <Column Name="Email" DataType="System.String"/>
+              <Column Name="Cep" DataType="System.String"/>
+              <Column Name="Endereco" DataType="System.String"/>
+              <Column Name="Complemento" DataType="System.String"/>
+              <Column Name="Bairro" DataType="System.String"/>
+              <Column Name="Cidade" DataType="System.String"/>
+              <Column Name="Uf" DataType="System.String"/>
+              <BusinessObjectDataSource Name="Turmas1" Alias="Turmas" Enabled="false" DataType="System.Collections.Generic.List`1[[GrupoEstudosMusical.Models.Entities.Turma, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" PropName="Turmas"/>
+              <Column Name="Id" DataType="System.Int32"/>
+              <Column Name="DataCadastro" DataType="System.DateTime"/>
+            </Column>
+            <Column Name="Status" DataType="System.String"/>
+            <Column Name="QuantidadeAlunos" DataType="System.Int32"/>
+            <Column Name="ProfessorID" DataType="System.Int32"/>
+            <Column Name="ModuloID" DataType="System.Int32"/>
+            <Column Name="Modulo" DataType="GrupoEstudosMusical.Models.Entities.Modulo, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+              <Column Name="Nome" DataType="System.String"/>
+              <Column Name="Observacoes" DataType="System.String"/>
+              <BusinessObjectDataSource Name="Turmas2" Alias="Turmas" Enabled="false" DataType="System.Collections.Generic.List`1[[GrupoEstudosMusical.Models.Entities.Turma, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" PropName="Turmas"/>
+              <Column Name="Id" DataType="System.Int32"/>
+              <Column Name="DataCadastro" DataType="System.DateTime"/>
+            </Column>
+            <Column Name="Semestre" DataType="System.Int32"/>
+            <BusinessObjectDataSource Name="Matriculas" DataType="System.Collections.Generic.List`1[[GrupoEstudosMusical.Models.Entities.Matricula, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" Enabled="true">
+              <Column Name="Turma" DataType="GrupoEstudosMusical.Models.Entities.Turma, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
+              <Column Name="TurmaId" DataType="System.Int32"/>
+              <Column Name="Aluno" DataType="GrupoEstudosMusical.Models.Entities.Aluno, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
+              <Column Name="AlunoId" DataType="System.Int32"/>
+              <Column Name="Cpf" DataType="System.Boolean" BindableControl="CheckBox"/>
+              <Column Name="Rg" DataType="System.Boolean" BindableControl="CheckBox"/>
+              <Column Name="ComprovanteResidencia" DataType="System.Boolean" BindableControl="CheckBox"/>
+              <Column Name="Pendente" DataType="System.Boolean" BindableControl="CheckBox"/>
+              <Column Name="Id" DataType="System.Int32"/>
+              <Column Name="DataCadastro" DataType="System.DateTime"/>
+            </BusinessObjectDataSource>
+            <BusinessObjectDataSource Name="Ocorrencias" DataType="System.Collections.Generic.List`1[[GrupoEstudosMusical.Models.Entities.Ocorrencia, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" Enabled="true">
+              <Column Name="Titulo" DataType="System.String"/>
+              <Column Name="DataOcorrido" DataType="System.DateTime"/>
+              <Column Name="Tipo" DataType="System.String"/>
+              <Column Name="Resumo" DataType="System.String"/>
+              <Column Name="Turma" DataType="GrupoEstudosMusical.Models.Entities.Turma, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
+              <Column Name="TurmaID" Alias="Turma" DataType="System.Int32"/>
+              <Column Name="AlunoID" Alias="Aluno" DataType="System.Int32"/>
+              <Column Name="Aluno" DataType="GrupoEstudosMusical.Models.Entities.Aluno, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
+              <Column Name="Id" DataType="System.Int32"/>
+              <Column Name="DataCadastro" DataType="System.DateTime"/>
+            </BusinessObjectDataSource>
+            <Column Name="Id" DataType="System.Int32"/>
+            <Column Name="DataCadastro" DataType="System.DateTime"/>
+          </BusinessObjectDataSource>
+          <Column Name="Id" DataType="System.Int32"/>
+          <Column Name="DataCadastro" DataType="System.DateTime"/>
+        </Column>
+        <Column Name="Status" DataType="System.String"/>
+        <Column Name="QuantidadeAlunos" DataType="System.Int32"/>
+        <Column Name="ProfessorID" DataType="System.Int32"/>
+        <Column Name="ModuloID" DataType="System.Int32"/>
+        <Column Name="Modulo" DataType="GrupoEstudosMusical.Models.Entities.Modulo, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <Column Name="Nome" DataType="System.String"/>
+          <Column Name="Observacoes" DataType="System.String"/>
+          <BusinessObjectDataSource Name="Turmas3" Alias="Turmas" DataType="System.Collections.Generic.List`1[[GrupoEstudosMusical.Models.Entities.Turma, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" PropName="Turmas" Enabled="true">
+            <Column Name="Nome" DataType="System.String"/>
+            <Column Name="DataInicio" DataType="System.DateTime"/>
+            <Column Name="TerminoAula" DataType="System.DateTime"/>
+            <Column Name="Periodo" DataType="System.Int32"/>
+            <Column Name="Nivel" DataType="System.String"/>
+            <Column Name="Professor" DataType="GrupoEstudosMusical.Models.Entities.Professor, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+              <Column Name="Nome" DataType="System.String"/>
+              <Column Name="Telefone" DataType="System.String"/>
+              <Column Name="Celular" DataType="System.String"/>
+              <Column Name="Email" DataType="System.String"/>
+              <Column Name="Cep" DataType="System.String"/>
+              <Column Name="Endereco" DataType="System.String"/>
+              <Column Name="Complemento" DataType="System.String"/>
+              <Column Name="Bairro" DataType="System.String"/>
+              <Column Name="Cidade" DataType="System.String"/>
+              <Column Name="Uf" DataType="System.String"/>
+              <BusinessObjectDataSource Name="Turmas4" Alias="Turmas" Enabled="false" DataType="System.Collections.Generic.List`1[[GrupoEstudosMusical.Models.Entities.Turma, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" PropName="Turmas"/>
+              <Column Name="Id" DataType="System.Int32"/>
+              <Column Name="DataCadastro" DataType="System.DateTime"/>
+            </Column>
+            <Column Name="Status" DataType="System.String"/>
+            <Column Name="QuantidadeAlunos" DataType="System.Int32"/>
+            <Column Name="ProfessorID" DataType="System.Int32"/>
+            <Column Name="ModuloID" DataType="System.Int32"/>
+            <Column Name="Modulo" DataType="GrupoEstudosMusical.Models.Entities.Modulo, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+              <Column Name="Nome" DataType="System.String"/>
+              <Column Name="Observacoes" DataType="System.String"/>
+              <BusinessObjectDataSource Name="Turmas5" Alias="Turmas" Enabled="false" DataType="System.Collections.Generic.List`1[[GrupoEstudosMusical.Models.Entities.Turma, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" PropName="Turmas"/>
+              <Column Name="Id" DataType="System.Int32"/>
+              <Column Name="DataCadastro" DataType="System.DateTime"/>
+            </Column>
+            <Column Name="Semestre" DataType="System.Int32"/>
+            <BusinessObjectDataSource Name="Matriculas1" Alias="Matriculas" DataType="System.Collections.Generic.List`1[[GrupoEstudosMusical.Models.Entities.Matricula, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" PropName="Matriculas" Enabled="true">
+              <Column Name="Turma" DataType="GrupoEstudosMusical.Models.Entities.Turma, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
+              <Column Name="TurmaId" DataType="System.Int32"/>
+              <Column Name="Aluno" DataType="GrupoEstudosMusical.Models.Entities.Aluno, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
+              <Column Name="AlunoId" DataType="System.Int32"/>
+              <Column Name="Cpf" DataType="System.Boolean" BindableControl="CheckBox"/>
+              <Column Name="Rg" DataType="System.Boolean" BindableControl="CheckBox"/>
+              <Column Name="ComprovanteResidencia" DataType="System.Boolean" BindableControl="CheckBox"/>
+              <Column Name="Pendente" DataType="System.Boolean" BindableControl="CheckBox"/>
+              <Column Name="Id" DataType="System.Int32"/>
+              <Column Name="DataCadastro" DataType="System.DateTime"/>
+            </BusinessObjectDataSource>
+            <BusinessObjectDataSource Name="Ocorrencias1" Alias="Ocorrencias" DataType="System.Collections.Generic.List`1[[GrupoEstudosMusical.Models.Entities.Ocorrencia, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" PropName="Ocorrencias" Enabled="true">
+              <Column Name="Titulo" DataType="System.String"/>
+              <Column Name="DataOcorrido" DataType="System.DateTime"/>
+              <Column Name="Tipo" DataType="System.String"/>
+              <Column Name="Resumo" DataType="System.String"/>
+              <Column Name="Turma" DataType="GrupoEstudosMusical.Models.Entities.Turma, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
+              <Column Name="TurmaID" Alias="Turma" DataType="System.Int32"/>
+              <Column Name="AlunoID" Alias="Aluno" DataType="System.Int32"/>
+              <Column Name="Aluno" DataType="GrupoEstudosMusical.Models.Entities.Aluno, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
+              <Column Name="Id" DataType="System.Int32"/>
+              <Column Name="DataCadastro" DataType="System.DateTime"/>
+            </BusinessObjectDataSource>
+            <Column Name="Id" DataType="System.Int32"/>
+            <Column Name="DataCadastro" DataType="System.DateTime"/>
+          </BusinessObjectDataSource>
+          <Column Name="Id" DataType="System.Int32"/>
+          <Column Name="DataCadastro" DataType="System.DateTime"/>
+        </Column>
+        <Column Name="Semestre" DataType="System.Int32"/>
+        <BusinessObjectDataSource Name="Matriculas2" Alias="Matriculas" DataType="System.Collections.Generic.List`1[[GrupoEstudosMusical.Models.Entities.Matricula, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" PropName="Matriculas" Enabled="true">
+          <Column Name="Turma" DataType="GrupoEstudosMusical.Models.Entities.Turma, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+            <Column Name="Nome" DataType="System.String"/>
+            <Column Name="DataInicio" DataType="System.DateTime"/>
+            <Column Name="TerminoAula" DataType="System.DateTime"/>
+            <Column Name="Periodo" DataType="System.Int32"/>
+            <Column Name="Nivel" DataType="System.String"/>
+            <Column Name="Professor" DataType="GrupoEstudosMusical.Models.Entities.Professor, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+              <Column Name="Nome" DataType="System.String"/>
+              <Column Name="Telefone" DataType="System.String"/>
+              <Column Name="Celular" DataType="System.String"/>
+              <Column Name="Email" DataType="System.String"/>
+              <Column Name="Cep" DataType="System.String"/>
+              <Column Name="Endereco" DataType="System.String"/>
+              <Column Name="Complemento" DataType="System.String"/>
+              <Column Name="Bairro" DataType="System.String"/>
+              <Column Name="Cidade" DataType="System.String"/>
+              <Column Name="Uf" DataType="System.String"/>
+              <BusinessObjectDataSource Name="Turmas6" Alias="Turmas" Enabled="false" DataType="System.Collections.Generic.List`1[[GrupoEstudosMusical.Models.Entities.Turma, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" PropName="Turmas"/>
+              <Column Name="Id" DataType="System.Int32"/>
+              <Column Name="DataCadastro" DataType="System.DateTime"/>
+            </Column>
+            <Column Name="Status" DataType="System.String"/>
+            <Column Name="QuantidadeAlunos" DataType="System.Int32"/>
+            <Column Name="ProfessorID" DataType="System.Int32"/>
+            <Column Name="ModuloID" DataType="System.Int32"/>
+            <Column Name="Modulo" DataType="GrupoEstudosMusical.Models.Entities.Modulo, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+              <Column Name="Nome" DataType="System.String"/>
+              <Column Name="Observacoes" DataType="System.String"/>
+              <BusinessObjectDataSource Name="Turmas7" Alias="Turmas" Enabled="false" DataType="System.Collections.Generic.List`1[[GrupoEstudosMusical.Models.Entities.Turma, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" PropName="Turmas"/>
+              <Column Name="Id" DataType="System.Int32"/>
+              <Column Name="DataCadastro" DataType="System.DateTime"/>
+            </Column>
+            <Column Name="Semestre" DataType="System.Int32"/>
+            <BusinessObjectDataSource Name="Matriculas3" Alias="Matriculas" DataType="System.Collections.Generic.List`1[[GrupoEstudosMusical.Models.Entities.Matricula, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" PropName="Matriculas" Enabled="true">
+              <Column Name="Turma" DataType="GrupoEstudosMusical.Models.Entities.Turma, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
+              <Column Name="TurmaId" DataType="System.Int32"/>
+              <Column Name="Aluno" DataType="GrupoEstudosMusical.Models.Entities.Aluno, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
+              <Column Name="AlunoId" DataType="System.Int32"/>
+              <Column Name="Cpf" DataType="System.Boolean" BindableControl="CheckBox"/>
+              <Column Name="Rg" DataType="System.Boolean" BindableControl="CheckBox"/>
+              <Column Name="ComprovanteResidencia" DataType="System.Boolean" BindableControl="CheckBox"/>
+              <Column Name="Pendente" DataType="System.Boolean" BindableControl="CheckBox"/>
+              <Column Name="Id" DataType="System.Int32"/>
+              <Column Name="DataCadastro" DataType="System.DateTime"/>
+            </BusinessObjectDataSource>
+            <BusinessObjectDataSource Name="Ocorrencias2" Alias="Ocorrencias" DataType="System.Collections.Generic.List`1[[GrupoEstudosMusical.Models.Entities.Ocorrencia, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" PropName="Ocorrencias" Enabled="true">
+              <Column Name="Titulo" DataType="System.String"/>
+              <Column Name="DataOcorrido" DataType="System.DateTime"/>
+              <Column Name="Tipo" DataType="System.String"/>
+              <Column Name="Resumo" DataType="System.String"/>
+              <Column Name="Turma" DataType="GrupoEstudosMusical.Models.Entities.Turma, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
+              <Column Name="TurmaID" Alias="Turma" DataType="System.Int32"/>
+              <Column Name="AlunoID" Alias="Aluno" DataType="System.Int32"/>
+              <Column Name="Aluno" DataType="GrupoEstudosMusical.Models.Entities.Aluno, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
+              <Column Name="Id" DataType="System.Int32"/>
+              <Column Name="DataCadastro" DataType="System.DateTime"/>
+            </BusinessObjectDataSource>
+            <Column Name="Id" DataType="System.Int32"/>
+            <Column Name="DataCadastro" DataType="System.DateTime"/>
+          </Column>
+          <Column Name="TurmaId" DataType="System.Int32"/>
+          <Column Name="Aluno" DataType="GrupoEstudosMusical.Models.Entities.Aluno, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+            <Column Name="Nome" DataType="System.String"/>
+            <Column Name="DataNascimento" DataType="System.DateTime"/>
+            <Column Name="Telefone" DataType="System.String"/>
+            <Column Name="Celular" DataType="System.String"/>
+            <Column Name="Rg" DataType="System.String"/>
+            <Column Name="Cpf" DataType="System.String"/>
+            <Column Name="Email" DataType="System.String"/>
+            <Column Name="Cep" DataType="System.String"/>
+            <Column Name="Endereco" DataType="System.String"/>
+            <Column Name="Bairro" DataType="System.String"/>
+            <Column Name="Complemento" DataType="System.String"/>
+            <Column Name="Cidade" DataType="System.String"/>
+            <Column Name="Uf" DataType="System.String"/>
+            <BusinessObjectDataSource Name="Matriculas4" Alias="Matriculas" DataType="System.Collections.Generic.List`1[[GrupoEstudosMusical.Models.Entities.Matricula, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" PropName="Matriculas" Enabled="true">
+              <Column Name="Turma" DataType="GrupoEstudosMusical.Models.Entities.Turma, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
+              <Column Name="TurmaId" DataType="System.Int32"/>
+              <Column Name="Aluno" DataType="GrupoEstudosMusical.Models.Entities.Aluno, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
+              <Column Name="AlunoId" DataType="System.Int32"/>
+              <Column Name="Cpf" DataType="System.Boolean" BindableControl="CheckBox"/>
+              <Column Name="Rg" DataType="System.Boolean" BindableControl="CheckBox"/>
+              <Column Name="ComprovanteResidencia" DataType="System.Boolean" BindableControl="CheckBox"/>
+              <Column Name="Pendente" DataType="System.Boolean" BindableControl="CheckBox"/>
+              <Column Name="Id" DataType="System.Int32"/>
+              <Column Name="DataCadastro" DataType="System.DateTime"/>
+            </BusinessObjectDataSource>
+            <BusinessObjectDataSource Name="Ocorrencias3" Alias="Ocorrencias" DataType="System.Collections.Generic.List`1[[GrupoEstudosMusical.Models.Entities.Ocorrencia, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" PropName="Ocorrencias" Enabled="true">
+              <Column Name="Titulo" DataType="System.String"/>
+              <Column Name="DataOcorrido" DataType="System.DateTime"/>
+              <Column Name="Tipo" DataType="System.String"/>
+              <Column Name="Resumo" DataType="System.String"/>
+              <Column Name="Turma" DataType="GrupoEstudosMusical.Models.Entities.Turma, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
+              <Column Name="TurmaID" Alias="Turma" DataType="System.Int32"/>
+              <Column Name="AlunoID" Alias="Aluno" DataType="System.Int32"/>
+              <Column Name="Aluno" DataType="GrupoEstudosMusical.Models.Entities.Aluno, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
+              <Column Name="Id" DataType="System.Int32"/>
+              <Column Name="DataCadastro" DataType="System.DateTime"/>
+            </BusinessObjectDataSource>
+            <Column Name="Id" DataType="System.Int32"/>
+            <Column Name="DataCadastro" DataType="System.DateTime"/>
+          </Column>
+          <Column Name="AlunoId" DataType="System.Int32"/>
+          <Column Name="Cpf" DataType="System.Boolean" BindableControl="CheckBox"/>
+          <Column Name="Rg" DataType="System.Boolean" BindableControl="CheckBox"/>
+          <Column Name="ComprovanteResidencia" DataType="System.Boolean" BindableControl="CheckBox"/>
+          <Column Name="Pendente" DataType="System.Boolean" BindableControl="CheckBox"/>
+          <Column Name="Id" DataType="System.Int32"/>
+          <Column Name="DataCadastro" DataType="System.DateTime"/>
+        </BusinessObjectDataSource>
+        <BusinessObjectDataSource Name="Ocorrencias4" Alias="Ocorrencias" DataType="System.Collections.Generic.List`1[[GrupoEstudosMusical.Models.Entities.Ocorrencia, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" PropName="Ocorrencias" Enabled="true">
+          <Column Name="Titulo" DataType="System.String"/>
+          <Column Name="DataOcorrido" DataType="System.DateTime"/>
+          <Column Name="Tipo" DataType="System.String"/>
+          <Column Name="Resumo" DataType="System.String"/>
+          <Column Name="Turma" DataType="GrupoEstudosMusical.Models.Entities.Turma, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+            <Column Name="Nome" DataType="System.String"/>
+            <Column Name="DataInicio" DataType="System.DateTime"/>
+            <Column Name="TerminoAula" DataType="System.DateTime"/>
+            <Column Name="Periodo" DataType="System.Int32"/>
+            <Column Name="Nivel" DataType="System.String"/>
+            <Column Name="Professor" DataType="GrupoEstudosMusical.Models.Entities.Professor, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+              <Column Name="Nome" DataType="System.String"/>
+              <Column Name="Telefone" DataType="System.String"/>
+              <Column Name="Celular" DataType="System.String"/>
+              <Column Name="Email" DataType="System.String"/>
+              <Column Name="Cep" DataType="System.String"/>
+              <Column Name="Endereco" DataType="System.String"/>
+              <Column Name="Complemento" DataType="System.String"/>
+              <Column Name="Bairro" DataType="System.String"/>
+              <Column Name="Cidade" DataType="System.String"/>
+              <Column Name="Uf" DataType="System.String"/>
+              <BusinessObjectDataSource Name="Turmas8" Alias="Turmas" Enabled="false" DataType="System.Collections.Generic.List`1[[GrupoEstudosMusical.Models.Entities.Turma, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" PropName="Turmas"/>
+              <Column Name="Id" DataType="System.Int32"/>
+              <Column Name="DataCadastro" DataType="System.DateTime"/>
+            </Column>
+            <Column Name="Status" DataType="System.String"/>
+            <Column Name="QuantidadeAlunos" DataType="System.Int32"/>
+            <Column Name="ProfessorID" DataType="System.Int32"/>
+            <Column Name="ModuloID" DataType="System.Int32"/>
+            <Column Name="Modulo" DataType="GrupoEstudosMusical.Models.Entities.Modulo, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+              <Column Name="Nome" DataType="System.String"/>
+              <Column Name="Observacoes" DataType="System.String"/>
+              <BusinessObjectDataSource Name="Turmas9" Alias="Turmas" Enabled="false" DataType="System.Collections.Generic.List`1[[GrupoEstudosMusical.Models.Entities.Turma, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" PropName="Turmas"/>
+              <Column Name="Id" DataType="System.Int32"/>
+              <Column Name="DataCadastro" DataType="System.DateTime"/>
+            </Column>
+            <Column Name="Semestre" DataType="System.Int32"/>
+            <BusinessObjectDataSource Name="Matriculas5" Alias="Matriculas" DataType="System.Collections.Generic.List`1[[GrupoEstudosMusical.Models.Entities.Matricula, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" PropName="Matriculas" Enabled="true">
+              <Column Name="Turma" DataType="GrupoEstudosMusical.Models.Entities.Turma, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
+              <Column Name="TurmaId" DataType="System.Int32"/>
+              <Column Name="Aluno" DataType="GrupoEstudosMusical.Models.Entities.Aluno, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
+              <Column Name="AlunoId" DataType="System.Int32"/>
+              <Column Name="Cpf" DataType="System.Boolean" BindableControl="CheckBox"/>
+              <Column Name="Rg" DataType="System.Boolean" BindableControl="CheckBox"/>
+              <Column Name="ComprovanteResidencia" DataType="System.Boolean" BindableControl="CheckBox"/>
+              <Column Name="Pendente" DataType="System.Boolean" BindableControl="CheckBox"/>
+              <Column Name="Id" DataType="System.Int32"/>
+              <Column Name="DataCadastro" DataType="System.DateTime"/>
+            </BusinessObjectDataSource>
+            <BusinessObjectDataSource Name="Ocorrencias5" Alias="Ocorrencias" DataType="System.Collections.Generic.List`1[[GrupoEstudosMusical.Models.Entities.Ocorrencia, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" PropName="Ocorrencias" Enabled="true">
+              <Column Name="Titulo" DataType="System.String"/>
+              <Column Name="DataOcorrido" DataType="System.DateTime"/>
+              <Column Name="Tipo" DataType="System.String"/>
+              <Column Name="Resumo" DataType="System.String"/>
+              <Column Name="Turma" DataType="GrupoEstudosMusical.Models.Entities.Turma, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
+              <Column Name="TurmaID" Alias="Turma" DataType="System.Int32"/>
+              <Column Name="AlunoID" Alias="Aluno" DataType="System.Int32"/>
+              <Column Name="Aluno" DataType="GrupoEstudosMusical.Models.Entities.Aluno, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
+              <Column Name="Id" DataType="System.Int32"/>
+              <Column Name="DataCadastro" DataType="System.DateTime"/>
+            </BusinessObjectDataSource>
+            <Column Name="Id" DataType="System.Int32"/>
+            <Column Name="DataCadastro" DataType="System.DateTime"/>
+          </Column>
+          <Column Name="TurmaID" Alias="Turma" DataType="System.Int32"/>
+          <Column Name="AlunoID" Alias="Aluno" DataType="System.Int32"/>
+          <Column Name="Aluno" DataType="GrupoEstudosMusical.Models.Entities.Aluno, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+            <Column Name="Nome" DataType="System.String"/>
+            <Column Name="DataNascimento" DataType="System.DateTime"/>
+            <Column Name="Telefone" DataType="System.String"/>
+            <Column Name="Celular" DataType="System.String"/>
+            <Column Name="Rg" DataType="System.String"/>
+            <Column Name="Cpf" DataType="System.String"/>
+            <Column Name="Email" DataType="System.String"/>
+            <Column Name="Cep" DataType="System.String"/>
+            <Column Name="Endereco" DataType="System.String"/>
+            <Column Name="Bairro" DataType="System.String"/>
+            <Column Name="Complemento" DataType="System.String"/>
+            <Column Name="Cidade" DataType="System.String"/>
+            <Column Name="Uf" DataType="System.String"/>
+            <BusinessObjectDataSource Name="Matriculas6" Alias="Matriculas" DataType="System.Collections.Generic.List`1[[GrupoEstudosMusical.Models.Entities.Matricula, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" PropName="Matriculas" Enabled="true">
+              <Column Name="Turma" DataType="GrupoEstudosMusical.Models.Entities.Turma, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
+              <Column Name="TurmaId" DataType="System.Int32"/>
+              <Column Name="Aluno" DataType="GrupoEstudosMusical.Models.Entities.Aluno, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
+              <Column Name="AlunoId" DataType="System.Int32"/>
+              <Column Name="Cpf" DataType="System.Boolean" BindableControl="CheckBox"/>
+              <Column Name="Rg" DataType="System.Boolean" BindableControl="CheckBox"/>
+              <Column Name="ComprovanteResidencia" DataType="System.Boolean" BindableControl="CheckBox"/>
+              <Column Name="Pendente" DataType="System.Boolean" BindableControl="CheckBox"/>
+              <Column Name="Id" DataType="System.Int32"/>
+              <Column Name="DataCadastro" DataType="System.DateTime"/>
+            </BusinessObjectDataSource>
+            <BusinessObjectDataSource Name="Ocorrencias6" Alias="Ocorrencias" DataType="System.Collections.Generic.List`1[[GrupoEstudosMusical.Models.Entities.Ocorrencia, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" PropName="Ocorrencias" Enabled="true">
+              <Column Name="Titulo" DataType="System.String"/>
+              <Column Name="DataOcorrido" DataType="System.DateTime"/>
+              <Column Name="Tipo" DataType="System.String"/>
+              <Column Name="Resumo" DataType="System.String"/>
+              <Column Name="Turma" DataType="GrupoEstudosMusical.Models.Entities.Turma, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
+              <Column Name="TurmaID" Alias="Turma" DataType="System.Int32"/>
+              <Column Name="AlunoID" Alias="Aluno" DataType="System.Int32"/>
+              <Column Name="Aluno" DataType="GrupoEstudosMusical.Models.Entities.Aluno, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
+              <Column Name="Id" DataType="System.Int32"/>
+              <Column Name="DataCadastro" DataType="System.DateTime"/>
+            </BusinessObjectDataSource>
+            <Column Name="Id" DataType="System.Int32"/>
+            <Column Name="DataCadastro" DataType="System.DateTime"/>
+          </Column>
+          <Column Name="Id" DataType="System.Int32"/>
+          <Column Name="DataCadastro" DataType="System.DateTime"/>
+        </BusinessObjectDataSource>
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="DataCadastro" DataType="System.DateTime"/>
+      </Column>
+      <Column Name="TurmaID" Alias="Turma" DataType="System.Int32"/>
+      <Column Name="AlunoID" Alias="Aluno" DataType="System.Int32"/>
+      <Column Name="Aluno" DataType="GrupoEstudosMusical.Models.Entities.Aluno, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <Column Name="Nome" DataType="System.String"/>
+        <Column Name="DataNascimento" DataType="System.DateTime"/>
+        <Column Name="Telefone" DataType="System.String"/>
+        <Column Name="Celular" DataType="System.String"/>
+        <Column Name="Rg" DataType="System.String"/>
+        <Column Name="Cpf" DataType="System.String"/>
+        <Column Name="Email" DataType="System.String"/>
+        <Column Name="Cep" DataType="System.String"/>
+        <Column Name="Endereco" DataType="System.String"/>
+        <Column Name="Bairro" DataType="System.String"/>
+        <Column Name="Complemento" DataType="System.String"/>
+        <Column Name="Cidade" DataType="System.String"/>
+        <Column Name="Uf" DataType="System.String"/>
+        <BusinessObjectDataSource Name="Matriculas7" Alias="Matriculas" DataType="System.Collections.Generic.List`1[[GrupoEstudosMusical.Models.Entities.Matricula, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" PropName="Matriculas" Enabled="true">
+          <Column Name="Turma" DataType="GrupoEstudosMusical.Models.Entities.Turma, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+            <Column Name="Nome" DataType="System.String"/>
+            <Column Name="DataInicio" DataType="System.DateTime"/>
+            <Column Name="TerminoAula" DataType="System.DateTime"/>
+            <Column Name="Periodo" DataType="System.Int32"/>
+            <Column Name="Nivel" DataType="System.String"/>
+            <Column Name="Professor" DataType="GrupoEstudosMusical.Models.Entities.Professor, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+              <Column Name="Nome" DataType="System.String"/>
+              <Column Name="Telefone" DataType="System.String"/>
+              <Column Name="Celular" DataType="System.String"/>
+              <Column Name="Email" DataType="System.String"/>
+              <Column Name="Cep" DataType="System.String"/>
+              <Column Name="Endereco" DataType="System.String"/>
+              <Column Name="Complemento" DataType="System.String"/>
+              <Column Name="Bairro" DataType="System.String"/>
+              <Column Name="Cidade" DataType="System.String"/>
+              <Column Name="Uf" DataType="System.String"/>
+              <BusinessObjectDataSource Name="Turmas10" Alias="Turmas" Enabled="false" DataType="System.Collections.Generic.List`1[[GrupoEstudosMusical.Models.Entities.Turma, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" PropName="Turmas"/>
+              <Column Name="Id" DataType="System.Int32"/>
+              <Column Name="DataCadastro" DataType="System.DateTime"/>
+            </Column>
+            <Column Name="Status" DataType="System.String"/>
+            <Column Name="QuantidadeAlunos" DataType="System.Int32"/>
+            <Column Name="ProfessorID" DataType="System.Int32"/>
+            <Column Name="ModuloID" DataType="System.Int32"/>
+            <Column Name="Modulo" DataType="GrupoEstudosMusical.Models.Entities.Modulo, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+              <Column Name="Nome" DataType="System.String"/>
+              <Column Name="Observacoes" DataType="System.String"/>
+              <BusinessObjectDataSource Name="Turmas11" Alias="Turmas" Enabled="false" DataType="System.Collections.Generic.List`1[[GrupoEstudosMusical.Models.Entities.Turma, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" PropName="Turmas"/>
+              <Column Name="Id" DataType="System.Int32"/>
+              <Column Name="DataCadastro" DataType="System.DateTime"/>
+            </Column>
+            <Column Name="Semestre" DataType="System.Int32"/>
+            <BusinessObjectDataSource Name="Matriculas8" Alias="Matriculas" DataType="System.Collections.Generic.List`1[[GrupoEstudosMusical.Models.Entities.Matricula, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" PropName="Matriculas" Enabled="true">
+              <Column Name="Turma" DataType="GrupoEstudosMusical.Models.Entities.Turma, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
+              <Column Name="TurmaId" DataType="System.Int32"/>
+              <Column Name="Aluno" DataType="GrupoEstudosMusical.Models.Entities.Aluno, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
+              <Column Name="AlunoId" DataType="System.Int32"/>
+              <Column Name="Cpf" DataType="System.Boolean" BindableControl="CheckBox"/>
+              <Column Name="Rg" DataType="System.Boolean" BindableControl="CheckBox"/>
+              <Column Name="ComprovanteResidencia" DataType="System.Boolean" BindableControl="CheckBox"/>
+              <Column Name="Pendente" DataType="System.Boolean" BindableControl="CheckBox"/>
+              <Column Name="Id" DataType="System.Int32"/>
+              <Column Name="DataCadastro" DataType="System.DateTime"/>
+            </BusinessObjectDataSource>
+            <BusinessObjectDataSource Name="Ocorrencias7" Alias="Ocorrencias" DataType="System.Collections.Generic.List`1[[GrupoEstudosMusical.Models.Entities.Ocorrencia, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" PropName="Ocorrencias" Enabled="true">
+              <Column Name="Titulo" DataType="System.String"/>
+              <Column Name="DataOcorrido" DataType="System.DateTime"/>
+              <Column Name="Tipo" DataType="System.String"/>
+              <Column Name="Resumo" DataType="System.String"/>
+              <Column Name="Turma" DataType="GrupoEstudosMusical.Models.Entities.Turma, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
+              <Column Name="TurmaID" Alias="Turma" DataType="System.Int32"/>
+              <Column Name="AlunoID" Alias="Aluno" DataType="System.Int32"/>
+              <Column Name="Aluno" DataType="GrupoEstudosMusical.Models.Entities.Aluno, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
+              <Column Name="Id" DataType="System.Int32"/>
+              <Column Name="DataCadastro" DataType="System.DateTime"/>
+            </BusinessObjectDataSource>
+            <Column Name="Id" DataType="System.Int32"/>
+            <Column Name="DataCadastro" DataType="System.DateTime"/>
+          </Column>
+          <Column Name="TurmaId" DataType="System.Int32"/>
+          <Column Name="Aluno" DataType="GrupoEstudosMusical.Models.Entities.Aluno, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+            <Column Name="Nome" DataType="System.String"/>
+            <Column Name="DataNascimento" DataType="System.DateTime"/>
+            <Column Name="Telefone" DataType="System.String"/>
+            <Column Name="Celular" DataType="System.String"/>
+            <Column Name="Rg" DataType="System.String"/>
+            <Column Name="Cpf" DataType="System.String"/>
+            <Column Name="Email" DataType="System.String"/>
+            <Column Name="Cep" DataType="System.String"/>
+            <Column Name="Endereco" DataType="System.String"/>
+            <Column Name="Bairro" DataType="System.String"/>
+            <Column Name="Complemento" DataType="System.String"/>
+            <Column Name="Cidade" DataType="System.String"/>
+            <Column Name="Uf" DataType="System.String"/>
+            <BusinessObjectDataSource Name="Matriculas9" Alias="Matriculas" DataType="System.Collections.Generic.List`1[[GrupoEstudosMusical.Models.Entities.Matricula, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" PropName="Matriculas" Enabled="true">
+              <Column Name="Turma" DataType="GrupoEstudosMusical.Models.Entities.Turma, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
+              <Column Name="TurmaId" DataType="System.Int32"/>
+              <Column Name="Aluno" DataType="GrupoEstudosMusical.Models.Entities.Aluno, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
+              <Column Name="AlunoId" DataType="System.Int32"/>
+              <Column Name="Cpf" DataType="System.Boolean" BindableControl="CheckBox"/>
+              <Column Name="Rg" DataType="System.Boolean" BindableControl="CheckBox"/>
+              <Column Name="ComprovanteResidencia" DataType="System.Boolean" BindableControl="CheckBox"/>
+              <Column Name="Pendente" DataType="System.Boolean" BindableControl="CheckBox"/>
+              <Column Name="Id" DataType="System.Int32"/>
+              <Column Name="DataCadastro" DataType="System.DateTime"/>
+            </BusinessObjectDataSource>
+            <BusinessObjectDataSource Name="Ocorrencias8" Alias="Ocorrencias" DataType="System.Collections.Generic.List`1[[GrupoEstudosMusical.Models.Entities.Ocorrencia, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" PropName="Ocorrencias" Enabled="true">
+              <Column Name="Titulo" DataType="System.String"/>
+              <Column Name="DataOcorrido" DataType="System.DateTime"/>
+              <Column Name="Tipo" DataType="System.String"/>
+              <Column Name="Resumo" DataType="System.String"/>
+              <Column Name="Turma" DataType="GrupoEstudosMusical.Models.Entities.Turma, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
+              <Column Name="TurmaID" Alias="Turma" DataType="System.Int32"/>
+              <Column Name="AlunoID" Alias="Aluno" DataType="System.Int32"/>
+              <Column Name="Aluno" DataType="GrupoEstudosMusical.Models.Entities.Aluno, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
+              <Column Name="Id" DataType="System.Int32"/>
+              <Column Name="DataCadastro" DataType="System.DateTime"/>
+            </BusinessObjectDataSource>
+            <Column Name="Id" DataType="System.Int32"/>
+            <Column Name="DataCadastro" DataType="System.DateTime"/>
+          </Column>
+          <Column Name="AlunoId" DataType="System.Int32"/>
+          <Column Name="Cpf" DataType="System.Boolean" BindableControl="CheckBox"/>
+          <Column Name="Rg" DataType="System.Boolean" BindableControl="CheckBox"/>
+          <Column Name="ComprovanteResidencia" DataType="System.Boolean" BindableControl="CheckBox"/>
+          <Column Name="Pendente" DataType="System.Boolean" BindableControl="CheckBox"/>
+          <Column Name="Id" DataType="System.Int32"/>
+          <Column Name="DataCadastro" DataType="System.DateTime"/>
+        </BusinessObjectDataSource>
+        <BusinessObjectDataSource Name="Ocorrencias9" Alias="Ocorrencias" DataType="System.Collections.Generic.List`1[[GrupoEstudosMusical.Models.Entities.Ocorrencia, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" PropName="Ocorrencias" Enabled="true">
+          <Column Name="Titulo" DataType="System.String"/>
+          <Column Name="DataOcorrido" DataType="System.DateTime"/>
+          <Column Name="Tipo" DataType="System.String"/>
+          <Column Name="Resumo" DataType="System.String"/>
+          <Column Name="Turma" DataType="GrupoEstudosMusical.Models.Entities.Turma, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+            <Column Name="Nome" DataType="System.String"/>
+            <Column Name="DataInicio" DataType="System.DateTime"/>
+            <Column Name="TerminoAula" DataType="System.DateTime"/>
+            <Column Name="Periodo" DataType="System.Int32"/>
+            <Column Name="Nivel" DataType="System.String"/>
+            <Column Name="Professor" DataType="GrupoEstudosMusical.Models.Entities.Professor, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+              <Column Name="Nome" DataType="System.String"/>
+              <Column Name="Telefone" DataType="System.String"/>
+              <Column Name="Celular" DataType="System.String"/>
+              <Column Name="Email" DataType="System.String"/>
+              <Column Name="Cep" DataType="System.String"/>
+              <Column Name="Endereco" DataType="System.String"/>
+              <Column Name="Complemento" DataType="System.String"/>
+              <Column Name="Bairro" DataType="System.String"/>
+              <Column Name="Cidade" DataType="System.String"/>
+              <Column Name="Uf" DataType="System.String"/>
+              <BusinessObjectDataSource Name="Turmas12" Alias="Turmas" Enabled="false" DataType="System.Collections.Generic.List`1[[GrupoEstudosMusical.Models.Entities.Turma, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" PropName="Turmas"/>
+              <Column Name="Id" DataType="System.Int32"/>
+              <Column Name="DataCadastro" DataType="System.DateTime"/>
+            </Column>
+            <Column Name="Status" DataType="System.String"/>
+            <Column Name="QuantidadeAlunos" DataType="System.Int32"/>
+            <Column Name="ProfessorID" DataType="System.Int32"/>
+            <Column Name="ModuloID" DataType="System.Int32"/>
+            <Column Name="Modulo" DataType="GrupoEstudosMusical.Models.Entities.Modulo, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+              <Column Name="Nome" DataType="System.String"/>
+              <Column Name="Observacoes" DataType="System.String"/>
+              <BusinessObjectDataSource Name="Turmas13" Alias="Turmas" Enabled="false" DataType="System.Collections.Generic.List`1[[GrupoEstudosMusical.Models.Entities.Turma, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" PropName="Turmas"/>
+              <Column Name="Id" DataType="System.Int32"/>
+              <Column Name="DataCadastro" DataType="System.DateTime"/>
+            </Column>
+            <Column Name="Semestre" DataType="System.Int32"/>
+            <BusinessObjectDataSource Name="Matriculas10" Alias="Matriculas" DataType="System.Collections.Generic.List`1[[GrupoEstudosMusical.Models.Entities.Matricula, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" PropName="Matriculas" Enabled="true">
+              <Column Name="Turma" DataType="GrupoEstudosMusical.Models.Entities.Turma, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
+              <Column Name="TurmaId" DataType="System.Int32"/>
+              <Column Name="Aluno" DataType="GrupoEstudosMusical.Models.Entities.Aluno, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
+              <Column Name="AlunoId" DataType="System.Int32"/>
+              <Column Name="Cpf" DataType="System.Boolean" BindableControl="CheckBox"/>
+              <Column Name="Rg" DataType="System.Boolean" BindableControl="CheckBox"/>
+              <Column Name="ComprovanteResidencia" DataType="System.Boolean" BindableControl="CheckBox"/>
+              <Column Name="Pendente" DataType="System.Boolean" BindableControl="CheckBox"/>
+              <Column Name="Id" DataType="System.Int32"/>
+              <Column Name="DataCadastro" DataType="System.DateTime"/>
+            </BusinessObjectDataSource>
+            <BusinessObjectDataSource Name="Ocorrencias10" Alias="Ocorrencias" DataType="System.Collections.Generic.List`1[[GrupoEstudosMusical.Models.Entities.Ocorrencia, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" PropName="Ocorrencias" Enabled="true">
+              <Column Name="Titulo" DataType="System.String"/>
+              <Column Name="DataOcorrido" DataType="System.DateTime"/>
+              <Column Name="Tipo" DataType="System.String"/>
+              <Column Name="Resumo" DataType="System.String"/>
+              <Column Name="Turma" DataType="GrupoEstudosMusical.Models.Entities.Turma, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
+              <Column Name="TurmaID" Alias="Turma" DataType="System.Int32"/>
+              <Column Name="AlunoID" Alias="Aluno" DataType="System.Int32"/>
+              <Column Name="Aluno" DataType="GrupoEstudosMusical.Models.Entities.Aluno, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
+              <Column Name="Id" DataType="System.Int32"/>
+              <Column Name="DataCadastro" DataType="System.DateTime"/>
+            </BusinessObjectDataSource>
+            <Column Name="Id" DataType="System.Int32"/>
+            <Column Name="DataCadastro" DataType="System.DateTime"/>
+          </Column>
+          <Column Name="TurmaID" Alias="Turma" DataType="System.Int32"/>
+          <Column Name="AlunoID" Alias="Aluno" DataType="System.Int32"/>
+          <Column Name="Aluno" DataType="GrupoEstudosMusical.Models.Entities.Aluno, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+            <Column Name="Nome" DataType="System.String"/>
+            <Column Name="DataNascimento" DataType="System.DateTime"/>
+            <Column Name="Telefone" DataType="System.String"/>
+            <Column Name="Celular" DataType="System.String"/>
+            <Column Name="Rg" DataType="System.String"/>
+            <Column Name="Cpf" DataType="System.String"/>
+            <Column Name="Email" DataType="System.String"/>
+            <Column Name="Cep" DataType="System.String"/>
+            <Column Name="Endereco" DataType="System.String"/>
+            <Column Name="Bairro" DataType="System.String"/>
+            <Column Name="Complemento" DataType="System.String"/>
+            <Column Name="Cidade" DataType="System.String"/>
+            <Column Name="Uf" DataType="System.String"/>
+            <BusinessObjectDataSource Name="Matriculas11" Alias="Matriculas" DataType="System.Collections.Generic.List`1[[GrupoEstudosMusical.Models.Entities.Matricula, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" PropName="Matriculas" Enabled="true">
+              <Column Name="Turma" DataType="GrupoEstudosMusical.Models.Entities.Turma, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
+              <Column Name="TurmaId" DataType="System.Int32"/>
+              <Column Name="Aluno" DataType="GrupoEstudosMusical.Models.Entities.Aluno, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
+              <Column Name="AlunoId" DataType="System.Int32"/>
+              <Column Name="Cpf" DataType="System.Boolean" BindableControl="CheckBox"/>
+              <Column Name="Rg" DataType="System.Boolean" BindableControl="CheckBox"/>
+              <Column Name="ComprovanteResidencia" DataType="System.Boolean" BindableControl="CheckBox"/>
+              <Column Name="Pendente" DataType="System.Boolean" BindableControl="CheckBox"/>
+              <Column Name="Id" DataType="System.Int32"/>
+              <Column Name="DataCadastro" DataType="System.DateTime"/>
+            </BusinessObjectDataSource>
+            <BusinessObjectDataSource Name="Ocorrencias11" Alias="Ocorrencias" DataType="System.Collections.Generic.List`1[[GrupoEstudosMusical.Models.Entities.Ocorrencia, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" PropName="Ocorrencias" Enabled="true">
+              <Column Name="Titulo" DataType="System.String"/>
+              <Column Name="DataOcorrido" DataType="System.DateTime"/>
+              <Column Name="Tipo" DataType="System.String"/>
+              <Column Name="Resumo" DataType="System.String"/>
+              <Column Name="Turma" DataType="GrupoEstudosMusical.Models.Entities.Turma, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
+              <Column Name="TurmaID" Alias="Turma" DataType="System.Int32"/>
+              <Column Name="AlunoID" Alias="Aluno" DataType="System.Int32"/>
+              <Column Name="Aluno" DataType="GrupoEstudosMusical.Models.Entities.Aluno, GrupoEstudosMusical.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
+              <Column Name="Id" DataType="System.Int32"/>
+              <Column Name="DataCadastro" DataType="System.DateTime"/>
+            </BusinessObjectDataSource>
+            <Column Name="Id" DataType="System.Int32"/>
+            <Column Name="DataCadastro" DataType="System.DateTime"/>
+          </Column>
+          <Column Name="Id" DataType="System.Int32"/>
+          <Column Name="DataCadastro" DataType="System.DateTime"/>
+        </BusinessObjectDataSource>
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="DataCadastro" DataType="System.DateTime"/>
+      </Column>
+      <Column Name="Id" DataType="System.Int32"/>
+      <Column Name="DataCadastro" DataType="System.DateTime"/>
+    </BusinessObjectDataSource>
+  </Dictionary>
+  <ReportPage Name="Page1">
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="103.95">
+      <TextObject Name="Text1" Left="132.3" Top="18.9" Width="330.75" Height="47.25" Text="Teste Chamado"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="107.95" Width="718.2" Height="28.35">
+      <TextObject Name="Text3" Left="264.6" Width="94.5" Height="18.9" Text="Titulo"/>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="140.3" Width="718.2" Height="75.6" DataSource="Dados">
+      <TextObject Name="Text2" Left="66.15" Top="18.9" Width="179.55" Height="18.9" Text="[Dados.Titulo]"/>
+      <TextObject Name="Text4" Left="274.05" Top="9.45" Width="103.95" Height="37.8" Text="[Dados.Resumo]"/>
+    </DataBand>
+    <PageFooterBand Name="PageFooter1" Top="219.9" Width="718.2"/>
+  </ReportPage>
+</Report>

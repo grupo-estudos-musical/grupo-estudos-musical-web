@@ -20,12 +20,12 @@ namespace GrupoEstudosMusical.MVC.Controllers
             return View();
         }
 
-        [HttpPost]
+        
         public ActionResult RelatorioOcorrencia(int AlunoId)
         {
             var listaOcorrenciasAluno = bussinesOcorrencia.ObterOcorrenciasPorAluno(AlunoId);
 
-            var relatorioGerado = Relatorios.GerarRelatorio<Ocorrencia>(System.Web.HttpContext.Current.Server.MapPath("~/Relatorios/relatorioOcorrencia.frx"), listaOcorrenciasAluno, "Dados", TiposDeRelatorios.PDF, null);
+            var relatorioGerado = Relatorios.GerarRelatorio<Ocorrencia>(System.Web.HttpContext.Current.Server.MapPath("~/Relatorios/ocorrencias.frx"), listaOcorrenciasAluno, "Dados", TiposDeRelatorios.PDF, null);
 
             return File(relatorioGerado, "application/pdf", "relatorioocorrencias.pdf");
         }

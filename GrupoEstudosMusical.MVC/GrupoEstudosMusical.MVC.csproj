@@ -346,9 +346,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Relatorios\" />
     <Folder Include="Views\Cep\" />
-    <Folder Include="Views\Relatorios\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\font-awesome\fonts\fontawesome-webfont.eot" />
@@ -381,6 +379,8 @@
     <Content Include="Views\Matriculas\Detalhes.cshtml" />
     <Content Include="Views\Shared\_DocumentosApresentados.cshtml" />
     <Content Include="Views\Shared\_VisaoGeralAlunoMenu.cshtml" />
+    <Content Include="Relatorios\ocorrencias.frx" />
+    <Content Include="Views\Relatorios\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GrupoEstudosMusical.Bussines\GrupoEstudosMusical.Bussines.csproj">
