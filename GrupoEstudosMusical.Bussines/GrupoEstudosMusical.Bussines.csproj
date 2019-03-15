@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BussinesAluno.cs" />
+    <Compile Include="BussinesAvaliacao.cs" />
     <Compile Include="BussinesGeneric.cs" />
     <Compile Include="BussinesModulo.cs" />
     <Compile Include="BussinesOcorrencia.cs" />
@@ -68,7 +69,9 @@
       <Name>GrupoEstudosMusical.Models</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Compile Include="Helpers\ValidacaoHelper.cs" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="FastReport\FastReport.Bars.dll" />
     <Content Include="FastReport\FastReport.dll" />
