@@ -28,6 +28,8 @@
 
 @Html.Partial("_VisaoGeralAlunoMenu", new ViewDataDictionary { { "titulo", "Editar Aluno" }, { "link", @Url.Action("Editar", new { id = Model.Id }) }, { "imagem", "/Content/images/menu_student_edit.png" }, { "alt", "student-edit" } })
 
+@Html.Partial("_VisaoGeralAlunoMenu", new ViewDataDictionary { { "titulo", "Nova Matrícula" }, { "Link", Url.RouteUrl("Matricular", new { idAluno = Model.Id }) }, { "imagem", "/Content/images/menu_nova_matricula.png" }, { "alt", "nova_matricula" } })
+
 @Html.Partial("_VisaoGeralAlunoMenu", new ViewDataDictionary { { "titulo", "Matrículas" }, { "link", Url.Action("Index", "Matriculas", new { idAluno = Model.Id }) }, { "imagem", "/Content/images/menu_matriculas.png" }, { "alt", "matriculas" } })
 
 @Html.Partial("_VisaoGeralAlunoMenu", new ViewDataDictionary { { "titulo", "Ocorrências" }, { "link", Url.Action("Index", "Ocorrencias", new { alunoId = Model.Id }) }, { "imagem", "/Content/images/menu_ocorrencias.png" }, { "alt", "ocorrencias" } })

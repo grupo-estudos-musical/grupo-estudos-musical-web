@@ -1,10 +1,11 @@
 ﻿using AutoMapper;
+using GrupoEstudosMusical.Bussines.Exceptions;
 using GrupoEstudosMusical.Models.Entities;
 using GrupoEstudosMusical.Models.Interfaces.Bussines;
-using GrupoEstudosMusical.MVC.App_Start;
 using GrupoEstudosMusical.MVC.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -16,13 +17,15 @@ namespace GrupoEstudosMusical.MVC.Controllers
         private readonly IBussinesTurma _bussinesTurma;
         private readonly IBussinesAluno _bussinesAluno;
         private readonly IBussinesMatricula _bussinesMatricula;
+        private readonly IBussinesModulo _bussinesModulo;
 
         public MatriculasController(IBussinesTurma bussinesTurma, IBussinesAluno bussinesAluno,
-            IBussinesMatricula bussinesMatricula)
+            IBussinesMatricula bussinesMatricula, IBussinesModulo bussinesModulo)
         {
             _bussinesTurma = bussinesTurma;
             _bussinesAluno = bussinesAluno;
             _bussinesMatricula = bussinesMatricula;
+            _bussinesModulo = bussinesModulo;
         }
 
         public async Task<ActionResult> Index(int idAluno)
@@ -49,6 +52,9 @@ namespace GrupoEstudosMusical.MVC.Controllers
             matriculaVM.AlunoId = aluno.Id;
             matriculaVM.Aluno = Mapper.Map<Aluno, AlunoVM>(aluno);
             matriculaVM.Turmas = Mapper.Map<IList<Turma>, List<TurmaVM>>(await _bussinesTurma.ObterTodosAsync());
+            matriculaVM.Modulos = Mapper.Map<IList<Modulo>, List<ModuloVM>>(await _bussinesModulo.ObterTodosAsync());
+            var matriculas = await _bussinesMatricula.ObterMatriculasPorAluno(idAluno);
+            matriculaVM.TurmasMatriculadas = Mapper.Map<IList<Turma>, List<TurmaVM>>(matriculas.Select(m => m.Turma).ToList());
             return View(matriculaVM);
         }
 
@@ -64,7 +70,7 @@ namespace GrupoEstudosMusical.MVC.Controllers
                 TempData["Mensagem"] = "Aluno matrículado com sucesso.";
                 return RedirectToAction("Index", "Alunos");
             }
-            catch (ArgumentException ex)
+            catch (TurmaMatriculaExeception ex)
             {
                 ViewData["Mensagem"] = ex.Message;
                 return View(matriculaVM);

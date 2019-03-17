@@ -262,6 +262,7 @@
     <Compile Include="Models\ModuloVM.cs" />
     <Compile Include="Models\OcorrenciaVM.cs" />
     <Compile Include="Models\ProfessorVM.cs" />
+    <Compile Include="Models\TurmasMatriculaVM.cs" />
     <Compile Include="Models\TurmaVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -270,6 +271,7 @@
     <Content Include="Content\css\responsive.css" />
     <Content Include="Content\css\style.css" />
     <Content Include="Content\images\menu_matriculas.png" />
+    <Content Include="Content\images\menu_nova_matricula.png" />
     <Content Include="Content\images\menu_nova_ocorrencia.png" />
     <Content Include="Content\images\menu_student_edit.png" />
     <Content Include="Content\images\menu_ocorrencias.png" />

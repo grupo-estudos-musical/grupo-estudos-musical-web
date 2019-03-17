@@ -23,8 +23,12 @@ namespace GrupoEstudosMusical.MVC.Models
 
         public bool Pendente { get; set; }
 
+        public List<TurmaVM> Turmas { get; set; }
+
         public TurmaVM Turma { get; set; }
 
-        public List<TurmaVM> Turmas { get; set; }
+        public List<ModuloVM> Modulos { get; set; }
+
+        public List<TurmaVM> TurmasMatriculadas { get; set; }
     }
 }

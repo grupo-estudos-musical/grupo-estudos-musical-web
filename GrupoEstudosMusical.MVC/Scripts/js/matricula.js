@@ -1,25 +1,38 @@
 ﻿function selecionarTurma(event) {
     let btn = $(event);
     let inputTurmaId = $('#TurmaId');
-
-    //verifica se já existe uma turma selecionada
-    if (inputTurmaId.val() !== 0) {
-        let turmas = $('[turma-id]');
-        for (var i = 0; i < turmas.length; i++) {
-            let turma = $(turmas[i]);
-            if (!turma.hasClass('btn-border')) {
-                turma.addClass('btn-border');
-                break;
-            }
-        }
-    }
-
-    btn.removeClass('btn-border');
+    selecionarBotao(btn, inputTurmaId, 'turma-id');
+    
     let turmaId = btn.attr('turma-id');
     inputTurmaId.val(turmaId);
 
     let nomeTurma = btn.attr('turma-nome');
     $('#TurmaNome').val(nomeTurma);
+}
+
+function selecionarModulo(event) {
+    let btn = $(event);
+    let inputModuloId = $('#ModuloId');
+    selecionarBotao(btn, inputModuloId, 'modulo-id');
+
+    let moduloId = btn.attr('modulo-id');
+    inputModuloId.val(moduloId);
+    obterTurmasPorModulo(moduloId);
+}
+
+function selecionarBotao(elementoClicado, inputId, atributoElemento) {
+    const classeBotao = 'btn-border';
+    if (inputId.val() !== 0) {
+        let botoes = $(`[${atributoElemento}]`);
+        for (var i = 0; i < botoes.length; i++) {
+            let botao = $(botoes[i]);
+            if (!botao.hasClass(classeBotao)) {
+                botao.addClass(classeBotao);
+            }
+        }
+    }
+
+    elementoClicado.removeClass(classeBotao);
 }
 
 function exibirCofirmacao(event) {
@@ -69,4 +82,50 @@ function submeterFormularioMatricula() {
 
 function confirmarModal() {
     submeterFormularioMatricula();
+}
+
+function obterTurmasPorModulo(idModulo) {
+    
+    $.ajax({
+        url: '/Turmas/TurmasAtivas?moduloId=' + idModulo,
+        method: 'GET'
+    }).done(function (data) {
+        exibirTurmas(data);
+        
+    }).fail(function (error) {
+        console.log('Não foi possível obter turmas.');
+    });
+}
+
+function exibirTurmas(dados) {
+    const TAMANHO_LINHA = 4;
+    let quantFinal = 4;
+    let quantLinhas = Math.ceil(dados.length / TAMANHO_LINHA);
+
+    let divTurmas = $('#turmas');
+    divTurmas.html('');
+
+    for (var pagina = 0; pagina < quantLinhas; pagina++) {
+        let linha = $('<div>').addClass('row');
+        let turmasLinha = dados.slice(TAMANHO_LINHA * pagina, quantFinal);
+        for (var i = 0; i < turmasLinha.length; i++) {
+            let turma = turmasLinha[i];
+            let divTurma = $('<div>').addClass('col-md-3');
+            let btnTurma =
+                $('<button>').addClass('btn').addClass('btn-primary').addClass('btn-lg').addClass('btn-border').addClass('btn-matricula');
+            btnTurma.attr('type', 'button');
+            btnTurma.attr('turma-id', turma.Id);
+            btnTurma.attr('turma-nome', turma.Nome);
+            btnTurma.attr('onclick', 'selecionarTurma(this)');
+            btnTurma.html(turma.Nome);
+            btnTurma.append($('<br>'));
+            btnTurma.append($('<br>'));
+            btnTurma.append(`Alunos ${turma.QuantidadeMatriculas}/${turma.QuantidadeAlunos}`);
+            divTurma.append(btnTurma);
+            linha.append(divTurma);
+        }
+        divTurmas.append(linha);
+        divTurmas.append($('<br>'));
+        quantFinal += 4;
+    }
 }

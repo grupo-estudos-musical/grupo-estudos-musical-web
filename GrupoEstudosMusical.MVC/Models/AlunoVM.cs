@@ -28,8 +28,11 @@ namespace GrupoEstudosMusical.MVC.Models
 
         public string Cep { get; set; }
 
-        [DisplayName("Endereço")]
+        [DisplayName("Logradouro")]
         public string Endereco { get; set; }
+
+        [DisplayName("Número")]
+        public string Numero { get; set; }
 
         public string Bairro { get; set; }
         public string Complemento { get; set; }

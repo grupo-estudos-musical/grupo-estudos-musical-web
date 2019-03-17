@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using GrupoEstudosMusical.Bussines.Exceptions;
 using GrupoEstudosMusical.Models.Entities;
@@ -27,6 +28,10 @@ namespace GrupoEstudosMusical.Bussines
             if (!turma.VerificarQuantidadeDeAlunosMatriculados())
                 throw new TurmaMatriculaExeception("Não existe vagas para esta turma.");
 
+            var matriculas = await _repositoryMatricula.ObterMatriculasPorAluno(entity.AlunoId);
+            if (matriculas.Any(m => m.TurmaId == entity.TurmaId))
+                throw new TurmaMatriculaExeception("Aluno já está matrícula nesta turma.");
+
             entity.VerificarMatriculaPendente();
             entity.Aluno = null;
             await base.InserirAsync(entity);
@@ -40,8 +45,5 @@ namespace GrupoEstudosMusical.Bussines
 
         public Task<IList<Matricula>> ObterMatriculasPorAluno(int idAluno) =>
             _repositoryMatricula.ObterMatriculasPorAluno(idAluno);
-
-        public List<Matricula> ObterTurmasDoAluno(int idAluno) =>
-            _repositoryMatricula.ObterTurmasDoAluno(idAluno);
     }
 }

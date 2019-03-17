@@ -235,6 +235,9 @@ $(document).ready(function() {
                 },
                 Observacoes: {
                     required: true
+                },
+                Numero: {
+                    required: true
                 }
             },
 

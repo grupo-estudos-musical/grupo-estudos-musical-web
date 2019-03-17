@@ -1,8 +1,6 @@
 ﻿@model GrupoEstudosMusical.MVC.Models.MatriculaVM
 
 @{
-    /**/
-
     ViewBag.Title = "Processo de Matrícula";
 }
 
@@ -17,7 +15,7 @@
                     <a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i>Home</a>
                 </li>
                 <li>
-                    <a href="@Url.Action("Index")">Alunos</a>
+                    <a href="@Url.Action("Index", "Alunos")">Alunos</a>
                 </li>
                 <li>
                     <a href="@Url.Action("Novo")">Cadastrar Aluno</a>
@@ -123,23 +121,50 @@
                                     @Html.Partial("_DocumentosApresentados")
                                 </div>
                                 <div class="tab-pane" id="pills-tab3">
+                                    <h4>Módulos Disponíveis</h4>
+                                    <p>Escolha um módulo</p><br />
+                                    <div class="form-group">
+                                        <div class="controls">
+                                            <input type="hidden" id="ModuloId"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="modulos">
+                                        @{
+                                            const int TAMANHO_LINHA = 4;
+                                            int quantLinhas = (int)Math.Ceiling((double)Model.Turmas.Count / TAMANHO_LINHA);
+                                        }
+                                        @for (int pagina = 0; pagina < TAMANHO_LINHA; pagina++)
+                                        {
+                                            <div class="row">
+                                                @{
+                                                    var modulosLinha =
+                                                        Model.Modulos
+                                                        .Skip(TAMANHO_LINHA * pagina)
+                                                        .Take(TAMANHO_LINHA);
+                                                }
+                                                @foreach (var modulo in modulosLinha)
+                                                {
+                                                    <div class="col-md-3">
+                                                        <button type="button" class="btn btn-primary btn-lg btn-border btn-matricula" modulo-id="@modulo.Id" onclick="selecionarModulo(this)">@modulo.Nome</button>
+                                                    </div>
+                                                }
+                                            </div>
+                                        }
+                                    </div>
+                                    <br /><br />
                                     <h4>Turmas Disponíveis</h4>
                                     <p>Escolha uma turma para o aluno ser matrículado</p><br />
                                     <div class="form-group">
                                         <div class="controls">
                                             @Html.HiddenFor(model => model.TurmaId)
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="controls">
                                             <input type="hidden" id="TurmaNome" />
                                         </div>
-                                    </div>
+                                    </div>                                    
 
                                     <div id="turmas">
-                                        @{
-                                            const int TAMANHO_LINHA = 4;
-                                            int quantLinhas = (int)Math.Ceiling((double)Model.Turmas.Count / TAMANHO_LINHA);
+                                        @*@{
+                                            quantLinhas = (int)Math.Ceiling((double)Model.Turmas.Count / TAMANHO_LINHA);
                                         }
                                         @for (int pagina = 0; pagina < quantLinhas; pagina++)
                                         {
@@ -152,15 +177,20 @@
                                                 }
                                                 @foreach (var turma in turmasLinha)
                                                 {
+
+                                                    var turmaExistente = Model.TurmasMatriculadas.Any(t => t.Id == turma.Id);
+                                                    var classeBotao = turmaExistente ? "btn-danger" : "btn-primary";
+                                                    var desabilitar = turmaExistente ? "disabled='disabled'" : "";
+
                                                     <div class="col-md-3">
-                                                        <button type="button" class="btn btn-primary btn-lg btn-border btn-turmas" turma-id="@turma.Id" turma-nome="@turma.Nome" onclick="selecionarTurma(this)">
+                                                        <button type="button" class="btn @classeBotao btn-lg btn-border btn-matricula" turma-id="@turma.Id" turma-nome="@turma.Nome" onclick="selecionarTurma(this)" @desabilitar>
                                                             @turma.Nome <br /><br /> Alunos @turma.Matriculas.Count/@turma.QuantidadeAlunos
                                                         </button>
                                                     </div>
                                                 }
                                             </div>
                                             <br />
-                                        }
+                                        }*@
                                     </div>
 
                                     <div class="clearfix"></div>

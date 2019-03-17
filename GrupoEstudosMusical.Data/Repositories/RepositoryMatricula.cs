@@ -20,9 +20,6 @@ namespace GrupoEstudosMusical.Data.Repositories
             return matriculas.FirstOrDefault();
         }
 
-        public List<Matricula> ObterTurmasDoAluno(int idAluno) =>
-            Context.Matriculas.Include(m => m.Turma).Where(m => m.AlunoId == idAluno).ToList();
-
         private async Task<IList<Matricula>> ObterMatriculas(Expression<Func<Matricula, bool>> filter)
         {
             return await DbSet

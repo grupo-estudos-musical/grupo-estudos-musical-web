@@ -219,6 +219,10 @@
     <Compile Include="Migrations\20190302164341_alteracao_campoTIp5.designer.cs">
       <DependentUpon>20190302164341_alteracao_campoTIp5.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20190316180931_AdicionandoCampoNumeroAluno.cs" />
+    <Compile Include="Migrations\20190316180931_AdicionandoCampoNumeroAluno.designer.cs">
+      <DependentUpon>20190316180931_AdicionandoCampoNumeroAluno.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\GemContextModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\RepositoryAluno.cs" />

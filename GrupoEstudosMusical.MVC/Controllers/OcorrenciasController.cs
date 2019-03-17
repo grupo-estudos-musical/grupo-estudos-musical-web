@@ -24,6 +24,11 @@ namespace GrupoEstudosMusical.MVC.Controllers
         public ActionResult Index(int AlunoId)
         {
             var ocorrenciasDoAlunoVm = Mapper.Map<IList<Ocorrencia>, IList<OcorrenciaVM>>(_bussinesOcorrencia.ObterOcorrenciasPorAluno(AlunoId));
+            if (ocorrenciasDoAlunoVm.Count == 0)
+            {
+                TempData["Mensagem"] = "Este aluno não possui ocorrência!";
+                return RedirectToAction("VisaoGeral", "Alunos", new { Id = AlunoId });
+            }
             ViewBag.IDALUNO = AlunoId;
             return View(ocorrenciasDoAlunoVm);
         }

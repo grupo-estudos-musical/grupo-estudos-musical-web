@@ -47,9 +47,9 @@ namespace GrupoEstudosMusical.Bussines
             }
         }
 
-        public List<Turma> ObterTurmasDoAluno(int IdAluno)
+        public async Task<List<Turma>> ObterTurmasDoAluno(int IdAluno)
         {
-            var matriculas = _bussinesMatricula.ObterTurmasDoAluno(IdAluno);
+            var matriculas = await _bussinesMatricula.ObterMatriculasPorAluno(IdAluno);
 
             var turmas = new List<Turma>();
 
@@ -60,9 +60,7 @@ namespace GrupoEstudosMusical.Bussines
 
             return turmas;
         }
-            
 
-
-
+        public IList<Turma> ObterTurmasAtivasPorModulo(int moduloId) => _repositoryTurma.ObterTurmasAtivasPorModulo(moduloId);
     }
 }

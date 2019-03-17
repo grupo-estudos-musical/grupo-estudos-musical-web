@@ -3,9 +3,8 @@ using GrupoEstudosMusical.Bussines.Exceptions;
 using GrupoEstudosMusical.Models.Entities;
 using GrupoEstudosMusical.Models.Interfaces.Bussines;
 using GrupoEstudosMusical.MVC.Models;
-using MySql.Data.MySqlClient;
-using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -106,9 +105,23 @@ namespace GrupoEstudosMusical.MVC.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-
-
-
+        [HttpGet]
+        public ActionResult TurmasAtivas(int moduloId)
+        {
+            var turmas = _bussinesTurma.ObterTurmasAtivasPorModulo(moduloId).ToList();
+            var turmasMatricula = new List<TurmasMatriculaVM>();
+            turmas.ForEach(turma =>
+            {
+                turmasMatricula.Add(new TurmasMatriculaVM
+                {
+                    Id = turma.Id,
+                    Nome = turma.Nome,
+                    QuantidadeAlunos = turma.QuantidadeAlunos,
+                    QuantidadeMatriculas = turma.Matriculas.Count
+                });
+            });
+            return Json(turmasMatricula, JsonRequestBehavior.AllowGet);
+        }
 
     }
 }

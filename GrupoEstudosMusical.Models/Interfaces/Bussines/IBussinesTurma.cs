@@ -1,11 +1,12 @@
 ﻿using GrupoEstudosMusical.Models.Entities;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace GrupoEstudosMusical.Models.Interfaces.Bussines
 {
     public interface IBussinesTurma : IBussinesGeneric<Turma>
     {
-        List<Turma> ObterTurmasDoAluno(int IdAluno);
-        
+        Task<List<Turma>> ObterTurmasDoAluno(int IdAluno);
+        IList<Turma> ObterTurmasAtivasPorModulo(int moduloId);
     }
 }

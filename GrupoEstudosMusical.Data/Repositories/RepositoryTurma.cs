@@ -4,8 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Dapper;
-using System;
 
 namespace GrupoEstudosMusical.Data.Repositories
 {
@@ -26,7 +24,10 @@ namespace GrupoEstudosMusical.Data.Repositories
         public Turma VerificarExistenciaDaTurmaPorNomePeriodoSemestre(string nomeTurma, int periodo, int semestre, int Id) =>
             DbSet.Where(t => t.Nome == nomeTurma & t.Periodo==periodo & t.Semestre==semestre & t.Id !=Id ).FirstOrDefault();
 
-         
-           
+        public IList<Turma> ObterTurmasAtivasPorModulo(int moduloId) => 
+            DbSet
+                .Include(t => t.Matriculas)
+                .Where(t => t.Status == "Ativo" && t.ModuloID == moduloId)
+                .ToList();
     }
 }

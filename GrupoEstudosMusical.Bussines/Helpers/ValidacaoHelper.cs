@@ -8,7 +8,7 @@ namespace GrupoEstudosMusical.Bussines.Helpers
         {
             if (string.IsNullOrEmpty(valor))
             {
-                throw new System.Exception("String não pode ser nulo ou vazio")
+                throw new System.Exception("String não pode ser nulo ou vazio");
             }
         }
 		

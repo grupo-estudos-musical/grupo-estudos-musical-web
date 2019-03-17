@@ -52,6 +52,10 @@ namespace GrupoEstudosMusical.Data.Mappings
                 .HasColumnType("varchar(180)")
                 .IsRequired();
 
+            builder.Property(a => a.Numero)
+                .HasColumnType("varchar(10)")
+                .IsRequired();
+
             builder.Property(a => a.Complemento)
                 .HasColumnType("varchar(50)");
 
