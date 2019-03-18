@@ -1,0 +1,57 @@
+﻿@model GrupoEstudosMusical.MVC.Models.AvaliacaoVM
+@{
+    Layout = null;
+}
+
+
+@Html.AntiForgeryToken()
+<div class="col-lg-12">
+    <section class="box ">
+        <header class="panel_header">
+            <h2 class="title pull-left">Informações da Avaliação</h2>
+            <div class="actions panel_actions pull-right">
+                <a class="box_toggle fa fa-chevron-down"></a>
+                <a class="box_close fa fa-times"></a>
+            </div>
+        </header>
+        <div class="content-body">
+            @Html.Partial("_MensagemErro")
+            @Html.HiddenFor(model => model.Id)
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "form-label" })
+                        <div class="controls">
+                            @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.NotaMaxima, htmlAttributes: new { @class = "form-label" })
+                        <div class="controls">
+                            @Html.EditorFor(model => model.NotaMaxima, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Peso, htmlAttributes: new { @class = "form-label" })
+                        <div class="controls">
+                            @Html.EditorFor(model => model.Peso, new { htmlAttributes = new { @class = "form-control"  } })
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-xs-12">
+                    <div class="pull-right ">
+                        <input type="submit" class="btn btn-success" value="Salvar">
+                        <!-- <button type="submit" class="btn btn-success">Salvar</button> -->
+                        @*<a type="button" class="btn" href="@Url.Action("VisaoGeral", "Alunos", new { id = Model.AlunoID})">Cancelar</a>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
