@@ -146,6 +146,7 @@
   <ItemGroup>
     <Compile Include="Context\GemContext.cs" />
     <Compile Include="Mappings\AlunoMap.cs" />
+    <Compile Include="Mappings\AvaliacaoMap.cs" />
     <Compile Include="Mappings\MatriculaMap.cs" />
     <Compile Include="Mappings\ModuloMap.cs" />
     <Compile Include="Mappings\OcorrenciaMap.cs" />
@@ -222,6 +223,10 @@
     <Compile Include="Migrations\20190316180931_AdicionandoCampoNumeroAluno.cs" />
     <Compile Include="Migrations\20190316180931_AdicionandoCampoNumeroAluno.designer.cs">
       <DependentUpon>20190316180931_AdicionandoCampoNumeroAluno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20190318203730_Create Avaliacoes das turmasaa.cs" />
+    <Compile Include="Migrations\20190318203730_Create Avaliacoes das turmasaa.designer.cs">
+      <DependentUpon>20190318203730_Create Avaliacoes das turmasaa.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\GemContextModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

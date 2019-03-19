@@ -244,6 +244,7 @@
     <Compile Include="AutoMapper\DomainToViewModelMappingProfile.cs" />
     <Compile Include="AutoMapper\ViewModelToDomainMappingProfile.cs" />
     <Compile Include="Controllers\AlunosController.cs" />
+    <Compile Include="Controllers\AvaliacaoController.cs" />
     <Compile Include="Controllers\CepController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MatriculasController.cs" />
@@ -256,6 +257,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AlunoVM.cs" />
+    <Compile Include="Models\AvaliacaoVM.cs" />
     <Compile Include="Models\DocumentosApresentadosVM.cs" />
     <Compile Include="Models\MatriculaListaVM.cs" />
     <Compile Include="Models\MatriculaVM.cs" />
@@ -383,6 +385,8 @@
     <Content Include="Views\Shared\_VisaoGeralAlunoMenu.cshtml" />
     <Content Include="Relatorios\ocorrencias.frx" />
     <Content Include="Views\Relatorios\Index.cshtml" />
+    <Content Include="Views\Avaliacao\Novo.cshtml" />
+    <Content Include="Views\Shared\_CamposAvaliacao.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GrupoEstudosMusical.Bussines\GrupoEstudosMusical.Bussines.csproj">

@@ -28,7 +28,7 @@ namespace GrupoEstudosMusical.Bussines
         public void VerificaExistenciaDoModuloPorNome(string nomeModulo, int Id)
         {
             var moduloFiltrado = _repositoryModulo.VerificaExistenciaDoModuloPorNome(nomeModulo,Id);
-            if (moduloFiltrado != null) throw new ArgumentException("Já existe um módulo cadastrado com este nome!");
+            if (moduloFiltrado != null) throw new ArgumentException("Já existe um módulo cadastrado com este nome!", nameof(nomeModulo));
         }
             
         

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using GrupoEstudosMusical.Bussines.Exceptions;
 using GrupoEstudosMusical.Bussines.Helpers;
 using GrupoEstudosMusical.Models.Entities;
 using GrupoEstudosMusical.Models.Interfaces.Bussines;
@@ -18,7 +19,16 @@ namespace GrupoEstudosMusical.Bussines
 
         public override Task InserirAsync(Avaliacao entity)
         {
+            ValidarAvaliacao(entity);
+            VerificaExistenciaDeAvaliacao(entity.Nome, entity.Id);
             return base.InserirAsync(entity);
+        }
+
+        public override Task AlterarAsync(Avaliacao entity)
+        {
+            ValidarAvaliacao(entity);
+            VerificaExistenciaDeAvaliacao(entity.Nome, entity.Id);
+            return base.AlterarAsync(entity);
         }
 
         void ValidarAvaliacao(Avaliacao avaliacao)
@@ -27,12 +37,20 @@ namespace GrupoEstudosMusical.Bussines
                 throw new Exception("Avaliação não pode ser nula");
             }
             ValidacaoHelper.ValidaString(avaliacao.Nome);
+            ValidarNumeros(avaliacao.NotaMaxima);
+            ValidarNumeros(avaliacao.Peso);
         }
 
-        void Validar(double avaliacao)
+        public void VerificaExistenciaDeAvaliacao(string nomeAvaliacao, int Id)
         {
-            if (avaliacao <= 0)
-                throw new Exception("A nota máxima tem que ser superior a 0");
+            var avaliacao = _repositoryAvaliacao.VerificaExistenciaDeAvaliacao(nomeAvaliacao, Id);
+            if (avaliacao != null) throw new CrudAvaliacaoException($"Já existe uma avaliação criada com o nome {nomeAvaliacao} !");
+        }
+
+        void ValidarNumeros(double valor)
+        {
+            if (valor <=  0)
+                throw new CrudAvaliacaoException($"O campo  tem que ser superior a 0");
         }
     }
 }
