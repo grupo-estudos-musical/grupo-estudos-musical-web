@@ -43,6 +43,44 @@ $(document).ready(function() {
 
         });
 
+        $('#avaliacao_validate').validate({
+            focusInvalid: false,
+            ignore: "",
+            rules: {
+                Nome: {
+                    maxlength: 100,
+                    required: true
+                },
+                NotaMaxima: {
+                    required: true,
+                    maxlength: 300,
+                    minlength: 1
+                },
+                Peso: {
+                    required: true,
+                    maxlength: 10,
+                    minlength : 1
+                }
+
+
+            },
+
+
+            highlight: function (element) { // hightlight error inputs
+                var parent = $(element).parent().parent('.form-group');
+                parent.removeClass('has-success').addClass('has-error');
+            },
+
+            // unhighlight: function(element) { // revert the change done by hightlight
+
+            // },
+
+            success: function (label, element) {
+                var parent = $(element).parent().parent('.form-group');
+                parent.removeClass('has-error').addClass('has-success');
+            },
+
+        });
 
 
 

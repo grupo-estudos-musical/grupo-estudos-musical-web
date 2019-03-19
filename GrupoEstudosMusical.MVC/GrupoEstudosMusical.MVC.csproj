@@ -244,7 +244,7 @@
     <Compile Include="AutoMapper\DomainToViewModelMappingProfile.cs" />
     <Compile Include="AutoMapper\ViewModelToDomainMappingProfile.cs" />
     <Compile Include="Controllers\AlunosController.cs" />
-    <Compile Include="Controllers\AvaliacaoController.cs" />
+    <Compile Include="Controllers\AvaliacoesController.cs" />
     <Compile Include="Controllers\CepController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MatriculasController.cs" />
@@ -385,8 +385,13 @@
     <Content Include="Views\Shared\_VisaoGeralAlunoMenu.cshtml" />
     <Content Include="Relatorios\ocorrencias.frx" />
     <Content Include="Views\Relatorios\Index.cshtml" />
-    <Content Include="Views\Avaliacao\Novo.cshtml" />
+    <Content Include="Views\Teste\Novo.cshtml" />
     <Content Include="Views\Shared\_CamposAvaliacao.cshtml" />
+    <Content Include="Views\Teste\Index.cshtml" />
+    <Content Include="Views\Shared\_ListaAvaliacoes.cshtml" />
+    <Content Include="Views\Avaliacoes\Novo.cshtml" />
+    <Content Include="Views\Avaliacoes\Index.cshtml" />
+    <Content Include="Views\Avaliacoes\Editar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GrupoEstudosMusical.Bussines\GrupoEstudosMusical.Bussines.csproj">
