@@ -17,7 +17,9 @@ function selecionarModulo(event) {
 
     let moduloId = btn.attr('modulo-id');
     inputModuloId.val(moduloId);
-    obterTurmasPorModulo(moduloId);
+
+    let idAluno = $('#AlunoId').val();
+    obterTurmasPorModulo(moduloId, idAluno);
 }
 
 function selecionarBotao(elementoClicado, inputId, atributoElemento) {
@@ -84,14 +86,14 @@ function confirmarModal() {
     submeterFormularioMatricula();
 }
 
-function obterTurmasPorModulo(idModulo) {
+function obterTurmasPorModulo(idModulo, idAluno) {
     
     $.ajax({
-        url: '/Turmas/TurmasAtivas?moduloId=' + idModulo,
+        url: '/Turmas/TurmasAtivas?moduloId=' + idModulo + '&alunoId=' + idAluno,
         method: 'GET'
     }).done(function (data) {
+        console.log(data);
         exibirTurmas(data);
-        
     }).fail(function (error) {
         console.log('Não foi possível obter turmas.');
     });
@@ -121,6 +123,11 @@ function exibirTurmas(dados) {
             btnTurma.append($('<br>'));
             btnTurma.append($('<br>'));
             btnTurma.append(`Alunos ${turma.QuantidadeMatriculas}/${turma.QuantidadeAlunos}`);
+            if (turma.AlunoMatriculado) {
+                btnTurma.attr('disabled', 'disabled');
+                btnTurma.removeClass('btn-primary');
+                btnTurma.addClass('btn-danger');
+            }
             divTurma.append(btnTurma);
             linha.append(divTurma);
         }

@@ -3,8 +3,10 @@ using GrupoEstudosMusical.Bussines.Exceptions;
 using GrupoEstudosMusical.Models.Entities;
 using GrupoEstudosMusical.Models.Interfaces.Bussines;
 using GrupoEstudosMusical.MVC.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -106,21 +108,29 @@ namespace GrupoEstudosMusical.MVC.Controllers
         }
 
         [HttpGet]
-        public ActionResult TurmasAtivas(int moduloId)
+        public ActionResult TurmasAtivas(int moduloId, int alunoId)
         {
-            var turmas = _bussinesTurma.ObterTurmasAtivasPorModulo(moduloId).ToList();
-            var turmasMatricula = new List<TurmasMatriculaVM>();
-            turmas.ForEach(turma =>
+            try
             {
-                turmasMatricula.Add(new TurmasMatriculaVM
+                var turmas = _bussinesTurma.ObterTurmasAtivasPorModulo(moduloId).ToList();
+                var turmasMatricula = new List<TurmasMatriculaVM>();
+                turmas.ForEach(turma =>
                 {
-                    Id = turma.Id,
-                    Nome = turma.Nome,
-                    QuantidadeAlunos = turma.QuantidadeAlunos,
-                    QuantidadeMatriculas = turma.Matriculas.Count
+                    turmasMatricula.Add(new TurmasMatriculaVM
+                    {
+                        Id = turma.Id,
+                        Nome = turma.Nome,
+                        QuantidadeAlunos = turma.QuantidadeAlunos,
+                        QuantidadeMatriculas = turma.Matriculas.Count,
+                        AlunoMatriculado = turma.Matriculas.Any(m => m.AlunoId == alunoId)
+                    });
                 });
-            });
-            return Json(turmasMatricula, JsonRequestBehavior.AllowGet);
+                return Json(turmasMatricula, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.InternalServerError);
+            }
         }
 
     }

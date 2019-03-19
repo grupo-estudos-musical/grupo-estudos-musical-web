@@ -3,14 +3,16 @@ using System;
 using GrupoEstudosMusical.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GrupoEstudosMusical.Data.Migrations
 {
     [DbContext(typeof(GemContext))]
-    partial class GemContextModelSnapshot : ModelSnapshot
+    [Migration("20190319182042_AdicionandoCampoNumeroProfessor")]
+    partial class AdicionandoCampoNumeroProfessor
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -52,7 +54,7 @@ namespace GrupoEstudosMusical.Data.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(50)");
 
-                    b.Property<string>("Logradouro")
+                    b.Property<string>("Endereco")
                         .IsRequired()
                         .HasColumnType("varchar(180)");
 
@@ -227,7 +229,7 @@ namespace GrupoEstudosMusical.Data.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(50)");
 
-                    b.Property<string>("Logradouro")
+                    b.Property<string>("Endereco")
                         .IsRequired()
                         .HasColumnType("varchar(180)");
 
