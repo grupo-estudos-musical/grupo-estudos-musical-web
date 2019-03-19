@@ -106,7 +106,7 @@ namespace GrupoEstudosMusical.MVC.Controllers
         }
 
         [HttpGet]
-        public ActionResult TurmasAtivas(int moduloId)
+        public ActionResult TurmasAtivas(int moduloId, int alunoId)
         {
             var turmas = _bussinesTurma.ObterTurmasAtivasPorModulo(moduloId).ToList();
             var turmasMatricula = new List<TurmasMatriculaVM>();
@@ -117,7 +117,8 @@ namespace GrupoEstudosMusical.MVC.Controllers
                     Id = turma.Id,
                     Nome = turma.Nome,
                     QuantidadeAlunos = turma.QuantidadeAlunos,
-                    QuantidadeMatriculas = turma.Matriculas.Count
+                    QuantidadeMatriculas = turma.Matriculas.Count,
+                    AlunoMatriculado = turma.Matriculas.Any(m => m.AlunoId == alunoId)
                 });
             });
             return Json(turmasMatricula, JsonRequestBehavior.AllowGet);
