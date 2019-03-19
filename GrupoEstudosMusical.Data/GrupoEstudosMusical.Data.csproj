@@ -228,6 +228,18 @@
     <Compile Include="Migrations\20190318203730_Create Avaliacoes das turmasaa.designer.cs">
       <DependentUpon>20190318203730_Create Avaliacoes das turmasaa.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20190319182042_AdicionandoCampoNumeroProfessor.cs" />
+    <Compile Include="Migrations\20190319182042_AdicionandoCampoNumeroProfessor.designer.cs">
+      <DependentUpon>20190319182042_AdicionandoCampoNumeroProfessor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20190319182226_AlterandoCampoEnderecoParaLogradouroProfessor.cs" />
+    <Compile Include="Migrations\20190319182226_AlterandoCampoEnderecoParaLogradouroProfessor.designer.cs">
+      <DependentUpon>20190319182226_AlterandoCampoEnderecoParaLogradouroProfessor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20190319183027_AlterandoCampoEnderecoParaLogradouroAluno.cs" />
+    <Compile Include="Migrations\20190319183027_AlterandoCampoEnderecoParaLogradouroAluno.designer.cs">
+      <DependentUpon>20190319183027_AlterandoCampoEnderecoParaLogradouroAluno.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\GemContextModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\RepositoryAluno.cs" />

@@ -48,7 +48,7 @@ namespace GrupoEstudosMusical.Data.Mappings
             builder.Property(a => a.Cep)
                 .HasColumnType("varchar(9)");
 
-            builder.Property(a => a.Endereco)
+            builder.Property(a => a.Logradouro)
                 .HasColumnType("varchar(180)")
                 .IsRequired();
 
