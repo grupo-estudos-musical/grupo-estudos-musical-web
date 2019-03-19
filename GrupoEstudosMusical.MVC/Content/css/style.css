@@ -8237,3 +8237,7 @@ table.dataTable.display tbody tr:first-child td {
 .imagem-centralizada {
     text-align: center;
 }
+
+.campo-text-area {
+    resize: none;
+}
