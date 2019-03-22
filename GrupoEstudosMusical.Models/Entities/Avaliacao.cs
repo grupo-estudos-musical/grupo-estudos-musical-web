@@ -1,5 +1,8 @@
 ﻿
 
+using System.Collections;
+using System.Collections.Generic;
+
 namespace GrupoEstudosMusical.Models.Entities
 {
     public class Avaliacao: BaseEntity
@@ -13,5 +16,6 @@ namespace GrupoEstudosMusical.Models.Entities
         public string Nome { get; private set; }
         public double NotaMaxima { get; private set; }
         public int Peso { get; private set; }
+        public List<AvaliacaoTurma> AvaliacoesTurmas { get; set; }
     }
 }

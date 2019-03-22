@@ -20,6 +20,8 @@ namespace GrupoEstudosMusical.Models.Entities
         public List<Matricula> Matriculas { get; set; }
         public List<Ocorrencia> Ocorrencias { get; set; }
 
+        public List<AvaliacaoTurma> AvaliacoesTurmas { get; set; }
+
         public bool VerificarQuantidadeDeAlunosMatriculados() => Matriculas.Count < QuantidadeAlunos;
     }
 }

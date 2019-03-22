@@ -17,11 +17,14 @@ namespace GrupoEstudosMusical.MVC.Controllers
         private readonly IBussinesTurma _bussinesTurma;
         private readonly IBussinesModulo _bussinesModulo;
         private readonly IBussinesProfessor _bussinesProfessor;
-        public TurmasController(IBussinesTurma bussinesTurma, IBussinesModulo bussinesModulo, IBussinesProfessor bussinesProfessor)
+        private readonly IBussinesAvaliacaoTurma _bussinesAvaliacaoTurma;
+        public TurmasController(IBussinesTurma bussinesTurma, IBussinesModulo bussinesModulo, IBussinesProfessor bussinesProfessor,
+            IBussinesAvaliacaoTurma bussinesAvaliacaoTurma)
         {
             _bussinesTurma = bussinesTurma;
             _bussinesModulo = bussinesModulo;
             _bussinesProfessor = bussinesProfessor;
+            _bussinesAvaliacaoTurma = bussinesAvaliacaoTurma;
         }
         // GET: Turmas
         public async Task<ActionResult> Index()
@@ -31,13 +34,25 @@ namespace GrupoEstudosMusical.MVC.Controllers
             return View(turmasViewModel);
 
         }
-        
+
+        public async Task<ActionResult> VisaoGeral(int Id)
+        {
+            var obterDadosDaTurma = Mapper.Map<Turma, TurmaVM>(await _bussinesTurma.ObterPorIdAsync(Id));
+            if (obterDadosDaTurma == null)
+                return HttpNotFound();
+            return View(obterDadosDaTurma);
+        }
+
         public async Task<ActionResult> Novo()
         {
             await InicializarViewBagAsync();
             return View(new TurmaVM());
         }
 
+        public ActionResult AdicionarAvaliacao(int Id)
+        {
+            return View(new AvaliacaoTurmaVM() { TurmaID = Id});
+        }
         public async Task<ActionResult> Editar(int Id)
         {
             await InicializarViewBagAsync();

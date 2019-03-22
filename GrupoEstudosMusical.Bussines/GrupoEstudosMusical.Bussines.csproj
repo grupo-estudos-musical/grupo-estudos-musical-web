@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="BussinesAluno.cs" />
     <Compile Include="BussinesAvaliacao.cs" />
+    <Compile Include="BussinesAvaliacaoTurma.cs" />
     <Compile Include="BussinesGeneric.cs" />
     <Compile Include="BussinesModulo.cs" />
     <Compile Include="BussinesOcorrencia.cs" />

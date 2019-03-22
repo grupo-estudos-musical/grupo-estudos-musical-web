@@ -147,6 +147,7 @@
     <Compile Include="Context\GemContext.cs" />
     <Compile Include="Mappings\AlunoMap.cs" />
     <Compile Include="Mappings\AvaliacaoMap.cs" />
+    <Compile Include="Mappings\AvaliacaoTurmaMap.cs" />
     <Compile Include="Mappings\MatriculaMap.cs" />
     <Compile Include="Mappings\ModuloMap.cs" />
     <Compile Include="Mappings\OcorrenciaMap.cs" />
@@ -240,10 +241,19 @@
     <Compile Include="Migrations\20190319183027_AlterandoCampoEnderecoParaLogradouroAluno.designer.cs">
       <DependentUpon>20190319183027_AlterandoCampoEnderecoParaLogradouroAluno.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20190322160716_Criacao da avTurmas.cs" />
+    <Compile Include="Migrations\20190322160716_Criacao da avTurmas.designer.cs">
+      <DependentUpon>20190322160716_Criacao da avTurmas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20190322161524_Remoção do Id da AvaliacaoTurma.cs" />
+    <Compile Include="Migrations\20190322161524_Remoção do Id da AvaliacaoTurma.designer.cs">
+      <DependentUpon>20190322161524_Remoção do Id da AvaliacaoTurma.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\GemContextModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\RepositoryAluno.cs" />
     <Compile Include="Repositories\RepositoryAvaliacao.cs" />
+    <Compile Include="Repositories\RepositoryAvaliacaoTurma.cs" />
     <Compile Include="Repositories\RepositoryGeneric.cs" />
     <Compile Include="Repositories\RepositoryMatricula.cs" />
     <Compile Include="Repositories\RepositoryModulo.cs" />

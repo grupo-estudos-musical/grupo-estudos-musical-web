@@ -13,11 +13,14 @@ namespace GrupoEstudosMusical.MVC.Controllers
     public class AvaliacoesController : Controller
     {
         // GET: Avaliacao
-        public AvaliacoesController(IBussinesAvaliacao bussinesAvaliacao)
+        public AvaliacoesController(IBussinesAvaliacao bussinesAvaliacao
+            , IBussinesAvaliacaoTurma bussinesAvaliacaoTurma)
         {
             this._bussinesAvaliacao = bussinesAvaliacao;
+            this._bussinesAvaliacaoTurma = bussinesAvaliacaoTurma;
         }
         readonly IBussinesAvaliacao _bussinesAvaliacao;
+        readonly IBussinesAvaliacaoTurma _bussinesAvaliacaoTurma;
         public async Task<ActionResult> Index()
         {
             var avaliacoes = await _bussinesAvaliacao.ObterTodosAsync();
@@ -83,6 +86,15 @@ namespace GrupoEstudosMusical.MVC.Controllers
             await _bussinesAvaliacao.DeletarAsync(ocorrenciaModel);
             TempData["Mensagem"] = "Avaliação apagada com sucesso.";
             return RedirectToAction("Index");
+        }
+
+        public ActionResult AvaliacoesDaTurma(int Id)
+        {
+            ViewBag.Model = new AvaliacaoTurmaVM() { TurmaID = Id };
+            ViewBag.Id = Id;
+            var avaliacoes = Mapper.Map<IList<AvaliacaoTurma>, IList<AvaliacaoTurmaVM>>(_bussinesAvaliacaoTurma.ObterPelaTurma(Id));
+
+            return View(avaliacoes);
         }
     }
 }
