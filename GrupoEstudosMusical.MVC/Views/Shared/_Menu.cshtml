@@ -104,6 +104,21 @@
                     </li>
                 </ul>
             </li>
+            <li class="@(controller == "Avaliacoes" ? "open" : "" )">
+                <a href="javascript:;">
+                    <i class="fa fa-file"></i>
+                    <span class="title">Avaliações</span>
+                    <span class="arrow "></span>
+                </a>
+                <ul class="sub-menu" style="@(controller == "Avaliacoes" ? "display-block" : "" )">
+                    <li>
+                        <a class="@(rota == "/Avaliacoes/Index" || rota == "/Avaliacoes" ? "active" : "" )" href="@Url.Action("Index", "Avaliacoes")">Todas Avaliações</a>
+                    </li>
+                    <li>
+                        <a class="@(rota == "/Avaliacoes/Novo" ? "active" : "" )" href="@Url.Action("Novo", "Avaliacoes")">Cadastrar Avaliação</a>
+                    </li>
+                </ul>
+            </li>
             <li class="">
                 <a href="javascript:;">
                     <i class="fa fa-bar-chart"></i>

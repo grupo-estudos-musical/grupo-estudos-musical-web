@@ -66,7 +66,7 @@ namespace GrupoEstudosMusical.MVC.Controllers
         public async Task<ActionResult> Novo(int AlunoId)
         {
             await InicializarViewBagAsync();
-            ViewBag.Turmas = _bussinesTurma.ObterTurmasDoAluno(AlunoId);
+            ViewBag.Turmas = await _bussinesTurma.ObterTurmasDoAluno(AlunoId);
             
 
             return View(new OcorrenciaVM() { AlunoID = AlunoId });
