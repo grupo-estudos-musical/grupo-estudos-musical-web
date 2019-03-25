@@ -4,7 +4,9 @@ using GrupoEstudosMusical.Bussines.Exceptions;
 using GrupoEstudosMusical.Models.Entities;
 using GrupoEstudosMusical.Models.Interfaces.Bussines;
 using GrupoEstudosMusical.MVC.Models;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -88,13 +90,31 @@ namespace GrupoEstudosMusical.MVC.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult AvaliacoesDaTurma(int Id)
+        public async Task<ActionResult> AvaliacoesDaTurma(int Id, string NomeTurma)
         {
-            ViewBag.Model = new AvaliacaoTurmaVM() { TurmaID = Id };
-            ViewBag.Id = Id;
+            var avaliacoesVM = Mapper.Map<IList<Avaliacao>, IList<AvaliacaoVM>>(await _bussinesAvaliacao.ObterTodosAsync());
+            ViewBag.Model = new AvaliacaoTurmaVM() { TurmaID = Id, AvaliacoesDisponiveis = avaliacoesVM.ToList(), NomeTurma = NomeTurma };
             var avaliacoes = Mapper.Map<IList<AvaliacaoTurma>, IList<AvaliacaoTurmaVM>>(_bussinesAvaliacaoTurma.ObterPelaTurma(Id));
-
+            ViewBag.NomeTurma = NomeTurma;
             return View(avaliacoes);
         }
+
+
+        [HttpPost]
+        public async Task<JsonResult> AdicionarAvaliacaoNaTurma(AvaliacaoTurmaVM avaliacao)
+        {
+            try
+            {
+                var avaliacaoTurmaModel = Mapper.Map<AvaliacaoTurmaVM, AvaliacaoTurma>(avaliacao);
+                await _bussinesAvaliacaoTurma.InserirAsync(avaliacaoTurmaModel);
+                return Json(new { Ok = true},JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception)
+            {
+                return Json(new { Ok = false }, JsonRequestBehavior.AllowGet);
+            }
+        }
+           
+            
     }
 }

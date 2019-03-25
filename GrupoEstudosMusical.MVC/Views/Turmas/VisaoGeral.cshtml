@@ -26,9 +26,9 @@
 
 @Html.Hidden("mensagem", TempData["Mensagem"])
 
-@Html.Partial("_VisaoGeralTurma", new ViewDataDictionary { { "titulo", "Avaliações" }, { "link", @Url.Action("AvaliacoesDaTurma", "Avaliacoes", new { id = Model.Id }) }, { "imagem", "/Content/images/exam.png" }, { "alt", "avaliacoes" } })
+@Html.Partial("_VisaoGeralTurma", new ViewDataDictionary { { "titulo", "Avaliações" }, { "link", @Url.Action("AvaliacoesDaTurma", "Avaliacoes", new { id = Model.Id, NomeTurma = Model.Nome }) }, { "imagem", "/Content/images/check-mark.png" }, { "alt", "avaliacoes" } })
 
-@Html.Partial("_VisaoGeralTurma", new ViewDataDictionary { { "titulo", "Editar Turma" }, { "link", @Url.Action("Editar", "Turmas", new { id = Model.Id }) }, { "imagem", "/Content/images/pencil.png" }, { "alt", "Editar Turmas" } })
+@Html.Partial("_VisaoGeralTurma", new ViewDataDictionary { { "titulo", "Editar Turma" }, { "link", @Url.Action("Editar", "Turmas", new { id = Model.Id }) }, { "imagem", "/Content/images/document.png" }, { "alt", "Editar Turmas" } })
 
 
 @section styles {

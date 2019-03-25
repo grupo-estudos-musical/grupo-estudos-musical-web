@@ -49,10 +49,6 @@ namespace GrupoEstudosMusical.MVC.Controllers
             return View(new TurmaVM());
         }
 
-        public ActionResult AdicionarAvaliacao(int Id)
-        {
-            return View(new AvaliacaoTurmaVM() { TurmaID = Id});
-        }
         public async Task<ActionResult> Editar(int Id)
         {
             await InicializarViewBagAsync();

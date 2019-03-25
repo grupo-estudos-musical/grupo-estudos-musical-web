@@ -3,7 +3,7 @@
     Layout = null;
 }
 
-<div class="modal fade" id="cmpltadminModal-8">
+<div class="modal fade" id="modalAvaliacaoDaTurma">
     <div class="modal-dialog">
         <div class="modal-content">
 
@@ -15,14 +15,57 @@
 
             <div class="modal-body">
 
-                Content is loading...
+                @using (Ajax.BeginForm("AdicionarAvaliacaoNaTurma","Avaliacoes", new AjaxOptions {HttpMethod= "POST",
+                    OnSuccess = "OnSuccess"
+                })) { 
+                    @Html.HiddenFor(a => a.TurmaID)
+                    @Html.HiddenFor(a => a.NomeTurma)
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="form-group">
+                                <label class="form-label">Avaliação</label>
+                                <div class="controls">
+                                    @Html.DropDownListFor(m => m.AvaliacaoID, new SelectList(Model.AvaliacoesDisponiveis, "Id", "Nome"), new { @class = "form-control m-bot15" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.DataPrevista, htmlAttributes: new { @class = "form-label" })
+                                <div class="controls">
+                                    @Html.EditorFor(model => model.DataPrevista, new { htmlAttributes = new { @class = "form-control datepicker", @data_format = "dd/mm/yyyy" } })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.DataRealizacao, htmlAttributes: new { @class = "form-label" })
+                                <div class="controls">
+                                    @Html.EditorFor(model => model.DataRealizacao, new { htmlAttributes = new { @class = "form-control datepicker", @data_format = "dd/mm/yyyy" } })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-white" data-dismiss="modal">Fechar</button>
+                        <button type="submit" class="btn btn-success">Salvar</button>
+                    </div>
+                }
 
             </div>
 
-            <div class="modal-footer">
-                <button type="button" class="btn btn-white" data-dismiss="modal">Fecha</button>
-                <button type="button" class="btn btn-info">Salvar Alterações</button>
-            </div>
         </div>
     </div>
 </div>
+
+<script>
+    function OnSuccess(response) {
+        if (response && response.Ok == true) {
+            console.log("Deu certo to aqui");
+            $("#modalAvaliacaoDaTurma").modal("hide");
+            swal("Sucesso", "Avaliação adicionada", "success", function () {
+                location.reload();
+            });
+      
+        } else {
+            console.log("Não estou aqui");
+        }
+    }
+</script>

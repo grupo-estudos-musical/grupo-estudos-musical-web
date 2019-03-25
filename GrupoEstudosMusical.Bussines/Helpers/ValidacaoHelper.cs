@@ -11,6 +11,8 @@ namespace GrupoEstudosMusical.Bussines.Helpers
                 throw new System.Exception("String não pode ser nulo ou vazio");
             }
         }
+
+        
 		
     }
 }
