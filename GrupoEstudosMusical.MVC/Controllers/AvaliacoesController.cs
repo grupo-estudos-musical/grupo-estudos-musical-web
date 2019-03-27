@@ -100,21 +100,50 @@ namespace GrupoEstudosMusical.MVC.Controllers
         }
 
 
+
+        
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<JsonResult> AdicionarAvaliacaoNaTurma(AvaliacaoTurmaVM avaliacao)
         {
             try
             {
                 var avaliacaoTurmaModel = Mapper.Map<AvaliacaoTurmaVM, AvaliacaoTurma>(avaliacao);
                 await _bussinesAvaliacaoTurma.InserirAsync(avaliacaoTurmaModel);
-                return Json(new { Ok = true},JsonRequestBehavior.AllowGet);
+                return Json(new { Ok = true, ResponseMessage = "Avaliação adicionada!"},JsonRequestBehavior.AllowGet);
             }
-            catch (Exception)
+            catch (CrudAvaliacaoException ex)
             {
-                return Json(new { Ok = false }, JsonRequestBehavior.AllowGet);
+                return Json(new { Ok = false, ResponseMessage = ex.Message }, JsonRequestBehavior.AllowGet);
             }
         }
-           
+
+        public async  Task<ActionResult> EditarAvaliacaoDaTurma(int idAvaliacao, int idTurma)
+        {
+            var avaliacaoTurmaVM = Mapper.Map<AvaliacaoTurma, AvaliacaoTurmaVM>(_bussinesAvaliacaoTurma.ObterPorIds(idTurma, idAvaliacao));
+            avaliacaoTurmaVM.AvaliacoesDisponiveis = Mapper.Map<IList<Avaliacao>, IList<AvaliacaoVM>>(await _bussinesAvaliacao.ObterTodosAsync()).ToList();
+            return View(avaliacaoTurmaVM);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> EditarAvaliacaoDaTurma(AvaliacaoTurmaVM avaliacaoTurmaVM)
+        {
+            avaliacaoTurmaVM.AvaliacoesDisponiveis = Mapper.Map<IList<Avaliacao>, IList<AvaliacaoVM>>(await _bussinesAvaliacao.ObterTodosAsync()).ToList();
+            try
+            {
+                var avaliacaoTurmaModel = Mapper.Map<AvaliacaoTurmaVM, AvaliacaoTurma>(avaliacaoTurmaVM);
+
+                 await _bussinesAvaliacaoTurma.AlterarAsync(avaliacaoTurmaModel);
+
+                TempData["Mensagem"] = "Avaliação alterada com sucesso!";
+
+                return RedirectToAction("AvaliacoesDaTurma", new { Id = avaliacaoTurmaModel.TurmaID, NomeTurma = avaliacaoTurmaVM.NomeTurma });
+            }catch(CrudAvaliacaoException ex)
+            {
+                TempData["Mensagem"] = ex.Message;
+                return View(avaliacaoTurmaVM);
+            }
             
+        }
     }
 }

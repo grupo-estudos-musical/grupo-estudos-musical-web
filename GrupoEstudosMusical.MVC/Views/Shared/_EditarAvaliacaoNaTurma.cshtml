@@ -1,24 +1,23 @@
 ﻿@model GrupoEstudosMusical.MVC.Models.AvaliacaoTurmaVM
-@{
-    Layout = null;
-}
+
 <div class="modal fade" id="modalAvaliacaoDaTurma">
     <div class="modal-dialog">
         <div class="modal-content">
 
             <div class="modal-header">
-                <h4 class="modal-title">Adicionar Avaliação na turma</h4>
+                <h4 class="modal-title">Alterar Avaliação da turma</h4>
 
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
 
             <div class="modal-body">
-                @using (Ajax.BeginForm("AdicionarAvaliacaoNaTurma", "Avaliacoes", new AjaxOptions
+                @using (Ajax.BeginForm("EditarAvaliacaoNaTurma", "Avaliacoes", new AjaxOptions
                 {
                     HttpMethod = "POST",
                     OnSuccess = "OnSuccess"
                 }))
                 {
+                    @Html.HiddenFor(a => a.AvaliacaoID)
                     @Html.Partial("_AdicionarEAlterarAvaliacaoNaTurma", Model)
                 }
             </div>

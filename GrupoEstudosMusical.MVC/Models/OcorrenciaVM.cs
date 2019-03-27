@@ -26,16 +26,17 @@ namespace GrupoEstudosMusical.MVC.Models
         public string Resumo { get; set; }
 
 
-        public Turma Turma { get; set; }
+        public TurmaVM Turma { get; set; }
 
         [DisplayName("Turma")]
         public int TurmaID { get; set; }
 
-        public Aluno Aluno { get; set; }
+        public AlunoVM Aluno { get; set; }
 
         [DisplayName("Aluno")]
         public int AlunoID { get; set; }
 
         public List<Turma> Turmas { get; set; }
+   
     }
 }

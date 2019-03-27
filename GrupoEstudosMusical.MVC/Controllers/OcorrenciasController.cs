@@ -37,7 +37,7 @@ namespace GrupoEstudosMusical.MVC.Controllers
         {
             await InicializarViewBagAsync();
             var ocorrenciaVm = Mapper.Map<Ocorrencia, OcorrenciaVM>(await _bussinesOcorrencia.ObterPorIdAsync(Id));
-
+            
             if (ocorrenciaVm == null)
             {
                 return HttpNotFound();
@@ -59,7 +59,8 @@ namespace GrupoEstudosMusical.MVC.Controllers
             }
             catch (Exception ex)
             {
-                return View(ocorrencia);
+                throw new Exception("Tratar");
+                
             }
         }
 

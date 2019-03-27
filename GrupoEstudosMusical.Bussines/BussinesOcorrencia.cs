@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using GrupoEstudosMusical.Models.Entities;
 using GrupoEstudosMusical.Models.Interfaces.Bussines;
 using GrupoEstudosMusical.Models.Interfaces.Repository;
@@ -16,5 +17,6 @@ namespace GrupoEstudosMusical.Bussines
 
         public List<Ocorrencia> ObterOcorrenciasPorAluno(int AlunoId) => 
             _repositoryOcorrencia.ObterOcorrenciasPorAluno(AlunoId);
+        
     }
 }

@@ -309,6 +309,8 @@
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\js\app.js" />
+    <Content Include="Scripts\js\avaliacaoTurma.js" />
+    <Content Include="Scripts\js\avaliacoesDaTurmaIndex.js" />
     <Content Include="Scripts\js\detalhes-matricula.js" />
     <Content Include="Scripts\js\form-validation.js" />
     <Content Include="Scripts\js\jquery-1.11.2.min.js" />
@@ -405,7 +407,10 @@
     <Content Include="Views\Turmas\VisaoGeral.cshtml" />
     <Content Include="Views\Shared\_VisaoGeralTurma.cshtml" />
     <Content Include="Views\Avaliacoes\AvaliacoesDaTurma.cshtml" />
+    <Content Include="Views\Shared\_AdicionarEAlterarAvaliacaoNaTurma.cshtml" />
     <Content Include="Views\Shared\_AdicionarAvaliacaoNaTurma.cshtml" />
+    <Content Include="Views\Shared\_EditarAvaliacaoNaTurma.cshtml" />
+    <Content Include="Views\Avaliacoes\EditarAvaliacaoDaTurma.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GrupoEstudosMusical.Bussines\GrupoEstudosMusical.Bussines.csproj">

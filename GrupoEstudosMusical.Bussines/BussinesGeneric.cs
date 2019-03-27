@@ -20,7 +20,7 @@ namespace GrupoEstudosMusical.Bussines
 
         public virtual async Task InserirAsync(TEntity entity) => await _repository.InserirAsync(entity);
 
-        public async Task<TEntity> ObterPorIdAsync(int id) => await _repository.ObterPorIdAsync(id);
+        public virtual async Task<TEntity> ObterPorIdAsync(int id) => await _repository.ObterPorIdAsync(id);
 
         public async Task<IList<TEntity>> ObterTodosAsync() => await _repository.ObterTodosAsync();
 

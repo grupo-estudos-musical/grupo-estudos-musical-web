@@ -29,6 +29,17 @@ namespace GrupoEstudosMusical.Bussines
             return base.InserirAsync(entity);
         }
 
+        public override Task AlterarAsync(AvaliacaoTurma entity)
+        {
+            return base.AlterarAsync(entity);
+        }
+
+        public void VerificarSeDataAtualEhMaiorQueAsDemais(DateTime dataPrevista)
+        {
+            if (DateTime.Now > dataPrevista)
+                throw new CrudAvaliacaoException("A data atual não pode ser maior que a data prevista!");
+        }
+
         public void VerificarExistenciaDeAvaliacaoParaTurma(AvaliacaoTurma entity)
         {
             var verificaSeJaExisteAvaliacaoCriadaParaTurma = ObterPorIds(entity.TurmaID, entity.AvaliacaoID) != null ? true : false;

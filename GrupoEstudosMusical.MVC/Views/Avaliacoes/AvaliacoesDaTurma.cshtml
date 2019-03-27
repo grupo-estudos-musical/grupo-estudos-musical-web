@@ -36,6 +36,7 @@
             </div>
         </div>
     </div>
+
     <section class="box ">
         <header class="panel_header">
             <h2 class="title pull-left"> Avaliações da Turma @ViewBag.NomeTurma</h2>
@@ -45,7 +46,7 @@
             </div>
         </header>
         <div class="content-body">
-
+            @Html.Partial("_MensagemSucesso")
             <div class="row">
                 <div class="col-xs-12">
                     <table id="example-1" class="table table-striped dt-responsive display">
@@ -54,6 +55,7 @@
                                 <th>Nome Avaliação</th>
                                 <th>Data Prevista</th>
                                 <th>Data Realização</th>
+                                <th>Ações</th>
                             </tr>
                         </thead>
                         <tfoot>
@@ -61,6 +63,7 @@
                                 <th>Nome Avaliação</th>
                                 <th>Data Prevista</th>
                                 <th>Data Realização</th>
+                                <th>Ações</th>
                             </tr>
                         </tfoot>
                         <tbody>
@@ -70,12 +73,9 @@
                                     <td>@Html.DisplayFor(item => avaliacao.Avaliacao.Nome)</td>
                                     <td>@avaliacao.DataPrevista.ToString("dd/MM/yyyy")</td>
                                     <td>@avaliacao.DataRealizacao.ToString("dd/MM/yyyy")</td>
-
-                                    @*<td style="width: 160px">
-
-                                            <a class="btn btn-danger" data-toggle="modal" href="#section-settings"
-                                               onclick="apagar(this, '@(model.Id)', '@(model.Nome)')">Apagar</a>
-                                        </td>*@
+                                    <td style="width: 160px">
+                                        <a href="@Url.Action("EditarAvaliacaoDaTurma","Avaliacoes", new { idAvaliacao = avaliacao.AvaliacaoID, idTurma = avaliacao.TurmaID})" class="btn btn-success">Editar</a>  
+                                    </td>
                                 </tr>
                             }
                         </tbody>
@@ -109,6 +109,7 @@
     </div>
 </div>
 
+
 @Html.Partial("_AdicionarAvaliacaoNaTurma", (GrupoEstudosMusical.MVC.Models.AvaliacaoTurmaVM)ViewBag.Model)
 
 @section Styles{
@@ -126,18 +127,16 @@
     <script src="~/Scripts/lib/datatables/extensions/Responsive/bootstrap3/dataTables.bootstrap.js" type="text/javascript"></script>
     <script src="~/Scripts/js/TurmasIndex.js" type="text/javascript"></script>
     <script src="~/Scripts/lib/datepicker/js/datepicker.js" type="text/javascript"></script>
+    <script src="~/Scripts/js/avaliacoesDaTurmaIndex.js"></script>
 }
 
 
 <script type="text/javascript">
+
+
     function AbrirModal() {
         jQuery('#modalAvaliacaoDaTurma').modal('show', { backdrop: 'static' });
-
-        jQuery.ajax({
-            url: "/Avaliacoes/AdicionarAvaliacaoNaTurma",
-            success: function (response) {
-                jQuery('#modalAvaliacaoDaTurma .modal-body').html(response);
-            }
-        });
+        
     }
+    
 </script>

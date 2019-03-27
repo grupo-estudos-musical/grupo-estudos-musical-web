@@ -10,6 +10,7 @@ namespace GrupoEstudosMusical.MVC.Models
         public AvaliacaoTurmaVM()
         {
             this.DataCadastro = DateTime.Now;
+            
         }
 
         public AvaliacaoTurmaVM(List<AvaliacaoVM> avaliacaos)
@@ -17,9 +18,9 @@ namespace GrupoEstudosMusical.MVC.Models
             AvaliacoesDisponiveis = avaliacaos;
         }
         public int AvaliacaoID { get; set; }
-        public virtual Turma Turma { get; set; }
+        public virtual TurmaVM Turma { get; set; }
         public int TurmaID { get; set; }
-        public virtual Avaliacao Avaliacao { get; set; }
+        public virtual AvaliacaoVM Avaliacao { get; set; }
         [DisplayName("Data Prevista Para Realização da Prova")]
         public DateTime DataPrevista { get; set; }
 
