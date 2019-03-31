@@ -256,7 +256,7 @@ $(document).ready(function() {
                     email: true,
                     required: true
                 },
-                Endereco: {                    
+                Logradouro: {                    
                     required: true
                 },
                 Bairro: {
@@ -275,6 +275,9 @@ $(document).ready(function() {
                     required: true
                 },
                 Numero: {
+                    required: true
+                },
+                TipoResponsavel: {
                     required: true
                 }
             },

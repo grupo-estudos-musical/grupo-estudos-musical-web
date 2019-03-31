@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using GrupoEstudosMusical.Models.Entities;
+using GrupoEstudosMusical.Models.Enums;
 using GrupoEstudosMusical.Models.Interfaces.Bussines;
 using GrupoEstudosMusical.MVC.Models;
 using System;
@@ -26,6 +27,7 @@ namespace GrupoEstudosMusical.MVC.Controllers
 
         public ActionResult Novo()
         {
+            ViewBag.TiposResponsaveis = Enum.GetValues(typeof(TipoResponsavelEnum));
             return View(new AlunoVM());
         }
 
@@ -43,6 +45,7 @@ namespace GrupoEstudosMusical.MVC.Controllers
             }
             catch (ArgumentException ex)
             {
+                ViewBag.TiposResponsaveis = Enum.GetValues(typeof(TipoResponsavelEnum));
                 TempData["Mensagem"] = ex.Message;
                 return View(alunoVM);
             }
@@ -57,6 +60,7 @@ namespace GrupoEstudosMusical.MVC.Controllers
                 return HttpNotFound();
             }
             ViewBag.ReturnUrl = returnUrl;
+            ViewBag.TiposResponsaveis = Enum.GetValues(typeof(TipoResponsavelEnum));
             return View(alunoVM);
         }
 

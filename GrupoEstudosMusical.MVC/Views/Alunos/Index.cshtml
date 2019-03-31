@@ -61,7 +61,7 @@
                             @foreach (var model in Model)
                             {
                                 <tr>
-                                    <td><a href="@Url.Action("VisualizarDados","Alunos", new { model.Id })">@Html.DisplayFor(item => model.Nome)</a></td>
+                                    <td>@Html.DisplayFor(item => model.Nome)</td>
                                     <td>@Html.DisplayFor(item => model.DataNascimento)</td>
                                     <td>@Html.DisplayFor(item => model.Telefone)</td>
                                     <td>@Html.DisplayFor(item => model.DataCadastro)</td>

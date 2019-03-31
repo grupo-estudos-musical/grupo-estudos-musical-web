@@ -51,8 +51,9 @@
     <Compile Include="Entities\Ocorrencia.cs" />
     <Compile Include="Entities\Professor.cs" />
     <Compile Include="Entities\Relatorios\OcorrenciasParaRelatorio.cs" />
-    <Compile Include="Entities\TiposOcorrenciaEnum.cs" />
+    <Compile Include="Enums\TiposOcorrenciaEnum.cs" />
     <Compile Include="Entities\Turma.cs" />
+    <Compile Include="Enums\TipoResponsavelEnum.cs" />
     <Compile Include="Interfaces\Bussines\IBussinesAluno.cs" />
     <Compile Include="Interfaces\Bussines\IBussinesAvaliacao.cs" />
     <Compile Include="Interfaces\Bussines\IBussinesAvaliacaoTurma.cs" />

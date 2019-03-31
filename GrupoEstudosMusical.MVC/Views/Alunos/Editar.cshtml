@@ -59,6 +59,26 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            @Html.LabelFor(model => model.NomeResponsavel, htmlAttributes: new { @class = "form-label" })
+                            <div class="controls">
+                                @Html.EditorFor(model => model.NomeResponsavel, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.TipoResponsavel, htmlAttributes: new { @class = "form-label" })
+                            <div class="controls">
+                                @Html.DropDownListFor(model => model.TipoResponsavel, new SelectList(ViewBag.TiposResponsaveis, "TipoResponsavelEnum"), new { @class = "form-control m-bot15" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "form-label" })
+                            <div class="controls">
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="form-group">
                             @Html.LabelFor(model => model.Telefone, htmlAttributes: new { @class = "form-label" })
                             <div class="controls">
                                 @Html.EditorFor(model => model.Telefone, new { htmlAttributes = new { @class = "form-control", placeholder = "(99) 9999-9999", @data_mask = "(99) 9999-9999" } })
@@ -68,14 +88,6 @@
                             @Html.LabelFor(model => model.Celular, htmlAttributes: new { @class = "form-label" })
                             <div class="controls">
                                 @Html.EditorFor(model => model.Celular, new { htmlAttributes = new { @class = "form-control", placeholder = "(99) 99999-9999", @data_mask = "(99) 99999-9999" } })
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-6">
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "form-label" })
-                            <div class="controls">
-                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
                             </div>
                         </div>
                         <div class="form-group">
@@ -157,7 +169,14 @@
                         <div class="pull-right ">
                             <input type="submit" class="btn btn-success" value="Salvar">
                             <!-- <button type="submit" class="btn btn-success">Salvar</button> -->
-                            <a type="button" class="btn" href="@Url.Action("Index", "Alunos")">Cancelar</a>
+                            @if (!string.IsNullOrEmpty(ViewBag.ReturnUrl))
+	                        {
+                                <a type="button" class="btn" href="@ViewBag.ReturnUrl">Cancelar</a>
+                            }
+                            else
+                            {
+                                <a type="button" class="btn" href="@Url.Action("Index", "Alunos")">Cancelar</a>
+                            }
                         </div>
                     </div>
                 </div>
