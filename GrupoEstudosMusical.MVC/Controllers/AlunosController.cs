@@ -2,9 +2,11 @@
 using GrupoEstudosMusical.Models.Entities;
 using GrupoEstudosMusical.Models.Enums;
 using GrupoEstudosMusical.Models.Interfaces.Bussines;
+using GrupoEstudosMusical.MVC.Helpers;
 using GrupoEstudosMusical.MVC.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -38,9 +40,10 @@ namespace GrupoEstudosMusical.MVC.Controllers
             try
             {
                 var alunoModel = Mapper.Map<AlunoVM, Aluno>(alunoVM);
+
+                alunoModel.ImagemUrl = AlunoHelper.SalvarImagemAluno(alunoVM, Server);
                 await _bussinesAluno.InserirAsync(alunoModel);
                 var id = await _bussinesAluno.ObterUltimoIdAsync();
-                //TempData["Mensagem"] = "Aluno cadastrado com sucesso.";
                 return RedirectToRoute("Matricular", new { controller = "Matriculas", idAluno = id });
             }
             catch (ArgumentException ex)

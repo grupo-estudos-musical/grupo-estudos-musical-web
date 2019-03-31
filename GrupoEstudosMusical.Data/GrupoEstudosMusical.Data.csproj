@@ -257,6 +257,10 @@
     <Compile Include="Migrations\20190331185027_AlterandoCampoResponsavelParaNotNull.designer.cs">
       <DependentUpon>20190331185027_AlterandoCampoResponsavelParaNotNull.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20190331195309_AdicionandoCampoImagemUrlAluno.cs" />
+    <Compile Include="Migrations\20190331195309_AdicionandoCampoImagemUrlAluno.designer.cs">
+      <DependentUpon>20190331195309_AdicionandoCampoImagemUrlAluno.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\GemContextModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\RepositoryAluno.cs" />
