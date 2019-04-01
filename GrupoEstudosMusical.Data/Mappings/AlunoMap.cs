@@ -1,6 +1,8 @@
 ﻿using GrupoEstudosMusical.Models.Entities;
+using GrupoEstudosMusical.Models.Enums;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System;
 
 namespace GrupoEstudosMusical.Data.Mappings
 {
@@ -42,6 +44,15 @@ namespace GrupoEstudosMusical.Data.Mappings
                 .HasColumnType("varchar(50)")
                 .IsRequired();
 
+            builder.Property(a => a.TipoResponsavel)
+                .HasColumnType("varchar(50)")
+                .HasConversion(
+                    v => v.ToString(),
+                    v => (TipoResponsavelEnum)Enum.Parse(typeof(TipoResponsavelEnum), v));
+
+            builder.Property(a => a.NomeResponsavel)
+                .HasColumnType("varchar(50)");
+
             builder.Property(a => a.Cep)
                 .HasColumnType("varchar(9)");
 
@@ -70,6 +81,10 @@ namespace GrupoEstudosMusical.Data.Mappings
 
             builder.Property(a => a.DataCadastro)
                 .HasColumnType("date");
+
+            builder.Property(a => a.ImagemUrl)
+                .HasColumnType("varchar(100)")
+                .IsRequired();
         }
     }
 }

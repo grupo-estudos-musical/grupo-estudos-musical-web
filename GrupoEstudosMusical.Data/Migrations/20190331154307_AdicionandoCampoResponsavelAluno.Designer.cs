@@ -3,14 +3,16 @@ using System;
 using GrupoEstudosMusical.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GrupoEstudosMusical.Data.Migrations
 {
     [DbContext(typeof(GemContext))]
-    partial class GemContextModelSnapshot : ModelSnapshot
+    [Migration("20190331154307_AdicionandoCampoResponsavelAluno")]
+    partial class AdicionandoCampoResponsavelAluno
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -52,10 +54,6 @@ namespace GrupoEstudosMusical.Data.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(50)");
 
-                    b.Property<string>("ImagemUrl")
-                        .IsRequired()
-                        .HasColumnType("varchar(100)");
-
                     b.Property<string>("Logradouro")
                         .IsRequired()
                         .HasColumnType("varchar(180)");
@@ -65,6 +63,7 @@ namespace GrupoEstudosMusical.Data.Migrations
                         .HasColumnType("varchar(100)");
 
                     b.Property<string>("NomeResponsavel")
+                        .IsRequired()
                         .HasColumnType("varchar(50)");
 
                     b.Property<string>("Numero")
@@ -88,6 +87,9 @@ namespace GrupoEstudosMusical.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("Cpf")
+                        .IsUnique();
+
+                    b.HasIndex("Rg")
                         .IsUnique();
 
                     b.ToTable("Alunos");
@@ -131,7 +133,8 @@ namespace GrupoEstudosMusical.Data.Migrations
                     b.Property<DateTime>("DataPrevista")
                         .HasColumnType("date");
 
-                    b.Property<DateTime>("DataRealizacao");
+                    b.Property<DateTime>("DataRealizacao")
+                        .HasColumnType("date");
 
                     b.HasKey("AvaliacaoID", "TurmaID");
 

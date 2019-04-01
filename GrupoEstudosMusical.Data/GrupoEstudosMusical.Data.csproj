@@ -249,6 +249,18 @@
     <Compile Include="Migrations\20190322161524_Remoção do Id da AvaliacaoTurma.designer.cs">
       <DependentUpon>20190322161524_Remoção do Id da AvaliacaoTurma.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20190331154307_AdicionandoCampoResponsavelAluno.cs" />
+    <Compile Include="Migrations\20190331154307_AdicionandoCampoResponsavelAluno.designer.cs">
+      <DependentUpon>20190331154307_AdicionandoCampoResponsavelAluno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20190331185027_AlterandoCampoResponsavelParaNotNull.cs" />
+    <Compile Include="Migrations\20190331185027_AlterandoCampoResponsavelParaNotNull.designer.cs">
+      <DependentUpon>20190331185027_AlterandoCampoResponsavelParaNotNull.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20190331195309_AdicionandoCampoImagemUrlAluno.cs" />
+    <Compile Include="Migrations\20190331195309_AdicionandoCampoImagemUrlAluno.designer.cs">
+      <DependentUpon>20190331195309_AdicionandoCampoImagemUrlAluno.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\20190328142217_Ajustes no campo rg ao cadastrar o aluno.cs" />
     <Compile Include="Migrations\20190328142217_Ajustes no campo rg ao cadastrar o aluno.designer.cs">
       <DependentUpon>20190328142217_Ajustes no campo rg ao cadastrar o aluno.cs</DependentUpon>

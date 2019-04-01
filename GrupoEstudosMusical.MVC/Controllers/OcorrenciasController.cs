@@ -6,6 +6,7 @@ using GrupoEstudosMusical.Models.Entities;
 using AutoMapper;
 using System.Collections.Generic;
 using GrupoEstudosMusical.MVC.Models;
+using GrupoEstudosMusical.Models.Enums;
 
 namespace GrupoEstudosMusical.MVC.Controllers
 {

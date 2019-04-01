@@ -1,6 +1,8 @@
-﻿using System;
+﻿using GrupoEstudosMusical.Models.Enums;
+using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Web;
 
 namespace GrupoEstudosMusical.MVC.Models
 {
@@ -26,6 +28,12 @@ namespace GrupoEstudosMusical.MVC.Models
         [DisplayName("E-mail")]
         public string Email { get; set; }
 
+        [DisplayName("Responsável")]
+        public string NomeResponsavel { get; set; }
+
+        [DisplayName("Parentesco")]
+        public TipoResponsavelEnum TipoResponsavel { get; set; }
+
         public string Cep { get; set; }
 
         [DisplayName("Logradouro")]
@@ -44,5 +52,12 @@ namespace GrupoEstudosMusical.MVC.Models
         [DisplayName("Data de Cadastro")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime DataCadastro { get; set; } = DateTime.Now;
+
+        [Required]
+        [DataType(DataType.Upload)]
+        [DisplayName("Imagem")]
+        public HttpPostedFileBase ImagemUpload { get; set; }
+
+        public string ImagemUrl { get; set; }
     }
 }

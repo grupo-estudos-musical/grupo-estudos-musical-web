@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GrupoEstudosMusical.Models.Enums;
+using System;
 using System.Collections.Generic;
 
 namespace GrupoEstudosMusical.Models.Entities
@@ -12,6 +13,8 @@ namespace GrupoEstudosMusical.Models.Entities
         public string Rg { get; set; }
         public string Cpf { get; set; }
         public string Email { get; set; }
+        public TipoResponsavelEnum TipoResponsavel { get; set; }
+        public string NomeResponsavel { get; set; }
         public string Cep { get; set; }
         public string Logradouro { get; set; }
         public string Numero { get; set; }
@@ -19,6 +22,7 @@ namespace GrupoEstudosMusical.Models.Entities
         public string Complemento { get; set; }
         public string Cidade { get; set; }
         public string Uf { get; set; }
+        public string ImagemUrl { get; set; }
         public List<Matricula> Matriculas { get; set; }
         public List<Ocorrencia> Ocorrencias { get; set; }
     }

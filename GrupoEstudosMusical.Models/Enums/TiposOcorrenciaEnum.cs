@@ -1,6 +1,4 @@
-﻿
-
-namespace GrupoEstudosMusical.Models.Entities
+﻿namespace GrupoEstudosMusical.Models.Enums
 {
     public enum TiposOcorrenciaEnum
     {

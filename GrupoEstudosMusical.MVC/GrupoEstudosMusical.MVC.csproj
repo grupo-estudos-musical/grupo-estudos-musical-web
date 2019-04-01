@@ -256,6 +256,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\AlunoHelper.cs" />
     <Compile Include="Models\AlunoVM.cs" />
     <Compile Include="Models\AvaliacaoVM.cs" />
     <Compile Include="Models\AvaliacaoTurmaVM.cs" />
@@ -362,6 +363,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Alunos\" />
     <Folder Include="Views\Cep\" />
   </ItemGroup>
   <ItemGroup>
