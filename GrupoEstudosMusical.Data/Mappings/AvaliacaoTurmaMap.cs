@@ -13,7 +13,6 @@ namespace GrupoEstudosMusical.Data.Mappings
             builder.ToTable("AvaliacoesTurmas");
             builder.HasKey(a => new {a.AvaliacaoID, a.TurmaID});
             builder.Property(a => a.DataPrevista).HasColumnType("date").IsRequired();
-            builder.Property(a => a.DataRealizacao).HasColumnType("date").IsRequired();
             builder.Property(a => a.DataCadastro).HasColumnType("date").IsRequired();
             builder.Ignore(a => a.Id);
             

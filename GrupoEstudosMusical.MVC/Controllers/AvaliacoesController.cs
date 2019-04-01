@@ -132,8 +132,8 @@ namespace GrupoEstudosMusical.MVC.Controllers
             try
             {
                 var avaliacaoTurmaModel = Mapper.Map<AvaliacaoTurmaVM, AvaliacaoTurma>(avaliacaoTurmaVM);
-
-                 await _bussinesAvaliacaoTurma.AlterarAsync(avaliacaoTurmaModel);
+                
+                await _bussinesAvaliacaoTurma.AlterarAsync(avaliacaoTurmaModel);
 
                 TempData["Mensagem"] = "Avaliação alterada com sucesso!";
 
@@ -145,5 +145,20 @@ namespace GrupoEstudosMusical.MVC.Controllers
             }
             
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> RemoverAvaliacoesDaTurma(FormCollection formCollection)
+        {
+            int.TryParse(formCollection["AvaliacaoID"], out int AvaliacaoID);
+            int.TryParse(formCollection["TurmaID"], out int TurmaID);
+            var nomeTurma = formCollection["NomeTurma"].ToString();
+            var avaliacaoTurmaModel = _bussinesAvaliacaoTurma.ObterPorIds(TurmaID, AvaliacaoID);
+            await _bussinesAvaliacaoTurma.DeletarAsync(avaliacaoTurmaModel);
+            TempData["Mensagem"] = "Avaliação removida com sucesso.";
+            return RedirectToAction(nameof(AvaliacoesDaTurma), new { Id = TurmaID, NomeTurma = nomeTurma});
+        }
+
+
     }
 }

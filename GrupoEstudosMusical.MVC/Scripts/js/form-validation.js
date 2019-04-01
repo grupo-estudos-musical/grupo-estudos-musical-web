@@ -140,7 +140,12 @@ $(document).ready(function() {
                 Nome: {
                     maxlength: 60,
                     required:true
+                },
+                QuantidadeAlunos: {
+                    min: 1,
+                    required:true
                 }
+
 
             },
 

@@ -10,12 +10,12 @@ namespace GrupoEstudosMusical.MVC.Models
         public AvaliacaoTurmaVM()
         {
             this.DataCadastro = DateTime.Now;
-            
         }
 
         public AvaliacaoTurmaVM(List<AvaliacaoVM> avaliacaos)
         {
             AvaliacoesDisponiveis = avaliacaos;
+
         }
         public int AvaliacaoID { get; set; }
         public virtual TurmaVM Turma { get; set; }
@@ -29,5 +29,6 @@ namespace GrupoEstudosMusical.MVC.Models
         public DateTime DataCadastro { get; private set; }
         public List<AvaliacaoVM> AvaliacoesDisponiveis { get; set; }
         public string NomeTurma { get; set; }
+
     }
 }

@@ -32,9 +32,6 @@ namespace GrupoEstudosMusical.Data.Mappings
             builder.Property(a => a.Rg)
                 .HasColumnType("varchar(12)");
 
-            builder.HasIndex(a => a.Rg)
-                .IsUnique();
-
             builder.Property(a => a.Cpf)
                 .HasColumnType("varchar(14)");
 

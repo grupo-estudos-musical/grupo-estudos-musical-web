@@ -22,7 +22,13 @@ namespace GrupoEstudosMusical.Bussines
         {
             VerificaDatas(entity.DataInicio, entity.TerminoAula);
             VerificaExistenciaDaTurmaPorNomePeriodoSemestre(entity.Nome, entity.Periodo, entity.Semestre, entity.Id);
+            VerificaCampoQuantidadeDeAlunos(entity);
             await base.InserirAsync(entity);
+        }
+        public void VerificaCampoQuantidadeDeAlunos(Turma entity)
+        {
+            if (entity.QuantidadeAlunos <= 0)
+                throw new CrudTurmaException("A quantidade de alunos na turma não pode ser nferior a 1");
         }
         public void VerificaDatas(DateTime dataInicio, DateTime terminoAula)
         {
@@ -35,6 +41,7 @@ namespace GrupoEstudosMusical.Bussines
         {
             VerificaDatas(entity.DataInicio, entity.TerminoAula);
             VerificaExistenciaDaTurmaPorNomePeriodoSemestre(entity.Nome, entity.Periodo, entity.Semestre, entity.Id);
+            VerificaCampoQuantidadeDeAlunos(entity);
             await base.AlterarAsync(entity);
         }
         public void VerificaExistenciaDaTurmaPorNomePeriodoSemestre(string nomeTurma, int periodo, int semestre, int Id)

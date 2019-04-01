@@ -249,6 +249,14 @@
     <Compile Include="Migrations\20190322161524_Remoção do Id da AvaliacaoTurma.designer.cs">
       <DependentUpon>20190322161524_Remoção do Id da AvaliacaoTurma.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20190328142217_Ajustes no campo rg ao cadastrar o aluno.cs" />
+    <Compile Include="Migrations\20190328142217_Ajustes no campo rg ao cadastrar o aluno.designer.cs">
+      <DependentUpon>20190328142217_Ajustes no campo rg ao cadastrar o aluno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20190329163255_Remocao de required para data prevista nas avaliacoes da turmas.cs" />
+    <Compile Include="Migrations\20190329163255_Remocao de required para data prevista nas avaliacoes da turmas.designer.cs">
+      <DependentUpon>20190329163255_Remocao de required para data prevista nas avaliacoes da turmas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\GemContextModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\RepositoryAluno.cs" />

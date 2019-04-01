@@ -25,22 +25,18 @@ namespace GrupoEstudosMusical.Bussines
 
         public override Task InserirAsync(AvaliacaoTurma entity)
         {
-            VerificarExistenciaDeAvaliacaoParaTurma(entity);
+            VerificaPossibilidadeDeCriacaoDaAvaliacao(entity);
             return base.InserirAsync(entity);
         }
 
+        
         public override Task AlterarAsync(AvaliacaoTurma entity)
         {
             return base.AlterarAsync(entity);
         }
 
-        public void VerificarSeDataAtualEhMaiorQueAsDemais(DateTime dataPrevista)
-        {
-            if (DateTime.Now > dataPrevista)
-                throw new CrudAvaliacaoException("A data atual não pode ser maior que a data prevista!");
-        }
 
-        public void VerificarExistenciaDeAvaliacaoParaTurma(AvaliacaoTurma entity)
+        public void VerificaPossibilidadeDeCriacaoDaAvaliacao(AvaliacaoTurma entity)
         {
             var verificaSeJaExisteAvaliacaoCriadaParaTurma = ObterPorIds(entity.TurmaID, entity.AvaliacaoID) != null ? true : false;
 
@@ -48,6 +44,8 @@ namespace GrupoEstudosMusical.Bussines
             {
                 throw new CrudAvaliacaoException("Está avaliação já foi adicionada para esta turma");
             }
+            if (entity.DataPrevista == Convert.ToDateTime(null))
+                throw new CrudAvaliacaoException("Data prevista não pode ser nula!");
         }
     }
 }

@@ -10,4 +10,3 @@
         swal("Atenção", response.ResponseMessage, "warning");
     }
 }
-
