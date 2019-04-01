@@ -40,10 +40,11 @@
             </header>
             <div class="content-body">
                 @Html.Partial("_MensagemErro")
-                @Html.HiddenFor(a => a.TurmaID)
+                @Html.HiddenFor(a => a.IdAvaliacaoTurma)
                 @Html.HiddenFor(a => a.Turma.Nome)
-                @Html.HiddenFor(a => a.DataPrevista)
                 @Html.HiddenFor(a => a.AvaliacaoID)
+                @Html.HiddenFor(a => a.TurmaID)
+                @Html.HiddenFor(a => a.DataPrevista)
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
@@ -66,7 +67,7 @@
                         <div class="pull-right ">
                             <input type="submit" class="btn btn-success" value="Salvar">
 
-                            <a type="button" class="btn" href="@Url.Action("AvaliacoesDaTurma", "Avaliacoes", new { Id = Model.TurmaID })">Cancelar</a>
+                            <a type="button" class="btn" href="@Url.Action("AvaliacoesDaTurma", "Avaliacoes", new { Id = Model.TurmaID, NomeTurma = Model.Turma.Nome })">Cancelar</a>
                         </div>
                     </div>
                 </div>

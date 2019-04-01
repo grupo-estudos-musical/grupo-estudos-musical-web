@@ -269,6 +269,10 @@
     <Compile Include="Migrations\20190329163255_Remocao de required para data prevista nas avaliacoes da turmas.designer.cs">
       <DependentUpon>20190329163255_Remocao de required para data prevista nas avaliacoes da turmas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20190401194650_Edicao na estrutura da avaliacoes turmas.cs" />
+    <Compile Include="Migrations\20190401194650_Edicao na estrutura da avaliacoes turmas.designer.cs">
+      <DependentUpon>20190401194650_Edicao na estrutura da avaliacoes turmas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\GemContextModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\RepositoryAluno.cs" />

@@ -74,9 +74,9 @@
                                     <td>@avaliacao.DataPrevista.ToString("dd/MM/yyyy")</td>
                                     <td>@avaliacao.DataRealizacao.ToString("dd/MM/yyyy")</td>
                                     <td style="width: 160px">
-                                        <a href="@Url.Action("EditarAvaliacaoDaTurma","Avaliacoes", new { idAvaliacao = avaliacao.AvaliacaoID, idTurma = avaliacao.TurmaID})" class="btn btn-success">Editar</a>
+                                        <a href="@Url.Action("EditarAvaliacaoDaTurma","Avaliacoes", new { IdAvaliacaoDaTurma = avaliacao.IdAvaliacaoTurma})" class="btn btn-success">Editar</a>
                                         <a class="btn btn-danger" data-toggle="modal" href="#section-settings"
-                                           onclick="removerAvaliacaoTurma(this, '@(avaliacao.AvaliacaoID)', '@(avaliacao.TurmaID)','@(avaliacao.Turma.Nome)')">Apagar</a>
+                                           onclick="removerAvaliacaoTurma(this, '@(avaliacao.IdAvaliacaoTurma)','@(avaliacao.Turma.Nome)')">Apagar</a>
                                     </td>
                                 </tr>
                             }
@@ -100,8 +100,7 @@
                 </div>
                 <div class="modal-body">
                     Deseja realmente deletar a avaliação?
-                    <input type="hidden" name="AvaliacaoID" id="AvaliacaoID">
-                    <input type="hidden" name="TurmaID" id="TurmaID">
+                    <input type="hidden" name="IdAvaliacaoTurma" id="IdAvaliacaoTurma">
                     <input type="hidden" name="NomeTurma" id="NomeTurma">
                 </div>
                 <div class="modal-footer">

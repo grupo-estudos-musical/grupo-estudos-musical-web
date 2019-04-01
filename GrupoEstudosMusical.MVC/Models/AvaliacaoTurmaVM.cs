@@ -17,6 +17,8 @@ namespace GrupoEstudosMusical.MVC.Models
             AvaliacoesDisponiveis = avaliacaos;
 
         }
+
+        public Guid IdAvaliacaoTurma { get; set; }
         public int AvaliacaoID { get; set; }
         public virtual TurmaVM Turma { get; set; }
         public int TurmaID { get; set; }

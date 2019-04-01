@@ -49,6 +49,7 @@
     <Compile Include="Entities\Matricula.cs" />
     <Compile Include="Entities\Modulo.cs" />
     <Compile Include="Entities\Ocorrencia.cs" />
+    <Compile Include="Entities\PalhetaDeNota.cs" />
     <Compile Include="Entities\Professor.cs" />
     <Compile Include="Entities\Relatorios\OcorrenciasParaRelatorio.cs" />
     <Compile Include="Enums\TiposOcorrenciaEnum.cs" />
@@ -61,12 +62,14 @@
     <Compile Include="Interfaces\Bussines\IBussinesMatricula.cs" />
     <Compile Include="Interfaces\Bussines\IBussinesModulo.cs" />
     <Compile Include="Interfaces\Bussines\IBussinesOcorrencia.cs" />
+    <Compile Include="Interfaces\Bussines\IBussinesPalhetaDeNotas.cs" />
     <Compile Include="Interfaces\Bussines\IBussinesProfessor.cs" />
     <Compile Include="Interfaces\Bussines\IBussinesTurma.cs" />
     <Compile Include="Interfaces\Repository\IRepositoryAvaliacao.cs" />
     <Compile Include="Interfaces\Repository\IRepositoryAvaliacaoTurma.cs" />
     <Compile Include="Interfaces\Repository\IRepositoryMatricula.cs" />
     <Compile Include="Interfaces\Repository\IRepositoryOcorrencia.cs" />
+    <Compile Include="Interfaces\Repository\IRepositoryPalhetaDeNotas.cs" />
     <Compile Include="Interfaces\Repository\IRepositoryTurma.cs" />
     <Compile Include="Interfaces\Repository\IRepositoryAluno.cs" />
     <Compile Include="Interfaces\Repository\IRepositoryGeneric.cs" />

@@ -118,9 +118,9 @@ namespace GrupoEstudosMusical.MVC.Controllers
             }
         }
 
-        public async  Task<ActionResult> EditarAvaliacaoDaTurma(int idAvaliacao, int idTurma)
+        public async  Task<ActionResult> EditarAvaliacaoDaTurma(Guid IdAvaliacaoDaTurma)
         {
-            var avaliacaoTurmaVM = Mapper.Map<AvaliacaoTurma, AvaliacaoTurmaVM>(_bussinesAvaliacaoTurma.ObterPorIds(idTurma, idAvaliacao));
+            var avaliacaoTurmaVM = Mapper.Map<AvaliacaoTurma, AvaliacaoTurmaVM>(_bussinesAvaliacaoTurma.ObterPorId(IdAvaliacaoDaTurma));
             avaliacaoTurmaVM.AvaliacoesDisponiveis = Mapper.Map<IList<Avaliacao>, IList<AvaliacaoVM>>(await _bussinesAvaliacao.ObterTodosAsync()).ToList();
             return View(avaliacaoTurmaVM);
         }
@@ -137,7 +137,7 @@ namespace GrupoEstudosMusical.MVC.Controllers
 
                 TempData["Mensagem"] = "Avaliação alterada com sucesso!";
 
-                return RedirectToAction("AvaliacoesDaTurma", new { Id = avaliacaoTurmaModel.TurmaID, NomeTurma = avaliacaoTurmaVM.NomeTurma });
+                return RedirectToAction("AvaliacoesDaTurma", new { Id = avaliacaoTurmaModel.TurmaID, NomeTurma = avaliacaoTurmaVM.Turma.Nome});
             }catch(CrudAvaliacaoException ex)
             {
                 TempData["Mensagem"] = ex.Message;
@@ -150,13 +150,12 @@ namespace GrupoEstudosMusical.MVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> RemoverAvaliacoesDaTurma(FormCollection formCollection)
         {
-            int.TryParse(formCollection["AvaliacaoID"], out int AvaliacaoID);
-            int.TryParse(formCollection["TurmaID"], out int TurmaID);
+            var avaliacaoTurmaID = Guid.Parse(formCollection["IdAvaliacaoTurma"]);
             var nomeTurma = formCollection["NomeTurma"].ToString();
-            var avaliacaoTurmaModel = _bussinesAvaliacaoTurma.ObterPorIds(TurmaID, AvaliacaoID);
+            var avaliacaoTurmaModel = _bussinesAvaliacaoTurma.ObterPorId(avaliacaoTurmaID);
             await _bussinesAvaliacaoTurma.DeletarAsync(avaliacaoTurmaModel);
             TempData["Mensagem"] = "Avaliação removida com sucesso.";
-            return RedirectToAction(nameof(AvaliacoesDaTurma), new { Id = TurmaID, NomeTurma = nomeTurma});
+            return RedirectToAction(nameof(AvaliacoesDaTurma), new { Id = avaliacaoTurmaModel.TurmaID, NomeTurma = nomeTurma});
         }
 
 

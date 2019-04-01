@@ -22,9 +22,8 @@
     });
 }
 
-function removerAvaliacaoTurma(event, AvaliacaoID, TurmaID, NomeTurma) {
+function removerAvaliacaoTurma(event, Id, NomeTurma) {
     let modal = $('.modal-body');
-    modal.find('#AvaliacaoID').val(AvaliacaoID);
-    modal.find('#TurmaID').val(TurmaID);
+    modal.find('#IdAvaliacaoTurma').val(Id);
     modal.find('#NomeTurma').val(NomeTurma);
 }

@@ -47,5 +47,9 @@ namespace GrupoEstudosMusical.Bussines
             if (entity.DataPrevista == Convert.ToDateTime(null))
                 throw new CrudAvaliacaoException("Data prevista não pode ser nula!");
         }
-    }
+
+        public AvaliacaoTurma ObterPorId(Guid AvaliacaoTurmaID) =>
+            _repositoryAvaliacaoTurma.ObterPorId(AvaliacaoTurmaID);
+       }
+    
 }
