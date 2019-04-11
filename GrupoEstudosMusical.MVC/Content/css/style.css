@@ -8241,3 +8241,8 @@ table.dataTable.display tbody tr:first-child td {
 .campo-text-area {
     resize: none;
 }
+
+.hide {
+    display: none;
+    float: left;
+}
