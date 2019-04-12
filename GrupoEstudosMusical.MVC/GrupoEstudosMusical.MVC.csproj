@@ -309,6 +309,7 @@
     <Content Include="Content\images\user.png" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\js\aluno.js" />
     <Content Include="Scripts\js\app.js" />
     <Content Include="Scripts\js\avaliacaoTurma.js" />
     <Content Include="Scripts\js\avaliacoesDaTurmaIndex.js" />

@@ -39,12 +39,14 @@ namespace GrupoEstudosMusical.MVC.Controllers
         {
             try
             {
+                alunoVM.Id = (await _bussinesAluno.ObterUltimoIdAsync()) + 1;
+                alunoVM.ImagemUrl = AlunoHelper.ObterCaminhoImagemAluno(alunoVM);
                 var alunoModel = Mapper.Map<AlunoVM, Aluno>(alunoVM);
 
-                alunoModel.ImagemUrl = AlunoHelper.SalvarImagemAluno(alunoVM, Server);
                 await _bussinesAluno.InserirAsync(alunoModel);
-                var id = await _bussinesAluno.ObterUltimoIdAsync();
-                return RedirectToRoute("Matricular", new { controller = "Matriculas", idAluno = id });
+                AlunoHelper.SalvarImagemAluno(alunoVM);
+
+                return RedirectToRoute("Matricular", new { controller = "Matriculas", idAluno = alunoVM.Id });
             }
             catch (ArgumentException ex)
             {

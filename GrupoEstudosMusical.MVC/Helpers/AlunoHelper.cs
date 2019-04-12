@@ -1,23 +1,31 @@
 ﻿using GrupoEstudosMusical.MVC.Models;
 using System;
 using System.IO;
-using System.Web;
 
 namespace GrupoEstudosMusical.MVC.Helpers
 {
     public static class AlunoHelper
     {
-        public static string SalvarImagemAluno(AlunoVM alunoVM, HttpServerUtilityBase server)
+        private static readonly string PathImagens = $@"{AppDomain.CurrentDomain.BaseDirectory}\Content\ImagensAlunos";
+
+        public static void SalvarImagemAluno(AlunoVM alunoVM) => alunoVM.ImagemUpload.SaveAs(alunoVM.ImagemUrl);
+
+        public static string ObterCaminhoImagemAluno(AlunoVM alunoVM)
         {
             if (alunoVM.ImagemUpload == null)
                 throw new ArgumentException("Nenhuma foto do aluno foi definida.");
 
             var formatoImagem = alunoVM.ImagemUpload.ContentType;
             formatoImagem = formatoImagem.Substring(formatoImagem.IndexOf("/") + 1);
-            var fileName = $"{alunoVM.Nome.Replace(" ", "_")}.{formatoImagem}";
-            var path = Path.Combine(server.MapPath("~/Content/Alunos"), fileName);
-            alunoVM.ImagemUpload.SaveAs(path);
-            return fileName;
+
+            var fileName = $"{alunoVM.Id} - {alunoVM.Nome}.{formatoImagem}";
+
+            if (!Directory.Exists(PathImagens))
+                Directory.CreateDirectory(PathImagens);
+
+            var path = Path.Combine(PathImagens, fileName);
+
+            return path;
         }
     }
 }
