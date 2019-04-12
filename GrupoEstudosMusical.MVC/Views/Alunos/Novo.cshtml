@@ -41,24 +41,18 @@
             <div class="content-body">
                 @Html.Partial("_MensagemErro")
                 <div class="row">
-
-                </div>
-                <div class="row">
                     <div class="col-xs-6">
                         <div class="form-group">
-                            <img id="imagemPreview" width="200" height="200" />
+                            <img id="imagemPreview" src="~/Content/images/sem_foto.png" class="imagem-preview" />
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-xs-6">
-                        @*<div class="form-group">
-                            <img id="imagemPreview" width="200" height="200" />
-                        </div>*@
                         <div class="form-group">
                             @Html.LabelFor(model => model.ImagemUpload, htmlAttributes: new { @class = "form-label" })
                             <div class="controls">
-                                @Html.TextBoxFor(model => model.ImagemUpload, new { type = "file", @class = "form-control" })
+                                @Html.TextBoxFor(model => model.ImagemUpload, new { type = "file", @class = "form-control", accept = "image/*", required = "true" })
                             </div>
                         </div>
                         <div class="form-group">

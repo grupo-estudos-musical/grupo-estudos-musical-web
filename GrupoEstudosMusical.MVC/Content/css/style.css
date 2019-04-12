@@ -8242,7 +8242,8 @@ table.dataTable.display tbody tr:first-child td {
     resize: none;
 }
 
-.hide {
-    display: none;
-    float: left;
+.imagem-preview {
+    width: 200px;
+    height: 200px;
+    border: solid 1px #000;
 }

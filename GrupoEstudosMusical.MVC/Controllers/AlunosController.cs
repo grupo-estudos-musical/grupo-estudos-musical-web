@@ -40,11 +40,11 @@ namespace GrupoEstudosMusical.MVC.Controllers
             try
             {
                 alunoVM.Id = (await _bussinesAluno.ObterUltimoIdAsync()) + 1;
-                alunoVM.ImagemUrl = AlunoHelper.ObterCaminhoImagemAluno(alunoVM);
+                alunoVM.ImagemUrl = AlunoHelper.ObterNomeArquivo(alunoVM);
                 var alunoModel = Mapper.Map<AlunoVM, Aluno>(alunoVM);
 
                 await _bussinesAluno.InserirAsync(alunoModel);
-                AlunoHelper.SalvarImagemAluno(alunoVM);
+                AlunoHelper.SalvarImagemAluno(alunoVM.ImagemUpload, AlunoHelper.ObterCaminhoImagemAluno(alunoVM, Server));
 
                 return RedirectToRoute("Matricular", new { controller = "Matriculas", idAluno = alunoVM.Id });
             }
@@ -84,8 +84,14 @@ namespace GrupoEstudosMusical.MVC.Controllers
         {
             try
             {
+                if (alunoVM.ImagemUpload != null)
+                {
+                    alunoVM.ImagemUrl = AlunoHelper.ObterNomeArquivo(alunoVM);
+                    AlunoHelper.SalvarImagemAluno(alunoVM.ImagemUpload, AlunoHelper.ObterCaminhoImagemAluno(alunoVM, Server));
+                }
                 var alunoModel = Mapper.Map<AlunoVM, Aluno>(alunoVM);
                 await _bussinesAluno.AlterarAsync(alunoModel);
+
                 if (string.IsNullOrEmpty(returnUrl))
                 {
                     TempData["Mensagem"] = "Aluno alterado com sucesso.";

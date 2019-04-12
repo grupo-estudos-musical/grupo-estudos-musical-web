@@ -285,6 +285,7 @@
     <Content Include="Content\images\menu_ocorrencias.png" />
     <Content Include="Content\images\pencil.png" />
     <Content Include="Content\images\prancheta.png" />
+    <Content Include="Content\images\sem_foto.png" />
     <Content Include="Content\lib\bootstrap\css\bootstrap-theme.min.css" />
     <Content Include="Content\lib\bootstrap\css\bootstrap.min.css" />
     <Content Include="Content\lib\datatables\css\jquery.dataTables.css" />
@@ -364,7 +365,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\Alunos\" />
     <Folder Include="Views\Cep\" />
   </ItemGroup>
   <ItemGroup>
