@@ -45,7 +45,7 @@ namespace GrupoEstudosMusical.Data.Repositories
         public async Task<int> ObterUltimoIdAsync()
         {
             var registro = await DbSet.OrderByDescending(e => e.Id).FirstOrDefaultAsync();
-            return registro.Id;
+            return registro != null ? registro.Id : 0;
         }
     }
 }
