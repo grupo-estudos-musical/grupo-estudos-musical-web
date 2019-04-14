@@ -51,6 +51,7 @@
     <Compile Include="BussinesGeneric.cs" />
     <Compile Include="BussinesModulo.cs" />
     <Compile Include="BussinesOcorrencia.cs" />
+    <Compile Include="BussinesPalhetaDeNota.cs" />
     <Compile Include="BussinesProfessor.cs" />
     <Compile Include="BussinesTurma.cs" />
     <Compile Include="Exceptions\CrudAvaliacaoException.cs" />

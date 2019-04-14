@@ -5,19 +5,15 @@ namespace GrupoEstudosMusical.Models.Entities
 {
     public class PalhetaDeNota:BaseEntity
     {
-        public PalhetaDeNota(int matricula, int turmaID, int avaliacaoID, double nota, Guid idPalheta)
+        public PalhetaDeNota()
         {
-           
-            TurmaID = turmaID;
-            AvaliacaoID = avaliacaoID;
-            Nota = nota;
-            IdPalheta = idPalheta;
+            IdPalheta = Guid.NewGuid();
         }
-        public Guid IdPalheta { get; set; }
-        public int MatriculaID { get; protected set; }
-        public int TurmaID { get; protected set; }
-        public int AvaliacaoID { get; protected set; }
-        public double? Nota { get; protected set; }
-
+        public Guid IdPalheta { get; protected set; }
+        public Guid AvaliacaoID { get; set; }
+        public int MatriculaID { get;  set; }
+        public double? Nota { get; set; }
+        public AvaliacaoTurma AvaliacaoTurma { get; set; }
+        public Matricula Matricula { get; set; }
     }
 }

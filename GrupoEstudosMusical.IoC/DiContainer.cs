@@ -25,6 +25,7 @@ namespace GrupoEstudosMusical.IoC
             container.Register<IRepositoryAvaliacao, RepositoryAvaliacao>();
 
             container.Register<IRepositoryAvaliacaoTurma, RepositoryAvaliacaoTurma>();
+            container.Register<IRepositoryPalhetaDeNotas, RepositoryPalhetaDeNotas>();
 
             container.Register(typeof(IBussinesGeneric<>), typeof(BussinesGeneric<>));
             container.Register<IBussinesAluno, BussinesAluno>();
@@ -35,7 +36,7 @@ namespace GrupoEstudosMusical.IoC
             container.Register<IBussinesOcorrencia, BussinesOcorrencia>();
             container.Register<IBussinesAvaliacao, BussinesAvaliacao>();
             container.Register<IBussinesAvaliacaoTurma, BussinesAvaliacaoTurma>();
-
+            container.Register<IBussinesPalhetaDeNotas, BussinesPalhetaDeNota>();
             container.Register<IViaCepService, ViaCepService>();
             container.Register<IViaCepCliente, ViaCepCliente>();
             container.Register<IEnderecoConvert, EnderecoConvert>();

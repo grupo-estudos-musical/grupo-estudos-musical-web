@@ -18,14 +18,18 @@ namespace GrupoEstudosMusical.MVC.Controllers
         private readonly IBussinesAluno _bussinesAluno;
         private readonly IBussinesMatricula _bussinesMatricula;
         private readonly IBussinesModulo _bussinesModulo;
+        private readonly IBussinesAvaliacaoTurma _bussinesAvaliacaoTurma;
+        private readonly IBussinesPalhetaDeNotas _bussinesPalhetaDeNotas;
 
         public MatriculasController(IBussinesTurma bussinesTurma, IBussinesAluno bussinesAluno,
-            IBussinesMatricula bussinesMatricula, IBussinesModulo bussinesModulo)
+            IBussinesMatricula bussinesMatricula, IBussinesModulo bussinesModulo, IBussinesAvaliacaoTurma bussinesAvaliacaoTurma, IBussinesPalhetaDeNotas bussinesPalhetaDeNotas)
         {
             _bussinesTurma = bussinesTurma;
             _bussinesAluno = bussinesAluno;
             _bussinesMatricula = bussinesMatricula;
             _bussinesModulo = bussinesModulo;
+            _bussinesAvaliacaoTurma = bussinesAvaliacaoTurma;
+            _bussinesPalhetaDeNotas = bussinesPalhetaDeNotas;
         }
 
         public async Task<ActionResult> Index(int idAluno)
@@ -66,6 +70,7 @@ namespace GrupoEstudosMusical.MVC.Controllers
             try
             {
                 var matriculaModel = Mapper.Map<MatriculaVM, Matricula>(matriculaVM);
+                var idMatricula = _bussinesMatricula.IncluirMatricula(matriculaModel);
                 await _bussinesMatricula.InserirAsync(matriculaModel);
                 TempData["Mensagem"] = "Aluno matrículado com sucesso.";
                 return RedirectToAction("Index", "Alunos");
@@ -75,6 +80,13 @@ namespace GrupoEstudosMusical.MVC.Controllers
                 ViewData["Mensagem"] = ex.Message;
                 return View(matriculaVM);
             }
+        }
+
+        void AdicionarAvaliacoesNaMatrículaDoAluno(int turmaId,int matriculaId )
+        {
+            var listaDeAvaliacoes = _bussinesAvaliacaoTurma.ObterPelaTurma(turmaId);
+            if(listaDeAvaliacoes != null)
+                _bussinesPalhetaDeNotas.AdicionarTodasAvaliacoesDaTurmaAoALuno(listaDeAvaliacoes, matriculaId);
         }
 
         public async Task<ActionResult> Detalhes(int id)
