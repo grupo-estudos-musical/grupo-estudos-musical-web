@@ -246,6 +246,7 @@
     <Compile Include="Controllers\AlunosController.cs" />
     <Compile Include="Controllers\AvaliacoesController.cs" />
     <Compile Include="Controllers\CepController.cs" />
+    <Compile Include="Controllers\ChamadasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MatriculasController.cs" />
     <Compile Include="Controllers\ModulosController.cs" />
@@ -260,7 +261,10 @@
     <Compile Include="Models\AlunoVM.cs" />
     <Compile Include="Models\AvaliacaoVM.cs" />
     <Compile Include="Models\AvaliacaoTurmaVM.cs" />
+    <Compile Include="Models\ChamadaVM.cs" />
     <Compile Include="Models\DocumentosApresentadosVM.cs" />
+    <Compile Include="Models\FrequenciaVM.cs" />
+    <Compile Include="Models\ListaChamadasVM.cs" />
     <Compile Include="Models\MatriculaListaVM.cs" />
     <Compile Include="Models\MatriculaVM.cs" />
     <Compile Include="Models\ModuloVM.cs" />
@@ -272,12 +276,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\animate.min.css" />
+    <Content Include="Content\css\radiobutton.css" />
     <Content Include="Content\css\responsive.css" />
     <Content Include="Content\css\style.css" />
     <Content Include="Content\images\avaliacao_turma.jpg" />
     <Content Include="Content\images\check-mark.png" />
     <Content Include="Content\images\document.png" />
     <Content Include="Content\images\exam.png" />
+    <Content Include="Content\images\menu_chamadas.png" />
     <Content Include="Content\images\menu_matriculas.png" />
     <Content Include="Content\images\menu_nova_matricula.png" />
     <Content Include="Content\images\menu_nova_ocorrencia.png" />
@@ -414,6 +420,8 @@
     <Content Include="Views\Shared\_AdicionarAvaliacaoNaTurma.cshtml" />
     <Content Include="Views\Shared\_EditarAvaliacaoNaTurma.cshtml" />
     <Content Include="Views\Avaliacoes\EditarAvaliacaoDaTurma.cshtml" />
+    <Content Include="Views\Chamadas\Index.cshtml" />
+    <Content Include="Views\Chamadas\Novo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GrupoEstudosMusical.Bussines\GrupoEstudosMusical.Bussines.csproj">

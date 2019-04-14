@@ -8247,3 +8247,7 @@ table.dataTable.display tbody tr:first-child td {
     height: 200px;
     border: solid 1px #000;
 }
+
+.negrito {
+    font-weight: bold;
+}

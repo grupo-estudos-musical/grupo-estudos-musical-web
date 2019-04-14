@@ -30,6 +30,8 @@
 
 @Html.Partial("_VisaoGeralTurma", new ViewDataDictionary { { "titulo", "Editar Turma" }, { "link", @Url.Action("Editar", "Turmas", new { id = Model.Id }) }, { "imagem", "/Content/images/document.png" }, { "alt", "Editar Turmas" } })
 
+@Html.Partial("_VisaoGeralTurma", new ViewDataDictionary { { "titulo", "Chamadas" }, { "link", @Url.Action("Index", "Chamadas", new { idTurma = Model.Id }) }, { "imagem", "/Content/images/menu_chamadas.png" }, { "alt", "Chamadas" } })
+
 
 @section styles {
     <link href="~/Content/lib/messenger/messenger.css" rel="stylesheet" type="text/css" media="screen" />

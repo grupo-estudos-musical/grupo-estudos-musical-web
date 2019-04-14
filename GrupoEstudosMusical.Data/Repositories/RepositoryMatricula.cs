@@ -14,6 +14,14 @@ namespace GrupoEstudosMusical.Data.Repositories
         public async Task<IList<Matricula>> ObterMatriculasPorAluno(int idAluno) =>
             await ObterMatriculas(m => m.AlunoId == idAluno);
 
+        public async Task<List<Matricula>> ObterMatriculasPorTurma(int idTurma)
+        {
+            return await DbSet
+                .Include(m => m.Aluno)
+                .Where(m => m.TurmaId == idTurma)
+                .ToListAsync();
+        }
+
         public override async Task<Matricula> ObterPorIdAsync(int id)
         {
             var matriculas = await ObterMatriculas(m => m.Id == id);
@@ -31,5 +39,6 @@ namespace GrupoEstudosMusical.Data.Repositories
                             .ToListAsync();
         }
 
+        
     }
 }

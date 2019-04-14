@@ -7,5 +7,6 @@ namespace GrupoEstudosMusical.Models.Interfaces.Repository
     public interface IRepositoryMatricula : IRepositoryGeneric<Matricula>
     {
         Task<IList<Matricula>> ObterMatriculasPorAluno(int idAluno);
+        Task<List<Matricula>> ObterMatriculasPorTurma(int idTurma);
     }
 }
