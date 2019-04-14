@@ -1,8 +1,11 @@
-﻿namespace GrupoEstudosMusical.Models.Entities
+﻿using System.Collections.Generic;
+
+namespace GrupoEstudosMusical.Models.Entities
 {
     public class Matricula : BaseEntity
     {
         public virtual Turma Turma { get; set; }
+        public virtual List<PalhetaDeNota> PalhetasDeNotas { get; set; }
         public virtual int TurmaId { get; set; }
         public Aluno Aluno { get; set; }
         public int AlunoId { get; set; }

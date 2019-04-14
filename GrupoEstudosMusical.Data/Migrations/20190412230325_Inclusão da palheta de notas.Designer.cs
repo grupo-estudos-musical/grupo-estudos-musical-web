@@ -3,14 +3,16 @@ using System;
 using GrupoEstudosMusical.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GrupoEstudosMusical.Data.Migrations
 {
     [DbContext(typeof(GemContext))]
-    partial class GemContextModelSnapshot : ModelSnapshot
+    [Migration("20190412230325_Inclusão da palheta de notas")]
+    partial class Inclusãodapalhetadenotas
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -146,42 +148,6 @@ namespace GrupoEstudosMusical.Data.Migrations
                     b.ToTable("AvaliacoesDaTurma");
                 });
 
-            modelBuilder.Entity("GrupoEstudosMusical.Models.Entities.Chamada", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<DateTime>("DataCadastro")
-                        .HasColumnType("date");
-
-                    b.Property<int>("IdTurma");
-
-                    b.Property<string>("Observacao")
-                        .HasColumnType("varchar(200)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IdTurma");
-
-                    b.ToTable("Chamadas");
-                });
-
-            modelBuilder.Entity("GrupoEstudosMusical.Models.Entities.Frequencia", b =>
-                {
-                    b.Property<int>("IdChamada");
-
-                    b.Property<int>("IdAluno");
-
-                    b.Property<bool>("Presenca")
-                        .HasColumnType("bit");
-
-                    b.HasKey("IdChamada", "IdAluno");
-
-                    b.HasIndex("IdAluno");
-
-                    b.ToTable("Frequencias");
-                });
-
             modelBuilder.Entity("GrupoEstudosMusical.Models.Entities.Matricula", b =>
                 {
                     b.Property<int>("Id")
@@ -275,10 +241,10 @@ namespace GrupoEstudosMusical.Data.Migrations
                     b.Property<Guid>("IdPalheta")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<Guid>("AvaliacaoID");
-
                     b.Property<DateTime>("DataCadastro")
                         .HasColumnType("date");
+
+                    b.Property<int>("Id");
 
                     b.Property<int>("MatriculaID");
 
@@ -286,8 +252,6 @@ namespace GrupoEstudosMusical.Data.Migrations
                         .HasColumnType("double");
 
                     b.HasKey("IdPalheta");
-
-                    b.HasIndex("AvaliacaoID");
 
                     b.HasIndex("MatriculaID");
 
@@ -411,27 +375,6 @@ namespace GrupoEstudosMusical.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("GrupoEstudosMusical.Models.Entities.Chamada", b =>
-                {
-                    b.HasOne("GrupoEstudosMusical.Models.Entities.Turma", "Turma")
-                        .WithMany("Chamadas")
-                        .HasForeignKey("IdTurma")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("GrupoEstudosMusical.Models.Entities.Frequencia", b =>
-                {
-                    b.HasOne("GrupoEstudosMusical.Models.Entities.Aluno", "Aluno")
-                        .WithMany("Frequencias")
-                        .HasForeignKey("IdAluno")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("GrupoEstudosMusical.Models.Entities.Chamada", "Chamada")
-                        .WithMany("Frequencias")
-                        .HasForeignKey("IdChamada")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
             modelBuilder.Entity("GrupoEstudosMusical.Models.Entities.Matricula", b =>
                 {
                     b.HasOne("GrupoEstudosMusical.Models.Entities.Aluno", "Aluno")
@@ -460,11 +403,6 @@ namespace GrupoEstudosMusical.Data.Migrations
 
             modelBuilder.Entity("GrupoEstudosMusical.Models.Entities.PalhetaDeNota", b =>
                 {
-                    b.HasOne("GrupoEstudosMusical.Models.Entities.AvaliacaoTurma", "AvaliacaoTurma")
-                        .WithMany("PalhetaDeNotas")
-                        .HasForeignKey("AvaliacaoID")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("GrupoEstudosMusical.Models.Entities.Matricula", "Matricula")
                         .WithMany("PalhetasDeNotas")
                         .HasForeignKey("MatriculaID")

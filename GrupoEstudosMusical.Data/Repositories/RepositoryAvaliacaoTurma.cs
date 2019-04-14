@@ -24,5 +24,6 @@ namespace GrupoEstudosMusical.Data.Repositories
             .Include(t => t.Turma).Where(a => a.AvaliacaoID == avaliacao && a.TurmaID == turma).FirstOrDefault();
 
         
+        
     }
 }

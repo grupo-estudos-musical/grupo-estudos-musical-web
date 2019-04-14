@@ -16,13 +16,15 @@ namespace GrupoEstudosMusical.MVC.Controllers
     {
         // GET: Avaliacao
         public AvaliacoesController(IBussinesAvaliacao bussinesAvaliacao
-            , IBussinesAvaliacaoTurma bussinesAvaliacaoTurma)
+            , IBussinesAvaliacaoTurma bussinesAvaliacaoTurma, IBussinesTurma bussinesTurma)
         {
             this._bussinesAvaliacao = bussinesAvaliacao;
+            this._bussinesTurma = bussinesTurma;
             this._bussinesAvaliacaoTurma = bussinesAvaliacaoTurma;
         }
         readonly IBussinesAvaliacao _bussinesAvaliacao;
         readonly IBussinesAvaliacaoTurma _bussinesAvaliacaoTurma;
+        readonly IBussinesTurma _bussinesTurma;
         public async Task<ActionResult> Index()
         {
             var avaliacoes = await _bussinesAvaliacao.ObterTodosAsync();
@@ -109,7 +111,9 @@ namespace GrupoEstudosMusical.MVC.Controllers
             try
             {
                 var avaliacaoTurmaModel = Mapper.Map<AvaliacaoTurmaVM, AvaliacaoTurma>(avaliacao);
+                var idAvaliacaoDaTurma = SetarIdAvaliacaDaTurma(avaliacaoTurmaModel);
                 await _bussinesAvaliacaoTurma.InserirAsync(avaliacaoTurmaModel);
+                await AdicionarAvaliacaoAosAlunosDaTurma(avaliacaoTurmaModel.TurmaID, idAvaliacaoDaTurma);
                 return Json(new { Ok = true, ResponseMessage = "Avaliação adicionada!"},JsonRequestBehavior.AllowGet);
             }
             catch (CrudAvaliacaoException ex)
@@ -118,6 +122,16 @@ namespace GrupoEstudosMusical.MVC.Controllers
             }
         }
 
+        public Guid SetarIdAvaliacaDaTurma(AvaliacaoTurma  avaliacaoTurma)
+        {
+           return avaliacaoTurma.IdAvaliacaoTurma = Guid.NewGuid();
+        }
+        public async Task AdicionarAvaliacaoAosAlunosDaTurma(int turmaId, Guid avaliacaoId)
+        {
+            var turma =  await _bussinesTurma.ObterPorIdAsync(turmaId);
+            if (turma.Matriculas.Count > 0)
+                await _bussinesAvaliacaoTurma.AdicionarAvaliacaoAosAlunosDaTurma(turma.Matriculas, avaliacaoId);
+        }
         public async  Task<ActionResult> EditarAvaliacaoDaTurma(Guid IdAvaliacaoDaTurma)
         {
             var avaliacaoTurmaVM = Mapper.Map<AvaliacaoTurma, AvaliacaoTurmaVM>(_bussinesAvaliacaoTurma.ObterPorId(IdAvaliacaoDaTurma));

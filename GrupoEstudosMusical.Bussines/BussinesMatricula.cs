@@ -13,13 +13,15 @@ namespace GrupoEstudosMusical.Bussines
         private readonly IRepositoryMatricula _repositoryMatricula;
         private readonly IRepositoryTurma _repositoryTurma;
         private readonly IRepositoryAluno _repositoryAluno;
+        private readonly IRepositoryPalhetaDeNotas _repositoryPalhetaDeNotas;
 
         public BussinesMatricula(IRepositoryMatricula repositoryMatricula, 
-            IRepositoryTurma repositoryTurma, IRepositoryAluno repositoryAluno) : base(repositoryMatricula)
+            IRepositoryTurma repositoryTurma, IRepositoryAluno repositoryAluno, IRepositoryPalhetaDeNotas repositoryPalhetaDeNotas) : base(repositoryMatricula)
         {
             _repositoryMatricula = repositoryMatricula;
             _repositoryTurma = repositoryTurma;
             _repositoryAluno = repositoryAluno;
+            _repositoryPalhetaDeNotas = repositoryPalhetaDeNotas;
         }
 
         public async override Task InserirAsync(Matricula entity)
@@ -47,5 +49,7 @@ namespace GrupoEstudosMusical.Bussines
             _repositoryMatricula.ObterMatriculasPorAluno(idAluno);
 
         public async Task<List<Matricula>> ObterMatriculasPorTurma(int idTurma) => await _repositoryMatricula.ObterMatriculasPorTurma(idTurma);
+        public int IncluirMatricula(Matricula matricula) =>
+            _repositoryMatricula.IncluirMatricula(matricula);
     }
 }

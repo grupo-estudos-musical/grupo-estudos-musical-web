@@ -11,9 +11,14 @@ namespace GrupoEstudosMusical.Bussines
     public class BussinesAvaliacaoTurma : BussinesGeneric<AvaliacaoTurma>, IBussinesAvaliacaoTurma
     {
         readonly IRepositoryAvaliacaoTurma _repositoryAvaliacaoTurma;
-        public BussinesAvaliacaoTurma(IRepositoryAvaliacaoTurma repository) : base(repository)
+        readonly IRepositoryTurma _repositoryTurma;
+        readonly IRepositoryPalhetaDeNotas _repositoryPalhetaDeNotas;
+
+        public BussinesAvaliacaoTurma(IRepositoryAvaliacaoTurma repository, IRepositoryTurma repositoryTurma, IRepositoryPalhetaDeNotas repositoryPalhetaDeNotas) : base(repository)
         {
             _repositoryAvaliacaoTurma = repository;
+            _repositoryTurma = repositoryTurma;
+            _repositoryPalhetaDeNotas = repositoryPalhetaDeNotas;
         }
 
         public List<AvaliacaoTurma> ObterPelaTurma(int turma) =>
@@ -50,6 +55,15 @@ namespace GrupoEstudosMusical.Bussines
 
         public AvaliacaoTurma ObterPorId(Guid AvaliacaoTurmaID) =>
             _repositoryAvaliacaoTurma.ObterPorId(AvaliacaoTurmaID);
-       }
+
+        public async Task AdicionarAvaliacaoAosAlunosDaTurma(List<Matricula> matriculasDosAlunos, Guid avaliacaoId)
+        {
+            foreach(var matricula in matriculasDosAlunos)
+            {
+               await _repositoryPalhetaDeNotas.InserirAsync(new PalhetaDeNota() { AvaliacaoID = avaliacaoId, MatriculaID = matricula.Id });
+            }
+            
+        }
+    }
     
 }

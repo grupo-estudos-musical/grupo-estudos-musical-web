@@ -1,9 +1,10 @@
 ﻿using GrupoEstudosMusical.Models.Entities;
+using System.Collections.Generic;
 
 namespace GrupoEstudosMusical.Models.Interfaces.Bussines
 {
-    interface IBussinesPalhetaDeNotas:IBussinesGeneric<PalhetaDeNota>
+    public interface IBussinesPalhetaDeNotas:IBussinesGeneric<PalhetaDeNota>
     {
-        double CalculaMediaAluno(int AlunoID, int MatriculaID);
+        void AdicionarTodasAvaliacoesDaTurmaAoALuno(List<AvaliacaoTurma> avaliacoesTurma, int matriculaId);
     }
 }

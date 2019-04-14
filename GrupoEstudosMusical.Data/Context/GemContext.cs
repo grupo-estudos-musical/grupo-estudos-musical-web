@@ -17,6 +17,7 @@ namespace GrupoEstudosMusical.Data.Context
         public DbSet<AvaliacaoTurma> AvaliacaoTurmas { get; set; }
         public DbSet<Chamada> Chamadas { get; set; }
         public DbSet<Frequencia> Frequencias { get; set; }
+        public DbSet<PalhetaDeNota> PalhetaDeNotas { get; set; }
 
         public GemContext() : base() { }
 
@@ -38,6 +39,7 @@ namespace GrupoEstudosMusical.Data.Context
             modelBuilder.ApplyConfiguration(new AvaliacaoTurmaMap());
             modelBuilder.ApplyConfiguration(new ChamadaMap());
             modelBuilder.ApplyConfiguration(new FrequenciaMap());
+            modelBuilder.ApplyConfiguration(new PalhetaDeNotaMap());
         }
     }
 }

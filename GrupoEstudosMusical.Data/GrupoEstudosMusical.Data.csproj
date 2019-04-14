@@ -153,6 +153,7 @@
     <Compile Include="Mappings\MatriculaMap.cs" />
     <Compile Include="Mappings\ModuloMap.cs" />
     <Compile Include="Mappings\OcorrenciaMap.cs" />
+    <Compile Include="Mappings\PalhetaDeNotaMap.cs" />
     <Compile Include="Mappings\ProfessorMap.cs" />
     <Compile Include="Mappings\TurmaMap.cs" />
     <Compile Include="Migrations\20190201162243_TabelaDeAlunos.cs" />
@@ -282,6 +283,18 @@
     <Compile Include="Migrations\20190413174015_AdicionandoTabelasConroleDeFaltas.cs" />
     <Compile Include="Migrations\20190413174015_AdicionandoTabelasConroleDeFaltas.designer.cs">
       <DependentUpon>20190413174015_AdicionandoTabelasConroleDeFaltas.cs</DependentUpon>
+	</Compile>
+    <Compile Include="Migrations\20190412230325_Inclusão da palheta de notas.cs" />
+    <Compile Include="Migrations\20190412230325_Inclusão da palheta de notas.designer.cs">
+      <DependentUpon>20190412230325_Inclusão da palheta de notas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20190412231547_Inclusão da palheta de notas v2.cs" />
+    <Compile Include="Migrations\20190412231547_Inclusão da palheta de notas v2.designer.cs">
+      <DependentUpon>20190412231547_Inclusão da palheta de notas v2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20190413031902_Teste.cs" />
+    <Compile Include="Migrations\20190413031902_Teste.designer.cs">
+      <DependentUpon>20190413031902_Teste.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\GemContextModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -294,10 +307,10 @@
     <Compile Include="Repositories\RepositoryMatricula.cs" />
     <Compile Include="Repositories\RepositoryModulo.cs" />
     <Compile Include="Repositories\RepositoryOcorrencia.cs" />
+    <Compile Include="Repositories\RepositoryPalhetaDeNotas.cs" />
     <Compile Include="Repositories\RepositoryProfessor.cs" />
     <Compile Include="Repositories\RepositoryTurma.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />

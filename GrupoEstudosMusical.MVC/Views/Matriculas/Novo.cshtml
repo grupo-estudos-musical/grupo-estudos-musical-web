@@ -48,6 +48,14 @@
                     {
                         @Html.AntiForgeryToken()
                         @Html.HiddenFor(model => model.AlunoId)
+                        @Html.HiddenFor(model => model.Aluno.Bairro)
+                        @Html.HiddenFor(model => model.Aluno.Cep)
+                        @Html.HiddenFor(model => model.Aluno.Cidade)
+                        @Html.HiddenFor(model => model.Aluno.Logradouro)
+                        @Html.HiddenFor(model => model.Aluno.Numero)
+                        @Html.HiddenFor(model => model.Aluno.Uf)
+                        @Html.HiddenFor(model => model.Aluno.Complemento)
+                        @Html.HiddenFor(model => model.Aluno.ImagemUrl)
                         <div id="pills" class='wizardpills'>
                             <ul class="form-wizard">
                                 <li><a href="#pills-tab1" data-toggle="tab"><span>Aluno</span></a></li>
@@ -125,7 +133,7 @@
                                     <p>Escolha um módulo</p><br />
                                     <div class="form-group">
                                         <div class="controls">
-                                            <input type="hidden" id="ModuloId"/>
+                                            <input type="hidden" id="ModuloId" />
                                         </div>
                                     </div>
 
@@ -160,37 +168,37 @@
                                             @Html.HiddenFor(model => model.TurmaId)
                                             <input type="hidden" id="TurmaNome" />
                                         </div>
-                                    </div>                                    
+                                    </div>
 
                                     <div id="turmas">
                                         @*@{
-                                            quantLinhas = (int)Math.Ceiling((double)Model.Turmas.Count / TAMANHO_LINHA);
-                                        }
-                                        @for (int pagina = 0; pagina < quantLinhas; pagina++)
-                                        {
-                                            <div class="row">
-                                                @{
-                                                    var turmasLinha =
-                                                        Model.Turmas
-                                                        .Skip(TAMANHO_LINHA * pagina)
-                                                        .Take(TAMANHO_LINHA);
-                                                }
-                                                @foreach (var turma in turmasLinha)
-                                                {
+                                quantLinhas = (int)Math.Ceiling((double)Model.Turmas.Count / TAMANHO_LINHA);
+                            }
+                            @for (int pagina = 0; pagina < quantLinhas; pagina++)
+                            {
+                                <div class="row">
+                                    @{
+                                        var turmasLinha =
+                                            Model.Turmas
+                                            .Skip(TAMANHO_LINHA * pagina)
+                                            .Take(TAMANHO_LINHA);
+                                    }
+                                    @foreach (var turma in turmasLinha)
+                                    {
 
-                                                    var turmaExistente = Model.TurmasMatriculadas.Any(t => t.Id == turma.Id);
-                                                    var classeBotao = turmaExistente ? "btn-danger" : "btn-primary";
-                                                    var desabilitar = turmaExistente ? "disabled='disabled'" : "";
+                                        var turmaExistente = Model.TurmasMatriculadas.Any(t => t.Id == turma.Id);
+                                        var classeBotao = turmaExistente ? "btn-danger" : "btn-primary";
+                                        var desabilitar = turmaExistente ? "disabled='disabled'" : "";
 
-                                                    <div class="col-md-3">
-                                                        <button type="button" class="btn @classeBotao btn-lg btn-border btn-matricula" turma-id="@turma.Id" turma-nome="@turma.Nome" onclick="selecionarTurma(this)" @desabilitar>
-                                                            @turma.Nome <br /><br /> Alunos @turma.Matriculas.Count/@turma.QuantidadeAlunos
-                                                        </button>
-                                                    </div>
-                                                }
-                                            </div>
-                                            <br />
-                                        }*@
+                                        <div class="col-md-3">
+                                            <button type="button" class="btn @classeBotao btn-lg btn-border btn-matricula" turma-id="@turma.Id" turma-nome="@turma.Nome" onclick="selecionarTurma(this)" @desabilitar>
+                                                @turma.Nome <br /><br /> Alunos @turma.Matriculas.Count/@turma.QuantidadeAlunos
+                                            </button>
+                                        </div>
+                                    }
+                                </div>
+                                <br />
+                            }*@
                                     </div>
 
                                     <div class="clearfix"></div>

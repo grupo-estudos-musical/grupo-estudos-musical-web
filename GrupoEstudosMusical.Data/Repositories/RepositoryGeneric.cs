@@ -41,6 +41,7 @@ namespace GrupoEstudosMusical.Data.Repositories
         public virtual async Task<TEntity> ObterPorIdAsync(int id) => await DbSet.FindAsync(id);
 
         public virtual async Task<IList<TEntity>> ObterTodosAsync() => await DbSet.ToListAsync();
+        
 
         public async Task<int> ObterUltimoIdAsync()
         {

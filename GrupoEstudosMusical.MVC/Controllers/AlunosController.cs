@@ -39,7 +39,7 @@ namespace GrupoEstudosMusical.MVC.Controllers
         {
             try
             {
-                alunoVM.Id = (await _bussinesAluno.ObterUltimoIdAsync()) + 1;
+                alunoVM.Id = await _bussinesAluno.ObterUltimoIdAsync() + 1;
                 alunoVM.ImagemUrl = AlunoHelper.ObterNomeArquivo(alunoVM);
                 var alunoModel = Mapper.Map<AlunoVM, Aluno>(alunoVM);
 
