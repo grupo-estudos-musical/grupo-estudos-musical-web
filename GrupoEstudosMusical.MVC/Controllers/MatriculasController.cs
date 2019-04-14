@@ -39,6 +39,11 @@ namespace GrupoEstudosMusical.MVC.Controllers
                 return HttpNotFound("Aluno não encontrado");
 
             IList<Matricula> alunosModel = await _bussinesMatricula.ObterMatriculasPorAluno(idAluno);
+            if (alunosModel.Count == 0)
+            {
+                TempData["Mensagem"] = "Aluno não está matrículado em nenhum curso.";
+                return RedirectToAction("VisaoGeral", "Alunos", new { id = idAluno });
+            }
             var matriculasVM = Mapper.Map<IList<Matricula>, List<MatriculaListaVM>>(alunosModel);            
 
             return View(matriculasVM);

@@ -29,7 +29,7 @@
     </div>
 </div>
 
-@using (Html.BeginForm("Editar", "Alunos", new { returnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { id = "general_validate" }))
+@using (Html.BeginForm("Editar", "Alunos", new { returnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { id = "general_validate", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     @Html.HiddenFor(model => model.Id)
