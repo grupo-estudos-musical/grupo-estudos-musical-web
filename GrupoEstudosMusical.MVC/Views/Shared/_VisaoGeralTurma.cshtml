@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="imagem-centralizada">
-                        <a href="@ViewData["link"]">
+                        <a href="@ViewData["link"]" @(ViewData["attr"]?.ToString())>
                             <img src="@ViewData["imagem"]" alt="@ViewData["alt"]" />
                         </a>
                     </div>
