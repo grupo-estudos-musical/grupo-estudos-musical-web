@@ -50,6 +50,8 @@ namespace GrupoEstudosMusical.MVC.Controllers
             var frequenciasModel = Mapper.Map<IEnumerable<FrequenciaVM>, List<Frequencia>>(frequenciaVMs);
             chamadaModel.Frequencias = frequenciasModel;
             await _bussinesChamada.InserirAsync(chamadaModel);
+            TempData["mensagem"] = "Chamada relizada com sucesso.";
+            TempData["tipo"] = "success";
             return RedirectToAction(nameof(Index), "Chamadas", new { idTurma = chamadaVM.IdTurma});
         }
     }

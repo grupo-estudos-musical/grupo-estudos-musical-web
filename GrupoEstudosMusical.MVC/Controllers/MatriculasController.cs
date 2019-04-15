@@ -75,7 +75,7 @@ namespace GrupoEstudosMusical.MVC.Controllers
             try
             {
                 var matriculaModel = Mapper.Map<MatriculaVM, Matricula>(matriculaVM);
-                var idMatricula = _bussinesMatricula.IncluirMatricula(matriculaModel);
+                //var idMatricula = _bussinesMatricula.IncluirMatricula(matriculaModel);
                 await _bussinesMatricula.InserirAsync(matriculaModel);
                 TempData["Mensagem"] = "Aluno matrículado com sucesso.";
                 return RedirectToAction("Index", "Alunos");
