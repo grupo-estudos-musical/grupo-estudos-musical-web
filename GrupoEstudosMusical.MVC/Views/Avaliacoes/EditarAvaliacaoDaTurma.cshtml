@@ -15,6 +15,12 @@
                     <a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i>Home</a>
                 </li>
                 <li>
+                    <a href="@Url.Action("Index", "Turmas")">Turmas</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("VisaoGeral", "Turmas", new { id = Model.TurmaID})">Visão Geral</a>
+                </li>
+                <li>
                     <a href="@Url.Action("AvaliacoesDaTurma", "Avaliacoes", new { Id = Model.TurmaID, NomeTurma = Model.Turma.Nome})">Avaliações</a>
                 </li>
 
