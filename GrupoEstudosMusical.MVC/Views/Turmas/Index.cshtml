@@ -46,7 +46,6 @@
                                 <th>@Html.DisplayNameFor(m => m.DataInicio)</th>
                                 <th>@Html.DisplayNameFor(m => m.TerminoAula)</th>
                                 <th>Professor</th>
-                                <th>Quantidade de Alunos</th>
                                 <th>@Html.DisplayNameFor(m => m.Status)</th>
                                 <th>Opções</th>
                             </tr>
@@ -59,7 +58,6 @@
                                 <th>@Html.DisplayNameFor(m => m.DataInicio)</th>
                                 <th>@Html.DisplayNameFor(m => m.TerminoAula)</th>
                                 <th>Professor</th>
-                                <th>Quantidade de Alunos</th>
                                 <th>@Html.DisplayNameFor(m => m.Status)</th>
                                 <th>Opções</th>
                             </tr>
@@ -74,13 +72,9 @@
                                     <td>@turma.DataInicio.ToString("dd/MM/yyyy")</td>
                                     <td>@turma.TerminoAula.ToString("dd/MM/yyyy")</td>
                                     <td>@Html.DisplayFor(item => turma.Professor.Nome)</td>
-                                    <td>@Html.DisplayFor(item => turma.QuantidadeAlunos)</td>
                                     <td id="status_turma">@Html.DisplayFor(item => turma.Status)</td>
                                     <td style="width: 160px">
                                         @Html.ActionLink("Visão Geral", "VisaoGeral", "Turmas", new { Id = turma.Id }, new { @class = "btn btn-primary" })
-
-                                        <a class="btn btn-danger" data-toggle="modal" href="#section-settings"
-                                           onclick="apagar(this, '@(turma.Id)', '@(turma.Nome)')">Apagar</a>
                                     </td>
                                 </tr>
                             }
@@ -92,28 +86,7 @@
     </section>
 </div>
 
-<div class="modal" id="section-settings" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog animated bounceInDown">
-        <div class="modal-content">
-            @using (Html.BeginForm("Deletar", "Turmas"))
-            {
-                @Html.AntiForgeryToken()
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">Deletar Módulo</h4>
-                </div>
-                <div class="modal-body">
-                    Deseja realmente deletar Módulo?
-                    <input type="hidden" name="id" id="id">
-                </div>
-                <div class="modal-footer">
-                    <button data-dismiss="modal" class="btn btn-default" type="button">Não</button>
-                    <button class="btn btn-danger" type="submit">Sim</button>
-                </div>
-            }
-        </div>
-    </div>
-</div>
+
 
 @section Styles{
     <link href="~/Content/lib/datatables/css/jquery.dataTables.css" rel="stylesheet" type="text/css" media="screen" />

@@ -26,12 +26,37 @@
 
 @Html.Hidden("mensagem", TempData["Mensagem"])
 
-@Html.Partial("_VisaoGeralTurma", new ViewDataDictionary { { "titulo", "Avaliações" }, { "link", @Url.Action("AvaliacoesDaTurma", "Avaliacoes", new { id = Model.Id, NomeTurma = Model.Nome }) }, { "imagem", "/Content/images/check-mark.png" }, { "alt", "avaliacoes" } })
+@Html.Partial("_VisaoGeralTurma", new ViewDataDictionary { { "titulo", "Editar Turma" }, { "link", @Url.Action("Editar", "Turmas", new { id = Model.Id }) }, { "imagem", "/Content/images/menu_editar_turma.png" }, { "alt", "Editar Turmas" } })
 
-@Html.Partial("_VisaoGeralTurma", new ViewDataDictionary { { "titulo", "Editar Turma" }, { "link", @Url.Action("Editar", "Turmas", new { id = Model.Id }) }, { "imagem", "/Content/images/document.png" }, { "alt", "Editar Turmas" } })
+@Html.Partial("_VisaoGeralTurma", new ViewDataDictionary { { "titulo", "Avaliações" }, { "link", @Url.Action("AvaliacoesDaTurma", "Avaliacoes", new { id = Model.Id, NomeTurma = Model.Nome }) }, { "imagem", "/Content/images/menu_avaliacoes_turma.png" }, { "alt", "avaliacoes" } })
 
 @Html.Partial("_VisaoGeralTurma", new ViewDataDictionary { { "titulo", "Chamadas" }, { "link", @Url.Action("Index", "Chamadas", new { idTurma = Model.Id }) }, { "imagem", "/Content/images/menu_chamadas.png" }, { "alt", "Chamadas" } })
 
+@Html.Partial("_VisaoGeralTurma", new ViewDataDictionary { { "titulo", "Remover Turma" }, { "link", "#section-settings" }, { "imagem", "/Content/images/menu_deletar_turma.png" }, { "alt", "Chamadas" }, { "attr", $"data-toggle=modal onclick=apagar(this,'{Model.Id}','{Model.Nome.Replace(" ", "")}')" } })
+
+
+<div class="modal" id="section-settings" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog animated bounceInDown">
+        <div class="modal-content">
+            @using (Html.BeginForm("Deletar", "Turmas"))
+            {
+                @Html.AntiForgeryToken()
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Deletar Turma</h4>
+                </div>
+                <div class="modal-body">
+                    Deseja realmente deletar Turma?
+                    <input type="hidden" name="id" id="id">
+                </div>
+                <div class="modal-footer">
+                    <button data-dismiss="modal" class="btn btn-default" type="button">Não</button>
+                    <button class="btn btn-danger" type="submit">Sim</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
 
 @section styles {
     <link href="~/Content/lib/messenger/messenger.css" rel="stylesheet" type="text/css" media="screen" />

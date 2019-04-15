@@ -281,10 +281,13 @@
     <Content Include="Content\css\responsive.css" />
     <Content Include="Content\css\style.css" />
     <Content Include="Content\images\avaliacao_turma.jpg" />
-    <Content Include="Content\images\check-mark.png" />
+    <Content Include="Content\images\delete.png" />
+    <Content Include="Content\images\menu_avaliacoes_turma.png" />
     <Content Include="Content\images\document.png" />
     <Content Include="Content\images\exam.png" />
     <Content Include="Content\images\menu_chamadas.png" />
+    <Content Include="Content\images\menu_deletar_turma.png" />
+    <Content Include="Content\images\menu_editar_turma.png" />
     <Content Include="Content\images\menu_matriculas.png" />
     <Content Include="Content\images\menu_nova_matricula.png" />
     <Content Include="Content\images\menu_nova_ocorrencia.png" />
