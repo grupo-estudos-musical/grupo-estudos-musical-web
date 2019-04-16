@@ -54,5 +54,13 @@ namespace GrupoEstudosMusical.MVC.Controllers
             TempData["tipo"] = "success";
             return RedirectToAction(nameof(Index), "Chamadas", new { idTurma = chamadaVM.IdTurma});
         }
+
+        public async Task<ActionResult> Detalhes(int id)
+        {
+            var chamadaVM = Mapper.Map<Chamada, ChamadaVM>(await _bussinesChamada.ObterPorIdAsync(id));
+            if (chamadaVM == null)
+                return HttpNotFound();
+            return View(chamadaVM);
+        }
     }
 }
