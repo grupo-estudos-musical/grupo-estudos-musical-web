@@ -10,7 +10,7 @@ namespace GrupoEstudosMusical.MVC.Models
     {
         public int Id { get; set; }
 
-        [DisplayName("Data Cadastro")]
+        [DisplayName("Data")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime DataCadastro { get; set; } = DateTime.Now;
 
@@ -24,6 +24,7 @@ namespace GrupoEstudosMusical.MVC.Models
         public int QuantidadeFaltas => Frequencias.Where(f => !f.Presenca).Count();
 
         [DisplayName("Frequência")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:N2}")]
         public double PorcentagemFrequencia
         {
             get
