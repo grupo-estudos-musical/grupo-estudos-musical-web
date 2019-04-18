@@ -49,47 +49,60 @@
                     </div>
                 </div>
             </div>
-            @Html.Partial("_MensagemSucesso")
-            <div class="row">
-                <div class="col-xs-12">
-                    <table id="example-1" class="table table-striped dt-responsive display">
-                        <thead>
+            @Html.Hidden("mensagem", TempData["mensagem"])
+            @Html.Hidden("tipo", TempData["tipo"])
+        <div class="row">
+            <div class="col-xs-12">
+                <table class="table table-bordered texto-centralizado">
+                    <thead>
+                        <tr>
+                            <th>@Html.DisplayNameFor(c => c.Chamadas[0].DataCadastro)</th>
+                            <th>@Html.DisplayNameFor(c => c.Chamadas[0].QuantidadePresenca)</th>
+                            <th>@Html.DisplayNameFor(c => c.Chamadas[0].QuantidadeFaltas)</th>
+                            <th>@Html.DisplayNameFor(c => c.Chamadas[0].PorcentagemFrequencia)</th>
+                            <th>Opções</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>@Html.DisplayNameFor(c => c.Chamadas[0].DataCadastro)</th>
+                            <th>@Html.DisplayNameFor(c => c.Chamadas[0].QuantidadePresenca)</th>
+                            <th>@Html.DisplayNameFor(c => c.Chamadas[0].QuantidadeFaltas)</th>
+                            <th>@Html.DisplayNameFor(c => c.Chamadas[0].PorcentagemFrequencia)</th>
+                            <th>Opções</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @foreach (var item in Model.Chamadas)
+                        {
                             <tr>
-                                <th>@Html.DisplayNameFor(c => c.Chamadas[0].DataCadastro)</th>
-                                <th>@Html.DisplayNameFor(c => c.Chamadas[0].QuantidadePresenca)</th>
-                                <th>@Html.DisplayNameFor(c => c.Chamadas[0].QuantidadeFaltas)</th>
-                                <th>@Html.DisplayNameFor(c => c.Chamadas[0].PorcentagemFrequencia)</th>
-                                <th>Opções</th>
+                                <td>@Html.DisplayFor(c => item.DataCadastro)</td>
+                                <td>@Html.DisplayFor(c => item.QuantidadePresenca)</td>
+                                <td>@Html.DisplayFor(c => item.QuantidadeFaltas)</td>
+                                <td class="@(item.PorcentagemFrequencia < 50 ? "danger": "")">@Html.DisplayFor(c => item.PorcentagemFrequencia)%</td>
+                                <td>
+                                    <a href="Chamadas/Detalhes/@item.Id" class="btn btn-primary btn-iconic bottom btn-imagem">
+                                        <i class="fa fa-search"> &nbsp; <span>Consultar</span></i>
+                                    </a>
+                                </td>
                             </tr>
-                        </thead>
-                        <tfoot>
-                            <tr>
-                                <th>@Html.DisplayNameFor(c => c.Chamadas[0].DataCadastro)</th>
-                                <th>@Html.DisplayNameFor(c => c.Chamadas[0].QuantidadePresenca)</th>
-                                <th>@Html.DisplayNameFor(c => c.Chamadas[0].QuantidadeFaltas)</th>
-                                <th>@Html.DisplayNameFor(c => c.Chamadas[0].PorcentagemFrequencia)</th>
-                                <th>Opções</th>
-                            </tr>
-                        </tfoot>
-                        <tbody>
-                            @foreach (var item in Model.Chamadas)
-                            {
-                                <tr>
-                                    <td>@Html.DisplayFor(c => item.DataCadastro)</td>
-                                    <td>@Html.DisplayFor(c => item.QuantidadePresenca)</td>
-                                    <td>@Html.DisplayFor(c => item.QuantidadeFaltas)</td>
-                                    <td>@Html.DisplayFor(c => item.PorcentagemFrequencia)%</td>
-                                    <td>
-                                        <a href="Chamadas/Detalhes/@item.Id" class="btn btn-primary btn-iconic bottom">
-                                            <i class="fa fa-search"> &nbsp; <span>Consultar</span></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
+                        }
+                    </tbody>
+                </table>
+                <br />
+                <div class="pull-right">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="legenda legenda-danger">
+                            </div>
+                        </div>
+                        <div class="col-md-10">
+                            <span>Frequência baixa</span>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
         </div>
     </section>
 </div>

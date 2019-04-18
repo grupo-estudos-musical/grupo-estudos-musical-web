@@ -8224,6 +8224,10 @@ table.dataTable.display tbody tr:first-child td {
     background-color: #fcf8e3;
 }
 
+.legenda-danger {
+    background-color: #f2dede;
+}
+
 .status-ativo {
     color: #FFD700;
     font-weight: bold;
@@ -8250,4 +8254,8 @@ table.dataTable.display tbody tr:first-child td {
 
 .negrito {
     font-weight: bold;
+}
+
+.btn-imagem {
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
 }

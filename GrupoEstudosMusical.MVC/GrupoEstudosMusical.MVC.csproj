@@ -422,6 +422,8 @@
     <Content Include="Views\Avaliacoes\EditarAvaliacaoDaTurma.cshtml" />
     <Content Include="Views\Chamadas\Index.cshtml" />
     <Content Include="Views\Chamadas\Novo.cshtml" />
+    <Content Include="Views\Shared\_CadastroChamada.cshtml" />
+    <Content Include="Views\Chamadas\Detalhes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GrupoEstudosMusical.Bussines\GrupoEstudosMusical.Bussines.csproj">

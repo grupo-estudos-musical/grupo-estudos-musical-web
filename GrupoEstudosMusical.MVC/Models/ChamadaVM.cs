@@ -24,6 +24,7 @@ namespace GrupoEstudosMusical.MVC.Models
         public int QuantidadeFaltas => Frequencias.Where(f => !f.Presenca).Count();
 
         [DisplayName("Frequência")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:N2}")]
         public double PorcentagemFrequencia
         {
             get

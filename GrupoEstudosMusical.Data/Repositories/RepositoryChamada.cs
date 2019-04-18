@@ -17,5 +17,14 @@ namespace GrupoEstudosMusical.Data.Repositories
                 .Where(c => c.IdTurma == idTurma)
                 .ToListAsync();
         }
+
+        public override async Task<Chamada> ObterPorIdAsync(int id)
+        {
+            return await DbSet
+                .Include(c => c.Frequencias)
+                .ThenInclude(f => f.Aluno)
+                .Include(c => c.Turma)
+                .FirstOrDefaultAsync(c => c.Id == id);
+        }
     }
 }

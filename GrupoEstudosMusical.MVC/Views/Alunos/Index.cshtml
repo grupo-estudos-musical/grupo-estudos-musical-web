@@ -78,29 +78,6 @@
     </section>
 </div>
 
-@*<div class="modal" id="section-settings" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog animated bounceInDown">
-        <div class="modal-content">
-            @using (Html.BeginForm("Deletar", "Alunos"))
-            {
-                @Html.AntiForgeryToken()
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">Deletar Aluno</h4>
-                </div>
-                <div class="modal-body">
-                    Deseja realmente deletar aluno?
-                    <input type="hidden" name="id" id="id">
-                </div>
-                <div class="modal-footer">
-                    <button data-dismiss="modal" class="btn btn-default" type="button">Não</button>
-                    <button class="btn btn-danger" type="submit">Sim</button>
-                </div>
-            }
-        </div>
-    </div>
-</div>*@
-
 @section Styles{
     <link href="~/Content/lib/datatables/css/jquery.dataTables.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="~/Content/lib/datatables/extensions/TableTools/css/dataTables.tableTools.min.css" rel="stylesheet" type="text/css" media="screen" />
