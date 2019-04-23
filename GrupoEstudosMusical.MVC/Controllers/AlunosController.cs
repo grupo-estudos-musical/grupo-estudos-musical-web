@@ -6,7 +6,6 @@ using GrupoEstudosMusical.MVC.Helpers;
 using GrupoEstudosMusical.MVC.Models;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -18,7 +17,7 @@ namespace GrupoEstudosMusical.MVC.Controllers
 
         public AlunosController(IBussinesAluno bussinesAluno)
         {
-            _bussinesAluno = bussinesAluno;            
+            _bussinesAluno = bussinesAluno;
         }
 
         public async Task<ActionResult> Index()
@@ -72,7 +71,7 @@ namespace GrupoEstudosMusical.MVC.Controllers
         public async Task<ActionResult> VisaoGeral(int Id)
         {
             var obterDadosDoAlunoVm = Mapper.Map<Aluno, AlunoVM>(await _bussinesAluno.ObterPorIdAsync(Id));
-            if(obterDadosDoAlunoVm == null)
+            if (obterDadosDoAlunoVm == null)
                 return HttpNotFound();
             return View(obterDadosDoAlunoVm);
         }

@@ -1,0 +1,97 @@
+﻿@model GrupoEstudosMusical.MVC.Models.ChamadaVM
+
+@{
+    ViewBag.Title = "Detalhes da Chamada";
+}
+
+<div class='col-xs-12'>
+    <div class="page-title">
+        <div class="pull-left">
+            <h1 class="title">Realizar Chamada</h1>
+        </div>
+        <div class="pull-right hidden-xs">
+            <ol class="breadcrumb">
+                <li>
+                    <a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i>Home</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Turmas")">Turmas</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("VisaoGeral", "Turmas", new { id = Model.Turma.Id})">Visão Geral</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Chamadas", new { idTurma = Model.Turma.Id})">Chamadas</a>
+                </li>
+                <li class="active">
+                    <strong>Detalhes da Chamada</strong>
+                </li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+@Html.Partial("_CadastroChamada")
+
+<div class="col-lg-12">
+    <section class="box ">
+        <header class="panel_header">
+            <h2 class="title pull-left">Lista de Alunos</h2>
+            <div class="actions panel_actions pull-right">
+                <a class="box_toggle fa fa-chevron-down"></a>
+                <a class="box_close fa fa-times"></a>
+            </div>
+        </header>
+        <div class="content-body">
+            <div class="row">
+                <div class="col-xs-12">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Aluno</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (int i = 0; i < Model.Frequencias.Count; i++)
+                            {
+                                
+                                    var frequencia = Model.Frequencias[i];
+                                    var aluno = frequencia.Aluno;
+                                    var presenca = frequencia.Presenca;
+                                
+                                <tr>
+                                    <td>@aluno.Id</td>
+                                    <td>@aluno.Nome</td>
+                                    <td>
+                                        <label class="radio">
+                                            @Html.RadioButton("[" + i + "].Presenca", presenca, presenca, htmlAttributes: new { @class = "hidden", @disabled = "true"})
+                                            <span class="label"></span>Presente
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <label class="radio">
+                                            @Html.RadioButton("[" + i + "].Presenca", !presenca, !presenca, htmlAttributes: new { @class = "hidden", @disabled = "true"})
+                                            <span class="label"></span>Ausente
+                                        </label>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-xs-12">
+                    <div class="pull-right">
+                        <a type="button" class="btn" href="@Url.Action("Index", "Chamadas", new { idTurma = Model.Turma.Id})">Voltar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+@section styles{
+    <link href="~/Content/css/radiobutton.css" rel="stylesheet"/>
+}

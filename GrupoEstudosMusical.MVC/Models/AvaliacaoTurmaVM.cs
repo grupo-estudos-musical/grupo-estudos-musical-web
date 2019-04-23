@@ -24,10 +24,10 @@ namespace GrupoEstudosMusical.MVC.Models
         public int TurmaID { get; set; }
         public virtual AvaliacaoVM Avaliacao { get; set; }
         [DisplayName("Data Prevista Para Realização da Prova")]
-        public DateTime DataPrevista { get; set; }
+        public DateTime DataPrevista { get; set; } = DateTime.Now;
 
         [DisplayName("Data da Realização da Prova")]
-        public DateTime DataRealizacao { get; set; }
+        public DateTime DataRealizacao { get; set; } = DateTime.Now;
         public DateTime DataCadastro { get; private set; }
         public List<AvaliacaoVM> AvaliacoesDisponiveis { get; set; }
         public string NomeTurma { get; set; }

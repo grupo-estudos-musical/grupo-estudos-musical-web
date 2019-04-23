@@ -148,6 +148,8 @@
     <Compile Include="Mappings\AlunoMap.cs" />
     <Compile Include="Mappings\AvaliacaoMap.cs" />
     <Compile Include="Mappings\AvaliacaoTurmaMap.cs" />
+    <Compile Include="Mappings\ChamadaMap.cs" />
+    <Compile Include="Mappings\FrequenciaMap.cs" />
     <Compile Include="Mappings\MatriculaMap.cs" />
     <Compile Include="Mappings\ModuloMap.cs" />
     <Compile Include="Mappings\OcorrenciaMap.cs" />
@@ -278,6 +280,10 @@
     <Compile Include="Migrations\20190411233918_AlterandoTamanhoCampoUrlAluno.designer.cs">
       <DependentUpon>20190411233918_AlterandoTamanhoCampoUrlAluno.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20190413174015_AdicionandoTabelasConroleDeFaltas.cs" />
+    <Compile Include="Migrations\20190413174015_AdicionandoTabelasConroleDeFaltas.designer.cs">
+      <DependentUpon>20190413174015_AdicionandoTabelasConroleDeFaltas.cs</DependentUpon>
+	</Compile>
     <Compile Include="Migrations\20190412230325_Inclusão da palheta de notas.cs" />
     <Compile Include="Migrations\20190412230325_Inclusão da palheta de notas.designer.cs">
       <DependentUpon>20190412230325_Inclusão da palheta de notas.cs</DependentUpon>
@@ -299,6 +305,8 @@
     <Compile Include="Repositories\RepositoryAluno.cs" />
     <Compile Include="Repositories\RepositoryAvaliacao.cs" />
     <Compile Include="Repositories\RepositoryAvaliacaoTurma.cs" />
+    <Compile Include="Repositories\RepositoryChamada.cs" />
+    <Compile Include="Repositories\RepositoryFrequencia.cs" />
     <Compile Include="Repositories\RepositoryGeneric.cs" />
     <Compile Include="Repositories\RepositoryMatricula.cs" />
     <Compile Include="Repositories\RepositoryModulo.cs" />
@@ -307,7 +315,6 @@
     <Compile Include="Repositories\RepositoryProfessor.cs" />
     <Compile Include="Repositories\RepositoryTurma.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />

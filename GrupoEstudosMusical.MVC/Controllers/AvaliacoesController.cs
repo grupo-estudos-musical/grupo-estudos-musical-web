@@ -98,6 +98,7 @@ namespace GrupoEstudosMusical.MVC.Controllers
             ViewBag.Model = new AvaliacaoTurmaVM() { TurmaID = Id, AvaliacoesDisponiveis = avaliacoesVM.ToList(), NomeTurma = NomeTurma };
             var avaliacoes = Mapper.Map<IList<AvaliacaoTurma>, IList<AvaliacaoTurmaVM>>(_bussinesAvaliacaoTurma.ObterPelaTurma(Id));
             ViewBag.NomeTurma = NomeTurma;
+            ViewBag.IdTurma = Id;
             return View(avaliacoes);
         }
 

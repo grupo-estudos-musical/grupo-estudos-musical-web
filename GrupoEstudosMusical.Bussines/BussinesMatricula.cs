@@ -62,5 +62,8 @@ namespace GrupoEstudosMusical.Bussines
             matricula.Aluno = null;
             return await _repositoryMatricula.IncluirMatricula(matricula);
         }
+        public async Task<List<Matricula>> ObterMatriculasPorTurma(int idTurma) => await _repositoryMatricula.ObterMatriculasPorTurma(idTurma);
+        public int IncluirMatricula(Matricula matricula) =>
+            _repositoryMatricula.IncluirMatricula(matricula);
     }
 }

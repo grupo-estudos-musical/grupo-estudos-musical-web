@@ -13,8 +13,10 @@ namespace GrupoEstudosMusical.Data.Context
         public DbSet<Turma> Turmas { get; set; }
         public DbSet<Ocorrencia> Ocorrencias { get; set; }
         public DbSet<Matricula> Matriculas { get; set; }
-        public DbSet <Avaliacao> Avaliacoes { get; set; }
-        public DbSet <AvaliacaoTurma> AvaliacaoTurmas { get; set; }
+        public DbSet<Avaliacao> Avaliacoes { get; set; }
+        public DbSet<AvaliacaoTurma> AvaliacaoTurmas { get; set; }
+        public DbSet<Chamada> Chamadas { get; set; }
+        public DbSet<Frequencia> Frequencias { get; set; }
         public DbSet<PalhetaDeNota> PalhetaDeNotas { get; set; }
 
         public GemContext() : base() { }
@@ -35,8 +37,9 @@ namespace GrupoEstudosMusical.Data.Context
             modelBuilder.ApplyConfiguration(new MatriculaMap());
             modelBuilder.ApplyConfiguration(new AvaliacaoMap());
             modelBuilder.ApplyConfiguration(new AvaliacaoTurmaMap());
+            modelBuilder.ApplyConfiguration(new ChamadaMap());
+            modelBuilder.ApplyConfiguration(new FrequenciaMap());
             modelBuilder.ApplyConfiguration(new PalhetaDeNotaMap());
-
         }
     }
 }

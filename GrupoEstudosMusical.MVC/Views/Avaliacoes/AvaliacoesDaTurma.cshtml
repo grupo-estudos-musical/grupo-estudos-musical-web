@@ -14,10 +14,13 @@
                     <a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i>Home</a>
                 </li>
                 <li>
-                    <a href="@Url.Action("Index", "Avaliacoes")">Avaliação</a>
+                    <a href="@Url.Action("Index", "Turmas")">Turmas</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("VisaoGeral", "Turmas", new { id = ViewBag.IdTurma})">Visão Geral</a>
                 </li>
                 <li class="active">
-                    <strong>Avaliações</strong>
+                    <strong>Avaliações da Turma</strong>
                 </li>
             </ol>
         </div>
@@ -27,16 +30,6 @@
 
 
 <div class="col-lg-12">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="form-group pull-left">
-                <div class="controls">
-                    <button type="button" class="btn btn-success" onclick="AbrirModal()">Adicionar Avaliação</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <section class="box ">
         <header class="panel_header">
             <h2 class="title pull-left"> Avaliações da Turma @ViewBag.NomeTurma</h2>
@@ -47,6 +40,17 @@
         </header>
         <div class="content-body">
             @Html.Partial("_MensagemErro")
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group pull-left">
+                        <div class="controls">
+                            <button type="button" class="btn btn-success btn-iconic bottom" onclick="AbrirModal()">
+                                <i class="fa fa-plus"> &nbsp; <span>Adicionar Avaliação</span></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-xs-12">
                     <table id="example-1" class="table table-striped dt-responsive display">
@@ -74,7 +78,7 @@
                                     <td>@avaliacao.DataPrevista.ToString("dd/MM/yyyy")</td>
                                     <td>@avaliacao.DataRealizacao.ToString("dd/MM/yyyy")</td>
                                     <td style="width: 160px">
-                                        <a href="@Url.Action("EditarAvaliacaoDaTurma","Avaliacoes", new { IdAvaliacaoDaTurma = avaliacao.IdAvaliacaoTurma})" class="btn btn-success">Editar</a>
+                                        <a href="@Url.Action("EditarAvaliacaoDaTurma","Avaliacoes", new { IdAvaliacaoDaTurma = avaliacao.IdAvaliacaoTurma})" class="btn btn-primary">Editar</a>
                                         <a class="btn btn-danger" data-toggle="modal" href="#section-settings"
                                            onclick="removerAvaliacaoTurma(this, '@(avaliacao.IdAvaliacaoTurma)','@(avaliacao.Turma.Nome)')">Apagar</a>
                                     </td>
