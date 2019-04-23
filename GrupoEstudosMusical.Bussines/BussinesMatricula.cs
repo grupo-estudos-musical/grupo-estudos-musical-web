@@ -15,7 +15,7 @@ namespace GrupoEstudosMusical.Bussines
         private readonly IRepositoryAluno _repositoryAluno;
         private readonly IRepositoryPalhetaDeNotas _repositoryPalhetaDeNotas;
 
-        public BussinesMatricula(IRepositoryMatricula repositoryMatricula, 
+        public BussinesMatricula(IRepositoryMatricula repositoryMatricula,
             IRepositoryTurma repositoryTurma, IRepositoryAluno repositoryAluno, IRepositoryPalhetaDeNotas repositoryPalhetaDeNotas) : base(repositoryMatricula)
         {
             _repositoryMatricula = repositoryMatricula;
@@ -48,7 +48,19 @@ namespace GrupoEstudosMusical.Bussines
         public Task<IList<Matricula>> ObterMatriculasPorAluno(int idAluno) =>
             _repositoryMatricula.ObterMatriculasPorAluno(idAluno);
 
-        public int IncluirMatricula(Matricula matricula) =>
-            _repositoryMatricula.IncluirMatricula(matricula);
+        public async Task<int> IncluirMatricula(Matricula matricula)
+        {
+            var turma = await _repositoryTurma.ObterPorIdAsync(matricula.TurmaId);
+            if (!turma.VerificarQuantidadeDeAlunosMatriculados())
+                throw new TurmaMatriculaExeception("Não existe vagas para esta turma.");
+
+            var matriculas = await _repositoryMatricula.ObterMatriculasPorAluno(matricula.AlunoId);
+            if (matriculas.Any(m => m.TurmaId == matricula.TurmaId))
+                throw new TurmaMatriculaExeception("Aluno já está matrícula nesta turma.");
+
+            matricula.VerificarMatriculaPendente();
+            matricula.Aluno = null;
+            return await _repositoryMatricula.IncluirMatricula(matricula);
+        }
     }
 }

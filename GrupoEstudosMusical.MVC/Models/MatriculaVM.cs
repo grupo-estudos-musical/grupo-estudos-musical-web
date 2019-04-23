@@ -30,5 +30,7 @@ namespace GrupoEstudosMusical.MVC.Models
         public List<ModuloVM> Modulos { get; set; }
 
         public List<TurmaVM> TurmasMatriculadas { get; set; }
+
+        public double? Media { get; set; }
     }
 }

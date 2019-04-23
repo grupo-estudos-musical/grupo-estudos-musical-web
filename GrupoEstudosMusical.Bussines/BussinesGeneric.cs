@@ -13,10 +13,12 @@ namespace GrupoEstudosMusical.Bussines
         {
             _repository = repository;
         }
+        
+        
 
         public virtual async Task AlterarAsync(TEntity entity) => await _repository.AlterarAsync(entity);
 
-        public async Task DeletarAsync(TEntity entity) => await _repository.DeletarAsync(entity);
+        public virtual async Task DeletarAsync(TEntity entity) => await _repository.DeletarAsync(entity);
 
         public virtual async Task InserirAsync(TEntity entity) => await _repository.InserirAsync(entity);
 

@@ -284,8 +284,10 @@
     <Content Include="Content\images\menu_nova_ocorrencia.png" />
     <Content Include="Content\images\menu_student_edit.png" />
     <Content Include="Content\images\menu_ocorrencias.png" />
+    <Content Include="Content\images\notebook.png" />
     <Content Include="Content\images\pencil.png" />
     <Content Include="Content\images\prancheta.png" />
+    <Content Include="Content\images\reload.png" />
     <Content Include="Content\images\sem_foto.png" />
     <Content Include="Content\lib\bootstrap\css\bootstrap-theme.min.css" />
     <Content Include="Content\lib\bootstrap\css\bootstrap.min.css" />
@@ -311,6 +313,7 @@
     <Content Include="Content\images\user.png" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\JsPalhetaDeNotas.js" />
     <Content Include="Scripts\js\aluno.js" />
     <Content Include="Scripts\js\app.js" />
     <Content Include="Scripts\js\avaliacaoTurma.js" />
@@ -416,6 +419,8 @@
     <Content Include="Views\Shared\_AdicionarAvaliacaoNaTurma.cshtml" />
     <Content Include="Views\Shared\_EditarAvaliacaoNaTurma.cshtml" />
     <Content Include="Views\Avaliacoes\EditarAvaliacaoDaTurma.cshtml" />
+    <Content Include="Views\Turmas\LancarNotas.cshtml" />
+    <Content Include="Views\Shared\_PalhetaDeNotas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GrupoEstudosMusical.Bussines\GrupoEstudosMusical.Bussines.csproj">

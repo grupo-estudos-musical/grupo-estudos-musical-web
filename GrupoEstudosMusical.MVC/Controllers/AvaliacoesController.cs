@@ -167,9 +167,18 @@ namespace GrupoEstudosMusical.MVC.Controllers
             var avaliacaoTurmaID = Guid.Parse(formCollection["IdAvaliacaoTurma"]);
             var nomeTurma = formCollection["NomeTurma"].ToString();
             var avaliacaoTurmaModel = _bussinesAvaliacaoTurma.ObterPorId(avaliacaoTurmaID);
-            await _bussinesAvaliacaoTurma.DeletarAsync(avaliacaoTurmaModel);
-            TempData["Mensagem"] = "Avaliação removida com sucesso.";
-            return RedirectToAction(nameof(AvaliacoesDaTurma), new { Id = avaliacaoTurmaModel.TurmaID, NomeTurma = nomeTurma});
+            try
+            {
+                await _bussinesAvaliacaoTurma.DeletarAsync(avaliacaoTurmaModel);
+                TempData["Mensagem"] = "Avaliação removida com sucesso.";
+                return RedirectToAction(nameof(AvaliacoesDaTurma), new { Id = avaliacaoTurmaModel.TurmaID, NomeTurma = nomeTurma });
+            }
+            catch(CrudAvaliacaoException ex)
+            {
+                TempData["Mensagem"] = ex.Message;
+                return RedirectToAction(nameof(AvaliacoesDaTurma), new { Id = avaliacaoTurmaModel.TurmaID, NomeTurma = nomeTurma });
+            }
+            
         }
 
 

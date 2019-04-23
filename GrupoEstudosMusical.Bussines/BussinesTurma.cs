@@ -1,4 +1,5 @@
 ﻿using GrupoEstudosMusical.Bussines.Exceptions;
+using GrupoEstudosMusical.Bussines.Helpers;
 using GrupoEstudosMusical.Models.Entities;
 using GrupoEstudosMusical.Models.Interfaces.Bussines;
 using GrupoEstudosMusical.Models.Interfaces.Repository;
@@ -12,8 +13,10 @@ namespace GrupoEstudosMusical.Bussines
     {
         private readonly IRepositoryTurma _repositoryTurma;
         private readonly IBussinesMatricula _bussinesMatricula;
-        public BussinesTurma(IRepositoryTurma repositoryTurma, IBussinesMatricula bussinesMatricula) : base(repositoryTurma)
+        private readonly IRepositoryPalhetaDeNotas _repositoryPalhetaDeNotas;
+        public BussinesTurma(IRepositoryTurma repositoryTurma, IBussinesMatricula bussinesMatricula, IRepositoryPalhetaDeNotas repositoryPalhetaDeNotas) : base(repositoryTurma)
         {
+            _repositoryPalhetaDeNotas = repositoryPalhetaDeNotas;
             _repositoryTurma = repositoryTurma;
             _bussinesMatricula = bussinesMatricula;
         }
@@ -66,6 +69,17 @@ namespace GrupoEstudosMusical.Bussines
             }
 
             return turmas;
+        }
+
+        public async Task RecalculoAcademico(int TurmaId)
+        {
+            var turma = await _repositoryTurma.ObterPorIdAsync(TurmaId);
+           
+            foreach(var matricula in turma.Matriculas)
+            {
+                matricula.Media = CalculoDeMediaHelper.CalcularMediaDoAluno(_repositoryPalhetaDeNotas.ObterPalhetasPorMatricula(matricula.Id));
+                await _bussinesMatricula.AlterarAsync(matricula);
+            }
         }
 
         public IList<Turma> ObterTurmasAtivasPorModulo(int moduloId) => _repositoryTurma.ObterTurmasAtivasPorModulo(moduloId);

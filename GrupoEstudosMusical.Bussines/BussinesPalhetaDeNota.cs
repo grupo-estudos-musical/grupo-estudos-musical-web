@@ -17,12 +17,23 @@ namespace GrupoEstudosMusical.Bussines
             _repositoryPalhetaDeNotas = repository;
         }
 
-        public void AdicionarTodasAvaliacoesDaTurmaAoALuno(List<AvaliacaoTurma> avaliacoesTurma, int matriculaId)
+        public async Task AdicionarTodasAvaliacoesDaTurmaAoALuno(List<AvaliacaoTurma> avaliacoesTurma, int matriculaId)
         {
             foreach(var avaliacaoTurma in avaliacoesTurma)
             {
-                _repositoryPalhetaDeNotas.InserirAsync(new PalhetaDeNota() { AvaliacaoID = avaliacaoTurma.IdAvaliacaoTurma, MatriculaID = matriculaId });
+               await _repositoryPalhetaDeNotas.InserirAsync(new PalhetaDeNota() { AvaliacaoID = avaliacaoTurma.IdAvaliacaoTurma, MatriculaID = matriculaId });
             }
+        }
+
+        public IList<PalhetaDeNota> ObterPalhetasPorAvaliacaoEhTurma(Guid avaliacaoID, int turmaID) =>
+            _repositoryPalhetaDeNotas.ObterPalhetasPorAvaliacaoEhTurma(avaliacaoID, turmaID);
+
+        public PalhetaDeNota ObterPorId(Guid id) =>
+            _repositoryPalhetaDeNotas.ObterPorId(id);
+
+        public override Task AlterarAsync(PalhetaDeNota entity)
+        {
+            return base.AlterarAsync(entity);
         }
     }
 }

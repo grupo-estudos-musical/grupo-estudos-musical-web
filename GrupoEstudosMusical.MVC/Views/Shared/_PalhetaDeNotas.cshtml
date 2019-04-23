@@ -1,0 +1,44 @@
+﻿@model List<GrupoEstudosMusical.Models.Entities.PalhetaDeNota>
+@{
+    ViewBag.Title = "Palheta de Notas";
+}
+
+@Html.Partial("_MensagemSucesso")
+<div class="row">
+    <div class="col-md-6" >
+        <button type="button" id="EfetuarLancamento" class="btn btn-primary btn-icon bottom15 right15" onclick="ObterNotasPelaTabela();"><i class="fa fa-check-circle"></i> Processar Notas</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <table id="example-1" class="table table-striped dt-responsive display">
+            <thead>
+                <tr>
+                    <th>Código Matrícula</th>
+                    <th>Nome</th>
+                    <th>Nota</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>Código Matrícula</th>
+                    <th>Nome</th>
+                    <th>Nota</th>
+                </tr>
+            </tfoot>
+            <tbody>
+                @foreach (var palheta in Model)
+                {
+                    <tr>
+                        @Html.Hidden("PalhetaId", palheta.IdPalheta)
+                        <td>@Html.DisplayFor(item => palheta.Matricula.Id)</td>
+                        <td>@Html.DisplayFor(item => palheta.Matricula.Aluno.Nome)</td>
+                        @*<td>@Html.EditorFor(item => palheta.Nota,new { htmlAttributes = new { @class = "form-control", @onblur = "LancarNotaAluno(this)" } })</td>*@
+                        <td>@Html.EditorFor(item => palheta.Nota, new { htmlAttributes = new { @class="form-control", @data_mask = "99,9" } })</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
