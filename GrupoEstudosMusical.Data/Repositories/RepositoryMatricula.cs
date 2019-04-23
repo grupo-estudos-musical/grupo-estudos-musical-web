@@ -35,7 +35,7 @@ namespace GrupoEstudosMusical.Data.Repositories
             var matriculas = await ObterMatriculas(m => m.Id == id);
             return matriculas.FirstOrDefault();
         }
-        
+
 
         private async Task<IList<Matricula>> ObterMatriculas(Expression<Func<Matricula, bool>> filter)
         {

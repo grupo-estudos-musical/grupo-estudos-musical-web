@@ -37,6 +37,26 @@
 
 @Html.Partial("_VisaoGeralTurma", new ViewDataDictionary { { "titulo", "Remover Turma" }, { "link", "#section-settings" }, { "imagem", "/Content/images/menu_deletar_turma.png" }, { "alt", "Chamadas" }, { "attr", $"data-toggle=modal onclick=apagar(this,'{Model.Id}','{Model.Nome.Replace(" ", "")}')" } })
 
+@Html.Partial("_VisaoGeralTurma", new ViewDataDictionary { { "titulo", "Lançar Notas" }, { "link", @Url.Action("LancarNotas", "Turmas", new { Id = Model.Id }) }, { "imagem", "/Content/images/notebook.png" }, { "alt", "Lançar Notas" } })
+
+<div class="col-xs-12 col-md-6 col-lg-3" id="recalculoAcademico">
+    <section class="box ">
+        <header class="panel_header">
+            <h2 class="title texto-centralizado">Recálculo acadêmico</h2>
+        </header>
+        <div class="content-body">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="imagem-centralizada">
+                        <a href="#" onclick="EfetuarRecalculoAcademico(@Model.Id)">
+                            <img src="~/Content/images/reload.png" alt="Recálculo acadêmico" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
 
 <div class="modal" id="section-settings" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog animated bounceInDown">
@@ -60,26 +80,8 @@
         </div>
     </div>
 </div>
-@Html.Partial("_VisaoGeralTurma", new ViewDataDictionary { { "titulo", "Lançar Notas" }, { "link", @Url.Action("LancarNotas", "Turmas", new { Id = Model.Id }) }, { "imagem", "/Content/images/notebook.png" }, { "alt", "Lançar Notas" } })
 
-<div class="col-xs-12 col-md-6 col-lg-3" id="recalculoAcademico">
-    <section class="box ">
-        <header class="panel_header">
-            <h2 class="title texto-centralizado">Recálculo acadêmico</h2>
-        </header>
-        <div class="content-body">
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="imagem-centralizada">
-                        <a href="#" onclick="EfetuarRecalculoAcademico(@Model.Id)">
-                            <img src="~/Content/images/reload.png" alt="Recálculo acadêmico" />
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-</div>
+
 
 @section styles {
     <link href="~/Content/lib/messenger/messenger.css" rel="stylesheet" type="text/css" media="screen" />

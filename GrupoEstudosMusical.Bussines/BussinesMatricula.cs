@@ -24,20 +24,20 @@ namespace GrupoEstudosMusical.Bussines
             _repositoryPalhetaDeNotas = repositoryPalhetaDeNotas;
         }
 
-        public async override Task InserirAsync(Matricula entity)
-        {
-            var turma = await _repositoryTurma.ObterPorIdAsync(entity.TurmaId);
-            if (!turma.VerificarQuantidadeDeAlunosMatriculados())
-                throw new TurmaMatriculaExeception("Não existe vagas para esta turma.");
+        //public async override Task InserirAsync(Matricula entity)
+        //{
+        //    var turma = await _repositoryTurma.ObterPorIdAsync(entity.TurmaId);
+        //    if (!turma.VerificarQuantidadeDeAlunosMatriculados())
+        //        throw new TurmaMatriculaExeception("Não existe vagas para esta turma.");
 
-            var matriculas = await _repositoryMatricula.ObterMatriculasPorAluno(entity.AlunoId);
-            if (matriculas.Any(m => m.TurmaId == entity.TurmaId))
-                throw new TurmaMatriculaExeception("Aluno já está matrícula nesta turma.");
+        //    var matriculas = await _repositoryMatricula.ObterMatriculasPorAluno(entity.AlunoId);
+        //    if (matriculas.Any(m => m.TurmaId == entity.TurmaId))
+        //        throw new TurmaMatriculaExeception("Aluno já está matrícula nesta turma.");
 
-            entity.VerificarMatriculaPendente();
-            entity.Aluno = null;
-            await base.InserirAsync(entity);
-        }
+        //    entity.VerificarMatriculaPendente();
+        //    entity.Aluno = null;
+        //    await base.InserirAsync(entity);
+        //}
 
         public override Task AlterarAsync(Matricula entity)
         {
@@ -63,7 +63,6 @@ namespace GrupoEstudosMusical.Bussines
             return await _repositoryMatricula.IncluirMatricula(matricula);
         }
         public async Task<List<Matricula>> ObterMatriculasPorTurma(int idTurma) => await _repositoryMatricula.ObterMatriculasPorTurma(idTurma);
-        public int IncluirMatricula(Matricula matricula) =>
-            _repositoryMatricula.IncluirMatricula(matricula);
+        
     }
 }
