@@ -40,6 +40,7 @@ namespace GrupoEstudosMusical.Data.Context
             modelBuilder.ApplyConfiguration(new ChamadaMap());
             modelBuilder.ApplyConfiguration(new FrequenciaMap());
             modelBuilder.ApplyConfiguration(new PalhetaDeNotaMap());
+            modelBuilder.ApplyConfiguration(new AulaMap());
         }
     }
 }

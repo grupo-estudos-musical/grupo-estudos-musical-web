@@ -146,6 +146,7 @@
   <ItemGroup>
     <Compile Include="Context\GemContext.cs" />
     <Compile Include="Mappings\AlunoMap.cs" />
+    <Compile Include="Mappings\AulaMap.cs" />
     <Compile Include="Mappings\AvaliacaoMap.cs" />
     <Compile Include="Mappings\AvaliacaoTurmaMap.cs" />
     <Compile Include="Mappings\ChamadaMap.cs" />
@@ -283,7 +284,7 @@
     <Compile Include="Migrations\20190413174015_AdicionandoTabelasConroleDeFaltas.cs" />
     <Compile Include="Migrations\20190413174015_AdicionandoTabelasConroleDeFaltas.designer.cs">
       <DependentUpon>20190413174015_AdicionandoTabelasConroleDeFaltas.cs</DependentUpon>
-	</Compile>
+    </Compile>
     <Compile Include="Migrations\20190412230325_Inclusão da palheta de notas.cs" />
     <Compile Include="Migrations\20190412230325_Inclusão da palheta de notas.designer.cs">
       <DependentUpon>20190412230325_Inclusão da palheta de notas.cs</DependentUpon>
@@ -295,6 +296,10 @@
     <Compile Include="Migrations\20190413031902_Teste.cs" />
     <Compile Include="Migrations\20190413031902_Teste.designer.cs">
       <DependentUpon>20190413031902_Teste.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20190424004912_AdicionandoTabelaDeAulas.cs" />
+    <Compile Include="Migrations\20190424004912_AdicionandoTabelaDeAulas.designer.cs">
+      <DependentUpon>20190424004912_AdicionandoTabelaDeAulas.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\GemContextModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

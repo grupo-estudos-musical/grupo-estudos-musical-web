@@ -3,14 +3,16 @@ using System;
 using GrupoEstudosMusical.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GrupoEstudosMusical.Data.Migrations
 {
     [DbContext(typeof(GemContext))]
-    partial class GemContextModelSnapshot : ModelSnapshot
+    [Migration("20190424001522_AdicionandoTabelaDeAulas")]
+    partial class AdicionandoTabelaDeAulas
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -145,8 +147,7 @@ namespace GrupoEstudosMusical.Data.Migrations
                     b.Property<Guid>("IdAvaliacaoTurma")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("AulaId")
-                        .HasColumnType("int");
+                    b.Property<int?>("AulaId");
 
                     b.Property<int>("AvaliacaoID");
 
@@ -434,7 +435,7 @@ namespace GrupoEstudosMusical.Data.Migrations
 
             modelBuilder.Entity("GrupoEstudosMusical.Models.Entities.AvaliacaoTurma", b =>
                 {
-                    b.HasOne("GrupoEstudosMusical.Models.Entities.Aula")
+                    b.HasOne("GrupoEstudosMusical.Models.Entities.Aula", "Aula")
                         .WithMany("AvaliacaosTurma")
                         .HasForeignKey("AulaId");
 

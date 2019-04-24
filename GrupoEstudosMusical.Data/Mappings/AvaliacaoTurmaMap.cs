@@ -21,8 +21,9 @@ namespace GrupoEstudosMusical.Data.Mappings
             // builder.HasKey(a => new {a.AvaliacaoID, a.TurmaID});
             builder.Property(a => a.DataPrevista).HasColumnType("date").IsRequired();
             builder.Property(a => a.DataCadastro).HasColumnType("date").IsRequired();
+            builder.Property(a => a.AulaId).HasColumnType("int");
             builder.Ignore(a => a.Id);
-            
+            builder.Ignore(a => a.Aula);
         }
     }
 }
