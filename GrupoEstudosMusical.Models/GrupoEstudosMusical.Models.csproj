@@ -48,6 +48,8 @@
     <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\Chamada.cs" />
     <Compile Include="Entities\Frequencia.cs" />
+    <Compile Include="Entities\Instrumento.cs" />
+    <Compile Include="Entities\InstrumentoDoAluno.cs" />
     <Compile Include="Entities\Matricula.cs" />
     <Compile Include="Entities\Modulo.cs" />
     <Compile Include="Entities\Ocorrencia.cs" />
@@ -61,8 +63,11 @@
     <Compile Include="Interfaces\Bussines\IBussinesAvaliacao.cs" />
     <Compile Include="Interfaces\Bussines\IBussinesAvaliacaoTurma.cs" />
     <Compile Include="Interfaces\Bussines\IBussinesChamada.cs" />
+    <Compile Include="Interfaces\Bussines\IBussinesFabricante.cs" />
     <Compile Include="Interfaces\Bussines\IBussinesFrequencia.cs" />
     <Compile Include="Interfaces\Bussines\IBussinesGeneric.cs" />
+    <Compile Include="Interfaces\Bussines\IBussinesInstrumento.cs" />
+    <Compile Include="Interfaces\Bussines\IBussinesInstrumentoDoAluno.cs" />
     <Compile Include="Interfaces\Bussines\IBussinesMatricula.cs" />
     <Compile Include="Interfaces\Bussines\IBussinesModulo.cs" />
     <Compile Include="Interfaces\Bussines\IBussinesOcorrencia.cs" />
@@ -72,7 +77,10 @@
     <Compile Include="Interfaces\Repository\IRepositoryAvaliacao.cs" />
     <Compile Include="Interfaces\Repository\IRepositoryAvaliacaoTurma.cs" />
     <Compile Include="Interfaces\Repository\IRepositoryChamada.cs" />
+    <Compile Include="Interfaces\Repository\IRepositoryFabricante.cs" />
     <Compile Include="Interfaces\Repository\IRepositoryFrequencia.cs" />
+    <Compile Include="Interfaces\Repository\IRepositoryInstrumento.cs" />
+    <Compile Include="Interfaces\Repository\IRepositoryInstrumentoDoAluno.cs" />
     <Compile Include="Interfaces\Repository\IRepositoryMatricula.cs" />
     <Compile Include="Interfaces\Repository\IRepositoryOcorrencia.cs" />
     <Compile Include="Interfaces\Repository\IRepositoryPalhetaDeNotas.cs" />

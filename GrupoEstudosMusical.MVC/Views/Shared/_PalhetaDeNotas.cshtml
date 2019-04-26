@@ -5,7 +5,7 @@
 
 @Html.Partial("_MensagemSucesso")
 <div class="row">
-    <div class="col-md-6" >
+    <div class="col-md-6">
         <button type="button" id="EfetuarLancamento" class="btn btn-primary btn-icon bottom15 right15" onclick="ObterNotasPelaTabela();"><i class="fa fa-check-circle"></i> Processar Notas</button>
     </div>
 </div>
@@ -34,7 +34,7 @@
                         <td>@Html.DisplayFor(item => palheta.Matricula.Id)</td>
                         <td>@Html.DisplayFor(item => palheta.Matricula.Aluno.Nome)</td>
                         @*<td>@Html.EditorFor(item => palheta.Nota,new { htmlAttributes = new { @class = "form-control", @onblur = "LancarNotaAluno(this)" } })</td>*@
-                        <td>@Html.EditorFor(item => palheta.Nota, new { htmlAttributes = new { @class="form-control", @data_mask = "99,9" } })</td>
+                        <td>@Html.EditorFor(item => palheta.Nota, new { htmlAttributes = new { @class = "form-control", @data_mask = "99,9" } })</td>
                     </tr>
                 }
             </tbody>

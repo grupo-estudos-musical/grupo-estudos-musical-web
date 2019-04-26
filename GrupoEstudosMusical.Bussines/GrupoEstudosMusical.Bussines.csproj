@@ -49,8 +49,11 @@
     <Compile Include="BussinesAvaliacao.cs" />
     <Compile Include="BussinesAvaliacaoTurma.cs" />
     <Compile Include="BussinesChamada.cs" />
+    <Compile Include="BussinesFabricante.cs" />
     <Compile Include="BussinesFrequencia.cs" />
     <Compile Include="BussinesGeneric.cs" />
+    <Compile Include="BussinesInstrumento.cs" />
+    <Compile Include="BussinesInstrumentoDoAluno.cs" />
     <Compile Include="BussinesModulo.cs" />
     <Compile Include="BussinesOcorrencia.cs" />
     <Compile Include="BussinesPalhetaDeNota.cs" />

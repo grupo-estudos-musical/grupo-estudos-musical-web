@@ -3,14 +3,16 @@ using System;
 using GrupoEstudosMusical.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GrupoEstudosMusical.Data.Migrations
 {
     [DbContext(typeof(GemContext))]
-    partial class GemContextModelSnapshot : ModelSnapshot
+    [Migration("20190424224347_Criação dos migrations de fabricante e instrumento")]
+    partial class Criaçãodosmigrationsdefabricanteeinstrumento
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -187,14 +189,24 @@ namespace GrupoEstudosMusical.Data.Migrations
                     b.Property<Guid>("IntrumentoID")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<DateTime?>("AnoDeFabricacao")
+                        .HasColumnType("date");
+
+                    b.Property<string>("Cor")
+                        .HasColumnType("varchar(10)");
+
                     b.Property<DateTime>("DataCadastro")
                         .HasColumnType("date");
+
+                    b.Property<Guid>("FabricanteID");
 
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("varchar(20)");
 
                     b.HasKey("IntrumentoID");
+
+                    b.HasIndex("FabricanteID");
 
                     b.ToTable("Instrumentos");
                 });
@@ -211,41 +223,6 @@ namespace GrupoEstudosMusical.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Fabricantes");
-                });
-
-            modelBuilder.Entity("GrupoEstudosMusical.Models.Entities.InstrumentoDoAluno", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("AlunoID");
-
-                    b.Property<DateTime>("AnoDeFabricacaoInstrumento");
-
-                    b.Property<string>("Cor")
-                        .IsRequired()
-                        .HasColumnType("varchar(10)");
-
-                    b.Property<DateTime>("DataCadastro")
-                        .HasColumnType("date");
-
-                    b.Property<DateTime>("DataEmprestimo")
-                        .HasColumnType("date");
-
-                    b.Property<Guid>("FabricanteID");
-
-                    b.Property<Guid>("InstrumentoID");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AlunoID");
-
-                    b.HasIndex("FabricanteID");
-
-                    b.HasIndex("InstrumentoID", "FabricanteID", "AlunoID")
-                        .IsUnique();
-
-                    b.ToTable("InstrumentoDoAluno");
                 });
 
             modelBuilder.Entity("GrupoEstudosMusical.Models.Entities.Matricula", b =>
@@ -501,21 +478,11 @@ namespace GrupoEstudosMusical.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("GrupoEstudosMusical.Models.Entities.InstrumentoDoAluno", b =>
+            modelBuilder.Entity("GrupoEstudosMusical.Models.Entities.Instrumento", b =>
                 {
-                    b.HasOne("GrupoEstudosMusical.Models.Entities.Aluno", "Aluno")
-                        .WithMany("Instrumentos")
-                        .HasForeignKey("AlunoID")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("GrupoEstudosMusical.Models.Entities.Instrumento+Fabricante", "Fabricante")
+                    b.HasOne("GrupoEstudosMusical.Models.Entities.Instrumento+Fabricante", "FabricanteInstrumento")
                         .WithMany("Instrumentos")
                         .HasForeignKey("FabricanteID")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("GrupoEstudosMusical.Models.Entities.Instrumento", "Instrumento")
-                        .WithMany("Instrumentos")
-                        .HasForeignKey("InstrumentoID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

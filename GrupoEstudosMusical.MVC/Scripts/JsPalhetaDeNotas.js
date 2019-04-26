@@ -17,21 +17,26 @@
 
 
 function ObterNotasPelaTabela() {
+    if (VerificarIrregularidesNasNotas() > 0) {
+        swal("Atenção", "Existe uma ou mais notas inválidas!", "warning");
+    } else {
+        $('table tbody tr').each(function () {
+            var nota = $(this).find('#palheta_Nota').val().replace('.', ',');
+            var idpalheta = $(this).find('#PalhetaId').val();
+            LancarNotaAluno(nota, idpalheta);
+        });
+    }
+}
+function VerificarIrregularidesNasNotas() {
+    console.log("Entrei na verificação das irregularidades");
+    var qntNotasIrregulares = 0;
     $('table tbody tr').each(function () {
         var nota = $(this).find('#palheta_Nota').val().replace('.', ',');
-
-        var idpalheta = $(this).find('#PalhetaId').val();
-
         if (ValidarCampoNota(nota)) {
-            swal("Atenção", "Insira um valor correspondente a uma nota!", "warning");
-
-        } else {
-            LancarNotaAluno(nota, idpalheta);
+            qntNotasIrregulares = qntNotasIrregulares + 1;
         }
-
-
-
     });
+    return qntNotasIrregulares;
 }
 function LancarNotaAluno(nota, idpalheta) {
     $.ajax({
@@ -56,6 +61,7 @@ function LancarNotaAluno(nota, idpalheta) {
     });
 }
 function ValidarCampoNota(nota) {
+    
     var verificarSeEhUmValorValido = parseFloat(nota);
     return isNaN(verificarSeEhUmValorValido);
 }
