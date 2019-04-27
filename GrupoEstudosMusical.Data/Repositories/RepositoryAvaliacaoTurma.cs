@@ -9,9 +9,10 @@ namespace GrupoEstudosMusical.Data.Repositories
 {
     public class RepositoryAvaliacaoTurma : RepositoryGeneric<AvaliacaoTurma>, IRepositoryAvaliacaoTurma
     {
-        public List<AvaliacaoTurma> ObterPelaTurma(int turma) =>
+        public List<AvaliacaoTurma> ObterPorTurma(int turma) =>
             DbSet.Include(t => t.Avaliacao)
             .Include(t => t.Turma)
+            .Include(t => t.Avaliacao)
             .Where(a => a.TurmaID == turma).ToList();
 
         public AvaliacaoTurma ObterPorId(Guid AvaliacaoTurmaID) =>

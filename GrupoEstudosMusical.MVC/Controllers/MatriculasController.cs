@@ -89,7 +89,7 @@ namespace GrupoEstudosMusical.MVC.Controllers
 
         void AdicionarAvaliacoesNaMatrículaDoAluno(int turmaId,int matriculaId )
         {
-            var listaDeAvaliacoes = _bussinesAvaliacaoTurma.ObterPelaTurma(turmaId);
+            var listaDeAvaliacoes = _bussinesAvaliacaoTurma.ObterPorTurma(turmaId);
             if(listaDeAvaliacoes != null)
                 _bussinesPalhetaDeNotas.AdicionarTodasAvaliacoesDaTurmaAoALuno(listaDeAvaliacoes, matriculaId);
         }

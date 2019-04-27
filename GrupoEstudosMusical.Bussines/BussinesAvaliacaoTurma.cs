@@ -21,8 +21,8 @@ namespace GrupoEstudosMusical.Bussines
             _repositoryPalhetaDeNotas = repositoryPalhetaDeNotas;
         }
 
-        public List<AvaliacaoTurma> ObterPelaTurma(int turma) =>
-            _repositoryAvaliacaoTurma.ObterPelaTurma(turma);
+        public List<AvaliacaoTurma> ObterPorTurma(int turma) =>
+            _repositoryAvaliacaoTurma.ObterPorTurma(turma);
 
 
         public AvaliacaoTurma ObterPorIds(int turma, int avaliacao) =>
