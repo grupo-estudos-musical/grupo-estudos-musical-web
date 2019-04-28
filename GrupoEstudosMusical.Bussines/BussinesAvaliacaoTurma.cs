@@ -21,6 +21,9 @@ namespace GrupoEstudosMusical.Bussines
             _repositoryPalhetaDeNotas = repositoryPalhetaDeNotas;
         }
 
+        public List<AvaliacaoTurma> ObterPorTurma(int turma) =>
+            _repositoryAvaliacaoTurma.ObterPorTurma(turma);
+
         void VerificarSeExistePalhetaDeNotaGerada(Guid avaliacaoID, int turma)
         {
             var existePalhetaDeNota = _repositoryPalhetaDeNotas.ObterPalhetasPorAvaliacaoEhTurma(avaliacaoID, turma);
@@ -36,7 +39,6 @@ namespace GrupoEstudosMusical.Bussines
 
         public List<AvaliacaoTurma> ObterPelaTurma(int turma) =>
             _repositoryAvaliacaoTurma.ObterPelaTurma(turma);
-
 
         public AvaliacaoTurma ObterPorIds(int turma, int avaliacao) =>
             _repositoryAvaliacaoTurma.ObterPorIds(turma, avaliacao);

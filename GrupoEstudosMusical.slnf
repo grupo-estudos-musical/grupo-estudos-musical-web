@@ -1,0 +1,12 @@
+{
+  "solution": {
+    "path": "GrupoEstudosMusical.sln",
+    "projects": [
+      "GrupoEstudosMusical.Bussines\\GrupoEstudosMusical.Bussines.csproj",
+      "GrupoEstudosMusical.Data\\GrupoEstudosMusical.Data.csproj",
+      "GrupoEstudosMusical.IoC\\GrupoEstudosMusical.IoC.csproj",
+      "GrupoEstudosMusical.MVC\\GrupoEstudosMusical.MVC.csproj",
+      "GrupoEstudosMusical.Models\\GrupoEstudosMusical.Models.csproj"
+    ]
+  }
+}

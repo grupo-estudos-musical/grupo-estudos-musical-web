@@ -20,11 +20,10 @@ namespace GrupoEstudosMusical.MVC.AutoMapper
             CreateMap<AvaliacaoTurma, AvaliacaoTurmaVM>();
             CreateMap<Chamada, ChamadaVM>();
             CreateMap<Frequencia, FrequenciaVM>();
+            CreateMap<Aula, AulaVM>();
             CreateMap<Instrumento, InstrumentoVM>();
             CreateMap<Fabricante, FabricanteVM>();
             CreateMap<InstrumentoDoAluno, InstrumentoDoAlunoVM>();
-
-
         }
     }
 }

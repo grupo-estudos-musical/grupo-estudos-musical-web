@@ -1,0 +1,133 @@
+﻿@model GrupoEstudosMusical.MVC.Models.AulaVM
+
+@{
+    ViewBag.Title = "Nova Aula";
+}
+
+<div class='col-xs-12'>
+    <div class="page-title">
+        <div class="pull-left">
+            <!-- PAGE HEADING TAG - START -->
+            <h1 class="title">Cadastrar uma Aula</h1><!-- PAGE HEADING TAG - END -->
+        </div>
+        <div class="pull-right hidden-xs">
+            <ol class="breadcrumb">
+                <li>
+                    <a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i>Home</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Turmas")">Turmas</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("VisaoGeral", "Turmas", new { id = Model.TurmaId})">Visão Geral</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Aulas", new { idTurma = Model.TurmaId})">Todas Aulas</a>
+                </li>
+                <li class="active">
+                    <strong>Nova Aula</strong>
+                </li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+@using (Html.BeginForm("Novo", "Aulas", FormMethod.Post, htmlAttributes: new { @id = "form_aula" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.TurmaId)
+    @Html.Partial("_CamposAula")
+    <div class="col-lg-12">
+        <section class="box ">
+            <header class="panel_header">
+                <h2 class="title pull-left">Vincular avaliações</h2>
+                <div class="actions panel_actions pull-right">
+                    <a class="box_toggle fa fa-chevron-down"></a>
+                    <a class="box_close fa fa-times"></a>
+                </div>
+            </header>
+            <div class="content-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <table class="table table-bordered texto-centralizado">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Avaliação</th>
+                                    <th>Data Prevista</th>
+                                    <th>Data de Realização</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{ var avaliacoes = Model.AvaliacoesTurma.OrderBy(a => a.AulaId).ToList(); }
+                                @for (int i = 0; i < avaliacoes.Count; i++)
+                                {
+                                    var avaliacaoTurma = avaliacoes[i];
+                                    var avaliacaoVinculada = avaliacaoTurma.AulaId != null;
+
+                                    <tr style="display: none">
+                                        <td>@Html.HiddenFor(model => model.AvaliacoesTurma[i].IdAvaliacaoTurma)</td>
+                                        <td>@Html.HiddenFor(model => model.AvaliacoesTurma[i].TurmaID)</td>
+                                        <td>@Html.HiddenFor(model => model.AvaliacoesTurma[i].AvaliacaoID)</td>
+                                        <td>@Html.HiddenFor(model => model.AvaliacoesTurma[i].DataCadastro)</td>
+                                        <td>@Html.HiddenFor(model => model.AvaliacoesTurma[i].DataPrevista)</td>
+                                        <td>@Html.HiddenFor(model => model.AvaliacoesTurma[i].DataRealizacao)</td>
+                                    </tr>
+
+                                    <tr class="@(avaliacaoVinculada ? "danger" : "")">
+                                        <td>
+                                            @if (!avaliacaoVinculada)
+                                            {
+                                                @Html.CheckBoxFor(model => model.AvaliacoesTurma[i].Selecionado, htmlAttributes: new { @class = "skin-flat-grey" })
+                                            }
+                                        </td>
+                                        <td>@avaliacaoTurma.Avaliacao.Nome</td>
+                                        <td>@avaliacaoTurma.DataPrevista.ToString("d")</td>
+                                        <td>@avaliacaoTurma.DataRealizacao.ToString("d")</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="pull-right">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="legenda legenda-danger">
+                                </div>
+                            </div>
+                            <div class="col-md-10">
+                                <span>Atividade vinculada</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="pull-right ">
+                            <button type="submit" class="btn btn-success" value="Salvar">
+                                <i class="fa fa-check"> &nbsp; <span>Salvar</span></i>
+                            </button>
+                            <a type="button" class="btn" href="@Url.Action("Index", "Aulas", new { idTurma = Model.TurmaId})">Cancelar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+}
+
+@section styles{
+    <link href="~/Content/lib/icheck/all.css" rel="stylesheet" type="text/css" media="screen" />
+}
+
+@section scripts{
+    <script src="~/Scripts/lib/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/lib/jquery-validation/js/additional-methods.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/js/form-validation.js" type="text/javascript"></script>
+    <script src="~/Scripts/lib/jquery-validation/js/jquey.validate.pt-br.js" type="text/javascript"></script>
+    <script src="~/Scripts/lib/autosize/autosize.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/lib/icheck/icheck.min.js" type="text/javascript"></script>
+}

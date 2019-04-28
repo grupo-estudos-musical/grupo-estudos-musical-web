@@ -3,6 +3,21 @@ $(document).ready(function() {
 
     if ($.isFunction($.fn.validate)) {
 
+        $('#form_aula').validate({
+            focusInvalid: false,
+            ignore: "",
+            rules: {
+                Conteudo: {
+                    required: true,
+                    maxlength: 300
+                }
+            },
+            highlight: function (element) { // hightlight error inputs
+                var parent = $(element).parent().parent('.form-group');
+                parent.removeClass('has-success').addClass('has-error');
+            }
+        });
+
         $('#ocorrencia_validate').validate({
             focusInvalid: false,
             ignore: "",
@@ -312,7 +327,7 @@ $(document).ready(function() {
             success: function(label, element) {
                 var parent = $(element).parent().parent('.form-group');
                 parent.removeClass('has-error').addClass('has-success');
-            },
+            }
 
             // submitHandler: function(form) {
 

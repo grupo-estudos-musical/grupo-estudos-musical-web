@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BussinesAluno.cs" />
+    <Compile Include="BussinesAula.cs" />
     <Compile Include="BussinesAvaliacao.cs" />
     <Compile Include="BussinesAvaliacaoTurma.cs" />
     <Compile Include="BussinesChamada.cs" />

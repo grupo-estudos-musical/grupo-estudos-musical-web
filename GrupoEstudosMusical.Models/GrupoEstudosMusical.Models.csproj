@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Aluno.cs" />
+    <Compile Include="Entities\Aula.cs" />
     <Compile Include="Entities\Avaliacao.cs" />
     <Compile Include="Entities\AvaliacaoTurma.cs" />
     <Compile Include="Entities\BaseEntity.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="Entities\Turma.cs" />
     <Compile Include="Enums\TipoResponsavelEnum.cs" />
     <Compile Include="Interfaces\Bussines\IBussinesAluno.cs" />
+    <Compile Include="Interfaces\Bussines\IBussinesAula.cs" />
     <Compile Include="Interfaces\Bussines\IBussinesAvaliacao.cs" />
     <Compile Include="Interfaces\Bussines\IBussinesAvaliacaoTurma.cs" />
     <Compile Include="Interfaces\Bussines\IBussinesChamada.cs" />
@@ -74,6 +76,7 @@
     <Compile Include="Interfaces\Bussines\IBussinesPalhetaDeNotas.cs" />
     <Compile Include="Interfaces\Bussines\IBussinesProfessor.cs" />
     <Compile Include="Interfaces\Bussines\IBussinesTurma.cs" />
+    <Compile Include="Interfaces\Repository\IRepositoryAula.cs" />
     <Compile Include="Interfaces\Repository\IRepositoryAvaliacao.cs" />
     <Compile Include="Interfaces\Repository\IRepositoryAvaliacaoTurma.cs" />
     <Compile Include="Interfaces\Repository\IRepositoryChamada.cs" />

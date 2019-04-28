@@ -1,6 +1,4 @@
-﻿
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace GrupoEstudosMusical.Models.Entities
@@ -15,7 +13,8 @@ namespace GrupoEstudosMusical.Models.Entities
         public int AvaliacaoID { get;  set; }
         public DateTime DataPrevista { get;  set; }
         public DateTime DataRealizacao { get;  set; }
-
+        public int? AulaId { get; set; }
+        public Aula Aula { get; set; }
         public List<PalhetaDeNota> PalhetaDeNotas { get; set; }
     }
 }

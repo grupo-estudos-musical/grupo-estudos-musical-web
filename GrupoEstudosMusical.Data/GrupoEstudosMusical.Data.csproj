@@ -146,6 +146,7 @@
   <ItemGroup>
     <Compile Include="Context\GemContext.cs" />
     <Compile Include="Mappings\AlunoMap.cs" />
+    <Compile Include="Mappings\AulaMap.cs" />
     <Compile Include="Mappings\AvaliacaoMap.cs" />
     <Compile Include="Mappings\AvaliacaoTurmaMap.cs" />
     <Compile Include="Mappings\ChamadaMap.cs" />
@@ -299,6 +300,9 @@
     <Compile Include="Migrations\20190413031902_Teste.designer.cs">
       <DependentUpon>20190413031902_Teste.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20190424004912_AdicionandoTabelaDeAulas.cs" />
+    <Compile Include="Migrations\20190424004912_AdicionandoTabelaDeAulas.designer.cs">
+      <DependentUpon>20190424004912_AdicionandoTabelaDeAulas.cs</DependentUpon>
     <Compile Include="Migrations\20190420151615_Inclusão do campo média na matrícula do aluno.cs" />
     <Compile Include="Migrations\20190420151615_Inclusão do campo média na matrícula do aluno.designer.cs">
       <DependentUpon>20190420151615_Inclusão do campo média na matrícula do aluno.cs</DependentUpon>
@@ -322,6 +326,7 @@
     <Compile Include="Migrations\GemContextModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\RepositoryAluno.cs" />
+    <Compile Include="Repositories\RepositoryAula.cs" />
     <Compile Include="Repositories\RepositoryAvaliacao.cs" />
     <Compile Include="Repositories\RepositoryAvaliacaoTurma.cs" />
     <Compile Include="Repositories\RepositoryChamada.cs" />

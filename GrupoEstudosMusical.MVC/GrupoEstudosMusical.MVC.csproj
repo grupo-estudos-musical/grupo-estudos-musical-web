@@ -244,6 +244,7 @@
     <Compile Include="AutoMapper\DomainToViewModelMappingProfile.cs" />
     <Compile Include="AutoMapper\ViewModelToDomainMappingProfile.cs" />
     <Compile Include="Controllers\AlunosController.cs" />
+    <Compile Include="Controllers\AulasController.cs" />
     <Compile Include="Controllers\AvaliacoesController.cs" />
     <Compile Include="Controllers\CepController.cs" />
     <Compile Include="Controllers\ChamadasController.cs" />
@@ -261,7 +262,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\AlunoHelper.cs" />
+    <Compile Include="Helpers\DataHelper.cs" />
     <Compile Include="Models\AlunoVM.cs" />
+    <Compile Include="Models\AulaVM.cs" />
     <Compile Include="Models\AvaliacaoVM.cs" />
     <Compile Include="Models\AvaliacaoTurmaVM.cs" />
     <Compile Include="Models\ChamadaVM.cs" />
@@ -522,6 +525,7 @@
     <Content Include="Content\css\radiobutton.css" />
     <Content Include="Content\css\responsive.css" />
     <Content Include="Content\css\style.css" />
+    <Content Include="Content\images\menu_aulas.png" />
     <Content Include="Content\images\menu_avaliacoes_turma.png" />
     <Content Include="Content\images\document.png" />
     <Content Include="Content\images\menu_chamadas.png" />
@@ -544,6 +548,10 @@
     <Content Include="Content\lib\datatables\extensions\Responsive\css\dataTables.responsive.css" />
     <Content Include="Content\lib\datatables\extensions\TableTools\css\dataTables.tableTools.min.css" />
     <Content Include="Content\lib\datepicker\css\datepicker.css" />
+    <Content Include="Content\lib\icheck\all.css" />
+    <Content Include="Content\lib\icheck\minimal\grey.png" />
+    <Content Include="Content\lib\icheck\minimal\_all.css" />
+    <Content Include="Content\lib\icheck\square\_all.css" />
     <Content Include="Content\lib\jquery-ui\smoothness\jquery-ui.min.css" />
     <Content Include="Content\lib\messenger\messenger-theme-flat.css" />
     <Content Include="Content\lib\messenger\messenger-theme-future.css" />
@@ -581,6 +589,7 @@
     <Content Include="Scripts\js\sweetalert.min.js" />
     <Content Include="Scripts\js\TurmasIndex.js" />
     <Content Include="Scripts\js\visao-geral-aluno.js" />
+    <Content Include="Scripts\lib\autosize\autosize.min.js" />
     <Content Include="Scripts\lib\bootstrap-wizard\jquery.bootstrap.wizard.min.js" />
     <Content Include="Scripts\lib\bootstrap\js\bootstrap.min.js" />
     <Content Include="Content\lib\pace\pace-theme-flash.css" />
@@ -592,6 +601,7 @@
     <Content Include="Scripts\lib\datatables\extensions\TableTools\js\dataTables.tableTools.min.js" />
     <Content Include="Scripts\lib\datatables\js\jquery.dataTables.min.js" />
     <Content Include="Scripts\lib\datepicker\js\datepicker.js" />
+    <Content Include="Scripts\lib\icheck\icheck.min.js" />
     <Content Include="Scripts\lib\inputmask\min\jquery.inputmask.bundle.min.js" />
     <Content Include="Scripts\lib\jquery-validation\js\additional-methods.min.js" />
     <Content Include="Scripts\lib\jquery-validation\js\jquery.validate.min.js" />
@@ -695,6 +705,10 @@
     <Content Include="Views\Shared\_PalhetaDeNotas.cshtml" />
     <Content Include="Views\Shared\_CadastroChamada.cshtml" />
     <Content Include="Views\Chamadas\Detalhes.cshtml" />
+    <Content Include="Views\Aulas\Novo.cshtml" />
+    <Content Include="Views\Aulas\Index.cshtml" />
+    <Content Include="Views\Shared\_CamposAula.cshtml" />
+    <Content Include="Views\Aulas\Detalhes.cshtml" />
     <Content Include="Views\Chamadas\Index.cshtml" />
     <Content Include="Views\Chamadas\Novo.cshtml" />
     <Content Include="Views\Turmas\LancarNotas.cshtml" />
