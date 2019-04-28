@@ -3,9 +3,6 @@
     ViewBag.Title = "Visão Geral";
 }
 
-
-
-
 <div class='col-xs-12'>
     <div class="page-title">
         <div class="pull-left">
@@ -29,38 +26,19 @@
 
 @Html.Hidden("mensagem", TempData["Mensagem"])
 
-@Html.Partial("_VisaoGeralTurma", new ViewDataDictionary { { "titulo", "Editar Turma" }, { "link", @Url.Action("Editar", "Turmas", new { id = Model.Id }) }, { "imagem", "/Content/images/menu_editar_turma.png" }, { "alt", "Editar Turmas" } })
-
 @Html.Partial("_VisaoGeralTurma", new ViewDataDictionary { { "titulo", "Avaliações" }, { "link", @Url.Action("AvaliacoesDaTurma", "Avaliacoes", new { id = Model.Id, NomeTurma = Model.Nome }) }, { "imagem", "/Content/images/menu_avaliacoes_turma.png" }, { "alt", "avaliacoes" } })
 
 @Html.Partial("_VisaoGeralTurma", new ViewDataDictionary { { "titulo", "Aulas" }, { "link", @Url.Action("Index", "Aulas", new { idTurma = Model.Id }) }, { "imagem", "/Content/images/menu_aulas.png" }, { "alt", "aulas" } })
 
+@Html.Partial("_VisaoGeralTurma", new ViewDataDictionary { { "titulo", "Lançar Faltas" }, { "link", @Url.Action("Index", "Chamadas", new { idTurma = Model.Id }) }, { "imagem", "/Content/images/menu_chamadas.png" }, { "alt", "Chamadas" } })
+
+@Html.Partial("_VisaoGeralTurma", new ViewDataDictionary { { "titulo", "Lançar Notas" }, { "link", @Url.Action("LancarNotas", "Turmas", new { Id = Model.Id }) }, { "imagem", "/Content/images/menu_lancar_notas.png" }, { "alt", "Lançar Notas" } })
+
+@Html.Partial("_VisaoGeralTurma", new ViewDataDictionary { { "titulo", "Recálculo"}, { "link", "#"}, { "imagem", "/Content/images/menu_recalculo.png" }, { "alt", "Recalculo"}, { "attr", $"id=recalculoAcademico onclick=EfetuarRecalculoAcademico('{Model.Id}')"} })
+
+@Html.Partial("_VisaoGeralTurma", new ViewDataDictionary { { "titulo", "Editar Turma" }, { "link", @Url.Action("Editar", "Turmas", new { id = Model.Id }) }, { "imagem", "/Content/images/menu_editar_turma.png" }, { "alt", "Editar Turmas" } })
+
 @Html.Partial("_VisaoGeralTurma", new ViewDataDictionary { { "titulo", "Remover Turma" }, { "link", "#section-settings" }, { "imagem", "/Content/images/menu_deletar_turma.png" }, { "alt", "Chamadas" }, { "attr", $"data-toggle=modal onclick=apagar(this,'{Model.Id}','{Model.Nome.Replace(" ", "")}')" } })
-
-@Html.Partial("_VisaoGeralTurma", new ViewDataDictionary { { "titulo", "Lançamento de Faltas" }, { "link", @Url.Action("Index", "Chamadas", new { idTurma = Model.Id }) }, { "imagem", "/Content/images/menu_chamadas.png" }, { "alt", "Chamadas" } })
-
-@Html.Partial("_VisaoGeralTurma", new ViewDataDictionary { { "titulo", "Remover Turma" }, { "link", "#section-settings" }, { "imagem", "/Content/images/menu_deletar_turma.png" }, { "alt", "Chamadas" }, { "attr", $"data-toggle=modal onclick=apagar(this,'{Model.Id}','{Model.Nome.Replace(" ", "")}')" } })
-
-    @Html.Partial("_VisaoGeralTurma", new ViewDataDictionary { { "titulo", "Lançar Notas" }, { "link", @Url.Action("LancarNotas", "Turmas", new { Id = Model.Id }) }, { "imagem", "/Content/images/notebook.png" }, { "alt", "Lançar Notas" } })
-
-    <div class="col-xs-12 col-md-6 col-lg-3" id="recalculoAcademico">
-        <section class="box ">
-            <header class="panel_header">
-                <h2 class="title texto-centralizado">Recálculo acadêmico</h2>
-            </header>
-            <div class="content-body">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="imagem-centralizada">
-                            <a href="#" onclick="EfetuarRecalculoAcademico(@Model.Id)">
-                                <img src="~/Content/images/reload.png" alt="Recálculo acadêmico" />
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
 
 <div class="modal" id="section-settings" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog animated bounceInDown">
