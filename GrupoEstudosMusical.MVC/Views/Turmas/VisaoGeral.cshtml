@@ -30,10 +30,11 @@
 
 @Html.Partial("_VisaoGeralTurma", new ViewDataDictionary { { "titulo", "Avaliações" }, { "link", @Url.Action("AvaliacoesDaTurma", "Avaliacoes", new { id = Model.Id, NomeTurma = Model.Nome }) }, { "imagem", "/Content/images/menu_avaliacoes_turma.png" }, { "alt", "avaliacoes" } })
 
+@Html.Partial("_VisaoGeralTurma", new ViewDataDictionary { { "titulo", "Aulas" }, { "link", @Url.Action("Index", "Aulas", new { idTurma = Model.Id }) }, { "imagem", "/Content/images/menu_aulas.png" }, { "alt", "aulas" } })
+
 @Html.Partial("_VisaoGeralTurma", new ViewDataDictionary { { "titulo", "Chamadas" }, { "link", @Url.Action("Index", "Chamadas", new { idTurma = Model.Id }) }, { "imagem", "/Content/images/menu_chamadas.png" }, { "alt", "Chamadas" } })
 
 @Html.Partial("_VisaoGeralTurma", new ViewDataDictionary { { "titulo", "Remover Turma" }, { "link", "#section-settings" }, { "imagem", "/Content/images/menu_deletar_turma.png" }, { "alt", "Chamadas" }, { "attr", $"data-toggle=modal onclick=apagar(this,'{Model.Id}','{Model.Nome.Replace(" ", "")}')" } })
-
 
 <div class="modal" id="section-settings" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog animated bounceInDown">

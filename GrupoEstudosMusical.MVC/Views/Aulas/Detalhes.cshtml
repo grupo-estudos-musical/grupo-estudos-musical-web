@@ -16,10 +16,16 @@
                     <a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i>Home</a>
                 </li>
                 <li>
-                    <a href="@Url.Action("Index", "Alunos")">Alunos</a>
+                    <a href="@Url.Action("Index", "Turmas")">Turmas</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("VisaoGeral", "Turmas", new { id = Model.TurmaId})">Visão Geral</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Aulas", new { idTurma = Model.TurmaId})">Todas Aulas</a>
                 </li>
                 <li class="active">
-                    <strong>Cadastrar Aluno</strong>
+                    <strong>Detalhes da Aula</strong>
                 </li>
             </ol>
         </div>

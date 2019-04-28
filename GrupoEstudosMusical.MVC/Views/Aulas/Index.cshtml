@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Lista de Aulas";
+    var idTurma = Request.Params["idTurma"];
 }
 
 <div class='col-xs-12'>
@@ -15,10 +16,13 @@
                     <a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i>Home</a>
                 </li>
                 <li>
-                    <a href="@Url.Action("Index")">Alunos</a>
+                    <a href="@Url.Action("Index", "Turmas")">Turmas</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("VisaoGeral", "Turmas", new { id = idTurma})">Visão Geral</a>
                 </li>
                 <li class="active">
-                    <strong>Todos Alunos</strong>
+                    <strong>Todos Aulas</strong>
                 </li>
             </ol>
         </div>
@@ -35,6 +39,17 @@
             </div>
         </header>
         <div class="content-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group pull-left">
+                        <div class="controls">
+                            <a href="Aulas/Novo?idTurma=@idTurma" class="btn btn-success btn-iconic bottom">
+                                <i class="fa fa-plus"> &nbsp; <span>Adicionar Aula</span></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
             @Html.Partial("_MensagemSucesso")
             @{
                 const int TAMANHO_LINHA = 3;
@@ -60,7 +75,7 @@
                                         @aula.Conteudo
                                     </p>
                                     <p>
-                                        @Html.ActionLink("Visualizar", "Detalhes", new { id = aula.Id}, htmlAttributes: new { @class = "btn btn-primary"})
+                                        @Html.ActionLink("Visualizar", "Detalhes", new { id = aula.Id }, htmlAttributes: new { @class = "btn btn-primary" })
                                     </p>
                                 </div>
                             </div>
