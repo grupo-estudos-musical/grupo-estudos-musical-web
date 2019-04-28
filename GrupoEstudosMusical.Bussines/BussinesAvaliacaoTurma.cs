@@ -38,7 +38,7 @@ namespace GrupoEstudosMusical.Bussines
         }
 
         public List<AvaliacaoTurma> ObterPelaTurma(int turma) =>
-            _repositoryAvaliacaoTurma.ObterPelaTurma(turma);
+            _repositoryAvaliacaoTurma.ObterPorTurma(turma);
 
         public AvaliacaoTurma ObterPorIds(int turma, int avaliacao) =>
             _repositoryAvaliacaoTurma.ObterPorIds(turma, avaliacao);

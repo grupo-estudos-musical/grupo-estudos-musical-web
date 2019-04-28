@@ -303,6 +303,7 @@
     <Compile Include="Migrations\20190424004912_AdicionandoTabelaDeAulas.cs" />
     <Compile Include="Migrations\20190424004912_AdicionandoTabelaDeAulas.designer.cs">
       <DependentUpon>20190424004912_AdicionandoTabelaDeAulas.cs</DependentUpon>
+	</Compile>
     <Compile Include="Migrations\20190420151615_Inclusão do campo média na matrícula do aluno.cs" />
     <Compile Include="Migrations\20190420151615_Inclusão do campo média na matrícula do aluno.designer.cs">
       <DependentUpon>20190420151615_Inclusão do campo média na matrícula do aluno.cs</DependentUpon>
