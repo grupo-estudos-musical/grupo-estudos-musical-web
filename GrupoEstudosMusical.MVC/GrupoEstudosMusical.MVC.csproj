@@ -435,6 +435,8 @@
     <Content Include="Views\Chamadas\Detalhes.cshtml" />
     <Content Include="Views\Aulas\Novo.cshtml" />
     <Content Include="Views\Aulas\Index.cshtml" />
+    <Content Include="Views\Shared\_CamposAula.cshtml" />
+    <Content Include="Views\Aulas\Detalhes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GrupoEstudosMusical.Bussines\GrupoEstudosMusical.Bussines.csproj">

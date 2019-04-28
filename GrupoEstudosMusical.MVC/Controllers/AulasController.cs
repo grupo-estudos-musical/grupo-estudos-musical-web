@@ -63,5 +63,12 @@ namespace GrupoEstudosMusical.MVC.Controllers
                 return View(aulaVM);
             }
         }
+
+        public async Task<ActionResult> Detalhes(int id)
+        {
+            var aulaModel = await _bussinesAula.ObterPorIdAsync(id);
+            var aulaVM = Mapper.Map<Aula, AulaVM>(aulaModel);
+            return View(aulaVM);
+        }
     }
 }

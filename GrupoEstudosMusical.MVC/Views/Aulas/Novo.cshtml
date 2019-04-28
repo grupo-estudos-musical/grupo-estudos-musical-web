@@ -30,51 +30,7 @@
 {
     @Html.AntiForgeryToken()
     @Html.HiddenFor(model => model.TurmaId)
-    <div class="col-lg-12">
-        <section class="box ">
-            <header class="panel_header">
-                <h2 class="title pull-left">Informações da Aula</h2>
-                <div class="actions panel_actions pull-right">
-                    <a class="box_toggle fa fa-chevron-down"></a>
-                    <a class="box_close fa fa-times"></a>
-                </div>
-            </header>
-            <div class="content-body">
-                @Html.Partial("_MensagemErro")
-                <div class="row">
-                    <div class="col-xs-6">
-                        <div class="input-group primary">
-                            <span class="input-group-addon">
-                                <span class="arrow"></span>
-                                <i class="fa fa-mortar-board"></i>
-                            </span>
-                            @Html.EditorFor(model => model.Turma.Nome, new { htmlAttributes = new { @class = "form-control", @readonly = "true" } })
-                        </div>
-                    </div>
-                    <div class="col-xs-6">
-                        <div class="input-group primary">
-                            <span class="input-group-addon">
-                                <span class="arrow"></span>
-                                <i class="fa fa-calendar-o"></i>
-                            </span>
-                            @Html.EditorFor(model => model.DataCadastro, new { htmlAttributes = new { @class = "form-control", @readonly = "true" } })
-                        </div>
-                    </div>
-                </div>
-                <br />
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Conteudo, htmlAttributes: new { @class = "form-label" })
-                            <div class="controls">
-                                @Html.TextAreaFor(model => model.Conteudo, htmlAttributes: new { @class = "form-control campo-text-area", @rows = "3" })
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
+    @Html.Partial("_CamposAula")
     <div class="col-lg-12">
         <section class="box ">
             <header class="panel_header">
@@ -97,9 +53,10 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @for (int i = 0; i < Model.AvaliacoesTurma.OrderByDescending(a => a.AulaId).Count(); i++)
+                                @{ var avaliacoes = Model.AvaliacoesTurma.OrderBy(a => a.AulaId).ToList(); }
+                                @for (int i = 0; i < avaliacoes.Count; i++)
                                 {
-                                    var avaliacaoTurma = Model.AvaliacoesTurma[i];
+                                    var avaliacaoTurma = avaliacoes[i];
                                     var avaliacaoVinculada = avaliacaoTurma.AulaId != null;
 
                                     <tr style="display: none">

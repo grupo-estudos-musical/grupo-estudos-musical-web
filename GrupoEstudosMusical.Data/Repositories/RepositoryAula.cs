@@ -11,9 +11,11 @@ namespace GrupoEstudosMusical.Data.Repositories
     {
         public override async Task<Aula> ObterPorIdAsync(int id)
         {
-            return await DbSet.Include(a => a.Turma)
+            var aula = await DbSet.Include(a => a.Turma)
                 .Where(a => a.Id == id)
                 .FirstOrDefaultAsync();
+            aula.AvaliacoesTurma = ObterAvaliacoesPorAula(id);
+            return aula;
         }
 
         public async Task<List<Aula>> ObterPorTurma(int idTurma)
@@ -28,6 +30,8 @@ namespace GrupoEstudosMusical.Data.Repositories
         }
 
         private List<AvaliacaoTurma> ObterAvaliacoesPorAula(int idAula) =>
-            Context.AvaliacaoTurmas.Where(a => a.AulaId.Value == idAula).ToList();
+            Context.AvaliacaoTurmas
+                .Include(at => at.Avaliacao)
+                .Where(a => a.AulaId.Value == idAula).ToList();
     }
 }
