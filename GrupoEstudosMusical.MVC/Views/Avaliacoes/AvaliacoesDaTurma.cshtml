@@ -3,6 +3,13 @@
     ViewBag.Title = "Avaliacoes Da Turma";
 }
 
+
+@if(ViewBag.MensagemSucesso != null && ViewBag.MensagemSucesso != "")
+{
+    <script>
+        swal("Sucesso", "Avaliação removida com sucesso");
+    </script>
+}
 <div class='col-xs-12'>
     <div class="page-title">
         <div class="pull-left">
@@ -39,7 +46,7 @@
             </div>
         </header>
         <div class="content-body">
-            @Html.Partial("_MensagemSucesso")
+            @Html.Partial("_MensagemErro")
             <div class="row">
                 <div class="col-md-3">
                     <div class="form-group pull-left">

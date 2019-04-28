@@ -94,6 +94,10 @@ namespace GrupoEstudosMusical.MVC.Controllers
 
         public async Task<ActionResult> AvaliacoesDaTurma(int Id, string NomeTurma)
         {
+            if(TempData["MensagemSucesso"] != null)
+            {
+                ViewBag.MensagemSucesso = TempData["MensagemSucesso"];
+            }
             var avaliacoesVM = Mapper.Map<IList<Avaliacao>, IList<AvaliacaoVM>>(await _bussinesAvaliacao.ObterTodosAsync());
             ViewBag.Model = new AvaliacaoTurmaVM() { TurmaID = Id, AvaliacoesDisponiveis = avaliacoesVM.ToList(), NomeTurma = NomeTurma };
             var avaliacoes = Mapper.Map<IList<AvaliacaoTurma>, IList<AvaliacaoTurmaVM>>(_bussinesAvaliacaoTurma.ObterPorTurma(Id));
@@ -168,9 +172,18 @@ namespace GrupoEstudosMusical.MVC.Controllers
             var avaliacaoTurmaID = Guid.Parse(formCollection["IdAvaliacaoTurma"]);
             var nomeTurma = formCollection["NomeTurma"].ToString();
             var avaliacaoTurmaModel = _bussinesAvaliacaoTurma.ObterPorId(avaliacaoTurmaID);
-            await _bussinesAvaliacaoTurma.DeletarAsync(avaliacaoTurmaModel);
-            TempData["Mensagem"] = "Avaliação removida com sucesso.";
-            return RedirectToAction(nameof(AvaliacoesDaTurma), new { Id = avaliacaoTurmaModel.TurmaID, NomeTurma = nomeTurma});
+            try
+            {
+                await _bussinesAvaliacaoTurma.DeletarAsync(avaliacaoTurmaModel);
+                TempData["MensagemSucesso"] = "Avaliação removida com sucesso.";
+                return RedirectToAction(nameof(AvaliacoesDaTurma), new { Id = avaliacaoTurmaModel.TurmaID, NomeTurma = nomeTurma });
+            }
+            catch(CrudAvaliacaoException ex)
+            {
+                TempData["Mensagem"] = ex.Message;
+                return RedirectToAction(nameof(AvaliacoesDaTurma), new { Id = avaliacaoTurmaModel.TurmaID, NomeTurma = nomeTurma });
+            }
+            
         }
 
 

@@ -1,6 +1,8 @@
 ﻿@model GrupoEstudosMusical.MVC.Models.AlunoVM
 @{
-    ViewBag.Title = "Visão Geral";
+                /**/
+
+                ViewBag.Title = "Visão Geral";
 }
 
 <div class='col-xs-12'>
@@ -35,6 +37,8 @@
 @Html.Partial("_VisaoGeralAlunoMenu", new ViewDataDictionary { { "titulo", "Ocorrências" }, { "link", Url.Action("Index", "Ocorrencias", new { alunoId = Model.Id }) }, { "imagem", "/Content/images/menu_ocorrencias.png" }, { "alt", "ocorrencias" } })
 
 @Html.Partial("_VisaoGeralAlunoMenu", new ViewDataDictionary { { "titulo", "Nova Ocorrência" }, { "link", Url.Action("Novo", "Ocorrencias", new { alunoId = Model.Id }) }, { "imagem", "/Content/images/menu_nova_ocorrencia.png" }, { "alt", "nova-ocorrencia" } })
+
+@Html.Partial("_VisaoGeralAlunoMenu", new ViewDataDictionary { { "titulo", "Instrumentos" }, { "link", Url.Action("InstrumentosDoAluno", "Instrumentos", new { alunoId = Model.Id }) }, { "imagem", "/Content/images/menu_nova_ocorrencia.png" }, { "alt", "instrumentos" } })
 
 @section styles {
     <link href="~/Content/lib/messenger/messenger.css" rel="stylesheet" type="text/css" media="screen" />

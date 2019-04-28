@@ -1,0 +1,167 @@
+﻿@model List<GrupoEstudosMusical.MVC.Models.InstrumentoDoAlunoVM>
+@{
+    ViewBag.Title = "LançarNotas";
+}
+
+
+<div class='col-xs-12'>
+    <div class="page-title">
+        <div class="pull-left">
+            <h1 class="title">Instrumentos do Aluno</h1>
+        </div>
+        <div class="pull-right hidden-xs">
+            <ol class="breadcrumb">
+                <li>
+                    <a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i>Home</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index")">Instrumentos</a>
+                </li>
+                <li class="active">
+                    <strong>Todos instrumentos do Aluno</strong>
+                </li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-12">
+    <section class="box ">
+        <header class="panel_header">
+            <h2 class="title pull-left">Instrumentos</h2>
+            <div class="actions panel_actions pull-right">
+                <a class="box_toggle fa fa-chevron-down"></a>
+                <a class="box_close fa fa-times"></a>
+            </div>
+        </header>
+
+        <div class="content-body">
+            <button type="button" class="btn btn-primary" onclick="AbrirModal();">Efetuar empréstimo</button><br /><br />
+            @Html.Partial("_MensagemSucesso")
+            <div class="row">
+                <div class="col-xs-12">
+                    <table id="example-1" class="table table-striped dt-responsive display">
+                        <thead>
+                            <tr>
+                                <th>Nome instrumento</th>
+                                <th>Data do empréstimo</th>
+                                <th>Ano de fabricação</th>
+                                <th>Fabricante</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>Nome instrumento</th>
+                                <th>Data do empréstimo</th>
+                                <th>Ano de fabricação</th>
+                                <th>Fabricante</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            @foreach (var instrumento in Model)
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(item => instrumento.Instrumento.Nome)</td>
+                                    <td>@instrumento.DataEmprestimo.ToString("dd/MM/yyyy")</td>
+                                    <td>@instrumento.AnoDeFabricacaoInstrumento.ToString("yyyy")</td>
+                                    <td>@Html.DisplayFor(item => instrumento.Fabricante.Nome)</td>
+                                    @*<td style="width: 160px">
+                                            @Html.ActionLink("Editar", "Editar", "Modulos", new { id = model.Id }, new { @class = "btn btn-primary" })
+
+                                            <a class="btn btn-danger" data-toggle="modal" href="#section-settings"
+                                               onclick="apagar(this, '@(model.Id)', '@(mo.Nome)')">Apagar</a>
+                                        </td>*@
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div class="modal" id="section-settings" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog animated bounceInDown">
+        <div class="modal-content">
+            @using (Html.BeginForm("RemoverInstrumentoDoAluno", "Instrumentos"))
+            {
+                @Html.AntiForgeryToken()
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Remover instrumento</h4>
+                </div>
+                <div class="modal-body">
+                    Deseja realmente remover o instrumento
+                    <input type="hidden" name="id" id="id">
+                </div>
+                <div class="modal-footer">
+                    <button data-dismiss="modal" class="btn btn-default" type="button">Não</button>
+                    <button class="btn btn-danger" type="submit">Sim</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="modal fade" id="modalInstrumento">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title">Efetuar empréstimo</h4>
+
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                @using (Ajax.BeginForm("EfetuarEmprestimo", "Instrumentos", new AjaxOptions
+                {
+                    HttpMethod = "POST",
+                    OnSuccess = "OnSuccess"
+                }))
+                {
+                    @Html.Partial("_EfetuarEmprestimoInstrumento", new GrupoEstudosMusical.MVC.Models.InstrumentoDoAlunoVM() { AlunoID = ViewBag.AlunoID })
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+
+    function AbrirModal() {
+        jQuery('#modalInstrumento').modal('show', { backdrop: 'static' });
+
+    }
+
+</script>
+
+
+
+
+@section Styles{
+    <link href="~/Content/lib/datepicker/css/datepicker.css" rel="stylesheet" type="text/css" media="screen">
+    <link href="~/Content/lib/datatables/css/jquery.dataTables.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="~/Content/lib/datatables/extensions/TableTools/css/dataTables.tableTools.min.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="~/Content/lib/datatables/extensions/Responsive/css/dataTables.responsive.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="~/Content/lib/datatables/extensions/Responsive/bootstrap3/dataTables.bootstrap.css" rel="stylesheet" type="text/css" media="screen" />
+}
+
+@section Scripts{
+    <script src="~/Scripts/js/avaliacoesDaTurmaIndex.js" type="text/javascript"></script>
+    <script src="~/Scripts/lib/datatables/js/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/lib/datatables/extensions/TableTools/js/dataTables.tableTools.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/lib/datatables/extensions/Responsive/js/dataTables.responsive.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/lib/datatables/extensions/Responsive/bootstrap3/dataTables.bootstrap.js" type="text/javascript"></script>
+    <script src="~/Scripts/js/TurmasIndex.js" type="text/javascript"></script>
+    <script src="~/Scripts/lib/datepicker/js/datepicker.js" type="text/javascript"></script>
+    <script src="~/Scripts/js/JsInstrumentoEmprestimo.js"></script>
+}

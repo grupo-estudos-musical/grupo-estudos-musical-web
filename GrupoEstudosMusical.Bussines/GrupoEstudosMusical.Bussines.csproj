@@ -50,8 +50,11 @@
     <Compile Include="BussinesAvaliacao.cs" />
     <Compile Include="BussinesAvaliacaoTurma.cs" />
     <Compile Include="BussinesChamada.cs" />
+    <Compile Include="BussinesFabricante.cs" />
     <Compile Include="BussinesFrequencia.cs" />
     <Compile Include="BussinesGeneric.cs" />
+    <Compile Include="BussinesInstrumento.cs" />
+    <Compile Include="BussinesInstrumentoDoAluno.cs" />
     <Compile Include="BussinesModulo.cs" />
     <Compile Include="BussinesOcorrencia.cs" />
     <Compile Include="BussinesPalhetaDeNota.cs" />
@@ -61,6 +64,7 @@
     <Compile Include="Exceptions\CrudTurmaException.cs" />
     <Compile Include="BussinesMatricula.cs" />
     <Compile Include="Exceptions\TurmaMatriculaExeception.cs" />
+    <Compile Include="Helpers\CalculoDeMediaHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Relatorios.cs" />
     <Compile Include="TiposDeRelatorios.cs" />

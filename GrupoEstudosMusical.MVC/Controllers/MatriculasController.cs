@@ -75,8 +75,8 @@ namespace GrupoEstudosMusical.MVC.Controllers
             try
             {
                 var matriculaModel = Mapper.Map<MatriculaVM, Matricula>(matriculaVM);
-                //var idMatricula = _bussinesMatricula.IncluirMatricula(matriculaModel);
-                await _bussinesMatricula.InserirAsync(matriculaModel);
+                var idMatricula = await _bussinesMatricula.IncluirMatricula(matriculaModel);
+                await AdicionarAvaliacoesNaMatrículaDoAluno(matriculaModel.TurmaId, idMatricula);
                 TempData["Mensagem"] = "Aluno matrículado com sucesso.";
                 return RedirectToAction("Index", "Alunos");
             }
@@ -87,11 +87,11 @@ namespace GrupoEstudosMusical.MVC.Controllers
             }
         }
 
-        void AdicionarAvaliacoesNaMatrículaDoAluno(int turmaId,int matriculaId )
+        async Task AdicionarAvaliacoesNaMatrículaDoAluno(int turmaId,int matriculaId )
         {
-            var listaDeAvaliacoes = _bussinesAvaliacaoTurma.ObterPorTurma(turmaId);
-            if(listaDeAvaliacoes != null)
-                _bussinesPalhetaDeNotas.AdicionarTodasAvaliacoesDaTurmaAoALuno(listaDeAvaliacoes, matriculaId);
+            var listaDeAvaliacoes = _bussinesAvaliacaoTurma.ObterPelaTurma(turmaId);
+            if(listaDeAvaliacoes.Count > 0)
+                await _bussinesPalhetaDeNotas.AdicionarTodasAvaliacoesDaTurmaAoALuno(listaDeAvaliacoes, matriculaId);
         }
 
         public async Task<ActionResult> Detalhes(int id)

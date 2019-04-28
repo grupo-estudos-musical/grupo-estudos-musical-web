@@ -8,6 +8,6 @@ namespace GrupoEstudosMusical.Models.Interfaces.Bussines
     {
         Task<IList<Matricula>> ObterMatriculasPorAluno(int idAluno);
         Task<List<Matricula>> ObterMatriculasPorTurma(int idTurma);
-        int IncluirMatricula(Matricula matricula);
+        Task<int> IncluirMatricula(Matricula matricula);
     }
 }

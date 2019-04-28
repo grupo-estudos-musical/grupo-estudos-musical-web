@@ -2,6 +2,8 @@
 using GrupoEstudosMusical.Models.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Configuration;
+using static GrupoEstudosMusical.Models.Entities.Instrumento;
+
 
 namespace GrupoEstudosMusical.Data.Context
 {
@@ -18,6 +20,9 @@ namespace GrupoEstudosMusical.Data.Context
         public DbSet<Chamada> Chamadas { get; set; }
         public DbSet<Frequencia> Frequencias { get; set; }
         public DbSet<PalhetaDeNota> PalhetaDeNotas { get; set; }
+        public DbSet<Instrumento> Instrumentos { get; set; }
+        public DbSet<Fabricante> Fabricantes { get; set; }
+        public DbSet<InstrumentoDoAluno> InstrumentoDoAlunos { get; set; }
 
         public GemContext() : base() { }
 
@@ -41,6 +46,8 @@ namespace GrupoEstudosMusical.Data.Context
             modelBuilder.ApplyConfiguration(new FrequenciaMap());
             modelBuilder.ApplyConfiguration(new PalhetaDeNotaMap());
             modelBuilder.ApplyConfiguration(new AulaMap());
+            modelBuilder.ApplyConfiguration(new InstrumentoMap());
+            modelBuilder.ApplyConfiguration(new InstrumentoDoAlunoMap());
         }
     }
 }

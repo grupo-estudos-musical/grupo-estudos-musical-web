@@ -11,12 +11,13 @@ namespace GrupoEstudosMusical.Data.Repositories
 {
     public class RepositoryMatricula : RepositoryGeneric<Matricula>, IRepositoryMatricula
     {
-        public int IncluirMatricula(Matricula matricula)
+        public async Task<int> IncluirMatricula(Matricula matricula)
         {
-            Context.Add(matricula);
-            return Context.SaveChanges();
+            await DbSet.AddAsync(matricula);
+            await Context.SaveChangesAsync();
+            return matricula.Id;
         }
-            
+        
 
         public async Task<IList<Matricula>> ObterMatriculasPorAluno(int idAluno) =>
             await ObterMatriculas(m => m.AlunoId == idAluno);
@@ -34,7 +35,7 @@ namespace GrupoEstudosMusical.Data.Repositories
             var matriculas = await ObterMatriculas(m => m.Id == id);
             return matriculas.FirstOrDefault();
         }
-        
+
 
         private async Task<IList<Matricula>> ObterMatriculas(Expression<Func<Matricula, bool>> filter)
         {

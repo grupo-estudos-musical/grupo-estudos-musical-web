@@ -10,7 +10,7 @@ namespace GrupoEstudosMusical.MVC.Models
     {
         public int Id { get; set; }
 
-        [DisplayName("Data Cadastro")]
+        [DisplayName("Data")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime DataCadastro { get; set; } = DateTime.Now;
 

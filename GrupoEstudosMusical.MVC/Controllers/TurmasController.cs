@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -18,13 +19,15 @@ namespace GrupoEstudosMusical.MVC.Controllers
         private readonly IBussinesModulo _bussinesModulo;
         private readonly IBussinesProfessor _bussinesProfessor;
         private readonly IBussinesAvaliacaoTurma _bussinesAvaliacaoTurma;
+        private readonly IBussinesPalhetaDeNotas _bussinesPalhetaDeNotas;
         public TurmasController(IBussinesTurma bussinesTurma, IBussinesModulo bussinesModulo, IBussinesProfessor bussinesProfessor,
-            IBussinesAvaliacaoTurma bussinesAvaliacaoTurma)
+            IBussinesAvaliacaoTurma bussinesAvaliacaoTurma, IBussinesPalhetaDeNotas bussinesPalhetaDeNotas)
         {
             _bussinesTurma = bussinesTurma;
             _bussinesModulo = bussinesModulo;
             _bussinesProfessor = bussinesProfessor;
             _bussinesAvaliacaoTurma = bussinesAvaliacaoTurma;
+            _bussinesPalhetaDeNotas = bussinesPalhetaDeNotas;
         }
         // GET: Turmas
         public async Task<ActionResult> Index()
@@ -49,6 +52,51 @@ namespace GrupoEstudosMusical.MVC.Controllers
             return View(new TurmaVM());
         }
 
+        [HttpGet]
+        public ActionResult ObterPalhetasDeNotasPorAvaliacaoEhTurma(string AvaliacaoID, int TurmaID)
+        {
+            var palhetasDeNotas = _bussinesPalhetaDeNotas.ObterPalhetasPorAvaliacaoEhTurma(Guid.Parse(AvaliacaoID), TurmaID);
+            return PartialView("_PalhetaDeNotas", palhetasDeNotas);
+        }
+        
+        [HttpPost]
+        public async Task<JsonResult> LancarNotaDoAluno(double nota, Guid palhetaID)
+        {
+            try
+            {
+                var palhetaDeNota = _bussinesPalhetaDeNotas.ObterPorId(palhetaID);
+                palhetaDeNota.Nota = nota;
+                await _bussinesPalhetaDeNotas.AlterarAsync(palhetaDeNota);
+                return Json(new { result = true, mensagem = "Notas lançadas com sucesso!" }, JsonRequestBehavior.AllowGet);
+            }
+            catch(Exception e)
+            {
+                return Json(new { result = false, mensagem = "Ocorreu um erro!" }, JsonRequestBehavior.AllowGet);
+            }
+            
+        }
+
+        [HttpPost]
+        public async Task<JsonResult> RecalculoAcademico(int Id)
+        {
+            try
+            {
+                await _bussinesTurma.RecalculoAcademico(Id);
+                return Json(new { result = true }, JsonRequestBehavior.AllowGet);
+            }
+            catch(Exception)
+            {
+                return Json(new { result = false }, JsonRequestBehavior.AllowGet);
+            }
+            
+        }
+
+        public async Task<ActionResult> LancarNotas(int Id)
+        {
+            var turma = Mapper.Map<Turma,TurmaVM>( await _bussinesTurma.ObterPorIdAsync(Id));
+            ViewBag.AvaliacoesTurma = Mapper.Map<IList<AvaliacaoTurma>, IList<AvaliacaoTurmaVM>>(_bussinesAvaliacaoTurma.ObterPelaTurma(Id));
+            return View(turma);
+        }
         public async Task<ActionResult> Editar(int Id)
         {
             await InicializarViewBagAsync();

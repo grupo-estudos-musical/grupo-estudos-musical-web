@@ -26,5 +26,6 @@ namespace GrupoEstudosMusical.Models.Entities
         public List<Matricula> Matriculas { get; set; }
         public List<Ocorrencia> Ocorrencias { get; set; }
         public List<Frequencia> Frequencias { get; set; }
+        public List<InstrumentoDoAluno> Instrumentos { get; set; }
     }
 }

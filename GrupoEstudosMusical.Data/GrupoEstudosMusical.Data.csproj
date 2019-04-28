@@ -150,7 +150,10 @@
     <Compile Include="Mappings\AvaliacaoMap.cs" />
     <Compile Include="Mappings\AvaliacaoTurmaMap.cs" />
     <Compile Include="Mappings\ChamadaMap.cs" />
+    <Compile Include="Mappings\FabricanteMap.cs" />
     <Compile Include="Mappings\FrequenciaMap.cs" />
+    <Compile Include="Mappings\InstrumentoDoAlunoMap.cs" />
+    <Compile Include="Mappings\InstrumentoMap.cs" />
     <Compile Include="Mappings\MatriculaMap.cs" />
     <Compile Include="Mappings\ModuloMap.cs" />
     <Compile Include="Mappings\OcorrenciaMap.cs" />
@@ -300,6 +303,25 @@
     <Compile Include="Migrations\20190424004912_AdicionandoTabelaDeAulas.cs" />
     <Compile Include="Migrations\20190424004912_AdicionandoTabelaDeAulas.designer.cs">
       <DependentUpon>20190424004912_AdicionandoTabelaDeAulas.cs</DependentUpon>
+    <Compile Include="Migrations\20190420151615_Inclusão do campo média na matrícula do aluno.cs" />
+    <Compile Include="Migrations\20190420151615_Inclusão do campo média na matrícula do aluno.designer.cs">
+      <DependentUpon>20190420151615_Inclusão do campo média na matrícula do aluno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20190424224347_Criação dos migrations de fabricante e instrumento.cs" />
+    <Compile Include="Migrations\20190424224347_Criação dos migrations de fabricante e instrumento.designer.cs">
+      <DependentUpon>20190424224347_Criação dos migrations de fabricante e instrumento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20190424230257_Criação dos migrations de fabricante e instrumento V2.cs" />
+    <Compile Include="Migrations\20190424230257_Criação dos migrations de fabricante e instrumento V2.designer.cs">
+      <DependentUpon>20190424230257_Criação dos migrations de fabricante e instrumento V2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20190424230812_Criação dos migrations de fabricante e instrumento V3.cs" />
+    <Compile Include="Migrations\20190424230812_Criação dos migrations de fabricante e instrumento V3.designer.cs">
+      <DependentUpon>20190424230812_Criação dos migrations de fabricante e instrumento V3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20190424234034_Inclusão da model associativa entre instrumento e aluno e fabricante.cs" />
+    <Compile Include="Migrations\20190424234034_Inclusão da model associativa entre instrumento e aluno e fabricante.designer.cs">
+      <DependentUpon>20190424234034_Inclusão da model associativa entre instrumento e aluno e fabricante.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\GemContextModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -308,8 +330,11 @@
     <Compile Include="Repositories\RepositoryAvaliacao.cs" />
     <Compile Include="Repositories\RepositoryAvaliacaoTurma.cs" />
     <Compile Include="Repositories\RepositoryChamada.cs" />
+    <Compile Include="Repositories\RepositoryFabricante.cs" />
     <Compile Include="Repositories\RepositoryFrequencia.cs" />
     <Compile Include="Repositories\RepositoryGeneric.cs" />
+    <Compile Include="Repositories\RepositoryInstrumento.cs" />
+    <Compile Include="Repositories\RepositoryInstrumentoDoAluno.cs" />
     <Compile Include="Repositories\RepositoryMatricula.cs" />
     <Compile Include="Repositories\RepositoryModulo.cs" />
     <Compile Include="Repositories\RepositoryOcorrencia.cs" />

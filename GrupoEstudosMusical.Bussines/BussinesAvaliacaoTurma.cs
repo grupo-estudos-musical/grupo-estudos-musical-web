@@ -24,6 +24,21 @@ namespace GrupoEstudosMusical.Bussines
         public List<AvaliacaoTurma> ObterPorTurma(int turma) =>
             _repositoryAvaliacaoTurma.ObterPorTurma(turma);
 
+        void VerificarSeExistePalhetaDeNotaGerada(Guid avaliacaoID, int turma)
+        {
+            var existePalhetaDeNota = _repositoryPalhetaDeNotas.ObterPalhetasPorAvaliacaoEhTurma(avaliacaoID, turma);
+            if (existePalhetaDeNota.Count > 0)
+                throw new CrudAvaliacaoException("Existe palheta de notas utilizando está avaliação! \n Para remoção da avaliação apague a palheta de Notas.");
+        }
+
+        public override Task DeletarAsync(AvaliacaoTurma entity)
+        {
+            VerificarSeExistePalhetaDeNotaGerada(entity.IdAvaliacaoTurma, entity.TurmaID);
+            return base.DeletarAsync(entity);
+        }
+
+        public List<AvaliacaoTurma> ObterPelaTurma(int turma) =>
+            _repositoryAvaliacaoTurma.ObterPelaTurma(turma);
 
         public AvaliacaoTurma ObterPorIds(int turma, int avaliacao) =>
             _repositoryAvaliacaoTurma.ObterPorIds(turma, avaliacao);
