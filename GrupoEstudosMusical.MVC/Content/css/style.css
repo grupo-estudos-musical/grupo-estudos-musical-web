@@ -8272,6 +8272,13 @@ table.dataTable.display tbody tr:first-child td {
     height: 200px;
 }
 
-.card-aula a {
-    margin-left: 30%;
+.card-aula-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center
+}
+
+.card-aula-links a {
+    margin-left: 1%;
 }

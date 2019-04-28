@@ -37,5 +37,18 @@ namespace GrupoEstudosMusical.Bussines
 
         public async Task<List<Aula>> ObterPorTurma(int idTurma) =>
             await _repositoryAula.ObterPorTurma(idTurma);
+
+        public async override Task DeletarAsync(Aula entity)
+        {
+            var avaliacoesTurma = await _repositoryAvaliacaoTurma.ObterPorAula(entity.Id);
+
+            avaliacoesTurma.ForEach(async at =>
+            {
+                at.AulaId = null;
+                await _repositoryAvaliacaoTurma.AlterarAsync(at);
+            });
+
+            await _repositoryAula.DeletarAsync(entity);
+        }
     }
 }

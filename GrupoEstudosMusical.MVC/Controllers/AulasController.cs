@@ -55,7 +55,9 @@ namespace GrupoEstudosMusical.MVC.Controllers
                 var avaliacoesSelecionadas = aulaVM.AvaliacoesTurma.Where(a => a.Selecionado).ToList();
                 var avaliacoesTurma = Mapper.Map<List<AvaliacaoTurmaVM>, List<AvaliacaoTurma>>(avaliacoesSelecionadas);
                 await _bussinesAula.InserirAsync(aulaModel, avaliacoesTurma);
-                return RedirectToAction("Index", "Turmas");
+                TempData["mensagem"] = "Aula cadastrada com sucesso!";
+                TempData["tipo"] = "success";
+                return RedirectToAction("Index", "Aulas", new { idTurma = aulaVM.TurmaId});
             }
             catch (ArgumentException ex)
             {
@@ -69,6 +71,19 @@ namespace GrupoEstudosMusical.MVC.Controllers
             var aulaModel = await _bussinesAula.ObterPorIdAsync(id);
             var aulaVM = Mapper.Map<Aula, AulaVM>(aulaModel);
             return View(aulaVM);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Deletar(int id)
+        {
+            var aulaModel = await _bussinesAula.ObterPorIdAsync(id);
+            if (aulaModel == null)
+                return HttpNotFound();
+            await _bussinesAula.DeletarAsync(aulaModel);
+            TempData["mensagem"] = "Aula apagada com sucesso!";
+            TempData["tipo"] = "success";
+            return RedirectToAction(nameof(Index), new { idTurma = aulaModel.TurmaId });
         }
     }
 }

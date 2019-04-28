@@ -50,7 +50,8 @@
                     </div>
                 </div>
             </div>
-            @Html.Partial("_MensagemSucesso")
+            @Html.Hidden("mensagem", TempData["mensagem"])
+            @Html.Hidden("tipo", TempData["tipo"])
             @{
                 const int TAMANHO_LINHA = 3;
                 int quantidadeLinhas = (int)Math.Ceiling((double)Model.Count / TAMANHO_LINHA);
@@ -74,9 +75,17 @@
                                         <span>Conteúdo: </span>
                                         @aula.Conteudo
                                     </p>
-                                    <p>
-                                        @Html.ActionLink("Visualizar", "Detalhes", new { id = aula.Id }, htmlAttributes: new { @class = "btn btn-primary" })
-                                    </p>
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="card-aula-links">
+                                                @Html.ActionLink("Visualizar", "Detalhes", new { id = aula.Id }, htmlAttributes: new { @class = "btn btn-primary" })
+                                                <a href="#section-settings" data-toggle="modal" class="btn btn-danger" 
+                                                   onclick="apagar(this, '@aula.Id', '@aula.DiaDaSemana - @aula.DataCadastro.ToString("d")')">
+                                                    Remover
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -85,4 +94,27 @@
             }
         </div>
     </section>
+</div>
+
+<div class="modal" id="section-settings" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog animated bounceInDown">
+        <div class="modal-content">
+            @using (Html.BeginForm("Deletar", "Aulas"))
+            {
+                @Html.AntiForgeryToken()
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Deletar Aula</h4>
+                </div>
+                <div class="modal-body">
+                    Deseja realmente deletar Aula?
+                    <input type="hidden" name="id" id="id">
+                </div>
+                <div class="modal-footer">
+                    <button data-dismiss="modal" class="btn btn-default" type="button">Não</button>
+                    <button class="btn btn-danger" type="submit">Sim</button>
+                </div>
+            }
+        </div>
+    </div>
 </div>

@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace GrupoEstudosMusical.Data.Repositories
 {
@@ -24,7 +25,7 @@ namespace GrupoEstudosMusical.Data.Repositories
             DbSet.Include(t => t.Avaliacao)
             .Include(t => t.Turma).Where(a => a.AvaliacaoID == avaliacao && a.TurmaID == turma).FirstOrDefault();
 
-        
-        
+        public async Task<List<AvaliacaoTurma>> ObterPorAula(int idAula) =>
+            await DbSet.Where(t => t.AulaId == idAula).ToListAsync();
     }
 }
