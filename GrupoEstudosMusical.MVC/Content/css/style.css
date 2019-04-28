@@ -8256,6 +8256,22 @@ table.dataTable.display tbody tr:first-child td {
     font-weight: bold;
 }
 
-.btn-imagem {
-    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+.card-aula {
+    background-color: #eeeeee;
+}
+
+.card-aula h3 {
+    text-align: center;
+}
+
+.card-aula span {
+    font-weight: bold;
+}
+
+.card-aula-conteudo {
+    height: 200px;
+}
+
+.card-aula a {
+    margin-left: 30%;
 }

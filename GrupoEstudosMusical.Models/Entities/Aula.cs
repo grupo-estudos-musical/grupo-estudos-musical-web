@@ -7,6 +7,6 @@ namespace GrupoEstudosMusical.Models.Entities
         public string Conteudo { get; set; }
         public int TurmaId { get; set; }
         public Turma Turma { get; set; }
-        public List<AvaliacaoTurma> AvaliacaosTurma { get; set; } = new List<AvaliacaoTurma>();
+        public List<AvaliacaoTurma> AvaliacoesTurma { get; set; } = new List<AvaliacaoTurma>();
     }
 }

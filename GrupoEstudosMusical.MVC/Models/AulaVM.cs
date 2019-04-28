@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using GrupoEstudosMusical.MVC.Helpers;
 
 namespace GrupoEstudosMusical.MVC.Models
 {
@@ -16,9 +17,11 @@ namespace GrupoEstudosMusical.MVC.Models
         [DisplayName("Conteúdo")]
         public string Conteudo { get; set; }
 
+        public string DiaDaSemana { get => DataCadastro.ObterDiaDaSemana(); }
+
         public int TurmaId { get; set; }
 
-        public TurmaVM TurmaVM { get; set; }
+        public TurmaVM Turma { get; set; }
 
         public List<AvaliacaoTurmaVM> AvaliacoesTurma { get; set; } = new List<AvaliacaoTurmaVM>();
     }

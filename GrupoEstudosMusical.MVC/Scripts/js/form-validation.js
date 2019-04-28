@@ -15,10 +15,6 @@ $(document).ready(function() {
             highlight: function (element) { // hightlight error inputs
                 var parent = $(element).parent().parent('.form-group');
                 parent.removeClass('has-success').addClass('has-error');
-            },
-            success: function (label, element) {
-                var parent = $(element).parent().parent('.form-group');
-                parent.removeClass('has-error').addClass('has-success');
             }
         });
 

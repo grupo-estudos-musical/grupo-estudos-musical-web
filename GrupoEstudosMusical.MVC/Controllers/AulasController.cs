@@ -24,6 +24,13 @@ namespace GrupoEstudosMusical.MVC.Controllers
             _bussinesAvaliacaoTurma = bussinesAvaliacaoTurma;
         }
 
+        public async Task<ActionResult> Index(int idTurma)
+        {
+            var aulasModel = await _bussinesAula.ObterPorTurma(idTurma);
+            var aulasVM = Mapper.Map<List<Aula>, List<AulaVM>>(aulasModel);
+            return View(aulasVM);
+        }
+
         public async Task<ActionResult> Novo(int idTurma)
         {
             var turmaVM = Mapper.Map<Turma, TurmaVM>(await _bussinesTurma.ObterPorIdAsync(idTurma));
@@ -31,7 +38,8 @@ namespace GrupoEstudosMusical.MVC.Controllers
                 Mapper.Map<List<AvaliacaoTurma>, List<AvaliacaoTurmaVM>>(_bussinesAvaliacaoTurma.ObterPorTurma(idTurma));
             var aulaVM = new AulaVM
             {
-                TurmaId = turmaVM.Id, TurmaVM = turmaVM,
+                TurmaId = turmaVM.Id,
+                Turma = turmaVM,
                 AvaliacoesTurma = avaliacoesTurmaVM
             };
             return View(aulaVM);

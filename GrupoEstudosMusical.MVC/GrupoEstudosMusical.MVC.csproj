@@ -260,6 +260,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\AlunoHelper.cs" />
+    <Compile Include="Helpers\DataHelper.cs" />
     <Compile Include="Models\AlunoVM.cs" />
     <Compile Include="Models\AulaVM.cs" />
     <Compile Include="Models\AvaliacaoVM.cs" />
@@ -433,6 +434,7 @@
     <Content Include="Views\Shared\_CadastroChamada.cshtml" />
     <Content Include="Views\Chamadas\Detalhes.cshtml" />
     <Content Include="Views\Aulas\Novo.cshtml" />
+    <Content Include="Views\Aulas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GrupoEstudosMusical.Bussines\GrupoEstudosMusical.Bussines.csproj">

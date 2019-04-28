@@ -21,6 +21,8 @@ namespace GrupoEstudosMusical.Bussines
 
         public async Task InserirAsync(Aula aula, List<AvaliacaoTurma> avaliacoesTurma)
         {
+            aula.Turma = null;
+            aula.AvaliacoesTurma = null;
             await _repositoryAula.InserirAsync(aula);
 
             foreach (AvaliacaoTurma avaliacaoTurma in avaliacoesTurma)
@@ -32,5 +34,8 @@ namespace GrupoEstudosMusical.Bussines
                 await _repositoryAvaliacaoTurma.AlterarAsync(avaliacaoTurma);
             }
         }
+
+        public async Task<List<Aula>> ObterPorTurma(int idTurma) =>
+            await _repositoryAula.ObterPorTurma(idTurma);
     }
 }
