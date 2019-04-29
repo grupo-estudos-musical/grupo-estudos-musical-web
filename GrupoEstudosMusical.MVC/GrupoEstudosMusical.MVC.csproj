@@ -281,9 +281,6 @@
     <Compile Include="Models\ProfessorVM.cs" />
     <Compile Include="Models\TurmasMatriculaVM.cs" />
     <Compile Include="Models\TurmaVM.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -536,10 +533,8 @@
     <Content Include="Content\images\menu_student_edit.png" />
     <Content Include="Content\images\menu_ocorrencias.png" />
     <Content Include="Content\images\menu_editar_turma.png" />
-    <Content Include="Content\images\notebook.png" />
-    <Content Include="Content\images\pencil.png" />
-    <Content Include="Content\images\prancheta.png" />
-    <Content Include="Content\images\reload.png" />
+    <Content Include="Content\images\menu_lancar_notas.png" />
+    <Content Include="Content\images\menu_recalculo.png" />
     <Content Include="Content\images\sem_foto.png" />
     <Content Include="Content\lib\bootstrap\css\bootstrap-theme.min.css" />
     <Content Include="Content\lib\bootstrap\css\bootstrap.min.css" />
