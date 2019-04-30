@@ -1,4 +1,4 @@
-﻿@model List<GrupoEstudosMusical.MVC.Models.AulaVM>
+﻿@model GrupoEstudosMusical.MVC.Models.ListaAulasVM
 
 @{
     ViewBag.Title = "Lista de Aulas";
@@ -32,7 +32,7 @@
 <div class="col-lg-12">
     <section class="box ">
         <header class="panel_header">
-            <h2 class="title pull-left">Lista de Aulas da Turma <span class="negrito">@Model[0].Turma.Nome</span></h2>
+            <h2 class="title pull-left">Lista de Aulas da Turma <span class="negrito">@Model.Turma.Nome</span></h2>
             <div class="actions panel_actions pull-right">
                 <a class="box_toggle fa fa-chevron-down"></a>
                 <a class="box_close fa fa-times"></a>
@@ -54,11 +54,11 @@
             @Html.Hidden("tipo", TempData["tipo"])
             @{
                 const int TAMANHO_LINHA = 3;
-                int quantidadeLinhas = (int)Math.Ceiling((double)Model.Count / TAMANHO_LINHA);
+                int quantidadeLinhas = (int)Math.Ceiling((double)Model.Aulas.Count / TAMANHO_LINHA);
             }
             @for (int i = 0; i < quantidadeLinhas; i++)
             {
-                var parteAulas = Model.Skip(i * TAMANHO_LINHA).Take(TAMANHO_LINHA).ToList();
+                var parteAulas = Model.Aulas.Skip(i * TAMANHO_LINHA).Take(TAMANHO_LINHA).ToList();
                 <div class="row">
                     @foreach (var aula in parteAulas)
                     {
