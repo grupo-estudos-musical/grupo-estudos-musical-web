@@ -94,7 +94,7 @@ namespace GrupoEstudosMusical.MVC.Controllers
         public async Task<ActionResult> LancarNotas(int Id)
         {
             var turma = Mapper.Map<Turma,TurmaVM>( await _bussinesTurma.ObterPorIdAsync(Id));
-            ViewBag.AvaliacoesTurma = Mapper.Map<IList<AvaliacaoTurma>, IList<AvaliacaoTurmaVM>>(_bussinesAvaliacaoTurma.ObterPelaTurma(Id));
+            ViewBag.AvaliacoesTurma = Mapper.Map<IList<AvaliacaoTurma>, IList<AvaliacaoTurmaVM>>(_bussinesAvaliacaoTurma.ObterPorTurma(Id));
             return View(turma);
         }
         public async Task<ActionResult> Editar(int Id)

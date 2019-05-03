@@ -146,6 +146,7 @@
   <ItemGroup>
     <Compile Include="Context\GemContext.cs" />
     <Compile Include="Mappings\AlunoMap.cs" />
+    <Compile Include="Mappings\AulaMap.cs" />
     <Compile Include="Mappings\AvaliacaoMap.cs" />
     <Compile Include="Mappings\AvaliacaoTurmaMap.cs" />
     <Compile Include="Mappings\ChamadaMap.cs" />
@@ -167,6 +168,7 @@
     <Compile Include="Migrations\GemContextModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\RepositoryAluno.cs" />
+    <Compile Include="Repositories\RepositoryAula.cs" />
     <Compile Include="Repositories\RepositoryAvaliacao.cs" />
     <Compile Include="Repositories\RepositoryAvaliacaoTurma.cs" />
     <Compile Include="Repositories\RepositoryChamada.cs" />

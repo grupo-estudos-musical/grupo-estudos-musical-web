@@ -17,7 +17,10 @@
                     <a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i>Home</a>
                 </li>
                 <li>
-                    <a href="@Url.Action("VisaoGeral", "Turmas", new { Id = Model.Id })">Visão Geral da Turma</a>
+                    <a href="@Url.Action("Index", "Turmas")">Turmas</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("VisaoGeral", "Turmas", new { Id = Model.Id })">Visão Geral</a>
                 </li>
                 <li class="active">
                     <strong>Lançamento de Notas</strong>

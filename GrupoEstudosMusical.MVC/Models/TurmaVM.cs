@@ -49,5 +49,6 @@ namespace GrupoEstudosMusical.MVC.Models
         }
 
         public List<Matricula> Matriculas { get; set; }
+        public List<AulaVM> Aulas { get; set; }
     }
 }

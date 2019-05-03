@@ -15,13 +15,13 @@ namespace GrupoEstudosMusical.Models.Entities
         public int QuantidadeAlunos { get; set; }
         public int ProfessorID { get; set; }
         public int ModuloID { get; set; }
-        public virtual Modulo Modulo { get; set; }
         public int Semestre { get; set; }
+        public virtual Modulo Modulo { get; set; }
         public List<Matricula> Matriculas { get; set; }
         public List<Ocorrencia> Ocorrencias { get; set; }
-
         public List<AvaliacaoTurma> AvaliacoesTurmas { get; set; }
         public List<Chamada> Chamadas { get; set; }
+        public List<Aula> Aulas { get; set; }
 
         public bool VerificarQuantidadeDeAlunosMatriculados() => Matriculas.Count < QuantidadeAlunos;
     }

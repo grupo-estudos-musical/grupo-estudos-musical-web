@@ -24,9 +24,9 @@ namespace GrupoEstudosMusical.IoC
             container.Register<IRepositoryMatricula, RepositoryMatricula>();
             container.Register<IRepositoryAvaliacao, RepositoryAvaliacao>();
             container.Register<IRepositoryChamada, RepositoryChamada>();
-
             container.Register<IRepositoryAvaliacaoTurma, RepositoryAvaliacaoTurma>();
             container.Register<IRepositoryPalhetaDeNotas, RepositoryPalhetaDeNotas>();
+            container.Register<IRepositoryAula, RepositoryAula>();
 
             container.Register<IRepositoryInstrumento, RepositoryInstrumento>();
             container.Register<IRepositoryFabricante, RepositoryFabricante>();
@@ -44,9 +44,11 @@ namespace GrupoEstudosMusical.IoC
             container.Register<IBussinesAvaliacaoTurma, BussinesAvaliacaoTurma>();
             container.Register<IBussinesChamada, BussinesChamada>();
             container.Register<IBussinesPalhetaDeNotas, BussinesPalhetaDeNota>();
+            container.Register<IBussinesAula, BussinesAula>();
             container.Register<IBussinesInstrumento, BussinesInstrumento>();
             container.Register<IBussinesFabricante, BussinesFabricante>();
             container.Register<IBussinesInstrumentoDoAluno, BussinesInstrumentoDoAluno>();
+
             container.Register<IBussinesInventario, BussinesInventario>();
 
             container.Register<IViaCepService, ViaCepService>();
