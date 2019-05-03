@@ -16,7 +16,7 @@ namespace GrupoEstudosMusical.MVC.Models
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime DataInicio { get; set; } = DateTime.Now;
 
-        [DisplayName("Término da Aula")]
+        [DisplayName("Data de término das aulas")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime TerminoAula { get; set; } = DateTime.Now;
 

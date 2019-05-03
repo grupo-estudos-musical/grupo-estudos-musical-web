@@ -250,6 +250,7 @@
     <Compile Include="Controllers\FabricantesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InstrumentosController.cs" />
+    <Compile Include="Controllers\InventarioController.cs" />
     <Compile Include="Controllers\MatriculasController.cs" />
     <Compile Include="Controllers\ModulosController.cs" />
     <Compile Include="Controllers\OcorrenciasController.cs" />
@@ -270,6 +271,7 @@
     <Compile Include="Models\FrequenciaVM.cs" />
     <Compile Include="Models\InstrumentoDoAlunoVM.cs" />
     <Compile Include="Models\InstrumentoVM.cs" />
+    <Compile Include="Models\InventarioVM.cs" />
     <Compile Include="Models\ListaChamadasVM.cs" />
     <Compile Include="Models\MatriculaListaVM.cs" />
     <Compile Include="Models\MatriculaVM.cs" />
@@ -564,6 +566,7 @@
     <Content Include="obj\Debug\GrupoEstudosMusical.MVC.pdb" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\JsInventario.js" />
     <Content Include="Scripts\JsPalhetaDeNotas.js" />
     <Content Include="Scripts\js\aluno.js" />
     <Content Include="Scripts\js\app.js" />
@@ -701,6 +704,8 @@
     <Content Include="Views\Instrumentos\Novo.cshtml" />
     <Content Include="Views\Instrumentos\InstrumentosDoAluno.cshtml" />
     <Content Include="Views\Shared\_EfetuarEmprestimoInstrumento.cshtml" />
+    <Content Include="Views\Inventario\Index.cshtml" />
+    <Content Include="Views\Instrumentos\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GrupoEstudosMusical.Bussines\GrupoEstudosMusical.Bussines.csproj">

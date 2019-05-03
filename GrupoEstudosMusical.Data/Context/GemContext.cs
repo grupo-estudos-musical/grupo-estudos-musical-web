@@ -1,4 +1,5 @@
 ﻿using GrupoEstudosMusical.Data.Mappings;
+using GrupoEstudosMusical.Models;
 using GrupoEstudosMusical.Models.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Configuration;
@@ -23,6 +24,7 @@ namespace GrupoEstudosMusical.Data.Context
         public DbSet<Instrumento> Instrumentos { get; set; }
         public DbSet<Fabricante> Fabricantes { get; set; }
         public DbSet<InstrumentoDoAluno> InstrumentoDoAlunos { get; set; }
+        public DbSet<Inventario> Inventarios { get; set; }
 
         public GemContext() : base() { }
 
@@ -47,6 +49,7 @@ namespace GrupoEstudosMusical.Data.Context
             modelBuilder.ApplyConfiguration(new PalhetaDeNotaMap());
             modelBuilder.ApplyConfiguration(new InstrumentoMap());
             modelBuilder.ApplyConfiguration(new InstrumentoDoAlunoMap());
+            modelBuilder.ApplyConfiguration(new InventarioMap());
         }
     }
 }

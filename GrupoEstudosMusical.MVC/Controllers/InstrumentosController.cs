@@ -1,8 +1,10 @@
 ﻿
 using AutoMapper;
+using GrupoEstudosMusical.Models;
 using GrupoEstudosMusical.Models.Entities;
 using GrupoEstudosMusical.Models.Interfaces.Bussines;
 using GrupoEstudosMusical.MVC.Models;
+using Microsoft.Ajax.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -16,19 +18,22 @@ namespace GrupoEstudosMusical.MVC.Controllers
         readonly IBussinesFabricante _bussinesFabricante;
         readonly IBussinesInstrumento _bussinesInstrumento;
         readonly IBussinesInstrumentoDoAluno _bussinesInstrumentoDoAluno;
+        readonly IBussinesInventario _bussinesInventario;
         readonly IBussinesAluno _bussinesAluno;
         public InstrumentosController(IBussinesFabricante bussinesFabricante, IBussinesInstrumento bussinesInstrumento
-            , IBussinesAluno bussinesAluno, IBussinesInstrumentoDoAluno bussinesInstrumentoDoAluno)
+            , IBussinesAluno bussinesAluno, IBussinesInstrumentoDoAluno bussinesInstrumentoDoAluno, IBussinesInventario bussinesInventario)
         {
             _bussinesFabricante = bussinesFabricante;
             _bussinesInstrumento = bussinesInstrumento;
             _bussinesAluno = bussinesAluno;
             _bussinesInstrumentoDoAluno = bussinesInstrumentoDoAluno;
+            _bussinesInventario = bussinesInventario;
         }
         // GET: Instrumento
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            return View();
+            var instrumentos = Mapper.Map<IList<Instrumento>, IList<InstrumentoVM>>(await _bussinesInstrumento.ObterTodosAsync());
+            return View(instrumentos);
         }
 
         public async Task<ActionResult> InstrumentosDoAluno(int alunoId)
@@ -37,12 +42,46 @@ namespace GrupoEstudosMusical.MVC.Controllers
             await IncializarViewBagInstrumentos();
             ViewBag.AlunoID = alunoId;
             var instrumentos = Mapper.Map<IList<InstrumentoDoAluno>,IList<InstrumentoDoAlunoVM>>(_bussinesInstrumentoDoAluno.ObterInstrumentosDoAluno(alunoId));
+            instrumentos.ForEach(i => i.NomeInstrumentoAluno = i.Inventario != null ? i.Inventario.Instrumento.Nome : "");
             return View(instrumentos);
         }
         public async Task<ActionResult> Novo()
         {
             await InicializarViewBagDeFabricantes();
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Novo(InstrumentoVM instrumentoVM)
+        {
+            try
+            {
+                var instrumentoModel = Mapper.Map<InstrumentoVM, Instrumento>(instrumentoVM);
+                await _bussinesInstrumento.InserirAsync(instrumentoModel);
+                await AdicionarInstrumentoNoInventario(instrumentoModel);
+
+                TempData["Mensagem"] = "Instrumento cadastrado com sucesso!";
+                return RedirectToAction("Index");
+            }
+            catch(Exception ex)
+            {
+                TempData["Mensagem"] = ex.Message;
+                return View(instrumentoVM);
+            }
+            
+            
+        }
+
+        async Task AdicionarInstrumentoNoInventario(Instrumento instrumento)
+        {
+            await _bussinesInventario.InserirAsync(new Inventario()
+            {
+                DataCadastro = DateTime.Now,
+                EstoqueMinimo = 0,
+                QuantidadeDisponivel = 0,
+                InventarioID = instrumento.IntrumentoID
+            });
         }
 
         async Task InicializarViewBagDeFabricantes()
@@ -63,12 +102,21 @@ namespace GrupoEstudosMusical.MVC.Controllers
                 await _bussinesInstrumentoDoAluno.InserirAsync(instrumentoEmprestimoModel);
                 return Json(new { result = true }, JsonRequestBehavior.AllowGet);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return Json(new { result = false }, JsonRequestBehavior.AllowGet);
             }
             
             
+        }
+
+        public async Task<ActionResult> Deletar(FormCollection formCollection)
+        {
+            int.TryParse(formCollection["id"].ToString(), out var id);
+            
+            
+            TempData["Mensagem"] = "Módulo Apagado com Sucesso.";
+            return RedirectToAction(nameof(Index));
         }
 
 

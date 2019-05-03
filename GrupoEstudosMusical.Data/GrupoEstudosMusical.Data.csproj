@@ -153,171 +153,16 @@
     <Compile Include="Mappings\FrequenciaMap.cs" />
     <Compile Include="Mappings\InstrumentoDoAlunoMap.cs" />
     <Compile Include="Mappings\InstrumentoMap.cs" />
+    <Compile Include="Mappings\InventarioMap.cs" />
     <Compile Include="Mappings\MatriculaMap.cs" />
     <Compile Include="Mappings\ModuloMap.cs" />
     <Compile Include="Mappings\OcorrenciaMap.cs" />
     <Compile Include="Mappings\PalhetaDeNotaMap.cs" />
     <Compile Include="Mappings\ProfessorMap.cs" />
     <Compile Include="Mappings\TurmaMap.cs" />
-    <Compile Include="Migrations\20190201162243_TabelaDeAlunos.cs" />
-    <Compile Include="Migrations\20190201162243_TabelaDeAlunos.designer.cs">
-      <DependentUpon>20190201162243_TabelaDeAlunos.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190202183953_AlterandoCampoTelefoneECelularAluno.cs" />
-    <Compile Include="Migrations\20190202183953_AlterandoCampoTelefoneECelularAluno.designer.cs">
-      <DependentUpon>20190202183953_AlterandoCampoTelefoneECelularAluno.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190202184337_AlterandoCampoCpfERgAluno.cs" />
-    <Compile Include="Migrations\20190202184337_AlterandoCampoCpfERgAluno.designer.cs">
-      <DependentUpon>20190202184337_AlterandoCampoCpfERgAluno.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190202184540_AlterandoCampoCepAluno.cs" />
-    <Compile Include="Migrations\20190202184540_AlterandoCampoCepAluno.designer.cs">
-      <DependentUpon>20190202184540_AlterandoCampoCepAluno.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190203125513_TabelaDeProfessores.cs" />
-    <Compile Include="Migrations\20190203125513_TabelaDeProfessores.designer.cs">
-      <DependentUpon>20190203125513_TabelaDeProfessores.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190203150025_AlterandoCampoTelefoneProfessores.cs" />
-    <Compile Include="Migrations\20190203150025_AlterandoCampoTelefoneProfessores.designer.cs">
-      <DependentUpon>20190203150025_AlterandoCampoTelefoneProfessores.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190203164350_Modulo.cs" />
-    <Compile Include="Migrations\20190203164350_Modulo.designer.cs">
-      <DependentUpon>20190203164350_Modulo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190205120326_Alteracao_Modulos.cs" />
-    <Compile Include="Migrations\20190205120326_Alteracao_Modulos.designer.cs">
-      <DependentUpon>20190205120326_Alteracao_Modulos.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190205132440_Turma.cs" />
-    <Compile Include="Migrations\20190205132440_Turma.designer.cs">
-      <DependentUpon>20190205132440_Turma.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190205132728_Alteracao_Turma.cs" />
-    <Compile Include="Migrations\20190205132728_Alteracao_Turma.designer.cs">
-      <DependentUpon>20190205132728_Alteracao_Turma.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190207115128_te.cs" />
-    <Compile Include="Migrations\20190207115128_te.designer.cs">
-      <DependentUpon>20190207115128_te.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190207135207_Modulos.cs" />
-    <Compile Include="Migrations\20190207135207_Modulos.designer.cs">
-      <DependentUpon>20190207135207_Modulos.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190210005255_TabelaDeMatriculas.cs" />
-    <Compile Include="Migrations\20190210005255_TabelaDeMatriculas.designer.cs">
-      <DependentUpon>20190210005255_TabelaDeMatriculas.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190210134453_RemoveNumeroMatricula.cs" />
-    <Compile Include="Migrations\20190210134453_RemoveNumeroMatricula.designer.cs">
-      <DependentUpon>20190210134453_RemoveNumeroMatricula.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190223032934_Criação das ocorrencias.cs" />
-    <Compile Include="Migrations\20190223032934_Criação das ocorrencias.designer.cs">
-      <DependentUpon>20190223032934_Criação das ocorrencias.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190302135622_alteracao_campoTIpo.cs" />
-    <Compile Include="Migrations\20190302135622_alteracao_campoTIpo.designer.cs">
-      <DependentUpon>20190302135622_alteracao_campoTIpo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190302164341_alteracao_campoTIp5.cs" />
-    <Compile Include="Migrations\20190302164341_alteracao_campoTIp5.designer.cs">
-      <DependentUpon>20190302164341_alteracao_campoTIp5.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190316180931_AdicionandoCampoNumeroAluno.cs" />
-    <Compile Include="Migrations\20190316180931_AdicionandoCampoNumeroAluno.designer.cs">
-      <DependentUpon>20190316180931_AdicionandoCampoNumeroAluno.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190318203730_Create Avaliacoes das turmasaa.cs" />
-    <Compile Include="Migrations\20190318203730_Create Avaliacoes das turmasaa.designer.cs">
-      <DependentUpon>20190318203730_Create Avaliacoes das turmasaa.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190319182042_AdicionandoCampoNumeroProfessor.cs" />
-    <Compile Include="Migrations\20190319182042_AdicionandoCampoNumeroProfessor.designer.cs">
-      <DependentUpon>20190319182042_AdicionandoCampoNumeroProfessor.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190319182226_AlterandoCampoEnderecoParaLogradouroProfessor.cs" />
-    <Compile Include="Migrations\20190319182226_AlterandoCampoEnderecoParaLogradouroProfessor.designer.cs">
-      <DependentUpon>20190319182226_AlterandoCampoEnderecoParaLogradouroProfessor.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190319183027_AlterandoCampoEnderecoParaLogradouroAluno.cs" />
-    <Compile Include="Migrations\20190319183027_AlterandoCampoEnderecoParaLogradouroAluno.designer.cs">
-      <DependentUpon>20190319183027_AlterandoCampoEnderecoParaLogradouroAluno.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190322160716_Criacao da avTurmas.cs" />
-    <Compile Include="Migrations\20190322160716_Criacao da avTurmas.designer.cs">
-      <DependentUpon>20190322160716_Criacao da avTurmas.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190322161524_Remoção do Id da AvaliacaoTurma.cs" />
-    <Compile Include="Migrations\20190322161524_Remoção do Id da AvaliacaoTurma.designer.cs">
-      <DependentUpon>20190322161524_Remoção do Id da AvaliacaoTurma.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190331154307_AdicionandoCampoResponsavelAluno.cs" />
-    <Compile Include="Migrations\20190331154307_AdicionandoCampoResponsavelAluno.designer.cs">
-      <DependentUpon>20190331154307_AdicionandoCampoResponsavelAluno.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190331185027_AlterandoCampoResponsavelParaNotNull.cs" />
-    <Compile Include="Migrations\20190331185027_AlterandoCampoResponsavelParaNotNull.designer.cs">
-      <DependentUpon>20190331185027_AlterandoCampoResponsavelParaNotNull.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190331195309_AdicionandoCampoImagemUrlAluno.cs" />
-    <Compile Include="Migrations\20190331195309_AdicionandoCampoImagemUrlAluno.designer.cs">
-      <DependentUpon>20190331195309_AdicionandoCampoImagemUrlAluno.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190328142217_Ajustes no campo rg ao cadastrar o aluno.cs" />
-    <Compile Include="Migrations\20190328142217_Ajustes no campo rg ao cadastrar o aluno.designer.cs">
-      <DependentUpon>20190328142217_Ajustes no campo rg ao cadastrar o aluno.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190329163255_Remocao de required para data prevista nas avaliacoes da turmas.cs" />
-    <Compile Include="Migrations\20190329163255_Remocao de required para data prevista nas avaliacoes da turmas.designer.cs">
-      <DependentUpon>20190329163255_Remocao de required para data prevista nas avaliacoes da turmas.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190401194650_Edicao na estrutura da avaliacoes turmas.cs" />
-    <Compile Include="Migrations\20190401194650_Edicao na estrutura da avaliacoes turmas.designer.cs">
-      <DependentUpon>20190401194650_Edicao na estrutura da avaliacoes turmas.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190411233918_AlterandoTamanhoCampoUrlAluno.cs" />
-    <Compile Include="Migrations\20190411233918_AlterandoTamanhoCampoUrlAluno.designer.cs">
-      <DependentUpon>20190411233918_AlterandoTamanhoCampoUrlAluno.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190413174015_AdicionandoTabelasConroleDeFaltas.cs" />
-    <Compile Include="Migrations\20190413174015_AdicionandoTabelasConroleDeFaltas.designer.cs">
-      <DependentUpon>20190413174015_AdicionandoTabelasConroleDeFaltas.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190412230325_Inclusão da palheta de notas.cs" />
-    <Compile Include="Migrations\20190412230325_Inclusão da palheta de notas.designer.cs">
-      <DependentUpon>20190412230325_Inclusão da palheta de notas.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190412231547_Inclusão da palheta de notas v2.cs" />
-    <Compile Include="Migrations\20190412231547_Inclusão da palheta de notas v2.designer.cs">
-      <DependentUpon>20190412231547_Inclusão da palheta de notas v2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190413031902_Teste.cs" />
-    <Compile Include="Migrations\20190413031902_Teste.designer.cs">
-      <DependentUpon>20190413031902_Teste.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190420151615_Inclusão do campo média na matrícula do aluno.cs" />
-    <Compile Include="Migrations\20190420151615_Inclusão do campo média na matrícula do aluno.designer.cs">
-      <DependentUpon>20190420151615_Inclusão do campo média na matrícula do aluno.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190424224347_Criação dos migrations de fabricante e instrumento.cs" />
-    <Compile Include="Migrations\20190424224347_Criação dos migrations de fabricante e instrumento.designer.cs">
-      <DependentUpon>20190424224347_Criação dos migrations de fabricante e instrumento.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190424230257_Criação dos migrations de fabricante e instrumento V2.cs" />
-    <Compile Include="Migrations\20190424230257_Criação dos migrations de fabricante e instrumento V2.designer.cs">
-      <DependentUpon>20190424230257_Criação dos migrations de fabricante e instrumento V2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190424230812_Criação dos migrations de fabricante e instrumento V3.cs" />
-    <Compile Include="Migrations\20190424230812_Criação dos migrations de fabricante e instrumento V3.designer.cs">
-      <DependentUpon>20190424230812_Criação dos migrations de fabricante e instrumento V3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190424234034_Inclusão da model associativa entre instrumento e aluno e fabricante.cs" />
-    <Compile Include="Migrations\20190424234034_Inclusão da model associativa entre instrumento e aluno e fabricante.designer.cs">
-      <DependentUpon>20190424234034_Inclusão da model associativa entre instrumento e aluno e fabricante.cs</DependentUpon>
+    <Compile Include="Migrations\20190503033829_Inclusao de tudo.cs" />
+    <Compile Include="Migrations\20190503033829_Inclusao de tudo.designer.cs">
+      <DependentUpon>20190503033829_Inclusao de tudo.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\GemContextModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -330,6 +175,7 @@
     <Compile Include="Repositories\RepositoryGeneric.cs" />
     <Compile Include="Repositories\RepositoryInstrumento.cs" />
     <Compile Include="Repositories\RepositoryInstrumentoDoAluno.cs" />
+    <Compile Include="Repositories\RepositoryInventario.cs" />
     <Compile Include="Repositories\RepositoryMatricula.cs" />
     <Compile Include="Repositories\RepositoryModulo.cs" />
     <Compile Include="Repositories\RepositoryOcorrencia.cs" />

@@ -61,7 +61,7 @@
                             @foreach (var instrumento in Model)
                             {
                                 <tr>
-                                    <td>@Html.DisplayFor(item => instrumento.Instrumento.Nome)</td>
+                                    <td>@Html.DisplayFor(item => instrumento.NomeInstrumentoAluno)</td>
                                     <td>@instrumento.DataEmprestimo.ToString("dd/MM/yyyy")</td>
                                     <td>@instrumento.AnoDeFabricacaoInstrumento.ToString("yyyy")</td>
                                     <td>@Html.DisplayFor(item => instrumento.Fabricante.Nome)</td>
@@ -69,7 +69,9 @@
                                             @Html.ActionLink("Editar", "Editar", "Modulos", new { id = model.Id }, new { @class = "btn btn-primary" })
 
                                             <a class="btn btn-danger" data-toggle="modal" href="#section-settings"
-                                               onclick="apagar(this, '@(model.Id)', '@(mo.Nome)')">Apagar</a>
+                                               onclick="
+                                        
+                                        this, '@(model.Id)', '@(mo.Nome)')">Apagar</a>
                                         </td>*@
                                 </tr>
                             }

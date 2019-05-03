@@ -1,24 +1,26 @@
 ﻿
 
-using GrupoEstudosMusical.Models.Entities;
+using GrupoEstudosMusical.Models;
+
 using System;
 using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
+
 using static GrupoEstudosMusical.Models.Entities.Instrumento;
 
 namespace GrupoEstudosMusical.MVC.Models
 {
     public class InstrumentoDoAlunoVM
     {
-        public Guid Id { get; set; }
+
+        public Guid IdInstrumentoDoAluno { get; private set; }
         [DisplayName("Ano de Fabricação")]
         public DateTime AnoDeFabricacaoInstrumento { get; set; }
         [DisplayName("Data do Empréstimo")]
         public DateTime DataEmprestimo { get; set; } = DateTime.Now;
-        public Instrumento Instrumento { get; set; }
+        public Inventario Inventario { get; set; }
 
         [DisplayName("Instrumento")]
-        public Guid InstrumentoID { get; set; }
+        public Guid InventarioID { get; set; }
         
         public Fabricante Fabricante { get; set; }
         [DisplayName("Fabricante")]
@@ -28,6 +30,8 @@ namespace GrupoEstudosMusical.MVC.Models
 
         [DisplayName("Aluno")]
         public int AlunoID { get; set; }
+
+        public string NomeInstrumentoAluno { get; set; }
 
     }
 }

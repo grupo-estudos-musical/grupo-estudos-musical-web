@@ -14,6 +14,8 @@ namespace GrupoEstudosMusical.Models.Entities
         public Guid IntrumentoID {get;  private set; }
         public string Nome { get; set; }
         public List<InstrumentoDoAluno> Instrumentos { get; set; }
+        public virtual Inventario Inventario { get; set; }
+
         public class Fabricante:BaseEntity
         {
             public List<InstrumentoDoAluno> Instrumentos { get; set; }
