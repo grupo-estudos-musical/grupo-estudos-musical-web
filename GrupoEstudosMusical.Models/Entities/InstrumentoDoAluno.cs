@@ -23,6 +23,7 @@ namespace GrupoEstudosMusical.Models.Entities
         public string Cor { get; set; }
         public Aluno Aluno { get; set; }
         public int AlunoID { get; set; }
+        public string Status { get; set; }
 
     }
 }

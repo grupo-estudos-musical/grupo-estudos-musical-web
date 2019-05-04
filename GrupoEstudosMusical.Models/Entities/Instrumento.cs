@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace GrupoEstudosMusical.Models.Entities
 {
@@ -18,10 +19,16 @@ namespace GrupoEstudosMusical.Models.Entities
 
         public class Fabricante:BaseEntity
         {
-            public List<InstrumentoDoAluno> Instrumentos { get; set; }
-            public new Guid Id { get; set; }
+            public Fabricante()
+            {
+                    IdFabricante = Guid.NewGuid();
+            }
+            public List<InstrumentoDoAluno> InstrumentosDoAluno { get; set; }
+            [Key]
+            public Guid IdFabricante { get; set; }
             public string Nome { get; set; }
         }
+
 
     }
 }

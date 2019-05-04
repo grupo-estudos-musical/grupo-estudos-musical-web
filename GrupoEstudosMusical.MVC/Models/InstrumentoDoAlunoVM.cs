@@ -32,6 +32,6 @@ namespace GrupoEstudosMusical.MVC.Models
         public int AlunoID { get; set; }
 
         public string NomeInstrumentoAluno { get; set; }
-
+        public string Status { get; set; }
     }
 }

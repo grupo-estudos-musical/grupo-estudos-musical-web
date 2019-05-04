@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace GrupoEstudosMusical.Data.Migrations
 {
-    public partial class Inclusaodetudo : Migration
+    public partial class Entidadespararealizar : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -58,13 +58,14 @@ namespace GrupoEstudosMusical.Data.Migrations
                 name: "Fabricantes",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(nullable: false),
+                    IdFabricante = table.Column<Guid>(nullable: false),
+                    Id = table.Column<int>(nullable: false),
                     DataCadastro = table.Column<DateTime>(nullable: false),
                     Nome = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Fabricantes", x => x.Id);
+                    table.PrimaryKey("PK_Fabricantes", x => x.IdFabricante);
                 });
 
             migrationBuilder.CreateTable(
@@ -186,7 +187,7 @@ namespace GrupoEstudosMusical.Data.Migrations
                     FabricanteID = table.Column<Guid>(nullable: false),
                     Cor = table.Column<string>(type: "varchar(10)", nullable: false),
                     AlunoID = table.Column<int>(nullable: false),
-                    InstrumentoIntrumentoID = table.Column<Guid>(nullable: true)
+                    Status = table.Column<string>(type: "varchar(11)", nullable: false),
                 },
                 constraints: table =>
                 {
@@ -201,14 +202,9 @@ namespace GrupoEstudosMusical.Data.Migrations
                         name: "FK_InstrumentoDoAluno_Fabricantes_FabricanteID",
                         column: x => x.FabricanteID,
                         principalTable: "Fabricantes",
-                        principalColumn: "Id",
+                        principalColumn: "IdFabricante",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_InstrumentoDoAluno_Instrumentos_InstrumentoIntrumentoID",
-                        column: x => x.InstrumentoIntrumentoID,
-                        principalTable: "Instrumentos",
-                        principalColumn: "IntrumentoID",
-                        onDelete: ReferentialAction.Restrict);
+                   
                     table.ForeignKey(
                         name: "FK_InstrumentoDoAluno_Inventario_InventarioID",
                         column: x => x.InventarioID,
@@ -218,28 +214,21 @@ namespace GrupoEstudosMusical.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "AvaliacoesDaTurma",
+                name: "Aulas",
                 columns: table => new
                 {
-                    IdAvaliacaoTurma = table.Column<Guid>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     DataCadastro = table.Column<DateTime>(type: "date", nullable: false),
-                    TurmaID = table.Column<int>(nullable: false),
-                    AvaliacaoID = table.Column<int>(nullable: false),
-                    DataPrevista = table.Column<DateTime>(type: "date", nullable: false),
-                    DataRealizacao = table.Column<DateTime>(nullable: false)
+                    Conteudo = table.Column<string>(type: "varchar(300)", nullable: false),
+                    TurmaId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AvaliacoesDaTurma", x => x.IdAvaliacaoTurma);
+                    table.PrimaryKey("PK_Aulas", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AvaliacoesDaTurma_Avaliacoes_AvaliacaoID",
-                        column: x => x.AvaliacaoID,
-                        principalTable: "Avaliacoes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_AvaliacoesDaTurma_Turmas_TurmaID",
-                        column: x => x.TurmaID,
+                        name: "FK_Aulas_Turmas_TurmaId",
+                        column: x => x.TurmaId,
                         principalTable: "Turmas",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -330,6 +319,41 @@ namespace GrupoEstudosMusical.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "AvaliacoesDaTurma",
+                columns: table => new
+                {
+                    IdAvaliacaoTurma = table.Column<Guid>(nullable: false),
+                    DataCadastro = table.Column<DateTime>(type: "date", nullable: false),
+                    TurmaID = table.Column<int>(nullable: false),
+                    AvaliacaoID = table.Column<int>(nullable: false),
+                    DataPrevista = table.Column<DateTime>(type: "date", nullable: false),
+                    DataRealizacao = table.Column<DateTime>(nullable: false),
+                    AulaId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AvaliacoesDaTurma", x => x.IdAvaliacaoTurma);
+                    table.ForeignKey(
+                        name: "FK_AvaliacoesDaTurma_Aulas_AulaId",
+                        column: x => x.AulaId,
+                        principalTable: "Aulas",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_AvaliacoesDaTurma_Avaliacoes_AvaliacaoID",
+                        column: x => x.AvaliacaoID,
+                        principalTable: "Avaliacoes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_AvaliacoesDaTurma_Turmas_TurmaID",
+                        column: x => x.TurmaID,
+                        principalTable: "Turmas",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Frequencias",
                 columns: table => new
                 {
@@ -388,10 +412,20 @@ namespace GrupoEstudosMusical.Data.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_Aulas_TurmaId",
+                table: "Aulas",
+                column: "TurmaId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Avaliacoes_Nome",
                 table: "Avaliacoes",
                 column: "Nome",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AvaliacoesDaTurma_AulaId",
+                table: "AvaliacoesDaTurma",
+                column: "AulaId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AvaliacoesDaTurma_TurmaID",
@@ -423,11 +457,6 @@ namespace GrupoEstudosMusical.Data.Migrations
                 name: "IX_InstrumentoDoAluno_FabricanteID",
                 table: "InstrumentoDoAluno",
                 column: "FabricanteID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_InstrumentoDoAluno_InstrumentoIntrumentoID",
-                table: "InstrumentoDoAluno",
-                column: "InstrumentoIntrumentoID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_InstrumentoDoAluno_InventarioID_FabricanteID_AlunoID",
@@ -513,6 +542,9 @@ namespace GrupoEstudosMusical.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Instrumentos");
+
+            migrationBuilder.DropTable(
+                name: "Aulas");
 
             migrationBuilder.DropTable(
                 name: "Avaliacoes");

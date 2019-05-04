@@ -9,6 +9,6 @@ namespace GrupoEstudosMusical.Data.Repositories
     public class RepositoryFabricante : RepositoryGeneric<Fabricante>, IRepositoryFabricante
     {
         public Fabricante ObterPorIdGuid(Guid Id) =>
-            Context.Fabricantes.FirstOrDefault(f => f.Id == Id);
+            Context.Fabricantes.FirstOrDefault(f => f.IdFabricante == Id);
     }
 }
