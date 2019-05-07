@@ -3,6 +3,7 @@
     ViewBag.Title = "Index";
 }
 
+@{  var data_classe_para_alterarcor = ""; }
 
 
 <div class='col-xs-12'>
@@ -76,11 +77,19 @@
                         <tbody>
                             @foreach (var instrumento in Model)
                             {
+                                if(instrumento.QuantidadeDisponivel < instrumento.EstoqueMinimo)
+                                {
+                                    data_classe_para_alterarcor = "LinhaParaMudancaDeCor";
+                                }
+                                else
+                                {
+                                    data_classe_para_alterarcor = "";
+                                }
                                 <tr>
                                     @Html.HiddenFor(item => instrumento.InventarioID)
-                                    <td>@instrumento.NomeInstrumento </td>
-                                    <td>@Html.EditorFor(item => instrumento.EstoqueMinimo, new { htmlAttributes = new { @class = "form-control", @disabled = "true", @min = 0 } })</td>
-                                    <td>@Html.EditorFor(item => instrumento.QuantidadeDisponivel, new { htmlAttributes = new { @class = "form-control", @disabled = "true" } })</td>
+                                    <td class="@data_classe_para_alterarcor">@instrumento.NomeInstrumento </td>
+                                    <td class="@data_classe_para_alterarcor">@Html.EditorFor(item => instrumento.EstoqueMinimo, new { htmlAttributes = new { @class = "form-control", @disabled = "true", @min = 0 } })</td>
+                                    <td class="@data_classe_para_alterarcor">@Html.EditorFor(item => instrumento.QuantidadeDisponivel, new { htmlAttributes = new { @class = "form-control", @disabled = "true" } })</td>
                                     <td style="width: 160px"></td>
                                 </tr>
                             }
@@ -118,6 +127,12 @@
 
 
 @section Styles{
+    <style>
+        .LinhaParaMudancaDeCor {
+            color:#e43b3b;
+            font-weight:bold;
+        }
+    </style>
     <link href="~/Content/lib/datatables/css/jquery.dataTables.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="~/Content/lib/datatables/extensions/TableTools/css/dataTables.tableTools.min.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="~/Content/lib/datatables/extensions/Responsive/css/dataTables.responsive.css" rel="stylesheet" type="text/css" media="screen" />
@@ -131,3 +146,5 @@
     <script src="~/Scripts/lib/datatables/extensions/Responsive/bootstrap3/dataTables.bootstrap.js" type="text/javascript"></script>
     <script src="~/Scripts/JsInventario.js"></script>
 }
+   
+

@@ -36,6 +36,11 @@ namespace GrupoEstudosMusical.Bussines
 
         }
 
-        
+        public async Task SubtrairOuAdicionarInventario(Guid inventarioID, bool subtrair)
+        {
+            var inventario = _repositoryInventario.ObterPorIdGuid(inventarioID);
+            inventario.QuantidadeDisponivel = subtrair == true ? inventario.QuantidadeDisponivel -= 1 : inventario.QuantidadeDisponivel += 1;
+            await _repositoryInventario.AlterarAsync(inventario);
+        }
     }
 }

@@ -8,5 +8,6 @@ namespace GrupoEstudosMusical.Models.Interfaces.Repository
     {
         InstrumentoDoAluno ObterPorIdGuid(Guid Id);
         List<InstrumentoDoAluno> ObterInstrumentosDoAluno(int alunoId);
+        InstrumentoDoAluno ObterPorAlunoEInventarioGuid(int alunoID, Guid inventarioID);
     }
 }

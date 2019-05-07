@@ -11,6 +11,7 @@ namespace GrupoEstudosMusical.Data.Mappings
             builder.ToTable("InstrumentoDoAluno");
             builder.HasKey(i => i.IdInstrumentoDoAluno);
             builder.Property(i => i.Cor).HasColumnType("varchar(10)").IsRequired();
+            builder.Property(i => i.AnoDeFabricacaoInstrumento).HasColumnType("varchar(4)").IsRequired();
             builder.Property(i => i.DataCadastro).HasColumnType("date");
             builder.Property(i => i.DataEmprestimo).HasColumnType("date").IsRequired();
             builder.HasOne(i => i.Aluno).WithMany(i => i.Instrumentos).HasForeignKey(i => i.AlunoID);

@@ -1,5 +1,6 @@
 ﻿
 using AutoMapper;
+using GrupoEstudosMusical.Bussines.Exceptions;
 using GrupoEstudosMusical.Models;
 using GrupoEstudosMusical.Models.Entities;
 using GrupoEstudosMusical.Models.Interfaces.Bussines;
@@ -36,11 +37,12 @@ namespace GrupoEstudosMusical.MVC.Controllers
             return View(instrumentos);
         }
 
-        public async Task<ActionResult> InstrumentosDoAluno(int alunoId)
+        public async Task<ActionResult> InstrumentosDoAluno(int alunoId, string nomeAluno)
         {
             await InicializarViewBagDeFabricantes();
             await IncializarViewBagInstrumentos();
             ViewBag.AlunoID = alunoId;
+            ViewBag.NomeAluno = nomeAluno;
             var instrumentos = Mapper.Map<IList<InstrumentoDoAluno>,IList<InstrumentoDoAlunoVM>>(_bussinesInstrumentoDoAluno.ObterInstrumentosDoAluno(alunoId));
             instrumentos.ForEach(i => i.NomeInstrumentoAluno = i.Inventario != null ? i.Inventario.Instrumento.Nome : "");
             return View(instrumentos);
@@ -90,7 +92,7 @@ namespace GrupoEstudosMusical.MVC.Controllers
         }
         async Task IncializarViewBagInstrumentos()
         {
-            ViewBag.Instrumentos = Mapper.Map<IList<Instrumento>, IList<InstrumentoVM>>(await _bussinesInstrumento.ObterTodosAsync());
+            ViewBag.Instrumentos = Mapper.Map<IList<Instrumento>, IList<InstrumentoVM>>(await _bussinesInstrumento.ObterTodosDisponivelParaEmprestimo());
         }
 
         [HttpPost]
@@ -100,14 +102,27 @@ namespace GrupoEstudosMusical.MVC.Controllers
             {
                 var instrumentoEmprestimoModel = Mapper.Map<InstrumentoDoAlunoVM, InstrumentoDoAluno>(instrumentoDoAlunoVM);
                 await _bussinesInstrumentoDoAluno.InserirAsync(instrumentoEmprestimoModel);
-                return Json(new { result = true }, JsonRequestBehavior.AllowGet);
+                return Json(new { result = true, mensagem = "Empréstimo realizado com sucesso!" }, JsonRequestBehavior.AllowGet);
             }
-            catch (Exception ex)
+            catch (CrudEmprestimoException ex)
+            {
+                return Json(new { result = false, mensagem = ex.Message }, JsonRequestBehavior.AllowGet);
+            }
+            
+            
+        }
+
+        [HttpPost]
+        public async Task<JsonResult> RealizarDevolucao(Guid instrumentoDoAlunoID)
+        {
+            try
+            {
+                await _bussinesInstrumentoDoAluno.RealizarDevolucao(instrumentoDoAlunoID);
+                return Json(new { result = true, mensagem = "Devolução realizada com sucesso!" }, JsonRequestBehavior.AllowGet);
+            }catch(Exception ex)
             {
                 return Json(new { result = false }, JsonRequestBehavior.AllowGet);
             }
-            
-            
         }
 
         public async Task<ActionResult> Deletar(FormCollection formCollection)

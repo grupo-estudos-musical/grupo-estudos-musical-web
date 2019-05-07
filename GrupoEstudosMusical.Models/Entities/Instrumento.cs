@@ -21,11 +21,10 @@ namespace GrupoEstudosMusical.Models.Entities
         {
             public Fabricante()
             {
-                    IdFabricante = Guid.NewGuid();
+                    Id = Guid.NewGuid();
             }
             public List<InstrumentoDoAluno> InstrumentosDoAluno { get; set; }
-            [Key]
-            public Guid IdFabricante { get; set; }
+            public new Guid Id { get; set; }
             public string Nome { get; set; }
         }
 

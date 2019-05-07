@@ -76,4 +76,7 @@ function DesbloquearCamposDeEdicao() {
 
 $(document).ready(function () {
     $("#formAlteracoesInventario").hide();
+   
 });
+
+

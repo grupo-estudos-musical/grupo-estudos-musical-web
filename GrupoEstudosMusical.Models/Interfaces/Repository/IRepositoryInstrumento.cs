@@ -7,5 +7,6 @@ namespace GrupoEstudosMusical.Models.Interfaces.Repository
     {
         Instrumento ObterPorIdGuid(Guid Id);
         Instrumento ObterPorNome(string Nome);
+  
     }
 }

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace GrupoEstudosMusical.Data.Migrations
 {
-    public partial class Entidadespararealizar : Migration
+    public partial class ResolucaodoEstoque : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -58,14 +58,13 @@ namespace GrupoEstudosMusical.Data.Migrations
                 name: "Fabricantes",
                 columns: table => new
                 {
-                    IdFabricante = table.Column<Guid>(nullable: false),
-                    Id = table.Column<int>(nullable: false),
+                    Id = table.Column<Guid>(nullable: false),
                     DataCadastro = table.Column<DateTime>(nullable: false),
                     Nome = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Fabricantes", x => x.IdFabricante);
+                    table.PrimaryKey("PK_Fabricantes", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -188,6 +187,7 @@ namespace GrupoEstudosMusical.Data.Migrations
                     Cor = table.Column<string>(type: "varchar(10)", nullable: false),
                     AlunoID = table.Column<int>(nullable: false),
                     Status = table.Column<string>(type: "varchar(11)", nullable: false),
+                    InstrumentoIntrumentoID = table.Column<Guid>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -202,9 +202,14 @@ namespace GrupoEstudosMusical.Data.Migrations
                         name: "FK_InstrumentoDoAluno_Fabricantes_FabricanteID",
                         column: x => x.FabricanteID,
                         principalTable: "Fabricantes",
-                        principalColumn: "IdFabricante",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                   
+                    table.ForeignKey(
+                        name: "FK_InstrumentoDoAluno_Instrumentos_InstrumentoIntrumentoID",
+                        column: x => x.InstrumentoIntrumentoID,
+                        principalTable: "Instrumentos",
+                        principalColumn: "IntrumentoID",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_InstrumentoDoAluno_Inventario_InventarioID",
                         column: x => x.InventarioID,
@@ -457,6 +462,11 @@ namespace GrupoEstudosMusical.Data.Migrations
                 name: "IX_InstrumentoDoAluno_FabricanteID",
                 table: "InstrumentoDoAluno",
                 column: "FabricanteID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_InstrumentoDoAluno_InstrumentoIntrumentoID",
+                table: "InstrumentoDoAluno",
+                column: "InstrumentoIntrumentoID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_InstrumentoDoAluno_InventarioID_FabricanteID_AlunoID",

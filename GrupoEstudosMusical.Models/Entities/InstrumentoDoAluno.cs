@@ -14,7 +14,7 @@ namespace GrupoEstudosMusical.Models.Entities
             this.IdInstrumentoDoAluno = Guid.NewGuid();
         }
         public Guid IdInstrumentoDoAluno { get; private set; }
-        public DateTime AnoDeFabricacaoInstrumento { get; set; }
+        public string AnoDeFabricacaoInstrumento { get; set; }
         public DateTime DataEmprestimo { get; set; } 
         public Inventario Inventario { get; set; }
         public Guid InventarioID { get; set; }

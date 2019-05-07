@@ -17,5 +17,8 @@ namespace GrupoEstudosMusical.Data.Repositories
 
         public InstrumentoDoAluno ObterPorIdGuid(Guid Id) =>
             Context.InstrumentoDoAlunos.FirstOrDefault(i => i.IdInstrumentoDoAluno == Id);
+
+        public InstrumentoDoAluno ObterPorAlunoEInventarioGuid(int alunoID, Guid inventarioID) =>
+            Context.InstrumentoDoAlunos.FirstOrDefault(i => i.AlunoID == alunoID && i.InventarioID == inventarioID);
     }
 }

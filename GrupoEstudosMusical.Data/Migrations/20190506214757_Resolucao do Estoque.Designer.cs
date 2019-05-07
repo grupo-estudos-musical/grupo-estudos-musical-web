@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GrupoEstudosMusical.Data.Migrations
 {
     [DbContext(typeof(GemContext))]
-    [Migration("20190504024937_Entidades para realizar")]
-    partial class Entidadespararealizar
+    [Migration("20190506214757_Resolucao do Estoque")]
+    partial class ResolucaodoEstoque
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -229,16 +229,14 @@ namespace GrupoEstudosMusical.Data.Migrations
 
             modelBuilder.Entity("GrupoEstudosMusical.Models.Entities.Instrumento+Fabricante", b =>
                 {
-                    b.Property<Guid>("IdFabricante")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<DateTime>("DataCadastro");
 
-                    b.Property<int>("Id");
-
                     b.Property<string>("Nome");
 
-                    b.HasKey("IdFabricante");
+                    b.HasKey("Id");
 
                     b.ToTable("Fabricantes");
                 });
@@ -264,6 +262,8 @@ namespace GrupoEstudosMusical.Data.Migrations
 
                     b.Property<Guid>("FabricanteID");
 
+                    b.Property<Guid?>("InstrumentoIntrumentoID");
+
                     b.Property<Guid>("InventarioID");
 
                     b.Property<string>("Status")
@@ -275,6 +275,8 @@ namespace GrupoEstudosMusical.Data.Migrations
                     b.HasIndex("AlunoID");
 
                     b.HasIndex("FabricanteID");
+
+                    b.HasIndex("InstrumentoIntrumentoID");
 
                     b.HasIndex("InventarioID", "FabricanteID", "AlunoID")
                         .IsUnique();
@@ -574,6 +576,10 @@ namespace GrupoEstudosMusical.Data.Migrations
                         .WithMany("InstrumentosDoAluno")
                         .HasForeignKey("FabricanteID")
                         .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("GrupoEstudosMusical.Models.Entities.Instrumento")
+                        .WithMany("Instrumentos")
+                        .HasForeignKey("InstrumentoIntrumentoID");
 
                     b.HasOne("GrupoEstudosMusical.Models.Inventario", "Inventario")
                         .WithMany("InstrumentosDoAluno")

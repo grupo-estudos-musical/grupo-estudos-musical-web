@@ -62,6 +62,7 @@
     <Compile Include="BussinesProfessor.cs" />
     <Compile Include="BussinesTurma.cs" />
     <Compile Include="Exceptions\CrudAvaliacaoException.cs" />
+    <Compile Include="Exceptions\CrudEmprestimoException.cs" />
     <Compile Include="Exceptions\CrudInventarioException.cs" />
     <Compile Include="Exceptions\CrudTurmaException.cs" />
     <Compile Include="BussinesMatricula.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Relatorios.cs" />
+    <Compile Include="StaticList\StatusDeEmprestimoStaticList.cs" />
     <Compile Include="TiposDeRelatorios.cs" />
   </ItemGroup>
   <ItemGroup>

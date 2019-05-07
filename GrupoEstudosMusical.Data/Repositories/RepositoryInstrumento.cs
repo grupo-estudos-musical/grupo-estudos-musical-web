@@ -1,7 +1,10 @@
 ﻿using GrupoEstudosMusical.Models.Entities;
 using GrupoEstudosMusical.Models.Interfaces.Repository;
+using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace GrupoEstudosMusical.Data.Repositories
 {
@@ -14,5 +17,11 @@ namespace GrupoEstudosMusical.Data.Repositories
         {
             return Context.Instrumentos.FirstOrDefault(i => i.Nome == Nome);
         }
+
+        public async override Task<IList<Instrumento>> ObterTodosAsync()
+        {
+            return await Context.Instrumentos.Include(i => i.Inventario).ToListAsync();
+        }
+
     }
 }

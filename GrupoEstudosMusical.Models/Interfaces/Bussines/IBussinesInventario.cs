@@ -8,5 +8,6 @@ namespace GrupoEstudosMusical.Models.Interfaces.Bussines
     {
         List<Inventario> ObterTodosItensDoInventario();
         Task ModificarInventario(Guid idInventario, int quantidadeMinima, int quantidadeDisponivel);
+        Task SubtrairOuAdicionarInventario(Guid inventarioID, bool subtrair);
     }
 }

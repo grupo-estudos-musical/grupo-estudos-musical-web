@@ -14,7 +14,7 @@ namespace GrupoEstudosMusical.MVC.Models
 
         public Guid IdInstrumentoDoAluno { get; private set; }
         [DisplayName("Ano de Fabricação")]
-        public DateTime AnoDeFabricacaoInstrumento { get; set; }
+        public string AnoDeFabricacaoInstrumento { get; set; }
         [DisplayName("Data do Empréstimo")]
         public DateTime DataEmprestimo { get; set; } = DateTime.Now;
         public Inventario Inventario { get; set; }

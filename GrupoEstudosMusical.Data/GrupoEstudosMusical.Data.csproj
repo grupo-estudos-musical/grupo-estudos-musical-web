@@ -161,9 +161,13 @@
     <Compile Include="Mappings\PalhetaDeNotaMap.cs" />
     <Compile Include="Mappings\ProfessorMap.cs" />
     <Compile Include="Mappings\TurmaMap.cs" />
-    <Compile Include="Migrations\20190504024937_Entidades para realizar.cs" />
-    <Compile Include="Migrations\20190504024937_Entidades para realizar.designer.cs">
-      <DependentUpon>20190504024937_Entidades para realizar.cs</DependentUpon>
+    <Compile Include="Migrations\20190506214757_Resolucao do Estoque.cs" />
+    <Compile Include="Migrations\20190506214757_Resolucao do Estoque.designer.cs">
+      <DependentUpon>20190506214757_Resolucao do Estoque.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20190506222504_Resolucao do Estoque V2.cs" />
+    <Compile Include="Migrations\20190506222504_Resolucao do Estoque V2.designer.cs">
+      <DependentUpon>20190506222504_Resolucao do Estoque V2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\GemContextModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
