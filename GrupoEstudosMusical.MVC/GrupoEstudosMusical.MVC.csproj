@@ -254,6 +254,7 @@
     <Compile Include="Controllers\InventarioController.cs" />
     <Compile Include="Controllers\MatriculasController.cs" />
     <Compile Include="Controllers\ModulosController.cs" />
+    <Compile Include="Controllers\NotificacaoController.cs" />
     <Compile Include="Controllers\OcorrenciasController.cs" />
     <Compile Include="Controllers\PalhetaDeNotasController.cs" />
     <Compile Include="Controllers\ProfessoresController.cs" />
@@ -323,6 +324,7 @@
     <Content Include="Content\lib\messenger\messenger-theme-flat.css" />
     <Content Include="Content\lib\messenger\messenger-theme-future.css" />
     <Content Include="Content\lib\messenger\messenger.css" />
+    <Content Include="Content\lib\multi-select\multi-select.css" />
     <Content Include="Content\lib\perfect-scrollbar\perfect-scrollbar.css" />
     <Content Include="Content\lib\switchery\dist\switchery.css" />
     <Content Include="favicon.ico" />
@@ -368,12 +370,16 @@
     <Content Include="Scripts\lib\datepicker\js\datepicker.js" />
     <Content Include="Scripts\lib\icheck\icheck.min.js" />
     <Content Include="Scripts\lib\inputmask\min\jquery.inputmask.bundle.min.js" />
+    <Content Include="Scripts\lib\jquery-ui\jquery-ui.min.js" />
     <Content Include="Scripts\lib\jquery-validation\js\additional-methods.min.js" />
     <Content Include="Scripts\lib\jquery-validation\js\jquery.validate.min.js" />
     <Content Include="Scripts\lib\jquery-validation\js\jquey.validate.pt-br.js" />
     <Content Include="Scripts\lib\messenger\messenger-theme-flat.js" />
     <Content Include="Scripts\lib\messenger\messenger-theme-future.js" />
     <Content Include="Scripts\lib\messenger\messenger.min.js" />
+    <Content Include="Scripts\lib\mult-select\img\switch.png" />
+    <Content Include="Scripts\lib\mult-select\jquery.multi-select.js" />
+    <Content Include="Scripts\lib\mult-select\jquery.quicksearch.js" />
     <Content Include="Scripts\lib\pace\pace.min.js" />
     <Content Include="Scripts\lib\perfect-scrollbar\perfect-scrollbar.min.js" />
     <Content Include="Scripts\lib\switchery\dist\switchery.js" />
@@ -461,6 +467,7 @@
     <Content Include="Views\Instrumentos\Novo.cshtml" />
     <Content Include="Views\Instrumentos\InstrumentosDoAluno.cshtml" />
     <Content Include="Views\Shared\_EfetuarEmprestimoInstrumento.cshtml" />
+    <Content Include="Views\Notificacao\Index.cshtml" />
     <Content Include="Views\Inventario\Index.cshtml" />
     <Content Include="Views\Instrumentos\Index.cshtml" />
   </ItemGroup>
