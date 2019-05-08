@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using GrupoEstudosMusical.Models;
 using GrupoEstudosMusical.Models.Entities;
 using GrupoEstudosMusical.MVC.Models;
 using static GrupoEstudosMusical.Models.Entities.Instrumento;
@@ -23,6 +24,7 @@ namespace GrupoEstudosMusical.MVC.AutoMapper
             CreateMap<InstrumentoVM, Instrumento>();
             CreateMap<FabricanteVM, Fabricante>();
             CreateMap<InstrumentoDoAlunoVM, InstrumentoDoAluno>();
+            CreateMap<InventarioVM, Inventario>();
         }
     }
 }

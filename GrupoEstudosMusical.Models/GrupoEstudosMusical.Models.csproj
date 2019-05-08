@@ -70,6 +70,7 @@
     <Compile Include="Interfaces\Bussines\IBussinesGeneric.cs" />
     <Compile Include="Interfaces\Bussines\IBussinesInstrumento.cs" />
     <Compile Include="Interfaces\Bussines\IBussinesInstrumentoDoAluno.cs" />
+    <Compile Include="Interfaces\Bussines\IBussinesInventario.cs" />
     <Compile Include="Interfaces\Bussines\IBussinesMatricula.cs" />
     <Compile Include="Interfaces\Bussines\IBussinesModulo.cs" />
     <Compile Include="Interfaces\Bussines\IBussinesOcorrencia.cs" />
@@ -84,6 +85,7 @@
     <Compile Include="Interfaces\Repository\IRepositoryFrequencia.cs" />
     <Compile Include="Interfaces\Repository\IRepositoryInstrumento.cs" />
     <Compile Include="Interfaces\Repository\IRepositoryInstrumentoDoAluno.cs" />
+    <Compile Include="Interfaces\Repository\IRepositoryInventario.cs" />
     <Compile Include="Interfaces\Repository\IRepositoryMatricula.cs" />
     <Compile Include="Interfaces\Repository\IRepositoryOcorrencia.cs" />
     <Compile Include="Interfaces\Repository\IRepositoryPalhetaDeNotas.cs" />
@@ -92,6 +94,7 @@
     <Compile Include="Interfaces\Repository\IRepositoryGeneric.cs" />
     <Compile Include="Interfaces\Repository\IRepositoryModulo.cs" />
     <Compile Include="Interfaces\Repository\IRepositoryProfessor.cs" />
+    <Compile Include="Entities\Inventario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

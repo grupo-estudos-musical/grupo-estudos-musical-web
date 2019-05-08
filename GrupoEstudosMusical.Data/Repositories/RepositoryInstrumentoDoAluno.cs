@@ -11,11 +11,14 @@ namespace GrupoEstudosMusical.Data.Repositories
     {
         public List<InstrumentoDoAluno> ObterInstrumentosDoAluno(int alunoId) =>
             Context.InstrumentoDoAlunos.Include(i => i.Fabricante)
-            .Include(i => i.Instrumento)
-            .Where(i => i.AlunoID == alunoId).ToList();
+            .Include(i => i.Inventario)
+            .ThenInclude(i => i.Instrumento).Where(i => i.AlunoID == alunoId).ToList();
         
 
         public InstrumentoDoAluno ObterPorIdGuid(Guid Id) =>
-            Context.InstrumentoDoAlunos.FirstOrDefault(i => i.Id == Id);
+            Context.InstrumentoDoAlunos.FirstOrDefault(i => i.IdInstrumentoDoAluno == Id);
+
+        public InstrumentoDoAluno ObterPorAlunoEInventarioGuid(int alunoID, Guid inventarioID) =>
+            Context.InstrumentoDoAlunos.FirstOrDefault(i => i.AlunoID == alunoID && i.InventarioID == inventarioID);
     }
 }

@@ -6,5 +6,7 @@ namespace GrupoEstudosMusical.Models.Interfaces.Repository
     public interface IRepositoryInstrumento : IRepositoryGeneric<Instrumento>
     {
         Instrumento ObterPorIdGuid(Guid Id);
+        Instrumento ObterPorNome(string Nome);
+  
     }
 }

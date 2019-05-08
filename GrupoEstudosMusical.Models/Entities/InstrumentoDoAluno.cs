@@ -11,18 +11,19 @@ namespace GrupoEstudosMusical.Models.Entities
     {
         public InstrumentoDoAluno()
         {
-            Id = Guid.NewGuid();
+            this.IdInstrumentoDoAluno = Guid.NewGuid();
         }
-        public new Guid Id { get; set; }
-        public DateTime AnoDeFabricacaoInstrumento { get; set; }
+        public Guid IdInstrumentoDoAluno { get; private set; }
+        public string AnoDeFabricacaoInstrumento { get; set; }
         public DateTime DataEmprestimo { get; set; } 
-        public Instrumento Instrumento { get; set; }
-        public Guid InstrumentoID { get; set; }
+        public Inventario Inventario { get; set; }
+        public Guid InventarioID { get; set; }
         public Fabricante Fabricante { get; set; }
         public Guid FabricanteID { get; set; }
         public string Cor { get; set; }
         public Aluno Aluno { get; set; }
         public int AlunoID { get; set; }
+        public string Status { get; set; }
 
     }
 }

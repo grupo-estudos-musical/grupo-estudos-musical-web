@@ -15,7 +15,7 @@ namespace GrupoEstudosMusical.Bussines
         }
         
         
-
+        // TESTE
         public virtual async Task AlterarAsync(TEntity entity) => await _repository.AlterarAsync(entity);
 
         public virtual async Task DeletarAsync(TEntity entity) => await _repository.DeletarAsync(entity);

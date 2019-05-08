@@ -18,6 +18,39 @@ $(document).ready(function() {
             }
         });
 
+        $('#form_emprestimoAluno').validate({
+            focusInvalid: false,
+            ignore: "",
+            rules: {
+                InventarioID: {
+                    required: true
+                },
+                FabricanteID: {
+                    required: true
+                },
+                Cor: {
+                    required: true,
+                    maxlength: 10
+                },
+                DataEmprestimo: {
+                    required: true,
+                    date: true
+                },
+                AnoDeFabricacaoInstrumento: {
+                    required: true,
+                    maxlength: 4,
+                    minlength: 4
+                }
+            },
+            highlight: function (element) { // hightlight error inputs
+                var parent = $(element).parent().parent('.form-group');
+                parent.removeClass('has-success').addClass('has-error');
+            }
+        });
+
+
+
+
         $('#ocorrencia_validate').validate({
             focusInvalid: false,
             ignore: "",

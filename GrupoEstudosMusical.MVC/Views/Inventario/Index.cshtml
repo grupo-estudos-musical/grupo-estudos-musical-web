@@ -1,0 +1,150 @@
+﻿@model List<GrupoEstudosMusical.MVC.Models.InventarioVM>
+@{
+    ViewBag.Title = "Index";
+}
+
+@{  var data_classe_para_alterarcor = ""; }
+
+
+<div class='col-xs-12'>
+    <div class="page-title">
+        <div class="pull-left">
+            <h1 class="title">Inventário</h1>
+        </div>
+        <div class="pull-right hidden-xs">
+            <ol class="breadcrumb">
+                <li>
+                    <a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i>Home</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Inventario")">Inventário</a>
+                </li>
+                <li class="active">
+                    <strong>Inventário dos instrumentos</strong>
+                </li>
+            </ol>
+        </div>
+    </div>
+</div>
+<div class="col-lg-12">
+    <div class="row">
+        <div class="col-md-2">
+            <button type="button" class="btn btn-primary btn-icon bottom15 right15" id="BotaoPrincipal" onclick="ExibirBotaoParaEdicao();"><i class="fa fa-gears"></i> Ajustar Inventário</button>
+        </div>
+        <div class="col-md-8" id="formAlteracoesInventario">
+            <div class="row">
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-success btn-icon bottom15 right15" onclick="AtualizarInventario();"><i class="fa fa-save"></i> Gravar</button>
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-danger btn-icon bottom15 right15" onclick="OcultarBotaoParaEdicao();"><i class="fa fa-times-circle"></i> Cancelar</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="col-lg-12">
+    <section class="box ">
+        <header class="panel_header">
+            <div class="actions panel_actions pull-right">
+                <a class="box_toggle fa fa-chevron-down"></a>
+                <a class="box_close fa fa-times"></a>
+            </div>
+
+        </header>
+        <div class="content-body">
+            @Html.Partial("_MensagemSucesso")
+            <div class="row">
+                <div class="col-xs-12">
+                    <table id="example-1" class="table table-striped dt-responsive display">
+                        <thead>
+                            <tr>
+                                <th>Instrumento</th>
+                                <th>Estoque minímo</th>
+                                <th>Quantidade disponível</th>
+                                <th>Opções</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>Instrumento</th>
+                                <th>Estoque minímo</th>
+                                <th>Quantidade disponível</th>
+                                <th>Opções</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            @foreach (var instrumento in Model)
+                            {
+                                if(instrumento.QuantidadeDisponivel < instrumento.EstoqueMinimo)
+                                {
+                                    data_classe_para_alterarcor = "LinhaParaMudancaDeCor";
+                                }
+                                else
+                                {
+                                    data_classe_para_alterarcor = "";
+                                }
+                                <tr>
+                                    @Html.HiddenFor(item => instrumento.InventarioID)
+                                    <td class="@data_classe_para_alterarcor">@instrumento.NomeInstrumento </td>
+                                    <td class="@data_classe_para_alterarcor">@Html.EditorFor(item => instrumento.EstoqueMinimo, new { htmlAttributes = new { @class = "form-control", @disabled = "true", @min = 0 } })</td>
+                                    <td class="@data_classe_para_alterarcor">@Html.EditorFor(item => instrumento.QuantidadeDisponivel, new { htmlAttributes = new { @class = "form-control", @disabled = "true" } })</td>
+                                    <td style="width: 160px"></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div class="modal" id="section-settings" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog animated bounceInDown">
+        <div class="modal-content">
+            @using (Html.BeginForm("Deletar", "Modulos"))
+            {
+                @Html.AntiForgeryToken()
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Deletar Módulo</h4>
+                </div>
+                <div class="modal-body">
+                    Deseja realmente deletar Módulo?
+                    <input type="hidden" name="id" id="id">
+                </div>
+                <div class="modal-footer">
+                    <button data-dismiss="modal" class="btn btn-default" type="button">Não</button>
+                    <button class="btn btn-danger" type="submit">Sim</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+
+@section Styles{
+    <style>
+        .LinhaParaMudancaDeCor {
+            color:#e43b3b;
+            font-weight:bold;
+        }
+    </style>
+    <link href="~/Content/lib/datatables/css/jquery.dataTables.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="~/Content/lib/datatables/extensions/TableTools/css/dataTables.tableTools.min.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="~/Content/lib/datatables/extensions/Responsive/css/dataTables.responsive.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="~/Content/lib/datatables/extensions/Responsive/bootstrap3/dataTables.bootstrap.css" rel="stylesheet" type="text/css" media="screen" />
+}
+
+@section Scripts{
+    <script src="~/Scripts/lib/datatables/js/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/lib/datatables/extensions/TableTools/js/dataTables.tableTools.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/lib/datatables/extensions/Responsive/js/dataTables.responsive.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/lib/datatables/extensions/Responsive/bootstrap3/dataTables.bootstrap.js" type="text/javascript"></script>
+    <script src="~/Scripts/JsInventario.js"></script>
+}
+   
+

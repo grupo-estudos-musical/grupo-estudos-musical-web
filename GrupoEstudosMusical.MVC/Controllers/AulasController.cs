@@ -16,7 +16,8 @@ namespace GrupoEstudosMusical.MVC.Controllers
         private readonly IBussinesTurma _bussinesTurma;
         private readonly IBussinesAvaliacaoTurma _bussinesAvaliacaoTurma;
 
-        public AulasController(IBussinesAula bussinesAula, IBussinesTurma bussinesTurma,
+        public AulasController(IBussinesAula bussinesAula, 
+            IBussinesTurma bussinesTurma,
             IBussinesAvaliacaoTurma bussinesAvaliacaoTurma)
         {
             _bussinesAula = bussinesAula;
@@ -26,15 +27,25 @@ namespace GrupoEstudosMusical.MVC.Controllers
 
         public async Task<ActionResult> Index(int idTurma)
         {
+            var turmaVM = Mapper.Map<Turma, TurmaVM>(await _bussinesTurma.ObterPorIdAsync(idTurma));
+            if (turmaVM == null)
+                return HttpNotFound();
+
             var aulasModel = await _bussinesAula.ObterPorTurma(idTurma);
             var aulasVM = Mapper.Map<List<Aula>, List<AulaVM>>(aulasModel);
-            return View(aulasVM);
+
+            var listaAulaVM = new ListaAulasVM
+            {
+                Turma = turmaVM,
+                Aulas = aulasVM
+            };
+            return View(listaAulaVM);
         }
 
         public async Task<ActionResult> Novo(int idTurma)
         {
             var turmaVM = Mapper.Map<Turma, TurmaVM>(await _bussinesTurma.ObterPorIdAsync(idTurma));
-            var avaliacoesTurmaVM = 
+            var avaliacoesTurmaVM =
                 Mapper.Map<List<AvaliacaoTurma>, List<AvaliacaoTurmaVM>>(_bussinesAvaliacaoTurma.ObterPorTurma(idTurma));
             var aulaVM = new AulaVM
             {
@@ -57,7 +68,7 @@ namespace GrupoEstudosMusical.MVC.Controllers
                 await _bussinesAula.InserirAsync(aulaModel, avaliacoesTurma);
                 TempData["mensagem"] = "Aula cadastrada com sucesso!";
                 TempData["tipo"] = "success";
-                return RedirectToAction("Index", "Aulas", new { idTurma = aulaVM.TurmaId});
+                return RedirectToAction("Index", "Aulas", new { idTurma = aulaVM.TurmaId });
             }
             catch (ArgumentException ex)
             {
