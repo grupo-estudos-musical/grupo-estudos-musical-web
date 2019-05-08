@@ -23,8 +23,9 @@ namespace GrupoEstudosMusical.MVC.Controllers
             _emailService.SendEmailMessage(new EmailMessage
             {
                 Subject = "Teste assunto",
-                Body = "Teste corpo",
-                ToEmails = new List<string> { "nicolas@raveo.com.br", "nicolassilva114@gmail.com" }
+                Title = "Teste Título",
+                Body = "Teste corpo da mensagem",
+                ToEmails = new List<string> { "nicolassilva114@gmail.com" }
             });
             return View();
         }

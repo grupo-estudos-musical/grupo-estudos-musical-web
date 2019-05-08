@@ -18,8 +18,6 @@ namespace GrupoEstudosMusical.Email.Services
         {
             _pathApplication = pathApplication;
             ObterCredenciais();
-            //_userName = credentials["email"];
-            //_password = credentials["password"];
         }
 
         private SmtpClient ConfigureClientSmtp()
@@ -39,14 +37,23 @@ namespace GrupoEstudosMusical.Email.Services
 
         private void ObterCredenciais()
         {
-            var definition = new { gmail = new { email = "", password = "" } };
-            var pathCredentials = Path.Combine(_pathApplication, "credentials.json");
+            var definition = new { gmail = new { address = "", password = "" } };
+            var pathCredentials = Path.Combine(_pathApplication, "ConfiguracaoEmail\\credentials.json");
             using (var stream = new StreamReader(pathCredentials))
             {
                 var json = stream.ReadToEndAsync().Result;
                 var credentials = JsonConvert.DeserializeAnonymousType(json, definition);
-                _userName = credentials.gmail.email;
+                _userName = credentials.gmail.address;
                 _password = credentials.gmail.password;
+            }
+        }
+
+        private string CarregarMensagemHtml()
+        {
+            var pathTemplate = Path.Combine(_pathApplication, "ConfiguracaoEmail\\template.html");
+            using (var stream = new StreamReader(pathTemplate))
+            {
+                return stream.ReadToEndAsync().Result;
             }
         }
 
@@ -56,11 +63,18 @@ namespace GrupoEstudosMusical.Email.Services
             {
                 using (var client = ConfigureClientSmtp())
                 {
+                    var html = CarregarMensagemHtml();
+                    html = html.Replace("@titulo", emailMessage.Title);
+                    html = html.Replace("@mensagem", emailMessage.Body);
+                    html = html.Replace("@preview_text", $"{emailMessage.Title} - {emailMessage.Body}");
+
                     var mailMessage = new MailMessage
                     {
                         Subject = emailMessage.Subject,
-                        Body = emailMessage.Body,
-                        BodyEncoding = Encoding.UTF8
+                        Body = html,
+                        IsBodyHtml = true,
+                        BodyEncoding = Encoding.UTF8,
+                        
                     };
 
                     mailMessage.From = new MailAddress(_userName);
