@@ -412,6 +412,7 @@
     <Content Include="fonts\font-awesome\fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\font-awesome\fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="credentials.json" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_TopBar.cshtml" />
     <Content Include="Views\Shared\_Menu.cshtml" />
@@ -476,6 +477,10 @@
       <Project>{5f8e319f-2c99-4336-bdcf-b3b1a70c2c56}</Project>
       <Name>GrupoEstudosMusical.Bussines</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GrupoEstudosMusical.Email\GrupoEstudosMusical.Email.csproj">
+      <Project>{5b3d68cd-420b-49b5-934a-cb5c78a24b4f}</Project>
+      <Name>GrupoEstudosMusical.Email</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GrupoEstudosMusical.IoC\GrupoEstudosMusical.IoC.csproj">
       <Project>{e63208ff-b539-4b50-a259-73b42f6e7bd8}</Project>
       <Name>GrupoEstudosMusical.IoC</Name>
@@ -504,7 +509,7 @@
     </ItemGroup>
     <MakeDir Directories="$(WebProjectOutputDir)\bin\roslyn" />
     <Copy SourceFiles="@(RoslynFiles)" DestinationFolder="$(WebProjectOutputDir)\bin\roslyn" SkipUnchangedFiles="true" Retries="$(CopyRetryCount)" RetryDelayMilliseconds="$(CopyRetryDelayMilliseconds)" />
-</Target>
+  </Target>
   <ProjectExtensions>
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">

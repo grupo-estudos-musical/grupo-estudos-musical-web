@@ -1,4 +1,6 @@
-﻿using GrupoEstudosMusical.IoC;
+﻿using GrupoEstudosMusical.Email.Services;
+using GrupoEstudosMusical.Email.Services.Generic;
+using GrupoEstudosMusical.IoC;
 using GrupoEstudosMusical.MVC.AutoMapper;
 using SimpleInjector.Integration.Web.Mvc;
 using System;
@@ -19,7 +21,11 @@ namespace GrupoEstudosMusical.MVC
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(DiContainer.RegisterDependencies()));
+
+            var container = DiContainer.RegisterDependencies();
+            container.RegisterInstance<IEmailService>(new GmailService(Server.MapPath("")));
+
+            DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(container));
             AutoMapperConfig.RegisterMappings();
         }
     }
