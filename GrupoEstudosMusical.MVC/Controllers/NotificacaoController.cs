@@ -1,9 +1,11 @@
-﻿using GrupoEstudosMusical.Email;
+﻿using AutoMapper;
+using GrupoEstudosMusical.Email;
 using GrupoEstudosMusical.Email.Services.Generic;
-using System;
+using GrupoEstudosMusical.Models.Entities;
+using GrupoEstudosMusical.Models.Interfaces.Bussines;
+using GrupoEstudosMusical.MVC.Models;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.Net;
 using System.Web.Mvc;
 
 namespace GrupoEstudosMusical.MVC.Controllers
@@ -11,23 +13,46 @@ namespace GrupoEstudosMusical.MVC.Controllers
     public class NotificacaoController : Controller
     {
         private readonly IEmailService _emailService;
+        private readonly IBussinesTurma _bussinesTurma;
+        private readonly IBussinesMatricula _bussinesMatricula;
 
-        public NotificacaoController(IEmailService emailService)
+        public NotificacaoController(IEmailService emailService, IBussinesTurma bussinesTurma,
+            IBussinesMatricula bussinesMatricula)
         {
             _emailService = emailService;
+            _bussinesTurma = bussinesTurma;
+            _bussinesMatricula = bussinesMatricula;
         }
 
-        // GET: Notificacao
         public ActionResult Index()
         {
-            _emailService.SendEmailMessage(new EmailMessage
-            {
-                Subject = "Teste assunto",
-                Title = "Teste Título",
-                Body = "Teste corpo da mensagem",
-                ToEmails = new List<string> { "nicolassilva114@gmail.com" }
-            });
+            var turmasAtivas = _bussinesTurma.ObterTurmasAtivas();
+            ViewBag.Turmas = Mapper.Map<IList<Turma>, IList<TurmaVM>>(turmasAtivas);
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult EnviarEmails(EnvioEmailVM envioEmailVM)
+        {
+            var success = false;
+            envioEmailVM.IdsTurma.ForEach(id =>
+            {
+                var matriculas = _bussinesMatricula.ObterMatriculasPorTurma(int.Parse(id)).Result;
+                var emailsAlunos = new List<string>();
+                matriculas.ForEach(matricula => emailsAlunos.Add(matricula.Aluno.Nome));
+
+                var emailMessage = new EmailMessage
+                {
+                    Subject = envioEmailVM.Assunto,
+                    Title = envioEmailVM.Titulo,
+                    Body = envioEmailVM.Mensagem,
+                    ToEmails = emailsAlunos
+                };
+
+                success = _emailService.SendEmailMessage(emailMessage);
+            });
+            return success ? new HttpStatusCodeResult(HttpStatusCode.OK) :
+                new HttpStatusCodeResult(HttpStatusCode.InternalServerError);
         }
     }
 }

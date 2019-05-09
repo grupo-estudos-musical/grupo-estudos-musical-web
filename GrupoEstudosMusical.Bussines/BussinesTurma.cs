@@ -83,5 +83,7 @@ namespace GrupoEstudosMusical.Bussines
         }
 
         public IList<Turma> ObterTurmasAtivasPorModulo(int moduloId) => _repositoryTurma.ObterTurmasAtivasPorModulo(moduloId);
+
+        public IList<Turma> ObterTurmasAtivas() => _repositoryTurma.ObterTurmasAtivas();
     }
 }

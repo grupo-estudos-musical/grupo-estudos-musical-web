@@ -24,9 +24,10 @@
                 <div class="col-md-9">
                     <h4>Turmas*</h4>
                     <select multiple="" class="multi-select" id="my_multi_select3">
-                        <option turma-id="1">T1V1</option>
-                        <option turma-id="2">T1V2</option>
-                        <option turma-id="3">T1V3</option>
+                        @foreach (var turma in ViewBag.Turmas)
+                        {
+                            <option turma-id="@turma.Id">@turma.Nome</option>
+                        }
                     </select>
                 </div>
                 <div class="clearfix spacer20"></div>

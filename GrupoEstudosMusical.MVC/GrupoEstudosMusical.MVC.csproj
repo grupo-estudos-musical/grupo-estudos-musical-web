@@ -271,6 +271,7 @@
     <Compile Include="Models\AvaliacaoTurmaVM.cs" />
     <Compile Include="Models\ChamadaVM.cs" />
     <Compile Include="Models\DocumentosApresentadosVM.cs" />
+    <Compile Include="Models\EnvioEmailVM.cs" />
     <Compile Include="Models\FabricanteVM.cs" />
     <Compile Include="Models\FrequenciaVM.cs" />
     <Compile Include="Models\InstrumentoDoAlunoVM.cs" />

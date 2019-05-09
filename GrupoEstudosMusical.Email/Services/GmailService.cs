@@ -1,6 +1,5 @@
 ﻿using GrupoEstudosMusical.Email.Services.Generic;
 using Newtonsoft.Json;
-using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Net.Mail;
