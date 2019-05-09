@@ -271,6 +271,7 @@
     <Compile Include="Models\AvaliacaoTurmaVM.cs" />
     <Compile Include="Models\ChamadaVM.cs" />
     <Compile Include="Models\DocumentosApresentadosVM.cs" />
+    <Compile Include="Models\EnvioEmailVM.cs" />
     <Compile Include="Models\FabricanteVM.cs" />
     <Compile Include="Models\FrequenciaVM.cs" />
     <Compile Include="Models\InstrumentoDoAlunoVM.cs" />
@@ -291,6 +292,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ConfiguracaoEmail\template.html" />
     <Content Include="Content\css\animate.min.css" />
     <Content Include="Content\css\radiobutton.css" />
     <Content Include="Content\css\responsive.css" />
@@ -352,6 +354,7 @@
     <Content Include="Scripts\js\JsInstrumentoEmprestimo.js" />
     <Content Include="Scripts\js\matricula.js" />
     <Content Include="Scripts\js\messenger.js" />
+    <Content Include="Scripts\js\notificacao.js" />
     <Content Include="Scripts\js\scripts.js" />
     <Content Include="Scripts\js\sweetalert.min.js" />
     <Content Include="Scripts\js\TurmasIndex.js" />
@@ -476,6 +479,10 @@
       <Project>{5f8e319f-2c99-4336-bdcf-b3b1a70c2c56}</Project>
       <Name>GrupoEstudosMusical.Bussines</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GrupoEstudosMusical.Email\GrupoEstudosMusical.Email.csproj">
+      <Project>{5b3d68cd-420b-49b5-934a-cb5c78a24b4f}</Project>
+      <Name>GrupoEstudosMusical.Email</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GrupoEstudosMusical.IoC\GrupoEstudosMusical.IoC.csproj">
       <Project>{e63208ff-b539-4b50-a259-73b42f6e7bd8}</Project>
       <Name>GrupoEstudosMusical.IoC</Name>
@@ -504,7 +511,7 @@
     </ItemGroup>
     <MakeDir Directories="$(WebProjectOutputDir)\bin\roslyn" />
     <Copy SourceFiles="@(RoslynFiles)" DestinationFolder="$(WebProjectOutputDir)\bin\roslyn" SkipUnchangedFiles="true" Retries="$(CopyRetryCount)" RetryDelayMilliseconds="$(CopyRetryDelayMilliseconds)" />
-</Target>
+  </Target>
   <ProjectExtensions>
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">

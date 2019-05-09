@@ -4,6 +4,7 @@
     "projects": [
       "GrupoEstudosMusical.Bussines\\GrupoEstudosMusical.Bussines.csproj",
       "GrupoEstudosMusical.Data\\GrupoEstudosMusical.Data.csproj",
+      "GrupoEstudosMusical.Email\\GrupoEstudosMusical.Email.csproj",
       "GrupoEstudosMusical.IoC\\GrupoEstudosMusical.IoC.csproj",
       "GrupoEstudosMusical.MVC\\GrupoEstudosMusical.MVC.csproj",
       "GrupoEstudosMusical.Models\\GrupoEstudosMusical.Models.csproj"
