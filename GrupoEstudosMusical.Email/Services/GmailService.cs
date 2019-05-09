@@ -73,9 +73,10 @@ namespace GrupoEstudosMusical.Email.Services
                         Body = html,
                         IsBodyHtml = true,
                         BodyEncoding = Encoding.UTF8,
-                        
+                        Priority = MailPriority.High
                     };
 
+                    mailMessage.Headers.Add("Importance", "High");
                     mailMessage.From = new MailAddress(_userName);
                     emailMessage.ToEmails.ForEach(email => mailMessage.To.Add(email));
             
