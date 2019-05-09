@@ -6,6 +6,7 @@ using GrupoEstudosMusical.Models.Interfaces.Bussines;
 using GrupoEstudosMusical.MVC.Models;
 using System.Collections.Generic;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace GrupoEstudosMusical.MVC.Controllers
@@ -32,14 +33,14 @@ namespace GrupoEstudosMusical.MVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult EnviarEmails(EnvioEmailVM envioEmailVM)
+        public async Task<ActionResult> EnviarEmails(EnvioEmailVM envioEmailVM)
         {
             var success = false;
-            envioEmailVM.IdsTurma.ForEach(id =>
+            foreach (string id in envioEmailVM.IdsTurma)
             {
-                var matriculas = _bussinesMatricula.ObterMatriculasPorTurma(int.Parse(id)).Result;
+                var matriculas = await _bussinesMatricula.ObterMatriculasPorTurma(int.Parse(id));
                 var emailsAlunos = new List<string>();
-                matriculas.ForEach(matricula => emailsAlunos.Add(matricula.Aluno.Nome));
+                matriculas.ForEach(matricula => emailsAlunos.Add(matricula.Aluno.Email));
 
                 var emailMessage = new EmailMessage
                 {
@@ -50,9 +51,16 @@ namespace GrupoEstudosMusical.MVC.Controllers
                 };
 
                 success = _emailService.SendEmailMessage(emailMessage);
-            });
-            return success ? new HttpStatusCodeResult(HttpStatusCode.OK) :
-                new HttpStatusCodeResult(HttpStatusCode.InternalServerError);
+            }
+
+            if (success)
+            {
+                HttpContext.Response.StatusCode = (int)HttpStatusCode.OK;
+                return Json(new { mensagem = "Email enviado com sucesso!" });
+            }
+
+            HttpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+            return Json(new { mensagem = "Não foi possível enviar e-mail!" });
         }
     }
 }

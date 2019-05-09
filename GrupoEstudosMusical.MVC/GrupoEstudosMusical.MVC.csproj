@@ -354,6 +354,7 @@
     <Content Include="Scripts\js\JsInstrumentoEmprestimo.js" />
     <Content Include="Scripts\js\matricula.js" />
     <Content Include="Scripts\js\messenger.js" />
+    <Content Include="Scripts\js\notificacao.js" />
     <Content Include="Scripts\js\scripts.js" />
     <Content Include="Scripts\js\sweetalert.min.js" />
     <Content Include="Scripts\js\TurmasIndex.js" />
@@ -414,7 +415,6 @@
     <Content Include="fonts\font-awesome\fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\font-awesome\fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\font-awesome\fonts\FontAwesome.otf" />
-    <Content Include="ConfiguracaoEmail\credentials.json" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_TopBar.cshtml" />
     <Content Include="Views\Shared\_Menu.cshtml" />
