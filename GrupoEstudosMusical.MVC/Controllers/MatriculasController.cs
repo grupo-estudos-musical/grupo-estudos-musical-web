@@ -3,6 +3,7 @@ using GrupoEstudosMusical.Bussines.Exceptions;
 using GrupoEstudosMusical.Models.Entities;
 using GrupoEstudosMusical.Models.Interfaces.Bussines;
 using GrupoEstudosMusical.MVC.Models;
+using GrupoEstudosMusical.MVC.Results;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -116,11 +117,12 @@ namespace GrupoEstudosMusical.MVC.Controllers
                 matriculaModel.Rg = documentosApresentados.Rg;
                 matriculaModel.ComprovanteResidencia = documentosApresentados.ComprovanteResidencia;
                 await _bussinesMatricula.AlterarAsync(matriculaModel);
-                return Json(new { mensagem = "Sucesso", pendente = matriculaModel.Pendente }, JsonRequestBehavior.AllowGet);
+                return new JsonSuccesResult(new { pendente = matriculaModel.Pendente },
+                    "Documentos alterados com sucesso.");
             }
             catch (Exception)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.InternalServerError);
+                return new JsonErrorResult("Não foi possível alterar documentos.");
             }
         }
     }

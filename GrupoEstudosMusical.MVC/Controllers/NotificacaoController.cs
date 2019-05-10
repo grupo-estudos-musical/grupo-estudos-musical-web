@@ -4,8 +4,8 @@ using GrupoEstudosMusical.Email.Services.Generic;
 using GrupoEstudosMusical.Models.Entities;
 using GrupoEstudosMusical.Models.Interfaces.Bussines;
 using GrupoEstudosMusical.MVC.Models;
+using GrupoEstudosMusical.MVC.Results;
 using System.Collections.Generic;
-using System.Net;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -54,13 +54,9 @@ namespace GrupoEstudosMusical.MVC.Controllers
             }
 
             if (success)
-            {
-                HttpContext.Response.StatusCode = (int)HttpStatusCode.OK;
-                return Json(new { mensagem = "Email enviado com sucesso!" });
-            }
-
-            HttpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-            return Json(new { mensagem = "Não foi possível enviar e-mail!" });
+                return new JsonSuccesResult("E-mail enviado com sucesso!");
+            else
+                return new JsonErrorResult("Não foi possível enviar e-mail devido á um erro interno do servidor.");
         }
     }
 }

@@ -43,8 +43,8 @@ function enviarDados(dados) {
             statusMatricula.parent().removeClass("status-ativo");
             statusMatricula.parent().addClass("status-concluida");
         }
-        showSuccess('Documentos alterados com sucesso.');
+        showSuccess(data.SuccessMessage);
     }).fail(function () {
-        showErrorMessage('Não foi possível alterar documentos.');
+        showErrorMessage(data.ErrorMessage);
     });
 }

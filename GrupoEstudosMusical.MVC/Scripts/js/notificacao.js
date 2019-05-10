@@ -26,16 +26,15 @@ function obterDados() {
 }
 
 function enviarEmail(dados) {
-
     $.ajax({
         url: '/Notificacao/EnviarEmails',
         method: 'POST',
         data: dados
     }).done(function (data) {        
         console.log(data);
-        swal("Sucesso", data.mensagem, "success");
-    }).fail(function (error) {
-        console.log(error);
-        swal("Erro", error.mensagem, "error");
+        swal("Sucesso", data.SuccessMessage, "success");
+    }).fail(function (xhr, textStatus, error) {
+        let data = xhr.responseJSON;
+        swal("Erro", data.ErrorMessage, "error");
     });
 }
