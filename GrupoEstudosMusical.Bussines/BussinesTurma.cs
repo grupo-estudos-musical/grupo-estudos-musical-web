@@ -56,6 +56,18 @@ namespace GrupoEstudosMusical.Bussines
                 throw new CrudTurmaException($"Já existe uma turma com este nome, vinculada ao {semestre}º semestre do período de {periodo}");
             }
         }
+        public async override Task<Turma> ObterPorIdAsync(int id)
+        {
+            var matriculanew = new List<Matricula>();
+            var turma = await _repositoryTurma.ObterPorIdAsync(id);
+            foreach (var matricula in turma.Matriculas)
+            {
+                matriculanew.Add(await _bussinesMatricula.ObterPorIdAsync(matricula.Id));
+            }
+
+            turma.Matriculas = matriculanew;
+            return turma;
+        }
 
         public async Task<List<Turma>> ObterTurmasDoAluno(int IdAluno)
         {
@@ -103,6 +115,8 @@ namespace GrupoEstudosMusical.Bussines
             
             
         }
+
+
 
         public async Task ConcluirSituacaoAcademicaDosAlunos(List<Matricula> matriculas)
         {

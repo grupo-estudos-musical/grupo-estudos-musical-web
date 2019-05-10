@@ -38,13 +38,13 @@ namespace GrupoEstudosMusical.Email.Services
         {
             var definition = new { gmail = new { address = "", password = "" } };
             var pathCredentials = Path.Combine(_pathApplication, "ConfiguracaoEmail\\credentials.json");
-            using (var stream = new StreamReader(pathCredentials))
-            {
-                var json = stream.ReadToEndAsync().Result;
-                var credentials = JsonConvert.DeserializeAnonymousType(json, definition);
-                _userName = credentials.gmail.address;
-                _password = credentials.gmail.password;
-            }
+            //using (var stream = new StreamReader(pathCredentials))
+            //{
+            //    var json = stream.ReadToEndAsync().Result;
+            //    var credentials = JsonConvert.DeserializeAnonymousType(json, definition);
+            //    _userName = credentials.gmail.address;
+            //    _password = credentials.gmail.password;
+            //}
         }
 
         private string CarregarMensagemHtml()

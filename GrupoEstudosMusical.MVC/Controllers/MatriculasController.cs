@@ -50,7 +50,7 @@ namespace GrupoEstudosMusical.MVC.Controllers
 
             return View(matriculasVM);
         }
-
+        
         [HttpGet]
         [Route("Aluno/Matricular/{idAluno}", Name = "Matricular")]
         public async Task<ActionResult> Novo(int idAluno)
@@ -63,7 +63,8 @@ namespace GrupoEstudosMusical.MVC.Controllers
             matriculaVM.AlunoId = aluno.Id;
             matriculaVM.Aluno = Mapper.Map<Aluno, AlunoVM>(aluno);
             matriculaVM.Turmas = Mapper.Map<IList<Turma>, List<TurmaVM>>(await _bussinesTurma.ObterTodosAsync());
-            matriculaVM.Modulos = Mapper.Map<IList<Modulo>, List<ModuloVM>>(await TrazerModulosDisponiveisProAlunoSeMatricular(idAluno, await _bussinesMatricula.VerificarRestricaoMatricula(idAluno)));
+            ViewBag.PossuiRestricao = await _bussinesMatricula.VerificarRestricaoMatricula(idAluno);
+            matriculaVM.Modulos = Mapper.Map<IList<Modulo>, List<ModuloVM>>(await TrazerModulosDisponiveisProAlunoSeMatricular(idAluno, ViewBag.PossuiRestricao));
             var matriculas = await _bussinesMatricula.ObterMatriculasPorAluno(idAluno);
             
             matriculaVM.TurmasMatriculadas = Mapper.Map<IList<Turma>, List<TurmaVM>>(matriculas.Select(m => m.Turma).ToList());

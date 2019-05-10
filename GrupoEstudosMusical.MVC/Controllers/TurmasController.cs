@@ -69,6 +69,16 @@ namespace GrupoEstudosMusical.MVC.Controllers
             return View(new TurmaVM());
         }
 
+
+        public async Task<ActionResult> AlunosDaTurma(int ID)
+        {
+            
+            var turma = await _bussinesTurma.ObterPorIdAsync(ID);
+            if (turma == null)
+                return HttpNotFound("Turma não encontrada");
+            ViewBag.Turma = turma;
+            return View(turma.Matriculas);
+        }
         [HttpGet]
         public ActionResult ObterPalhetasDeNotasPorAvaliacaoEhTurma(string AvaliacaoID, int TurmaID)
         {

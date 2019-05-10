@@ -314,6 +314,7 @@
     <Content Include="Content\images\menu_editar_turma.png" />
     <Content Include="Content\images\menu_lancar_notas.png" />
     <Content Include="Content\images\menu_recalculo.png" />
+    <Content Include="Content\images\presentation.png" />
     <Content Include="Content\images\sem_foto.png" />
     <Content Include="Content\images\violin.png" />
     <Content Include="Content\lib\bootstrap\css\bootstrap-theme.min.css" />
@@ -478,6 +479,7 @@
     <Content Include="Views\Notificacao\Index.cshtml" />
     <Content Include="Views\Inventario\Index.cshtml" />
     <Content Include="Views\Instrumentos\Index.cshtml" />
+    <Content Include="Views\Turmas\AlunosDaTurma.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GrupoEstudosMusical.Bussines\GrupoEstudosMusical.Bussines.csproj">
