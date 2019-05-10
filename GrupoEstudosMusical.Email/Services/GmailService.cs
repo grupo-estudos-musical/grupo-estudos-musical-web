@@ -56,38 +56,29 @@ namespace GrupoEstudosMusical.Email.Services
             }
         }
 
-        public bool SendEmailMessage(EmailMessage emailMessage)
+        public void SendEmailMessage(EmailMessage emailMessage)
         {
-            try
+            using (var client = ConfigureClientSmtp())
             {
-                using (var client = ConfigureClientSmtp())
+                var html = CarregarMensagemHtml();
+                html = html.Replace("@titulo", emailMessage.Title);
+                html = html.Replace("@mensagem", emailMessage.Body);
+                html = html.Replace("@preview_text", $"{emailMessage.Title} - {emailMessage.Body}");
+
+                var mailMessage = new MailMessage
                 {
-                    var html = CarregarMensagemHtml();
-                    html = html.Replace("@titulo", emailMessage.Title);
-                    html = html.Replace("@mensagem", emailMessage.Body);
-                    html = html.Replace("@preview_text", $"{emailMessage.Title} - {emailMessage.Body}");
+                    Subject = emailMessage.Subject,
+                    Body = html,
+                    IsBodyHtml = true,
+                    BodyEncoding = Encoding.UTF8,
+                    Priority = MailPriority.High
+                };
 
-                    var mailMessage = new MailMessage
-                    {
-                        Subject = emailMessage.Subject,
-                        Body = html,
-                        IsBodyHtml = true,
-                        BodyEncoding = Encoding.UTF8,
-                        Priority = MailPriority.High
-                    };
+                mailMessage.Headers.Add("Importance", "High");
+                mailMessage.From = new MailAddress(_userName);
+                emailMessage.ToEmails.ForEach(email => mailMessage.To.Add(email));
 
-                    mailMessage.Headers.Add("Importance", "High");
-                    mailMessage.From = new MailAddress(_userName);
-                    emailMessage.ToEmails.ForEach(email => mailMessage.To.Add(email));
-            
-                    client.Send(mailMessage);
-                }
-
-                return true;
-            }
-            catch
-            {
-                return false;
+                client.Send(mailMessage);
             }
         }
     }

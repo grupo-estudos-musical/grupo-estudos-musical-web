@@ -5,6 +5,7 @@ using GrupoEstudosMusical.Models.Entities;
 using GrupoEstudosMusical.Models.Interfaces.Bussines;
 using GrupoEstudosMusical.MVC.Models;
 using GrupoEstudosMusical.MVC.Results;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -35,28 +36,31 @@ namespace GrupoEstudosMusical.MVC.Controllers
         [HttpPost]
         public async Task<ActionResult> EnviarEmails(EnvioEmailVM envioEmailVM)
         {
-            var success = false;
-            foreach (string id in envioEmailVM.IdsTurma)
+            try
             {
-                var matriculas = await _bussinesMatricula.ObterMatriculasPorTurma(int.Parse(id));
-                var emailsAlunos = new List<string>();
-                matriculas.ForEach(matricula => emailsAlunos.Add(matricula.Aluno.Email));
-
-                var emailMessage = new EmailMessage
+                foreach (string id in envioEmailVM.IdsTurma)
                 {
-                    Subject = envioEmailVM.Assunto,
-                    Title = envioEmailVM.Titulo,
-                    Body = envioEmailVM.Mensagem,
-                    ToEmails = emailsAlunos
-                };
+                    var matriculas = await _bussinesMatricula.ObterMatriculasPorTurma(int.Parse(id));
+                    var emailsAlunos = new List<string>();
+                    matriculas.ForEach(matricula => emailsAlunos.Add(matricula.Aluno.Email));
 
-                success = _emailService.SendEmailMessage(emailMessage);
-            }
+                    var emailMessage = new EmailMessage
+                    {
+                        Subject = envioEmailVM.Assunto,
+                        Title = envioEmailVM.Titulo,
+                        Body = envioEmailVM.Mensagem,
+                        ToEmails = emailsAlunos
+                    };
 
-            if (success)
+                    _emailService.SendEmailMessage(emailMessage);
+                }
+
                 return new JsonSuccesResult("E-mail enviado com sucesso!");
-            else
+            }
+            catch (Exception)
+            {
                 return new JsonErrorResult("Não foi possível enviar e-mail devido á um erro interno do servidor.");
+            }
         }
     }
 }

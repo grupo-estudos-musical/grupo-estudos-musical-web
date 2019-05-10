@@ -2,6 +2,6 @@
 {
     public interface IEmailService
     {
-        bool SendEmailMessage(EmailMessage emailMessage);
+        void SendEmailMessage(EmailMessage emailMessage);
     }
 }
