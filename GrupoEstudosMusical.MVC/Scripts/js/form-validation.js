@@ -3,6 +3,10 @@ $(document).ready(function() {
 
     if ($.isFunction($.fn.validate)) {
 
+        $('#form_email').validate({
+
+        });
+
         $('#form_aula').validate({
             focusInvalid: false,
             ignore: "",
