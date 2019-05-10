@@ -14,7 +14,7 @@ namespace GrupoEstudosMusical.Models.Entities
         public bool ComprovanteResidencia { get; set; }
         public bool Pendente { get; private set; }
         public double? Media { get; set; }
-
+        public string Status { get; set; }
         public bool VerificarMatriculaPendente()
         {
             if (Cpf && Rg && ComprovanteResidencia)

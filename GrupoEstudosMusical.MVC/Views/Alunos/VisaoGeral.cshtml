@@ -38,7 +38,7 @@
 
 @Html.Partial("_VisaoGeralAlunoMenu", new ViewDataDictionary { { "titulo", "Nova Ocorrência" }, { "link", Url.Action("Novo", "Ocorrencias", new { alunoId = Model.Id }) }, { "imagem", "/Content/images/menu_nova_ocorrencia.png" }, { "alt", "nova-ocorrencia" } })
 
-@Html.Partial("_VisaoGeralAlunoMenu", new ViewDataDictionary { { "titulo", "Instrumentos" }, { "link", Url.Action("InstrumentosDoAluno", "Instrumentos", new { alunoId = Model.Id, nomeAluno = Model.Nome }) }, { "imagem", "/Content/images/menu_nova_ocorrencia.png" }, { "alt", "instrumentos" } })
+@Html.Partial("_VisaoGeralAlunoMenu", new ViewDataDictionary { { "titulo", "Instrumentos" }, { "link", Url.Action("InstrumentosDoAluno", "Instrumentos", new { alunoId = Model.Id, nomeAluno = Model.Nome }) }, { "imagem", "/Content/images/violin.png" }, { "alt", "instrumentos" } })
 
 @section styles {
     <link href="~/Content/lib/messenger/messenger.css" rel="stylesheet" type="text/css" media="screen" />

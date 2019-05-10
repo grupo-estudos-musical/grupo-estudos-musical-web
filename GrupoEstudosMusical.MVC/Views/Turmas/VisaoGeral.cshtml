@@ -39,6 +39,8 @@
 
 @Html.Partial("_VisaoGeralTurma", new ViewDataDictionary { { "titulo", "Editar Turma" }, { "link", @Url.Action("Editar", "Turmas", new { id = Model.Id }) }, { "imagem", "/Content/images/menu_editar_turma.png" }, { "alt", "Editar Turmas" } })
 
+@Html.Partial("_VisaoGeralTurma", new ViewDataDictionary { { "titulo", "Finalizar Turma" }, { "link", "#" }, { "imagem", "/Content/images/cancel.png" }, { "alt", "Finalizar" }, { "attr", $"id=finalizarTurma onclick=FinalizarVigenciaTurma('{Model.Id}')" } })
+
 @Html.Partial("_VisaoGeralTurma", new ViewDataDictionary { { "titulo", "Remover Turma" }, { "link", "#section-settings" }, { "imagem", "/Content/images/menu_deletar_turma.png" }, { "alt", "Chamadas" }, { "attr", $"data-toggle=modal onclick=apagar(this,'{Model.Id}','{Model.Nome.Replace(" ", "")}')" } })
 
 <div class="modal" id="section-settings" tabindex="-1" role="dialog" aria-hidden="true">
@@ -85,6 +87,26 @@
                         swal("Sucesso", "Recálculo acadêmico realizado com sucesso!", "success");
                     } else {
                         swal("Atenção!", "Ocorreu um erro", "error");
+                    }
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    // TODO: Show error
+
+                    alert(errorThrown);
+                }
+            });
+        }
+        function FinalizarVigenciaTurma(Id)
+        {
+            $.ajax({
+                type: "POST",
+                url: document.location.origin + "/Turmas/FinalizarVigenciaTurma",
+                data: { ID : Id },
+                success: function (retorno) {
+                    if (retorno.result) {
+                        swal("Sucesso", retorno.mensagem, "success");
+                    } else {
+                        swal("Atenção!", retorno.mensagem, "error");
                     }
                 },
                 error: function (xhr, textStatus, errorThrown) {

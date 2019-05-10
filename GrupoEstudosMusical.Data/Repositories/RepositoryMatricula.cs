@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using GrupoEstudosMusical.Bussines.StaticList;
 using GrupoEstudosMusical.Models.Entities;
 using GrupoEstudosMusical.Models.Interfaces.Repository;
 using Microsoft.EntityFrameworkCore;
@@ -17,7 +18,13 @@ namespace GrupoEstudosMusical.Data.Repositories
             await Context.SaveChangesAsync();
             return matricula.Id;
         }
-        
+
+        public async Task<List<Matricula>> ObterMatriculaRetidasDoAluno(int alunoID)
+        {
+            var matriculas = await ObterMatriculasPorAluno(alunoID);
+
+            return matriculas.Where(m => m.Status == StatusDeMatriculaStaticList.Retido).ToList();
+        }
 
         public async Task<IList<Matricula>> ObterMatriculasPorAluno(int idAluno) =>
             await ObterMatriculas(m => m.AlunoId == idAluno);

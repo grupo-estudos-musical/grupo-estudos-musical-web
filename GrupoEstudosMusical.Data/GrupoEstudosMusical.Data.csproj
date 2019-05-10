@@ -169,6 +169,10 @@
     <Compile Include="Migrations\20190506222504_Resolucao do Estoque V2.designer.cs">
       <DependentUpon>20190506222504_Resolucao do Estoque V2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20190508230717_Inclusao do status na matricula do aluno v.cs" />
+    <Compile Include="Migrations\20190508230717_Inclusao do status na matricula do aluno v.designer.cs">
+      <DependentUpon>20190508230717_Inclusao do status na matricula do aluno v.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\GemContextModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\RepositoryAluno.cs" />
@@ -194,6 +198,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GrupoEstudosMusical.Bussines\GrupoEstudosMusical.Bussines.csproj">
+      <Project>{5F8E319F-2C99-4336-BDCF-B3B1A70C2C56}</Project>
+      <Name>GrupoEstudosMusical.Bussines</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GrupoEstudosMusical.Models\GrupoEstudosMusical.Models.csproj">
       <Project>{81d9e0fd-4555-4144-8511-0db3279751fb}</Project>
       <Name>GrupoEstudosMusical.Models</Name>

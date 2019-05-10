@@ -39,6 +39,8 @@ namespace GrupoEstudosMusical.Data.Mappings
                 .WithMany(a => a.Matriculas)
                 .HasForeignKey(m => m.AlunoId);
 
+            builder.Property(m => m.Status).HasColumnType("varchar(13)").IsRequired().HasDefaultValue("Em andamento");
+
             builder.Property(m => m.Media).HasColumnType("double");
             //builder.Ignore(m => m.Aluno);
             //builder.Ignore(m => m.Turma);

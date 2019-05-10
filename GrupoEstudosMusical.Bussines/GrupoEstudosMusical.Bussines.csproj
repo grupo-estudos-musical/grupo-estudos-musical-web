@@ -74,6 +74,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Relatorios.cs" />
     <Compile Include="StaticList\StatusDeEmprestimoStaticList.cs" />
+    <Compile Include="StaticList\StatusDeMatriculaStaticList.cs" />
     <Compile Include="TiposDeRelatorios.cs" />
   </ItemGroup>
   <ItemGroup>

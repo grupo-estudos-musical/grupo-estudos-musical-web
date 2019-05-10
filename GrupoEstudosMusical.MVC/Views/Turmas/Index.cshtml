@@ -74,7 +74,10 @@
                                     <td>@Html.DisplayFor(item => turma.Professor.Nome)</td>
                                     <td id="status_turma">@Html.DisplayFor(item => turma.Status)</td>
                                     <td style="width: 160px">
-                                        @Html.ActionLink("Visão Geral", "VisaoGeral", "Turmas", new { Id = turma.Id }, new { @class = "btn btn-primary" })
+                                        @if (turma.Status != "Encerrada")
+                                        {
+                                            @Html.ActionLink("Visão Geral", "VisaoGeral", "Turmas", new { Id = turma.Id }, new { @class = "btn btn-primary" })
+                                        }
                                     </td>
                                 </tr>
                             }

@@ -83,5 +83,32 @@ namespace GrupoEstudosMusical.Bussines
         }
 
         public IList<Turma> ObterTurmasAtivasPorModulo(int moduloId) => _repositoryTurma.ObterTurmasAtivasPorModulo(moduloId);
+
+        public async Task FinalizarVigencia(int turmaId)
+        {
+            try
+            {
+                var turma = await ObterPorIdAsync(turmaId);
+                if (turma == null)
+                    throw new Exception("Turma não encontrada");
+
+                turma.Status = "Encerrada";
+                turma.TerminoAula = DateTime.Now;
+                await _repositoryTurma.AlterarAsync(turma);
+                await ConcluirSituacaoAcademicaDosAlunos(turma.Matriculas);
+            }catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            
+            
+        }
+
+        public async Task ConcluirSituacaoAcademicaDosAlunos(List<Matricula> matriculas)
+        {
+            await _bussinesMatricula.ConcluirMatriculaDoAluno(matriculas);
+        }
+       
+        
     }
 }

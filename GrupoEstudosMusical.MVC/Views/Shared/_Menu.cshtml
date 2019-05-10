@@ -119,6 +119,24 @@
                     </li>
                 </ul>
             </li>
+            <li class="@(controller == "Instrumentos" ? "open" : "" )">
+                <a href="javascript:;">
+                    <i class="fa fa-music"></i>
+                    <span class="title">Estoque</span>
+                    <span class="arrow "></span>
+                </a>
+                <ul class="sub-menu" style="@(controller == "Inventario" ? "display-block" : "" )">
+                    <li>
+                        <a class="@(rota == "/Instrumentos/Index" || rota == "/Instrumentos" ? "active" : "" )" href="@Url.Action("Index", "Instrumentos")">Instrumentos</a>
+                    </li>
+                    <li>
+                        <a class="@(rota == "/Instrumentos/Novo" ? "active" : "" )" href="@Url.Action("Novo", "Instrumentos")">Cadastrar Instrumento</a>
+                    </li>
+                    <li>
+                        <a class="@(rota == "/Inventario/Index" ? "active" : "" )" href="@Url.Action("Index", "Inventario")">Inventario</a>
+                    </li>
+                </ul>
+            </li>
             <li class="">
                 <a href="javascript:;">
                     <i class="fa fa-bar-chart"></i>

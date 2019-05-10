@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using GrupoEstudosMusical.Bussines.Exceptions;
+using GrupoEstudosMusical.Bussines.StaticList;
 using GrupoEstudosMusical.Models.Entities;
 using GrupoEstudosMusical.Models.Interfaces.Bussines;
 using GrupoEstudosMusical.MVC.Models;
@@ -61,10 +62,21 @@ namespace GrupoEstudosMusical.MVC.Controllers
             matriculaVM.AlunoId = aluno.Id;
             matriculaVM.Aluno = Mapper.Map<Aluno, AlunoVM>(aluno);
             matriculaVM.Turmas = Mapper.Map<IList<Turma>, List<TurmaVM>>(await _bussinesTurma.ObterTodosAsync());
-            matriculaVM.Modulos = Mapper.Map<IList<Modulo>, List<ModuloVM>>(await _bussinesModulo.ObterTodosAsync());
+            matriculaVM.Modulos = Mapper.Map<IList<Modulo>, List<ModuloVM>>(await TrazerModulosDisponiveisProAlunoSeMatricular(idAluno, await _bussinesMatricula.VerificarRestricaoMatricula(idAluno)));
             var matriculas = await _bussinesMatricula.ObterMatriculasPorAluno(idAluno);
+            
             matriculaVM.TurmasMatriculadas = Mapper.Map<IList<Turma>, List<TurmaVM>>(matriculas.Select(m => m.Turma).ToList());
             return View(matriculaVM);
+        }
+
+        public async Task<IList<Modulo>> TrazerModulosDisponiveisProAlunoSeMatricular(int alunoID, bool semrestricao = false)
+        {
+            if (!semrestricao)
+            {
+                return await _bussinesModulo.ObterTodosAsync();
+            }
+            var modulos = await _bussinesMatricula.ObterModulosEmQueAlunoEstaRetido(alunoID);
+            return modulos.Count > 0 ? modulos : null;
         }
 
         [HttpPost]

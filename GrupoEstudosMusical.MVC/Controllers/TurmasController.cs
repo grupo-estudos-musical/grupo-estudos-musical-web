@@ -38,12 +38,29 @@ namespace GrupoEstudosMusical.MVC.Controllers
 
         }
 
+        
+
         public async Task<ActionResult> VisaoGeral(int Id)
         {
             var obterDadosDaTurma = Mapper.Map<Turma, TurmaVM>(await _bussinesTurma.ObterPorIdAsync(Id));
             if (obterDadosDaTurma == null)
                 return HttpNotFound();
+            if (obterDadosDaTurma.Status == "Encerrada")
+                return HttpNotFound("Turma encerrada!");
             return View(obterDadosDaTurma);
+        }
+
+        [HttpPost]
+        public async Task<JsonResult> FinalizarVigenciaTurma(int ID)
+        {
+            try
+            {
+                await _bussinesTurma.FinalizarVigencia(ID);
+                return Json(new { result = true, mensagem = "Turma Finalizada, \n a situação da matrícula dos alunos foram atualizadas" }, JsonRequestBehavior.AllowGet);
+            }catch(Exception ex)
+            {
+                return Json(new { result = false, mensagem = ex.Message }, JsonRequestBehavior.AllowGet);
+            }
         }
 
         public async Task<ActionResult> Novo()
@@ -171,6 +188,7 @@ namespace GrupoEstudosMusical.MVC.Controllers
         {
             try
             {
+                
                 var turmas = _bussinesTurma.ObterTurmasAtivasPorModulo(moduloId).ToList();
                 var turmasMatricula = new List<TurmasMatriculaVM>();
                 turmas.ForEach(turma =>

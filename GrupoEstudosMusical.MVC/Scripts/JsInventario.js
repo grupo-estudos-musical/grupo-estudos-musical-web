@@ -43,6 +43,7 @@ function ProcessarEdicao( idInventario,estoqueMinimo, quantidadeDisponivel) {
             if (retorno.result) {
                 swal("Sucesso", "Inventário ajustado!", "success").then(function () {
                     OcultarBotaoParaEdicao();
+                    location.reload();
                 });
                 
             } else {

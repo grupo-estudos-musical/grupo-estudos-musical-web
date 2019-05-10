@@ -4,6 +4,8 @@
     ViewBag.Title = "Matrículas";
 }
 
+
+
 <div class='col-xs-12'>
     <div class="page-title">
         <div class="pull-left">
@@ -46,8 +48,8 @@
                                     <th>Período</th>
                                     <th>Módulo</th>
                                     <th>Turma</th>
-                                    <th>Situação da Turma</th>
-                                    <th>Situação da Matrícula</th>
+                                    <th>Documentos</th>
+                                    <th>Situação matrícula</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -60,8 +62,8 @@
                                         </td>
                                         <td>@matricula.Turma.Modulo.Nome</td>
                                         <td>@matricula.Turma.Nome</td>
-                                        <td>@matricula.Turma.Status</td>
                                         <td>@matricula.SituacaoMatricula</td>
+                                        <td style="color: @(matricula.Status == GrupoEstudosMusical.Bussines.StaticList.StatusDeMatriculaStaticList.Retido ? "red":"black");">@matricula.Status</td>
                                         <td>
                                             @*@Html.ActionLink("Consultar", "Detalhes", new { id = matricula.Id}, new { @class = "btn btn-purple btn-icon bottom15"})*@
                                             <a href="Matriculas/Detalhes/@matricula.Id" class="btn btn-primary btn-iconic bottom">
@@ -80,7 +82,7 @@
                                 </div>
                             </div>
                             <div class="col-md-10">
-                                <span>Matrícula Pendente</span>
+                                <span>Documentos Pendente</span>
                             </div>
                         </div>    
                     </div>

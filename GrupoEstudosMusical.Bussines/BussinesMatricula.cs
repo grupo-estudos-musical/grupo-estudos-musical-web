@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using GrupoEstudosMusical.Bussines.Exceptions;
+using GrupoEstudosMusical.Bussines.StaticList;
 using GrupoEstudosMusical.Models.Entities;
 using GrupoEstudosMusical.Models.Interfaces.Bussines;
 using GrupoEstudosMusical.Models.Interfaces.Repository;
@@ -24,6 +26,21 @@ namespace GrupoEstudosMusical.Bussines
             _repositoryPalhetaDeNotas = repositoryPalhetaDeNotas;
         }
 
+        public async Task<bool> VerificarRestricaoMatricula(int alunoID)
+        {
+            var existeRestricao = false;
+            var matriculas = await ObterMatriculasPorAluno(alunoID);
+            foreach (var matricula in matriculas.Where(m => m.Status == StatusDeMatriculaStaticList.Retido))
+            {
+                existeRestricao = true;
+                foreach (var item in matriculas.Where(m => m.Status == StatusDeMatriculaStaticList.EmAndamento))
+                {
+                    existeRestricao = matricula.Turma.ModuloID == item.Turma.ModuloID && matricula.Turma.Nivel == item.Turma.Nivel ? false : true;
+                }
+            }
+            return existeRestricao;
+        }
+
         //public async override Task InserirAsync(Matricula entity)
         //{
         //    var turma = await _repositoryTurma.ObterPorIdAsync(entity.TurmaId);
@@ -38,6 +55,16 @@ namespace GrupoEstudosMusical.Bussines
         //    entity.Aluno = null;
         //    await base.InserirAsync(entity);
         //}
+
+        public async Task ConcluirMatriculaDoAluno(List<Matricula> matriculas)
+        {
+            foreach (var matricula in matriculas)
+            {
+                matricula.Status = matricula.Media < 6 || matricula.Media ==null ? StatusDeMatriculaStaticList.Retido : StatusDeMatriculaStaticList.Aprovado;
+                await AlterarAsync(matricula);
+            }
+            
+        }
 
         public override Task AlterarAsync(Matricula entity)
         {
@@ -63,6 +90,21 @@ namespace GrupoEstudosMusical.Bussines
             return await _repositoryMatricula.IncluirMatricula(matricula);
         }
         public async Task<List<Matricula>> ObterMatriculasPorTurma(int idTurma) => await _repositoryMatricula.ObterMatriculasPorTurma(idTurma);
-        
+
+
+
+        public async Task<List<Modulo>> ObterModulosEmQueAlunoEstaRetido(int alunoID)
+        {
+            List<Modulo> modulos = new List<Modulo>();
+            var matriculasRetidas = await ObterMatriculaRetidasDoAluno(alunoID);
+            foreach(var matricula in matriculasRetidas)
+            {
+                modulos.Add(matricula.Turma.Modulo);
+            }
+            return modulos;
+        }
+
+        public async Task<List<Matricula>> ObterMatriculaRetidasDoAluno(int alunoID)
+        => await _repositoryMatricula.ObterMatriculaRetidasDoAluno(alunoID);
     }
 }

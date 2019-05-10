@@ -9,5 +9,6 @@ namespace GrupoEstudosMusical.Models.Interfaces.Repository
         Task<IList<Matricula>> ObterMatriculasPorAluno(int idAluno);
         Task<List<Matricula>> ObterMatriculasPorTurma(int idTurma);
         Task<int> IncluirMatricula(Matricula matricula);
+        Task<List<Matricula>> ObterMatriculaRetidasDoAluno(int alunoID);
     }
 }
