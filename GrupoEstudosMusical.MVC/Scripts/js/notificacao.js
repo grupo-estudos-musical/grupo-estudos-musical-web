@@ -82,6 +82,5 @@ function enviarEmail(dados) {
     }).fail(function (xhr, textStatus, error) {
         let data = xhr.responseJSON;
         swal("Erro", data.ErrorMessage, "error");
-        resetarForm();
     });
 }

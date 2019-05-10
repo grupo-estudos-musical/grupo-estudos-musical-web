@@ -44,6 +44,12 @@
                     <span class="title">Dashboard</span>
                 </a>
             </li>
+            <li class="@(controller == "Notificacao" ? "open" : "")">
+                <a href="@Url.Action("Index", "Notificacao")">
+                    <i class="fa fa-send"></i>
+                    <span class="title">Notificação</span>
+                </a>
+            </li>
             <li class="@(controller == "Professores" ? "open" : "" )">
                 <a href="javascript:;">
                     <i class="fa fa-users"></i>
