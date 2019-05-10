@@ -1,0 +1,79 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<div class='col-xs-12'>
+    <div class="page-title">
+        <div class="pull-left">
+            <h1 class="title">Notificar Alunos</h1>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-12">
+    <section class="box ">
+        <header class="panel_header">
+            <h2 class="title pull-left">Notificar alunos enviando um e-mail</h2>
+            <div class="actions panel_actions pull-right">
+                <a class="box_toggle fa fa-chevron-down"></a>
+                <a class="box_close fa fa-times"></a>
+            </div>
+        </header>
+        <div class="content-body">
+            <div class="row" style="margin-left: 15%">
+                <div class="col-md-9">
+                    <h4>Turmas*</h4>
+                    <select multiple="" class="multi-select" id="my_multi_select3">
+                        @foreach (var turma in ViewBag.Turmas)
+                        {
+                            <option turma-id="@turma.Id">@turma.Nome</option>
+                        }
+                    </select>
+                </div>
+                <div class="clearfix spacer20"></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        <label class="form-label">Assunto*</label>
+                        <input type="text" class="form-control" id="input-assunto" />
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        <label class="form-label">Título*</label>
+                        <input type="text" class="form-control" id="input-titulo" placeholder="Título que aparecerá no corpo do e-mail" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <label class="form-label">Mensagem*</label>
+                    <div class="controls">
+                        <textarea class="form-control" rows="10" id="input-mensagem"></textarea>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-xs-12">
+                    <button class="btn btn-primary btn-iconic bottom pull-right" id="btn-enviar-email">
+                        <i class="fa fa-send-o"> &nbsp; <span>Enviar e-mail</span></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+@section Styles{
+    <link rel="stylesheet" href="~/Content/lib/jquery-ui/smoothness/jquery-ui.min.css" />
+    <link rel="stylesheet" href="~/Content/lib/multi-select/multi-select.css" />
+}
+
+@section Scripts{
+    <script src="~/Scripts/lib/jquery-ui/jquery-ui.min.js"></script>
+    <script src="~/Scripts/lib/mult-select/jquery.multi-select.js"></script>
+    <script src="~/Scripts/lib/mult-select/jquery.quicksearch.js"></script>
+    <script src="~/Scripts/js/notificacao.js"></script>
+}

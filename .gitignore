@@ -332,3 +332,6 @@ ASALocalRun/
 
 # Imagens com as fotos dos alunos
 GrupoEstudosMusical.MVC/Content/ImagensAlunos
+
+# Arquivo contendo credenciais de email
+GrupoEstudosMusical.MVC/ConfiguracaoEmail/credentials.json

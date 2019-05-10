@@ -29,5 +29,8 @@ namespace GrupoEstudosMusical.Data.Repositories
                 .Include(t => t.Matriculas)
                 .Where(t => t.Status == "Ativo" && t.ModuloID == moduloId)
                 .ToList();
+
+        public IList<Turma> ObterTurmasAtivas() => 
+            DbSet.Where(t => t.Status == "Ativo").ToList();
     }
 }
