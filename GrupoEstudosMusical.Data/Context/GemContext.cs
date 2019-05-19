@@ -25,6 +25,7 @@ namespace GrupoEstudosMusical.Data.Context
         public DbSet<Fabricante> Fabricantes { get; set; }
         public DbSet<InstrumentoDoAluno> InstrumentoDoAlunos { get; set; }
         public DbSet<Inventario> Inventarios { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
 
         public GemContext() : base() { }
 
@@ -51,6 +52,7 @@ namespace GrupoEstudosMusical.Data.Context
             modelBuilder.ApplyConfiguration(new InstrumentoMap());
             modelBuilder.ApplyConfiguration(new InstrumentoDoAlunoMap());
             modelBuilder.ApplyConfiguration(new InventarioMap());
+            modelBuilder.ApplyConfiguration(new UsuarioMap());
         }
     }
 }

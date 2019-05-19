@@ -49,7 +49,10 @@ namespace GrupoEstudosMusical.Data.Mappings
 
             builder.Property(p => p.Uf)
                 .HasColumnType("varchar(2)")
-                .IsRequired();            
+                .IsRequired();
+
+            builder.HasOne(p => p.Usuario)
+                .WithOne(u => u.Professor);
         }
     }
 }

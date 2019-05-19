@@ -57,6 +57,8 @@
     <Compile Include="Entities\PalhetaDeNota.cs" />
     <Compile Include="Entities\Professor.cs" />
     <Compile Include="Entities\Relatorios\OcorrenciasParaRelatorio.cs" />
+    <Compile Include="Entities\Usuario.cs" />
+    <Compile Include="Enums\NivelAcessoEnum.cs" />
     <Compile Include="Enums\TiposOcorrenciaEnum.cs" />
     <Compile Include="Entities\Turma.cs" />
     <Compile Include="Enums\TipoResponsavelEnum.cs" />
