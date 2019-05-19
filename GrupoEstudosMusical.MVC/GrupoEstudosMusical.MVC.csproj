@@ -301,6 +301,7 @@
     <Content Include="Content\css\responsive.css" />
     <Content Include="Content\css\style.css" />
     <Content Include="Content\images\cancel.png" />
+    <Content Include="Content\images\form.png" />
     <Content Include="Content\images\menu_aulas.png" />
     <Content Include="Content\images\menu_avaliacoes_turma.png" />
     <Content Include="Content\images\document.png" />
@@ -480,6 +481,7 @@
     <Content Include="Views\Inventario\Index.cshtml" />
     <Content Include="Views\Instrumentos\Index.cshtml" />
     <Content Include="Views\Turmas\AlunosDaTurma.cshtml" />
+    <Content Include="Relatorios\boletim.frx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GrupoEstudosMusical.Bussines\GrupoEstudosMusical.Bussines.csproj">

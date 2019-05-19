@@ -21,7 +21,7 @@ namespace GrupoEstudosMusical.Data.Repositories
 
         public async Task AlterarAsync(TEntity entity)
         {
-            Context.Entry(entity).State = EntityState.Modified;
+            DbSet.Update(entity);
             Context.Entry(entity).Property("DataCadastro").IsModified = false;
             await Context.SaveChangesAsync();
         }

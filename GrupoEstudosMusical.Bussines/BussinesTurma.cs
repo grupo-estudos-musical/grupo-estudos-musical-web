@@ -58,15 +58,7 @@ namespace GrupoEstudosMusical.Bussines
         }
         public async override Task<Turma> ObterPorIdAsync(int id)
         {
-            var matriculanew = new List<Matricula>();
-            var turma = await _repositoryTurma.ObterPorIdAsync(id);
-            foreach (var matricula in turma.Matriculas)
-            {
-                matriculanew.Add(await _bussinesMatricula.ObterPorIdAsync(matricula.Id));
-            }
-
-            turma.Matriculas = matriculanew;
-            return turma;
+            return await _repositoryTurma.ObterPorIdAsync(id);
         }
 
         public async Task<List<Turma>> ObterTurmasDoAluno(int IdAluno)
@@ -106,8 +98,10 @@ namespace GrupoEstudosMusical.Bussines
 
                 turma.Status = "Encerrada";
                 turma.TerminoAula = DateTime.Now;
+                var matriculas = turma.Matriculas;
+                //turma.Matriculas = null;
                 await _repositoryTurma.AlterarAsync(turma);
-                await ConcluirSituacaoAcademicaDosAlunos(turma.Matriculas);
+                await ConcluirSituacaoAcademicaDosAlunos(matriculas);
             }catch(Exception ex)
             {
                 throw new Exception(ex.Message);

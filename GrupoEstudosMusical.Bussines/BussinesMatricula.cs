@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using GrupoEstudosMusical.Bussines.Exceptions;
 using GrupoEstudosMusical.Bussines.StaticList;
 using GrupoEstudosMusical.Models.Entities;
+using GrupoEstudosMusical.Models.Entities.Relatorios;
 using GrupoEstudosMusical.Models.Interfaces.Bussines;
 using GrupoEstudosMusical.Models.Interfaces.Repository;
 
@@ -41,6 +42,27 @@ namespace GrupoEstudosMusical.Bussines
             return existeRestricao;
         }
 
+        public async Task<Boletim> ObterBoletimAluno(int matriculaID)
+        {
+            return new Boletim()
+            {
+                MatriculaAluno = await _repositoryMatricula.ObterPorIdAsync(matriculaID),
+                PalhetasDeNotasDoAluno = _repositoryPalhetaDeNotas.ObterPalhetasPorMatricula(matriculaID)
+            };
+        }
+
+        public async Task<List<Boletim>> ObterBoletimDaTurma(int turmaID)
+        {
+            var turma = await _repositoryTurma.ObterPorIdAsync(turmaID);
+            var boletimDaTurma = new List<Boletim>();
+            foreach (var matricula in turma.Matriculas)
+            {
+                var boletim = await ObterBoletimAluno(matricula.Id);
+                boletimDaTurma.Add(boletim);
+            }
+            return boletimDaTurma;
+        }
+
         //public async override Task InserirAsync(Matricula entity)
         //{
         //    var turma = await _repositoryTurma.ObterPorIdAsync(entity.TurmaId);
@@ -60,6 +82,7 @@ namespace GrupoEstudosMusical.Bussines
         {
             foreach (var matricula in matriculas)
             {
+                matricula.Turma = null;
                 matricula.Status = matricula.Media < 6 || matricula.Media ==null ? StatusDeMatriculaStaticList.Retido : StatusDeMatriculaStaticList.Aprovado;
                 await AlterarAsync(matricula);
             }

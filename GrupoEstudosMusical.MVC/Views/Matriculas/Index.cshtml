@@ -69,6 +69,7 @@
                                             <a href="Matriculas/Detalhes/@matricula.Id" class="btn btn-primary btn-iconic bottom">
                                                 <i class="fa fa-search"> &nbsp; <span>Consultar</span></i>
                                             </a>
+                                            <a href="@Url.Action("GerarBoletim","Relatorios", new { matriculaID = matricula.Id })" class="btn btn-primary">Boletim</a>
                                         </td>
                                     </tr>
                                 }
