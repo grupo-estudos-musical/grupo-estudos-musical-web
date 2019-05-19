@@ -58,6 +58,8 @@
     <Compile Include="Entities\Professor.cs" />
     <Compile Include="Entities\Relatorios\Boletim.cs" />
     <Compile Include="Entities\Relatorios\OcorrenciasParaRelatorio.cs" />
+    <Compile Include="Entities\Usuario.cs" />
+    <Compile Include="Enums\NivelAcessoEnum.cs" />
     <Compile Include="Enums\TiposOcorrenciaEnum.cs" />
     <Compile Include="Entities\Turma.cs" />
     <Compile Include="Enums\TipoResponsavelEnum.cs" />
@@ -96,6 +98,7 @@
     <Compile Include="Interfaces\Repository\IRepositoryModulo.cs" />
     <Compile Include="Interfaces\Repository\IRepositoryProfessor.cs" />
     <Compile Include="Entities\Inventario.cs" />
+    <Compile Include="Interfaces\Repository\IRepositoryUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
