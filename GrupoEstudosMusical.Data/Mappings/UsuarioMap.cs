@@ -19,7 +19,7 @@ namespace GrupoEstudosMusical.Data.Mappings
                 .IsRequired();
 
             builder.Property(u => u.Senha)
-                .HasColumnType("varchar(12)")
+                .HasColumnType("varchar(130)")
                 .IsRequired();
 
             builder.Property(u => u.NivelAcesso)

@@ -97,6 +97,7 @@
     <Compile Include="Interfaces\Repository\IRepositoryModulo.cs" />
     <Compile Include="Interfaces\Repository\IRepositoryProfessor.cs" />
     <Compile Include="Entities\Inventario.cs" />
+    <Compile Include="Interfaces\Repository\IRepositoryUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
