@@ -1641,7 +1641,7 @@ input[type=checkbox], input[type=color], input[type=date], input[type=datetime-l
     color: #ffffff;
 }
 .btn-accent:hover, .btn-accent:active, .btn-accent:focus {
-    background: #AD1457;
+    background: #324191;
     color: #ffffff;
 }
 .btn-purple:hover, .btn-purple:active, .btn-purple:focus {
@@ -4456,6 +4456,7 @@ a.cke_button_off:hover, .cke_hc a.cke_button_off:focus, .cke_hc a.cke_button_off
     ;
     font-size: 15px;
     color: #dddddd;
+    font-weight: 800;
 }
 .loginpage #nav a:hover, .loginpage a:hover, .loginpage #nav a:active, .loginpage a:active {
     color: rgba(255, 255, 255, 1)
@@ -4468,11 +4469,11 @@ a.cke_button_off:hover, .cke_hc a.cke_button_off:focus, .cke_hc a.cke_button_off
     /*#ffffff*/
     
     ;
+    font-weight: 600;
 }
 .loginpage form .input, .loginpage form input[type=checkbox], .loginpage input[type=text] {
-    background-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.8)
     /*#ffffff*/
-    
     ;
 }
 .loginpage form .input:hover, .loginpage form input[type=checkbox]:hover, .loginpage input[type=text]:hover, .loginpage form .input:focus, .loginpage form input[type=checkbox]:focus, .loginpage input[type=text]:focus {
