@@ -19,6 +19,7 @@ namespace GrupoEstudosMusical.Data.Repositories
             await DbSet.Include(t => t.Professor)
                 .Include(t => t.Modulo)
                 .Include(t => t.Matriculas)
+                .ThenInclude(t => t.Aluno)
                 .FirstOrDefaultAsync( t => t.Id==id);
 
         public Turma VerificarExistenciaDaTurmaPorNomePeriodoSemestre(string nomeTurma, int periodo, int semestre, int Id) =>
@@ -32,5 +33,7 @@ namespace GrupoEstudosMusical.Data.Repositories
 
         public IList<Turma> ObterTurmasAtivas() => 
             DbSet.Where(t => t.Status == "Ativo").ToList();
+
+     
     }
 }

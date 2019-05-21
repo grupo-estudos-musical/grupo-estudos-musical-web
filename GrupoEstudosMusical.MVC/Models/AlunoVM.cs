@@ -59,5 +59,11 @@ namespace GrupoEstudosMusical.MVC.Models
         public HttpPostedFileBase ImagemUpload { get; set; }
 
         public string ImagemUrl { get; set; }
+
+        [DataType(DataType.Password)]
+        public string Senha { get; set; }
+
+        public int UsuarioId { get; set; }
+        public UsuarioVM UsuarioVM { get; set; }
     }
 }

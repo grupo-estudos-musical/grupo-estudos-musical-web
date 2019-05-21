@@ -286,6 +286,7 @@
     <Compile Include="Models\ProfessorVM.cs" />
     <Compile Include="Models\TurmasMatriculaVM.cs" />
     <Compile Include="Models\TurmaVM.cs" />
+    <Compile Include="Models\UsuarioVM.cs" />
     <!-- <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" /> -->
@@ -301,6 +302,7 @@
     <Content Include="Content\css\responsive.css" />
     <Content Include="Content\css\style.css" />
     <Content Include="Content\images\cancel.png" />
+    <Content Include="Content\images\form.png" />
     <Content Include="Content\images\menu_aulas.png" />
     <Content Include="Content\images\menu_avaliacoes_turma.png" />
     <Content Include="Content\images\document.png" />
@@ -314,6 +316,7 @@
     <Content Include="Content\images\menu_editar_turma.png" />
     <Content Include="Content\images\menu_lancar_notas.png" />
     <Content Include="Content\images\menu_recalculo.png" />
+    <Content Include="Content\images\presentation.png" />
     <Content Include="Content\images\sem_foto.png" />
     <Content Include="Content\images\violin.png" />
     <Content Include="Content\lib\bootstrap\css\bootstrap-theme.min.css" />
@@ -478,6 +481,8 @@
     <Content Include="Views\Notificacao\Index.cshtml" />
     <Content Include="Views\Inventario\Index.cshtml" />
     <Content Include="Views\Instrumentos\Index.cshtml" />
+    <Content Include="Views\Turmas\AlunosDaTurma.cshtml" />
+    <Content Include="Relatorios\boletim.frx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GrupoEstudosMusical.Bussines\GrupoEstudosMusical.Bussines.csproj">

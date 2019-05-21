@@ -27,6 +27,11 @@
 @Html.Hidden("mensagem", TempData["mensagem"])
 @Html.Hidden("tipo", TempData["tipo"])
 
+
+@Html.Partial("_VisaoGeralTurma", new ViewDataDictionary { { "titulo", "Alunos da Turma" }, { "link", @Url.Action("AlunosDaTurma", "Turmas", new { id = Model.Id }) }, { "imagem", "/Content/images/presentation.png" }, { "alt", "alunos" } })
+
+@Html.Partial("_VisaoGeralTurma", new ViewDataDictionary { { "titulo", "Gerar Boletim" }, { "link", @Url.Action("GerarBoletimdaTurma", "Relatorios", new { id = Model.Id }) }, { "imagem", "/Content/images/form.png" }, { "alt", "Gerar boletim da Turma" } })
+
 @Html.Partial("_VisaoGeralTurma", new ViewDataDictionary { { "titulo", "Avaliações" }, { "link", @Url.Action("AvaliacoesDaTurma", "Avaliacoes", new { id = Model.Id, NomeTurma = Model.Nome }) }, { "imagem", "/Content/images/menu_avaliacoes_turma.png" }, { "alt", "avaliacoes" } })
 
 @Html.Partial("_VisaoGeralTurma", new ViewDataDictionary { { "titulo", "Aulas" }, { "link", @Url.Action("Index", "Aulas", new { idTurma = Model.Id }) }, { "imagem", "/Content/images/menu_aulas.png" }, { "alt", "aulas" } })
@@ -42,6 +47,8 @@
 @Html.Partial("_VisaoGeralTurma", new ViewDataDictionary { { "titulo", "Finalizar Turma" }, { "link", "#" }, { "imagem", "/Content/images/cancel.png" }, { "alt", "Finalizar" }, { "attr", $"id=finalizarTurma onclick=FinalizarVigenciaTurma('{Model.Id}')" } })
 
 @Html.Partial("_VisaoGeralTurma", new ViewDataDictionary { { "titulo", "Remover Turma" }, { "link", "#section-settings" }, { "imagem", "/Content/images/menu_deletar_turma.png" }, { "alt", "Chamadas" }, { "attr", $"data-toggle=modal onclick=apagar(this,'{Model.Id}','{Model.Nome.Replace(" ", "")}')" } })
+
+
 
 <div class="modal" id="section-settings" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog animated bounceInDown">
@@ -96,12 +103,11 @@
                 }
             });
         }
-        function FinalizarVigenciaTurma(Id)
-        {
+        function FinalizarVigenciaTurma(Id) {
             $.ajax({
                 type: "POST",
                 url: document.location.origin + "/Turmas/FinalizarVigenciaTurma",
-                data: { ID : Id },
+                data: { ID: Id },
                 success: function (retorno) {
                     if (retorno.result) {
                         swal("Sucesso", retorno.mensagem, "success");

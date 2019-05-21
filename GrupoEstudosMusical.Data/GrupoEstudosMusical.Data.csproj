@@ -161,6 +161,7 @@
     <Compile Include="Mappings\PalhetaDeNotaMap.cs" />
     <Compile Include="Mappings\ProfessorMap.cs" />
     <Compile Include="Mappings\TurmaMap.cs" />
+    <Compile Include="Mappings\UsuarioMap.cs" />
     <Compile Include="Migrations\20190506214757_Resolucao do Estoque.cs" />
     <Compile Include="Migrations\20190506214757_Resolucao do Estoque.designer.cs">
       <DependentUpon>20190506214757_Resolucao do Estoque.cs</DependentUpon>
@@ -172,6 +173,14 @@
     <Compile Include="Migrations\20190508230717_Inclusao do status na matricula do aluno v.cs" />
     <Compile Include="Migrations\20190508230717_Inclusao do status na matricula do aluno v.designer.cs">
       <DependentUpon>20190508230717_Inclusao do status na matricula do aluno v.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20190519171557_AdicionandoTabelasDeUsuarios.cs" />
+    <Compile Include="Migrations\20190519171557_AdicionandoTabelasDeUsuarios.designer.cs">
+      <DependentUpon>20190519171557_AdicionandoTabelasDeUsuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20190519211355_AumentandoCampoSenhaUsuario.cs" />
+    <Compile Include="Migrations\20190519211355_AumentandoCampoSenhaUsuario.designer.cs">
+      <DependentUpon>20190519211355_AumentandoCampoSenhaUsuario.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\GemContextModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -192,6 +201,7 @@
     <Compile Include="Repositories\RepositoryPalhetaDeNotas.cs" />
     <Compile Include="Repositories\RepositoryProfessor.cs" />
     <Compile Include="Repositories\RepositoryTurma.cs" />
+    <Compile Include="Repositories\RepositoryUsuario.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

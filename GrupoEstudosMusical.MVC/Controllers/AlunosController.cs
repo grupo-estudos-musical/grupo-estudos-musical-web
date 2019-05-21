@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using GrupoEstudosMusical.Email;
+using GrupoEstudosMusical.Email.Services.Generic;
 using GrupoEstudosMusical.Models.Entities;
 using GrupoEstudosMusical.Models.Enums;
 using GrupoEstudosMusical.Models.Interfaces.Bussines;
@@ -14,10 +16,12 @@ namespace GrupoEstudosMusical.MVC.Controllers
     public class AlunosController : Controller
     {
         private readonly IBussinesAluno _bussinesAluno;
+        private readonly IEmailService _emailService;
 
-        public AlunosController(IBussinesAluno bussinesAluno)
+        public AlunosController(IBussinesAluno bussinesAluno, IEmailService emailService)
         {
             _bussinesAluno = bussinesAluno;
+            _emailService = emailService;
         }
 
         public async Task<ActionResult> Index()
@@ -38,13 +42,21 @@ namespace GrupoEstudosMusical.MVC.Controllers
         {
             try
             {
+                var usuarioModel = new Usuario
+                {
+                    Nome = alunoVM.Nome,
+                    Email = alunoVM.Email,
+                    NivelAcesso = NivelAcessoEnum.Aluno
+                };
+
                 alunoVM.Id = await _bussinesAluno.ObterUltimoIdAsync() + 1;
                 alunoVM.ImagemUrl = AlunoHelper.ObterNomeArquivo(alunoVM);
                 var alunoModel = Mapper.Map<AlunoVM, Aluno>(alunoVM);
 
-                await _bussinesAluno.InserirAsync(alunoModel);
+                var senhaAluno = await _bussinesAluno.InserirAsync(alunoModel, usuarioModel);
                 AlunoHelper.SalvarImagemAluno(alunoVM.ImagemUpload, AlunoHelper.ObterCaminhoImagemAluno(alunoVM, Server));
 
+                EnviarEmailAluno(alunoVM, senhaAluno);
                 return RedirectToRoute("Matricular", new { controller = "Matriculas", idAluno = alunoVM.Id });
             }
             catch (ArgumentException ex)
@@ -53,6 +65,22 @@ namespace GrupoEstudosMusical.MVC.Controllers
                 TempData["Mensagem"] = ex.Message;
                 return View(alunoVM);
             }
+        }
+
+        private void EnviarEmailAluno(AlunoVM alunoVM, string senhaAluno)
+        {
+            var nomeAluno = alunoVM.Nome.Split(' ')[0];
+            _emailService.SendEmailMessage(new EmailMessage
+            {
+                Subject = "Bem-Vindo ao GEM",
+                Title = $"Seja Bem-Vindo ao GEM {nomeAluno}",
+                Body = $@"Olá {nomeAluno}, você acaba de entrar para o Grupo de Estudos Musical, 
+                            aqui você irá aprender tudo relacionado a música desda teoria até a prática com o instrumento.
+                            Desejamos boa sorte a você e aproveite muito está aportunidade.<br/> Para começar, a área do aluno já está
+                            disponível para acesso e sua senha é: <b>{senhaAluno}</b>.
+                            Aqui você poderá consultar suas informações pessoais, notas, faltas, calendário etc.",
+                ToEmails = new List<string> { alunoVM.Email }
+            });
         }
 
         [Route("Alunos/Editar/{id}")]

@@ -56,6 +56,10 @@ namespace GrupoEstudosMusical.Bussines
                 throw new CrudTurmaException($"Já existe uma turma com este nome, vinculada ao {semestre}º semestre do período de {periodo}");
             }
         }
+        public async override Task<Turma> ObterPorIdAsync(int id)
+        {
+            return await _repositoryTurma.ObterPorIdAsync(id);
+        }
 
         public async Task<List<Turma>> ObterTurmasDoAluno(int IdAluno)
         {
@@ -94,8 +98,10 @@ namespace GrupoEstudosMusical.Bussines
 
                 turma.Status = "Encerrada";
                 turma.TerminoAula = DateTime.Now;
+                var matriculas = turma.Matriculas;
+                //turma.Matriculas = null;
                 await _repositoryTurma.AlterarAsync(turma);
-                await ConcluirSituacaoAcademicaDosAlunos(turma.Matriculas);
+                await ConcluirSituacaoAcademicaDosAlunos(matriculas);
             }catch(Exception ex)
             {
                 throw new Exception(ex.Message);
@@ -103,6 +109,8 @@ namespace GrupoEstudosMusical.Bussines
             
             
         }
+
+
 
         public async Task ConcluirSituacaoAcademicaDosAlunos(List<Matricula> matriculas)
         {

@@ -40,6 +40,7 @@ namespace GrupoEstudosMusical.Data.Mappings
                 .WithMany(p => p.Turmas);
 
             builder.HasIndex(t => new { t.Nome, t.Periodo, t.Semestre }).IsUnique();
+            builder.Ignore(m => m.Matriculas);
         }
     }
 }

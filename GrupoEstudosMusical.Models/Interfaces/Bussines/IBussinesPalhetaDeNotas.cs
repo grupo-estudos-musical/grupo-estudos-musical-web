@@ -10,6 +10,5 @@ namespace GrupoEstudosMusical.Models.Interfaces.Bussines
         Task AdicionarTodasAvaliacoesDaTurmaAoALuno(List<AvaliacaoTurma> avaliacoesTurma, int matriculaId);
         IList<PalhetaDeNota> ObterPalhetasPorAvaliacaoEhTurma(Guid avaliacaoID, int turmaID);
         PalhetaDeNota ObterPorId(Guid id);
-        
     }
 }

@@ -20,7 +20,8 @@ namespace GrupoEstudosMusical.Data.Repositories
             .Where(p => p.IdPalheta == id).FirstOrDefault();
 
         public List<PalhetaDeNota> ObterPalhetasPorMatricula(int matricula) =>
-            Context.PalhetaDeNotas.Where(p => p.MatriculaID == matricula).ToList();
+            Context.PalhetaDeNotas.Include(p => p.AvaliacaoTurma).ThenInclude(p => p.Avaliacao).
+            Where(p => p.MatriculaID == matricula).ToList();
         
         
     }
