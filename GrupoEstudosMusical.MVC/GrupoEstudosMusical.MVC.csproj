@@ -260,6 +260,7 @@
     <Compile Include="Controllers\ProfessoresController.cs" />
     <Compile Include="Controllers\RelatoriosController.cs" />
     <Compile Include="Controllers\TurmasController.cs" />
+    <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -483,6 +484,9 @@
     <Content Include="Views\Instrumentos\Index.cshtml" />
     <Content Include="Views\Turmas\AlunosDaTurma.cshtml" />
     <Content Include="Relatorios\boletim.frx" />
+    <Content Include="Views\Usuarios\Login.cshtml" />
+    <Content Include="Views\Shared\_Head.cshtml" />
+    <Content Include="Views\Shared\_Scripts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GrupoEstudosMusical.Bussines\GrupoEstudosMusical.Bussines.csproj">

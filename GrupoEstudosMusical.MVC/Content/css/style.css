@@ -1571,7 +1571,7 @@ input[type=checkbox], input[type=color], input[type=date], input[type=datetime-l
     color: #ffffff;
 }
 .btn.btn-accent {
-    background: #E91E63;
+    background: #3F51B5;
     color: #ffffff;
 }
 .btn.btn-purple {
@@ -4385,7 +4385,7 @@ a.cke_button_off:hover, .cke_hc a.cke_button_off:focus, .cke_hc a.cke_button_off
     background-color: transparent;
     min-height: 92px;
     width: auto;
-    background-image: url("../images/login-logo.png");
+    background-image: url("../images/logo_gem.jpeg");
     background-position: center top;
     background-repeat: no-repeat;
     text-indent: -9999px;
@@ -4443,7 +4443,7 @@ a.cke_button_off:hover, .cke_hc a.cke_button_off:focus, .cke_hc a.cke_button_off
     border: 1px solid transparent !important;
 }
 .loginpage form .input, .loginpage form input[type=checkbox], .loginpage input[type=text] {
-    color: #E91E63
+    color: #000000;
     /*#E91E63*/
     
     ;
@@ -4470,7 +4470,7 @@ a.cke_button_off:hover, .cke_hc a.cke_button_off:focus, .cke_hc a.cke_button_off
     ;
 }
 .loginpage form .input, .loginpage form input[type=checkbox], .loginpage input[type=text] {
-    background-color: rgba(255, 255, 255, 0.6)
+    background-color: #ffffff;
     /*#ffffff*/
     
     ;
@@ -4501,7 +4501,7 @@ a.cke_button_off:hover, .cke_hc a.cke_button_off:focus, .cke_hc a.cke_button_off
 }
 body.login_page {
     background-color: #3F51B5;
-    background-image: url('../images/login-bg.png');
+    background-image: url('../images/fundo_login.jpg');
     background-attachment: fixed;
     /*height: 100%;*/
     /*max-height: 100%;*/
