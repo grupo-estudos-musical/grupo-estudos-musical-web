@@ -1,13 +1,12 @@
-﻿$('#btn-enviar-email').click(function (event) {
-
-    event.preventDefault();    
+﻿function eventoEnviarEmail() {
+    event.preventDefault();
 
     let validate = validarForm();
     if (validate.form()) {
         let dados = obterDados();
         enviarEmail(dados);
     }
-});
+}
 
 function resetarForm() {
     $('#input-assunto').val('');
@@ -19,7 +18,7 @@ function resetarForm() {
     $('#input-mensagem').val('');
     $('#input-mensagem').parent().removeClass('has-success');
 
-    $('[name=turmas]').val('');
+    //$('[name=turmas]').val('');
     $('[name=turmas]').parent().removeClass('has-success');
 }
 
@@ -70,16 +69,25 @@ function obterDados() {
     };
 }
 
+function voltarBtnEnviar() {
+    $('#envio-email').html("<button class='btn btn-primary btn-iconic bottom pull-right' id='btn-enviar-email' onclick='eventoEnviarEmail()'><i class= 'fa fa-send-o' > &nbsp; <span>Enviar e-mail</span></i ></button >");
+}
+
 function enviarEmail(dados) {
     $.ajax({
         url: '/Notificacao/EnviarEmails',
         method: 'POST',
-        data: dados
-    }).done(function (data) {        
+        data: dados,
+        beforeSend: function (xhr) {
+            $('#envio-email').html("<img class='pull-right' src='/Content/images/loading.gif'/>");
+        }
+    }).done(function (data) {
         console.log(data);
         swal("Sucesso", data.SuccessMessage, "success");
         resetarForm();
+        voltarBtnEnviar();
     }).fail(function (xhr, textStatus, error) {
+        voltarBtnEnviar();
         let data = xhr.responseJSON;
         swal("Erro", data.ErrorMessage, "error");
     });
