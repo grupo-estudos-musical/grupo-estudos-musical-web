@@ -305,6 +305,8 @@
     <Content Include="Content\css\style.css" />
     <Content Include="Content\images\cancel.png" />
     <Content Include="Content\images\form.png" />
+    <Content Include="Content\images\fundo_login.jpg" />
+    <Content Include="Content\images\logo_gem.jpeg" />
     <Content Include="Content\images\menu_aulas.png" />
     <Content Include="Content\images\menu_avaliacoes_turma.png" />
     <Content Include="Content\images\document.png" />
