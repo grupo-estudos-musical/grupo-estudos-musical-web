@@ -260,6 +260,7 @@
     <Compile Include="Controllers\ProfessoresController.cs" />
     <Compile Include="Controllers\RelatoriosController.cs" />
     <Compile Include="Controllers\TurmasController.cs" />
+    <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -267,6 +268,7 @@
     <Compile Include="Helpers\DataHelper.cs" />
     <Compile Include="Models\AlunoVM.cs" />
     <Compile Include="Models\AulaVM.cs" />
+    <Compile Include="Models\AutenticarVM.cs" />
     <Compile Include="Models\AvaliacaoVM.cs" />
     <Compile Include="Models\AvaliacaoTurmaVM.cs" />
     <Compile Include="Models\ChamadaVM.cs" />
@@ -303,6 +305,8 @@
     <Content Include="Content\css\style.css" />
     <Content Include="Content\images\cancel.png" />
     <Content Include="Content\images\form.png" />
+    <Content Include="Content\images\fundo_login.jpg" />
+    <Content Include="Content\images\logo_gem.jpeg" />
     <Content Include="Content\images\menu_aulas.png" />
     <Content Include="Content\images\menu_avaliacoes_turma.png" />
     <Content Include="Content\images\document.png" />
@@ -483,6 +487,9 @@
     <Content Include="Views\Instrumentos\Index.cshtml" />
     <Content Include="Views\Turmas\AlunosDaTurma.cshtml" />
     <Content Include="Relatorios\boletim.frx" />
+    <Content Include="Views\Usuarios\Login.cshtml" />
+    <Content Include="Views\Shared\_Head.cshtml" />
+    <Content Include="Views\Shared\_Scripts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GrupoEstudosMusical.Bussines\GrupoEstudosMusical.Bussines.csproj">
