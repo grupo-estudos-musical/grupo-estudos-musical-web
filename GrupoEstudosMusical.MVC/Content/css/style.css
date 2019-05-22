@@ -4440,7 +4440,7 @@ a.cke_button_off:hover, .cke_hc a.cke_button_off:focus, .cke_hc a.cke_button_off
     padding: 9px;
     line-height: 25px;
     margin: 5px 0 15px 0;
-    border: 1px solid transparent !important;
+    /*border: 1px solid transparent !important;*/
 }
 .loginpage form .input, .loginpage form input[type=checkbox], .loginpage input[type=text] {
     color: #000000;
@@ -4452,30 +4452,29 @@ a.cke_button_off:hover, .cke_hc a.cke_button_off:focus, .cke_hc a.cke_button_off
 .loginpage #nav a, .loginpage a {
     color: rgba(255, 255, 255, 1)
     /*#ffffff*/
-    
     ;
     font-size: 15px;
-    color: #dddddd;
-    font-weight: 800;
+    color: #3F51B5;
+    /*font-weight: 800;*/
+    margin-bottom: 15px;
 }
 .loginpage #nav a:hover, .loginpage a:hover, .loginpage #nav a:active, .loginpage a:active {
-    color: rgba(255, 255, 255, 1)
+    color: /*rgba(255, 255, 255, 1)*/
     /*#ffffff*/
-    
-    ;
+    #324191;
 }
 .loginpage, .loginpage form label, .loginpage form, .loginpage .message {
-    color: rgba(255, 255, 255, 1)
+    color: #000000;
     /*#ffffff*/
-    
     ;
     font-weight: 600;
 }
-.loginpage form .input, .loginpage form input[type=checkbox], .loginpage input[type=text] {
-    background-color: rgba(255, 255, 255, 0.8)
-    /*#ffffff*/
-    ;
-}
+    .loginpage form .input, .loginpage form input[type=checkbox], .loginpage input[type=text] {
+        background-color: rgba(255, 255, 255, 0.8)
+        /*#ffffff*/
+        ;
+        border-color: #000000;
+    }
 .loginpage form .input:hover, .loginpage form input[type=checkbox]:hover, .loginpage input[type=text]:hover, .loginpage form .input:focus, .loginpage form input[type=checkbox]:focus, .loginpage input[type=text]:focus {
     background-color: rgba(255, 255, 255, 0.8)
     /*#ffffff*/
@@ -8282,4 +8281,10 @@ table.dataTable.display tbody tr:first-child td {
 
 .card-aula-links a {
     margin-left: 1%;
+}
+
+.div-login {
+    background: #f5f5f5;
+    border-radius: 3px;
+    /*margin-bottom: 15px;*/
 }
