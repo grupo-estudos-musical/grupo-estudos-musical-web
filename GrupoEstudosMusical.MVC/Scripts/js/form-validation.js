@@ -3,8 +3,21 @@ $(document).ready(function() {
 
     if ($.isFunction($.fn.validate)) {
 
-        $('#form_email').validate({
-
+        $('#loginform').validate({
+            focusInvalid: false,
+            ignore: "",
+            rules: {
+                Email: {
+                    required: true
+                },
+                Senha: {
+                    required: true
+                }
+            },
+            highlight: function (element) { // hightlight error inputs
+                var parent = $(element).parent().parent().parent('.form-group');
+                parent.removeClass('has-success').addClass('has-error');
+            }
         });
 
         $('#form_aula').validate({
