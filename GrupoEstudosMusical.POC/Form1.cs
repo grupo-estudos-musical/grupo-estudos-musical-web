@@ -1,5 +1,5 @@
 ﻿
-using FastReport;
+
 using GrupoEstudosMusical.Models.Entities;
 using GrupoEstudosMusical.Models.Entities.Relatorios;
 using System;
@@ -18,12 +18,12 @@ namespace GrupoEstudosMusical.POC
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var report = new Report();
-            var dados = new List<Boletim>();
-            report.RegisterData(dados, "Dados", 5);
-            report.GetDataSource("Dados").Enabled = true;
-            report.Design();
-            report.Dispose();
+            //var report = new Report();
+            //var dados = new List<Boletim>();
+            //report.RegisterData(dados, "Dados", 5);
+            //report.GetDataSource("Dados").Enabled = true;
+            //report.Design();
+            //report.Dispose();
         }
     }
 }

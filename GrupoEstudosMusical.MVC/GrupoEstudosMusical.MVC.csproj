@@ -51,7 +51,7 @@
     </Reference>
     <Reference Include="FastReport, Version=1.8.2.0, Culture=neutral, PublicKeyToken=db7e5ce63278458c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\GrupoEstudosMusical.Bussines\FastReport\FastReport.dll</HintPath>
+      <HintPath>..\GrupoEstudosMusical.Bussines\bin\Debug\FastReport.dll</HintPath>
     </Reference>
     <Reference Include="Google.Protobuf, Version=3.5.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Protobuf.3.5.1\lib\net45\Google.Protobuf.dll</HintPath>
