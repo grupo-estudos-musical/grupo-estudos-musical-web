@@ -44,7 +44,6 @@
                                 <th>Módulo</th>
                                 <th>@Html.DisplayNameFor(m => m.Nivel)</th>
                                 <th>@Html.DisplayNameFor(m => m.DataInicio)</th>
-                                <th>@Html.DisplayNameFor(m => m.TerminoAula)</th>
                                 <th>Professor</th>
                                 <th>@Html.DisplayNameFor(m => m.Status)</th>
                                 <th>Opções</th>
@@ -55,8 +54,7 @@
                                 <th>@Html.DisplayNameFor(m => m.Nome)</th>
                                 <th>Módulo</th>
                                 <th>@Html.DisplayNameFor(m => m.Nivel)</th>
-                                <th>@Html.DisplayNameFor(m => m.DataInicio)</th>
-                                <th>@Html.DisplayNameFor(m => m.TerminoAula)</th>
+                                <th>@Html.DisplayNameFor(m => m.DataInicio)</th>                                
                                 <th>Professor</th>
                                 <th>@Html.DisplayNameFor(m => m.Status)</th>
                                 <th>Opções</th>
@@ -70,7 +68,6 @@
                                     <td>@Html.DisplayFor(item => turma.Modulo.Nome)</td>
                                     <td>@Html.DisplayFor(item => turma.Nivel)</td>
                                     <td>@turma.DataInicio.ToString("dd/MM/yyyy")</td>
-                                    <td>@turma.TerminoAula.ToString("dd/MM/yyyy")</td>
                                     <td>@Html.DisplayFor(item => turma.Professor.Nome)</td>
                                     <td id="status_turma">@Html.DisplayFor(item => turma.Status)</td>
                                     <td style="width: 160px">
