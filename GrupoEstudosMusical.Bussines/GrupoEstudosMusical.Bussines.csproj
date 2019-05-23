@@ -33,7 +33,7 @@
   <ItemGroup>
     <Reference Include="FastReport, Version=1.8.2.0, Culture=neutral, PublicKeyToken=db7e5ce63278458c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>FastReport\FastReport.dll</HintPath>
+      <HintPath>bin\Debug\FastReport.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
