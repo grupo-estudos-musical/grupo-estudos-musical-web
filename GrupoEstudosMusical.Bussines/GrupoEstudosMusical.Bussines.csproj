@@ -68,6 +68,8 @@
     <Compile Include="BussinesMatricula.cs" />
     <Compile Include="Exceptions\TurmaMatriculaExeception.cs" />
     <Compile Include="Helpers\CalculoDeMediaHelper.cs" />
+    <Compile Include="Helpers\HashHelper.cs" />
+    <Compile Include="Helpers\SenhaHelper.cs" />
     <!-- <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" /> -->
@@ -81,8 +83,6 @@
     <Compile Include="Helpers\ValidacaoHelper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\Debug\GrupoEstudosMusical.Bussines.dll" />
-    <Content Include="bin\Debug\GrupoEstudosMusical.Bussines.pdb" />
     <Content Include="FastReport\FastReport.Bars.dll" />
     <Content Include="FastReport\FastReport.dll" />
     <Content Include="FastReport\FastReport.Editor.dll" />
@@ -96,12 +96,6 @@
       <Name>GrupoEstudosMusical.Models</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="obj\Release\GrupoEstudosMusical.Bussines.csproj.CoreCompileInputs.cache" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="bin\Release\" />
-    <Folder Include="Helpers\StaticList\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

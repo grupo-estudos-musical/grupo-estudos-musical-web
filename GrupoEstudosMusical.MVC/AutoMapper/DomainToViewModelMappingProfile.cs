@@ -26,7 +26,7 @@ namespace GrupoEstudosMusical.MVC.AutoMapper
             CreateMap<Fabricante, FabricanteVM>();
             CreateMap<InstrumentoDoAluno, InstrumentoDoAlunoVM>();
             CreateMap<Inventario, InventarioVM>();
-
+            CreateMap<Usuario, UsuarioVM>();
         }
     }
 }

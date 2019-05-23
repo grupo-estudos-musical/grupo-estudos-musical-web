@@ -260,6 +260,7 @@
     <Compile Include="Controllers\ProfessoresController.cs" />
     <Compile Include="Controllers\RelatoriosController.cs" />
     <Compile Include="Controllers\TurmasController.cs" />
+    <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -267,6 +268,7 @@
     <Compile Include="Helpers\DataHelper.cs" />
     <Compile Include="Models\AlunoVM.cs" />
     <Compile Include="Models\AulaVM.cs" />
+    <Compile Include="Models\AutenticarVM.cs" />
     <Compile Include="Models\AvaliacaoVM.cs" />
     <Compile Include="Models\AvaliacaoTurmaVM.cs" />
     <Compile Include="Models\ChamadaVM.cs" />
@@ -286,6 +288,7 @@
     <Compile Include="Models\ProfessorVM.cs" />
     <Compile Include="Models\TurmasMatriculaVM.cs" />
     <Compile Include="Models\TurmaVM.cs" />
+    <Compile Include="Models\UsuarioVM.cs" />
     <!-- <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" /> -->
@@ -302,6 +305,8 @@
     <Content Include="Content\css\style.css" />
     <Content Include="Content\images\cancel.png" />
     <Content Include="Content\images\form.png" />
+    <Content Include="Content\images\fundo_login.jpg" />
+    <Content Include="Content\images\logo_gem.jpeg" />
     <Content Include="Content\images\menu_aulas.png" />
     <Content Include="Content\images\menu_avaliacoes_turma.png" />
     <Content Include="Content\images\document.png" />
@@ -482,6 +487,9 @@
     <Content Include="Views\Instrumentos\Index.cshtml" />
     <Content Include="Views\Turmas\AlunosDaTurma.cshtml" />
     <Content Include="Relatorios\boletim.frx" />
+    <Content Include="Views\Usuarios\Login.cshtml" />
+    <Content Include="Views\Shared\_Head.cshtml" />
+    <Content Include="Views\Shared\_Scripts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GrupoEstudosMusical.Bussines\GrupoEstudosMusical.Bussines.csproj">

@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Enviar e-mail";
 }
 
 <div class='col-xs-12'>
@@ -60,8 +60,8 @@
                 </div>
                 <br />
                 <div class="row">
-                    <div class="col-xs-12">
-                        <button class="btn btn-primary btn-iconic bottom pull-right" id="btn-enviar-email">
+                    <div class="col-xs-12" id="envio-email">
+                        <button class="btn btn-primary btn-iconic bottom pull-right" id="btn-enviar-email" onclick="eventoEnviarEmail()">
                             <i class="fa fa-send-o"> &nbsp; <span>Enviar e-mail</span></i>
                         </button>
                     </div>

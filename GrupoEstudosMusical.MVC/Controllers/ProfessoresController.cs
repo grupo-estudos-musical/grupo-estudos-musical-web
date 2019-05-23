@@ -1,5 +1,8 @@
 ﻿using AutoMapper;
+using GrupoEstudosMusical.Email;
+using GrupoEstudosMusical.Email.Services.Generic;
 using GrupoEstudosMusical.Models.Entities;
+using GrupoEstudosMusical.Models.Enums;
 using GrupoEstudosMusical.Models.Interfaces.Bussines;
 using GrupoEstudosMusical.MVC.Models;
 using System;
@@ -12,10 +15,12 @@ namespace GrupoEstudosMusical.MVC.Controllers
     public class ProfessoresController : Controller
     {
         private readonly IBussinesProfessor _bussinesProfessor;
+        private readonly IEmailService _emailService;
 
-        public ProfessoresController(IBussinesProfessor bussinesProfessor)
+        public ProfessoresController(IBussinesProfessor bussinesProfessor, IEmailService emailService)
         {
             _bussinesProfessor = bussinesProfessor;
+            _emailService = emailService;
         }
 
         public async Task<ActionResult> Index()
@@ -36,8 +41,16 @@ namespace GrupoEstudosMusical.MVC.Controllers
         {
             try
             {
+                var usuarioModel = new Usuario
+                {
+                    Nome = professorVM.Nome,
+                    Email = professorVM.Email,
+                    NivelAcesso = NivelAcessoEnum.Professor
+                };
+
                 var professorModel = Mapper.Map<ProfessorVM, Professor>(professorVM);
-                await _bussinesProfessor.InserirAsync(professorModel);
+                var senhaProfessor = await _bussinesProfessor.InserirAsync(professorModel, usuarioModel);
+                EnviarEmailProfessor(professorVM, senhaProfessor);
                 TempData["Mensagem"] = "Professor Cadastrado com Sucesso.";
                 return RedirectToAction(nameof(Index));
             }
@@ -46,6 +59,21 @@ namespace GrupoEstudosMusical.MVC.Controllers
                 TempData["Mensagem"] = ex.Message;
                 return View(professorVM);
             }
+        }
+
+        private void EnviarEmailProfessor(ProfessorVM professorVM, string senhaProfessor)
+        {
+            var nomeProfessor = professorVM.Nome.Split(' ')[0];
+            _emailService.SendEmailMessage(new EmailMessage
+            {
+                Subject = "Bem-Vindo ao GEM",
+                Title = $"Seja Bem-Vindo ao GEM {nomeProfessor}",
+                Body = $@"Olá {nomeProfessor}, você acaba de entrar para o time de instrutores do Grupo de Estudos Musical.
+                            Desejamos boa sorte a você e aproveite muito está aportunidade.<br/> Para começar, a área do professor já está
+                            disponível para acesso e sua senha é: <b>{senhaProfessor}</b>.
+                            Aqui você poderá consultar suas informações pessoais, administrar suas turmas, lançar notas, faltas etc.",
+                ToEmails = new List<string> { professorVM.Email }
+            });
         }
 
         public async Task<ActionResult> Editar(int id)
