@@ -304,6 +304,7 @@
     <Content Include="Content\css\responsive.css" />
     <Content Include="Content\css\style.css" />
     <Content Include="Content\images\cancel.png" />
+    <Content Include="Content\images\menu_fechar_turma.png" />
     <Content Include="Content\images\contract.png" />
     <Content Include="Content\images\form.png" />
     <Content Include="Content\images\fundo_login.jpg" />
@@ -322,6 +323,7 @@
     <Content Include="Content\images\menu_lancar_notas.png" />
     <Content Include="Content\images\menu_recalculo.png" />
     <Content Include="Content\images\presentation.png" />
+    <Content Include="Content\images\menu_alunos_turma.png" />
     <Content Include="Content\images\sem_foto.png" />
     <Content Include="Content\images\violin.png" />
     <Content Include="Content\lib\bootstrap\css\bootstrap-theme.min.css" />
