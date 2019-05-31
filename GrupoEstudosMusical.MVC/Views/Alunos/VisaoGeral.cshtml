@@ -1,8 +1,8 @@
 ﻿@model GrupoEstudosMusical.MVC.Models.AlunoVM
 @{
-                /**/
+    /**/
 
-                ViewBag.Title = "Visão Geral";
+    ViewBag.Title = "Visão Geral";
 }
 
 <div class='col-xs-12'>
@@ -35,6 +35,8 @@
 @Html.Partial("_VisaoGeralAlunoMenu", new ViewDataDictionary { { "titulo", "Matrículas" }, { "link", Url.Action("Index", "Matriculas", new { idAluno = Model.Id }) }, { "imagem", "/Content/images/menu_matriculas.png" }, { "alt", "matriculas" } })
 
 @Html.Partial("_VisaoGeralAlunoMenu", new ViewDataDictionary { { "titulo", "Ocorrências" }, { "link", Url.Action("Index", "Ocorrencias", new { alunoId = Model.Id }) }, { "imagem", "/Content/images/menu_ocorrencias.png" }, { "alt", "ocorrencias" } })
+
+@Html.Partial("_VisaoGeralAlunoMenu", new ViewDataDictionary { { "titulo", "Relatório de Ocorrências" }, { "link", Url.Action("GerarRelatorioOcorrenciasPorAluno", "Relatorios", new { AlunoId = Model.Id }) }, { "imagem", "/Content/images/menu_ocorrencias.png" }, { "alt", "Relatório de Ocorrências" } })
 
 @Html.Partial("_VisaoGeralAlunoMenu", new ViewDataDictionary { { "titulo", "Nova Ocorrência" }, { "link", Url.Action("Novo", "Ocorrencias", new { alunoId = Model.Id }) }, { "imagem", "/Content/images/menu_nova_ocorrencia.png" }, { "alt", "nova-ocorrencia" } })
 

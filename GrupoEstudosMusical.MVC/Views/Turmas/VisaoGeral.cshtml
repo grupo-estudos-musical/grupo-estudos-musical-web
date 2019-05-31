@@ -32,6 +32,8 @@
 
 @Html.Partial("_VisaoGeralTurma", new ViewDataDictionary { { "titulo", "Gerar Boletim" }, { "link", @Url.Action("GerarBoletimdaTurma", "Relatorios", new { id = Model.Id }) }, { "imagem", "/Content/images/form.png" }, { "alt", "Gerar boletim da Turma" } })
 
+@Html.Partial("_VisaoGeralTurma", new ViewDataDictionary { { "titulo", "Emitir ocorrências " }, { "link", @Url.Action("GerarRelatoriosDeOcorrenciasPorTurma", "Relatorios", new { turmaID = Model.Id }) }, { "imagem", "/Content/images/contract.png" }, { "alt", "Gerar ocorrências dos Alunos" } })
+
 @Html.Partial("_VisaoGeralTurma", new ViewDataDictionary { { "titulo", "Avaliações" }, { "link", @Url.Action("AvaliacoesDaTurma", "Avaliacoes", new { id = Model.Id, NomeTurma = Model.Nome }) }, { "imagem", "/Content/images/menu_avaliacoes_turma.png" }, { "alt", "avaliacoes" } })
 
 @Html.Partial("_VisaoGeralTurma", new ViewDataDictionary { { "titulo", "Aulas" }, { "link", @Url.Action("Index", "Aulas", new { idTurma = Model.Id }) }, { "imagem", "/Content/images/menu_aulas.png" }, { "alt", "aulas" } })
