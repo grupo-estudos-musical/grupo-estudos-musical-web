@@ -35,7 +35,7 @@
   <ItemGroup>
     <Reference Include="FastReport, Version=1.8.2.0, Culture=neutral, PublicKeyToken=db7e5ce63278458c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\FastReport.dll</HintPath>
+      <HintPath>..\GrupoEstudosMusical.Bussines\bin\Debug\FastReport.dll</HintPath>
     </Reference>
     <Reference Include="FastReport.Editor, Version=1.8.2.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

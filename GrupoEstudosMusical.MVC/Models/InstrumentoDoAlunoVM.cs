@@ -16,7 +16,7 @@ namespace GrupoEstudosMusical.MVC.Models
         [DisplayName("Ano de Fabricação")]
         public string AnoDeFabricacaoInstrumento { get; set; }
         [DisplayName("Data do Empréstimo")]
-        public DateTime DataEmprestimo { get; set; } = DateTime.Now;
+        public DateTime DataEmprestimo { get; set; } = DateTime.Now.Date;
         public Inventario Inventario { get; set; }
 
         [DisplayName("Instrumento")]

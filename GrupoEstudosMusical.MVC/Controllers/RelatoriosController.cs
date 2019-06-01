@@ -12,27 +12,56 @@ namespace GrupoEstudosMusical.MVC.Controllers
     public class RelatoriosController : Controller
     {
         // GET: Relatorios
-        public RelatoriosController(IBussinesOcorrencia bussinesOcorrencia, IBussinesMatricula bussinesMatricula)
+        public RelatoriosController(IBussinesOcorrencia bussinesOcorrencia, IBussinesMatricula bussinesMatricula
+            , IBussinesTurma bussinesTurma)
         {
             this.bussinesOcorrencia = bussinesOcorrencia;
             this.bussinesMatricula = bussinesMatricula;
+            this.bussinesTurma = bussinesTurma;
         }
         readonly IBussinesOcorrencia bussinesOcorrencia;
         readonly IBussinesMatricula bussinesMatricula;
-
+        readonly IBussinesTurma bussinesTurma;
         public ActionResult Index()
         {
             return View();
         }
 
-        
-        public ActionResult RelatorioOcorrencia(int AlunoId)
+        public ActionResult GerarRelatoriosDeOcorrenciasPorTurma(int turmaID)
         {
-            var listaOcorrenciasAluno = bussinesOcorrencia.ObterOcorrenciasPorAluno(AlunoId);
+            ViewBag.TurmaID = turmaID;
+            return View();
+        }
 
-            var relatorioGerado = Relatorios.GerarRelatorio<Ocorrencia>(System.Web.HttpContext.Current.Server.MapPath("~/Relatorios/ocorrencias.frx"), listaOcorrenciasAluno, "Dados", TiposDeRelatorios.PDF, null);
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult GerarRelatoriosDeOcorrenciasPorTurma(DateTime dataInicial, DateTime dataFinal, int turmaID)
+        {
+            try
+            {
+                var listaDeOcorrenciasPorTurma = bussinesOcorrencia.ObterOcorrenciasPorTurma(dataInicial, dataFinal, turmaID);
+                var relatorioGerado = Relatorios.GerarRelatorio<OcorrenciasParaRelatorio>(System.Web.HttpContext.Current.Server.MapPath("~/Relatorios/ocorrencias.frx"), listaDeOcorrenciasPorTurma, "Dados", TiposDeRelatorios.PDF, null);
+                return File(relatorioGerado, "application/pdf", $"RelatorioDeOcorrenciasPorTurma{DateTime.Now}.pdf");
+            }catch(Exception e)
+            {
+                TempData["_MensagemErro"] = e.Message;
+                return View();
+            }
+            
+        }
 
-            return File(relatorioGerado, "application/pdf", "relatorioocorrencias.pdf");
+
+
+        public async  Task<ActionResult> GerarRelatorioOcorrenciasPorAluno(int AlunoId)
+        {
+            var listaOcorrenciasAluno = new List<OcorrenciasParaRelatorio>()
+            {
+                await bussinesOcorrencia.ObterOcorrenciasParaRelatorio(AlunoId)
+            };
+
+            var relatorioGerado = Relatorios.GerarRelatorio<OcorrenciasParaRelatorio>(System.Web.HttpContext.Current.Server.MapPath("~/Relatorios/ocorrencias.frx"), listaOcorrenciasAluno, "Dados", TiposDeRelatorios.PDF, null);
+
+            return File(relatorioGerado, "application/pdf", $"RelatorioOcorrencias{DateTime.Now}.pdf");
         }
 
         public async Task<ActionResult> GerarBoletim(int matriculaID)
