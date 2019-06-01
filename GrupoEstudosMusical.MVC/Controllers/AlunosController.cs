@@ -4,6 +4,7 @@ using GrupoEstudosMusical.Email.Services.Generic;
 using GrupoEstudosMusical.Models.Entities;
 using GrupoEstudosMusical.Models.Enums;
 using GrupoEstudosMusical.Models.Interfaces.Bussines;
+using GrupoEstudosMusical.MVC.App_Start;
 using GrupoEstudosMusical.MVC.Helpers;
 using GrupoEstudosMusical.MVC.Models;
 using System;
@@ -13,6 +14,7 @@ using System.Web.Mvc;
 
 namespace GrupoEstudosMusical.MVC.Controllers
 {
+    [AuthorizeGem]
     public class AlunosController : Controller
     {
         private readonly IBussinesAluno _bussinesAluno;

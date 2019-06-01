@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using GrupoEstudosMusical.Models.Entities;
 using GrupoEstudosMusical.Models.Interfaces.Bussines;
+using GrupoEstudosMusical.MVC.App_Start;
 using GrupoEstudosMusical.MVC.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -8,6 +9,7 @@ using System.Web.Mvc;
 
 namespace GrupoEstudosMusical.MVC.Controllers
 {
+    [AuthorizeGem]
     public class ChamadasController : Controller
     {
         private readonly IBussinesChamada _bussinesChamada;

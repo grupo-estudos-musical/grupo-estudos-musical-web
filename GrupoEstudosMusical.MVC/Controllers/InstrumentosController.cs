@@ -4,6 +4,7 @@ using GrupoEstudosMusical.Bussines.Exceptions;
 using GrupoEstudosMusical.Models;
 using GrupoEstudosMusical.Models.Entities;
 using GrupoEstudosMusical.Models.Interfaces.Bussines;
+using GrupoEstudosMusical.MVC.App_Start;
 using GrupoEstudosMusical.MVC.Models;
 using Microsoft.Ajax.Utilities;
 using System;
@@ -14,6 +15,7 @@ using static GrupoEstudosMusical.Models.Entities.Instrumento;
 
 namespace GrupoEstudosMusical.MVC.Controllers
 {
+    [AuthorizeGem]
     public class InstrumentosController : Controller
     {
         readonly IBussinesFabricante _bussinesFabricante;

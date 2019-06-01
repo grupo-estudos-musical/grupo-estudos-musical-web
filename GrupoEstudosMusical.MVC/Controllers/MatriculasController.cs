@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using GrupoEstudosMusical.Bussines.Exceptions;
-using GrupoEstudosMusical.Bussines.StaticList;
 using GrupoEstudosMusical.Models.Entities;
 using GrupoEstudosMusical.Models.Interfaces.Bussines;
+using GrupoEstudosMusical.MVC.App_Start;
 using GrupoEstudosMusical.MVC.Models;
 using GrupoEstudosMusical.MVC.Results;
 using System;
@@ -14,6 +14,7 @@ using System.Web.Mvc;
 
 namespace GrupoEstudosMusical.MVC.Controllers
 {
+    [AuthorizeGem]
     public class MatriculasController : Controller
     {
         private readonly IBussinesTurma _bussinesTurma;

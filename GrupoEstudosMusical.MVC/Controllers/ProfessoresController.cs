@@ -4,6 +4,7 @@ using GrupoEstudosMusical.Email.Services.Generic;
 using GrupoEstudosMusical.Models.Entities;
 using GrupoEstudosMusical.Models.Enums;
 using GrupoEstudosMusical.Models.Interfaces.Bussines;
+using GrupoEstudosMusical.MVC.App_Start;
 using GrupoEstudosMusical.MVC.Models;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ using System.Web.Mvc;
 
 namespace GrupoEstudosMusical.MVC.Controllers
 {
+    [AuthorizeGem]
     public class ProfessoresController : Controller
     {
         private readonly IBussinesProfessor _bussinesProfessor;
@@ -25,7 +27,11 @@ namespace GrupoEstudosMusical.MVC.Controllers
 
         public async Task<ActionResult> Index()
         {
-            var professores = await _bussinesProfessor.ObterTodosAsync();
+            IList<Professor> professores = new List<Professor>();
+            if (Session["nivelAcesso"]?.ToString() == "Professor")
+                professores = await _bussinesProfessor.ObterTodosPorUsuario(int.Parse(Session["idUsuario"].ToString()));
+            else
+                professores = await _bussinesProfessor.ObterTodosAsync();
             var professoresVM = Mapper.Map<IList<Professor>, IList<ProfessorVM>>(professores);
             return View(professoresVM);
         }
