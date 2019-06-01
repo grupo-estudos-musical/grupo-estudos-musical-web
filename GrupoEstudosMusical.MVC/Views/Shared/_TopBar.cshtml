@@ -17,8 +17,15 @@
             <ul class="info-menu right-links list-inline list-unstyled">
                 <li class="profile">
                     <a href="#" data-toggle="dropdown" class="toggle">
-                        <img src="~/Content/images/user.png" alt="user-image" class="img-circle img-inline">
-                        <span>Prof. Nicolas Rezende <i class="fa fa-angle-down"></i></span>
+                        @if (Context.Session["nivelAcesso"]?.ToString() == "Aluno")
+                        {
+                            <img src="~/Content/imagensAlunos/@Context.Session["imagemUrl"]" alt="user-image" class="img-circle img-inline">
+                        }
+                        else
+                        {
+                            <img src="~/Content/images/user.png" alt="user-image" class="img-circle img-inline">
+                        }
+                        <span>@(Context.Session["nomeUsuario"]?.ToString()) <i class="fa fa-angle-down"></i></span>
                     </a>
                     <ul class="dropdown-menu profile animated fadeIn">
                         <li>

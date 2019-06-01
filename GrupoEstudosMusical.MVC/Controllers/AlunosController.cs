@@ -129,6 +129,7 @@ namespace GrupoEstudosMusical.MVC.Controllers
             }
             catch (ArgumentException ex)
             {
+                ViewBag.TiposResponsaveis = Enum.GetValues(typeof(TipoResponsavelEnum));
                 ViewBag.ReturnUrl = returnUrl;
                 TempData["Mensagem"] = ex.Message;
                 return View(alunoVM);

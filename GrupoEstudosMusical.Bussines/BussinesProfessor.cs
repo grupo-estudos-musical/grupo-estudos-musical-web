@@ -1,9 +1,7 @@
-﻿using GrupoEstudosMusical.Bussines.Helpers;
-using GrupoEstudosMusical.Models.Entities;
+﻿using GrupoEstudosMusical.Models.Entities;
 using GrupoEstudosMusical.Models.Interfaces.Bussines;
 using GrupoEstudosMusical.Models.Interfaces.Repository;
 using System;
-using System.Security.Cryptography;
 using System.Threading.Tasks;
 
 namespace GrupoEstudosMusical.Bussines
@@ -11,43 +9,43 @@ namespace GrupoEstudosMusical.Bussines
     public class BussinesProfessor : BussinesGeneric<Professor>, IBussinesProfessor
     {
         private readonly IRepositoryProfessor _repositoryProfessor;
-        private readonly IRepositoryUsuario _repositoryUsuario;
+        private readonly IBussinesUsuario _bussinesUsuario;
 
-        public BussinesProfessor(IRepositoryProfessor repositoryProfessor, IRepositoryUsuario repositoryUsuario) : base(repositoryProfessor)
+        public BussinesProfessor(IRepositoryProfessor repositoryProfessor, IBussinesUsuario bussinesUsuario) : base(repositoryProfessor)
         {
             _repositoryProfessor = repositoryProfessor;
-            _repositoryUsuario = repositoryUsuario;
+            _bussinesUsuario = bussinesUsuario;
         }
 
-        public override Task AlterarAsync(Professor entity)
+        public override async Task AlterarAsync(Professor entity)
         {
             ValidarContato(entity);
-            return base.AlterarAsync(entity);
+
+            var professorEmail = await _repositoryProfessor.ObterPorEmail(entity.Email);
+            if (professorEmail != null && professorEmail.Id != entity.Id)
+                throw new ArgumentException("Já existe um Professor com o mesmo e-mail.");
+
+            var usuario = await _bussinesUsuario.ObterPorIdAsync(entity.UsuarioId);
+            usuario.Email = entity.Email;
+            await _bussinesUsuario.AlterarAsync(usuario);
+
+            await base.AlterarAsync(entity);
         }
 
-        public override Task InserirAsync(Professor entity)
-        {
-            ValidarContato(entity);
-            return base.InserirAsync(entity);
-        }
+        public override Task InserirAsync(Professor entity) => throw new NotImplementedException();
 
         public async Task<string> InserirAsync(Professor professor, Usuario usuario)
         {
-            var hash = new HashHelper(SHA512.Create());
-            string senha;
+            ValidarContato(professor);
 
-            while (true)
-            {
-                senha = SenhaHelper.GerarSenhaNumericaAleatoria();
-                var senhaExistente = await _repositoryUsuario.ObterPorSenhaAsync(hash.CriptografarSenha(senha));
-                if (senhaExistente == null)
-                    break;
-            }
+            var professorEmail = await _repositoryProfessor.ObterPorEmail(professor.Email);
+            if (professorEmail != null)
+                throw new ArgumentException("Já existe um Professor com o mesmo e-mail.");
 
-            usuario.Senha = hash.CriptografarSenha(senha);
-            await _repositoryUsuario.InserirAsync(usuario);
+            var senha = await _bussinesUsuario.Inserir(usuario);
+
             professor.UsuarioId = usuario.Id;
-            await InserirAsync(professor);
+            await _repositoryProfessor.InserirAsync(professor);
             return senha;
         }
 
