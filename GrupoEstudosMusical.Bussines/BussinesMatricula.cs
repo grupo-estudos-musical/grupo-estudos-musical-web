@@ -48,6 +48,7 @@ namespace GrupoEstudosMusical.Bussines
             {
                 MatriculaAluno = await _repositoryMatricula.ObterPorIdAsync(matriculaID),
                 PalhetasDeNotasDoAluno = _repositoryPalhetaDeNotas.ObterPalhetasPorMatricula(matriculaID)
+                
             };
         }
 

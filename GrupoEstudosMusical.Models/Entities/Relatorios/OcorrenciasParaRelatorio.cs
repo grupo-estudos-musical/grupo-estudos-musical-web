@@ -12,5 +12,6 @@ namespace GrupoEstudosMusical.Models.Entities.Relatorios
         }
         public Aluno Aluno { get; set; }
         public List<Ocorrencia> Ocorrencias { get; set; }
+        public byte[] ImagemAluno { get; set; }
     }
 }

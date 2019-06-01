@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Report ScriptLanguage="CSharp" ReportInfo.Created="05/14/2019 19:35:39" ReportInfo.Modified="05/19/2019 13:21:51" ReportInfo.CreatorVersion="1.8.2.0">
+<Report ScriptLanguage="CSharp" ReportInfo.Created="05/14/2019 19:35:39" ReportInfo.Modified="05/31/2019 23:15:23" ReportInfo.CreatorVersion="1.8.2.0">
   <ScriptText>using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -96,6 +96,8 @@ namespace FastReport
               <BusinessObjectDataSource Name="Turmas" Enabled="false" DataType="null"/>
               <Column Name="Id" DataType="System.Int32"/>
               <Column Name="DataCadastro" DataType="System.DateTime"/>
+              <Column Name="UsuarioId" DataType="System.Int32"/>
+              <Column Name="Usuario" Enabled="false" DataType="null"/>
             </Column>
             <Column Name="Status" DataType="System.String"/>
             <Column Name="QuantidadeAlunos" DataType="System.Int32"/>
@@ -157,6 +159,8 @@ namespace FastReport
                 <BusinessObjectDataSource Name="BusinessObjectDataSource9" Alias="Instrumentos" Enabled="false" DataType="null" PropName="Instrumentos"/>
                 <Column Name="Id" DataType="System.Int32"/>
                 <Column Name="DataCadastro" DataType="System.DateTime"/>
+                <Column Name="UsuarioId" DataType="System.Int32"/>
+                <Column Name="Usuario" Enabled="false" DataType="null"/>
               </Column>
               <Column Name="AlunoId" DataType="System.Int32"/>
               <Column Name="Cpf" DataType="System.Boolean" BindableControl="CheckBox"/>
@@ -220,6 +224,8 @@ namespace FastReport
                 <BusinessObjectDataSource Name="BusinessObjectDataSource18" Alias="Instrumentos" Enabled="false" DataType="null" PropName="Instrumentos"/>
                 <Column Name="Id" DataType="System.Int32"/>
                 <Column Name="DataCadastro" DataType="System.DateTime"/>
+                <Column Name="UsuarioId" DataType="System.Int32"/>
+                <Column Name="Usuario" Enabled="false" DataType="null"/>
               </Column>
               <Column Name="Id" DataType="System.Int32"/>
               <Column Name="DataCadastro" DataType="System.DateTime"/>
@@ -415,6 +421,8 @@ namespace FastReport
                 <BusinessObjectDataSource Name="BusinessObjectDataSource43" Alias="Turmas" Enabled="false" DataType="null" PropName="Turmas"/>
                 <Column Name="Id" DataType="System.Int32"/>
                 <Column Name="DataCadastro" DataType="System.DateTime"/>
+                <Column Name="UsuarioId" DataType="System.Int32"/>
+                <Column Name="Usuario" Enabled="false" DataType="null"/>
               </Column>
               <Column Name="Status" DataType="System.String"/>
               <Column Name="QuantidadeAlunos" DataType="System.Int32"/>
@@ -588,6 +596,8 @@ namespace FastReport
                 <BusinessObjectDataSource Name="BusinessObjectDataSource67" Alias="Instrumentos" Enabled="false" DataType="null" PropName="Instrumentos"/>
                 <Column Name="Id" DataType="System.Int32"/>
                 <Column Name="DataCadastro" DataType="System.DateTime"/>
+                <Column Name="UsuarioId" DataType="System.Int32"/>
+                <Column Name="Usuario" Enabled="false" DataType="null"/>
               </Column>
               <Column Name="AlunoId" DataType="System.Int32"/>
               <Column Name="Cpf" DataType="System.Boolean" BindableControl="CheckBox"/>
@@ -627,6 +637,8 @@ namespace FastReport
               <BusinessObjectDataSource Name="Turmas2" Alias="Turmas" Enabled="false" DataType="null" PropName="Turmas"/>
               <Column Name="Id" DataType="System.Int32"/>
               <Column Name="DataCadastro" DataType="System.DateTime"/>
+              <Column Name="UsuarioId" DataType="System.Int32"/>
+              <Column Name="Usuario" Enabled="false" DataType="null"/>
             </Column>
             <Column Name="Status" DataType="System.String"/>
             <Column Name="QuantidadeAlunos" DataType="System.Int32"/>
@@ -688,6 +700,8 @@ namespace FastReport
                 <BusinessObjectDataSource Name="BusinessObjectDataSource76" Alias="Instrumentos" Enabled="false" DataType="null" PropName="Instrumentos"/>
                 <Column Name="Id" DataType="System.Int32"/>
                 <Column Name="DataCadastro" DataType="System.DateTime"/>
+                <Column Name="UsuarioId" DataType="System.Int32"/>
+                <Column Name="Usuario" Enabled="false" DataType="null"/>
               </Column>
               <Column Name="AlunoId" DataType="System.Int32"/>
               <Column Name="Cpf" DataType="System.Boolean" BindableControl="CheckBox"/>
@@ -751,6 +765,8 @@ namespace FastReport
                 <BusinessObjectDataSource Name="BusinessObjectDataSource85" Alias="Instrumentos" Enabled="false" DataType="null" PropName="Instrumentos"/>
                 <Column Name="Id" DataType="System.Int32"/>
                 <Column Name="DataCadastro" DataType="System.DateTime"/>
+                <Column Name="UsuarioId" DataType="System.Int32"/>
+                <Column Name="Usuario" Enabled="false" DataType="null"/>
               </Column>
               <Column Name="Id" DataType="System.Int32"/>
               <Column Name="DataCadastro" DataType="System.DateTime"/>
@@ -963,6 +979,8 @@ namespace FastReport
                 <BusinessObjectDataSource Name="BusinessObjectDataSource118" Alias="Instrumentos" Enabled="false" DataType="null" PropName="Instrumentos"/>
                 <Column Name="Id" DataType="System.Int32"/>
                 <Column Name="DataCadastro" DataType="System.DateTime"/>
+                <Column Name="UsuarioId" DataType="System.Int32"/>
+                <Column Name="Usuario" Enabled="false" DataType="null"/>
               </Column>
               <Column Name="AlunoId" DataType="System.Int32"/>
               <Column Name="Cpf" DataType="System.Boolean" BindableControl="CheckBox"/>
@@ -1044,6 +1062,8 @@ namespace FastReport
                 <BusinessObjectDataSource Name="BusinessObjectDataSource127" Alias="Instrumentos" Enabled="false" DataType="null" PropName="Instrumentos"/>
                 <Column Name="Id" DataType="System.Int32"/>
                 <Column Name="DataCadastro" DataType="System.DateTime"/>
+                <Column Name="UsuarioId" DataType="System.Int32"/>
+                <Column Name="Usuario" Enabled="false" DataType="null"/>
               </Column>
               <Column Name="AlunoId" DataType="System.Int32"/>
               <Column Name="Cpf" DataType="System.Boolean" BindableControl="CheckBox"/>
@@ -1107,6 +1127,8 @@ namespace FastReport
                 <BusinessObjectDataSource Name="BusinessObjectDataSource136" Alias="Instrumentos" Enabled="false" DataType="null" PropName="Instrumentos"/>
                 <Column Name="Id" DataType="System.Int32"/>
                 <Column Name="DataCadastro" DataType="System.DateTime"/>
+                <Column Name="UsuarioId" DataType="System.Int32"/>
+                <Column Name="Usuario" Enabled="false" DataType="null"/>
               </Column>
               <Column Name="Id" DataType="System.Int32"/>
               <Column Name="DataCadastro" DataType="System.DateTime"/>
@@ -1147,6 +1169,8 @@ namespace FastReport
                 <BusinessObjectDataSource Name="BusinessObjectDataSource141" Alias="Instrumentos" Enabled="false" DataType="null" PropName="Instrumentos"/>
                 <Column Name="Id" DataType="System.Int32"/>
                 <Column Name="DataCadastro" DataType="System.DateTime"/>
+                <Column Name="UsuarioId" DataType="System.Int32"/>
+                <Column Name="Usuario" Enabled="false" DataType="null"/>
               </Column>
               <Column Name="Id" DataType="System.Int32"/>
               <Column Name="DataCadastro" DataType="System.DateTime"/>
@@ -1197,6 +1221,8 @@ namespace FastReport
                 <BusinessObjectDataSource Name="BusinessObjectDataSource147" Alias="Instrumentos" Enabled="false" DataType="null" PropName="Instrumentos"/>
                 <Column Name="Id" DataType="System.Int32"/>
                 <Column Name="DataCadastro" DataType="System.DateTime"/>
+                <Column Name="UsuarioId" DataType="System.Int32"/>
+                <Column Name="Usuario" Enabled="false" DataType="null"/>
               </Column>
               <Column Name="AlunoID" DataType="System.Int32"/>
               <Column Name="Status" DataType="System.String"/>
@@ -1205,6 +1231,8 @@ namespace FastReport
             </BusinessObjectDataSource>
             <Column Name="Id" DataType="System.Int32"/>
             <Column Name="DataCadastro" DataType="System.DateTime"/>
+            <Column Name="UsuarioId" DataType="System.Int32"/>
+            <Column Name="Usuario" Enabled="false" DataType="null"/>
           </Column>
           <Column Name="AlunoId" DataType="System.Int32"/>
           <Column Name="Cpf" DataType="System.Boolean" BindableControl="CheckBox"/>
@@ -1259,6 +1287,8 @@ namespace FastReport
                 <BusinessObjectDataSource Name="BusinessObjectDataSource148" Alias="Turmas" Enabled="false" DataType="null" PropName="Turmas"/>
                 <Column Name="Id" DataType="System.Int32"/>
                 <Column Name="DataCadastro" DataType="System.DateTime"/>
+                <Column Name="UsuarioId" DataType="System.Int32"/>
+                <Column Name="Usuario" Enabled="false" DataType="null"/>
               </Column>
               <Column Name="Status" DataType="System.String"/>
               <Column Name="QuantidadeAlunos" DataType="System.Int32"/>
@@ -1282,6 +1312,8 @@ namespace FastReport
             </BusinessObjectDataSource>
             <Column Name="Id" DataType="System.Int32"/>
             <Column Name="DataCadastro" DataType="System.DateTime"/>
+            <Column Name="UsuarioId" DataType="System.Int32"/>
+            <Column Name="Usuario" Enabled="false" DataType="null"/>
           </Column>
           <Column Name="Status" DataType="System.String"/>
           <Column Name="QuantidadeAlunos" DataType="System.Int32"/>
@@ -1312,6 +1344,8 @@ namespace FastReport
                 <BusinessObjectDataSource Name="BusinessObjectDataSource150" Alias="Turmas" Enabled="false" DataType="null" PropName="Turmas"/>
                 <Column Name="Id" DataType="System.Int32"/>
                 <Column Name="DataCadastro" DataType="System.DateTime"/>
+                <Column Name="UsuarioId" DataType="System.Int32"/>
+                <Column Name="Usuario" Enabled="false" DataType="null"/>
               </Column>
               <Column Name="Status" DataType="System.String"/>
               <Column Name="QuantidadeAlunos" DataType="System.Int32"/>
@@ -1358,6 +1392,8 @@ namespace FastReport
                 <BusinessObjectDataSource Name="BusinessObjectDataSource152" Alias="Turmas" Enabled="false" DataType="null" PropName="Turmas"/>
                 <Column Name="Id" DataType="System.Int32"/>
                 <Column Name="DataCadastro" DataType="System.DateTime"/>
+                <Column Name="UsuarioId" DataType="System.Int32"/>
+                <Column Name="Usuario" Enabled="false" DataType="null"/>
               </Column>
               <Column Name="Status" DataType="System.String"/>
               <Column Name="QuantidadeAlunos" DataType="System.Int32"/>
@@ -1441,6 +1477,8 @@ namespace FastReport
               <BusinessObjectDataSource Name="Instrumentos1" Alias="Instrumentos" Enabled="false" DataType="null" PropName="Instrumentos"/>
               <Column Name="Id" DataType="System.Int32"/>
               <Column Name="DataCadastro" DataType="System.DateTime"/>
+              <Column Name="UsuarioId" DataType="System.Int32"/>
+              <Column Name="Usuario" Enabled="false" DataType="null"/>
             </Column>
             <Column Name="AlunoId" DataType="System.Int32"/>
             <Column Name="Cpf" DataType="System.Boolean" BindableControl="CheckBox"/>
@@ -1478,6 +1516,8 @@ namespace FastReport
                 <BusinessObjectDataSource Name="BusinessObjectDataSource156" Alias="Turmas" Enabled="false" DataType="null" PropName="Turmas"/>
                 <Column Name="Id" DataType="System.Int32"/>
                 <Column Name="DataCadastro" DataType="System.DateTime"/>
+                <Column Name="UsuarioId" DataType="System.Int32"/>
+                <Column Name="Usuario" Enabled="false" DataType="null"/>
               </Column>
               <Column Name="Status" DataType="System.String"/>
               <Column Name="QuantidadeAlunos" DataType="System.Int32"/>
@@ -1525,6 +1565,8 @@ namespace FastReport
               <BusinessObjectDataSource Name="Instrumentos2" Alias="Instrumentos" Enabled="false" DataType="null" PropName="Instrumentos"/>
               <Column Name="Id" DataType="System.Int32"/>
               <Column Name="DataCadastro" DataType="System.DateTime"/>
+              <Column Name="UsuarioId" DataType="System.Int32"/>
+              <Column Name="Usuario" Enabled="false" DataType="null"/>
             </Column>
             <Column Name="Id" DataType="System.Int32"/>
             <Column Name="DataCadastro" DataType="System.DateTime"/>
@@ -1552,6 +1594,8 @@ namespace FastReport
                 <BusinessObjectDataSource Name="BusinessObjectDataSource158" Alias="Turmas" Enabled="false" DataType="null" PropName="Turmas"/>
                 <Column Name="Id" DataType="System.Int32"/>
                 <Column Name="DataCadastro" DataType="System.DateTime"/>
+                <Column Name="UsuarioId" DataType="System.Int32"/>
+                <Column Name="Usuario" Enabled="false" DataType="null"/>
               </Column>
               <Column Name="Status" DataType="System.String"/>
               <Column Name="QuantidadeAlunos" DataType="System.Int32"/>
@@ -1678,6 +1722,8 @@ namespace FastReport
                 <BusinessObjectDataSource Name="BusinessObjectDataSource167" Alias="Turmas" Enabled="false" DataType="null" PropName="Turmas"/>
                 <Column Name="Id" DataType="System.Int32"/>
                 <Column Name="DataCadastro" DataType="System.DateTime"/>
+                <Column Name="UsuarioId" DataType="System.Int32"/>
+                <Column Name="Usuario" Enabled="false" DataType="null"/>
               </Column>
               <Column Name="Status" DataType="System.String"/>
               <Column Name="QuantidadeAlunos" DataType="System.Int32"/>
@@ -1735,6 +1781,8 @@ namespace FastReport
                 <BusinessObjectDataSource Name="BusinessObjectDataSource173" Alias="Instrumentos" Enabled="false" DataType="null" PropName="Instrumentos"/>
                 <Column Name="Id" DataType="System.Int32"/>
                 <Column Name="DataCadastro" DataType="System.DateTime"/>
+                <Column Name="UsuarioId" DataType="System.Int32"/>
+                <Column Name="Usuario" Enabled="false" DataType="null"/>
               </Column>
               <Column Name="Id" DataType="System.Int32"/>
               <Column Name="DataCadastro" DataType="System.DateTime"/>
@@ -1766,6 +1814,8 @@ namespace FastReport
                 <BusinessObjectDataSource Name="BusinessObjectDataSource174" Alias="Turmas" Enabled="false" DataType="null" PropName="Turmas"/>
                 <Column Name="Id" DataType="System.Int32"/>
                 <Column Name="DataCadastro" DataType="System.DateTime"/>
+                <Column Name="UsuarioId" DataType="System.Int32"/>
+                <Column Name="Usuario" Enabled="false" DataType="null"/>
               </Column>
               <Column Name="Status" DataType="System.String"/>
               <Column Name="QuantidadeAlunos" DataType="System.Int32"/>
@@ -1869,6 +1919,8 @@ namespace FastReport
                 <BusinessObjectDataSource Name="BusinessObjectDataSource183" Alias="Turmas" Enabled="false" DataType="null" PropName="Turmas"/>
                 <Column Name="Id" DataType="System.Int32"/>
                 <Column Name="DataCadastro" DataType="System.DateTime"/>
+                <Column Name="UsuarioId" DataType="System.Int32"/>
+                <Column Name="Usuario" Enabled="false" DataType="null"/>
               </Column>
               <Column Name="Status" DataType="System.String"/>
               <Column Name="QuantidadeAlunos" DataType="System.Int32"/>
@@ -1993,6 +2045,8 @@ namespace FastReport
                 <BusinessObjectDataSource Name="BusinessObjectDataSource192" Alias="Turmas" Enabled="false" DataType="null" PropName="Turmas"/>
                 <Column Name="Id" DataType="System.Int32"/>
                 <Column Name="DataCadastro" DataType="System.DateTime"/>
+                <Column Name="UsuarioId" DataType="System.Int32"/>
+                <Column Name="Usuario" Enabled="false" DataType="null"/>
               </Column>
               <Column Name="Status" DataType="System.String"/>
               <Column Name="QuantidadeAlunos" DataType="System.Int32"/>
@@ -2076,6 +2130,8 @@ namespace FastReport
               <BusinessObjectDataSource Name="Instrumentos3" Alias="Instrumentos" Enabled="false" DataType="null" PropName="Instrumentos"/>
               <Column Name="Id" DataType="System.Int32"/>
               <Column Name="DataCadastro" DataType="System.DateTime"/>
+              <Column Name="UsuarioId" DataType="System.Int32"/>
+              <Column Name="Usuario" Enabled="false" DataType="null"/>
             </Column>
             <Column Name="AlunoId" DataType="System.Int32"/>
             <Column Name="Cpf" DataType="System.Boolean" BindableControl="CheckBox"/>
@@ -2131,6 +2187,8 @@ namespace FastReport
                 <BusinessObjectDataSource Name="BusinessObjectDataSource196" Alias="Turmas" Enabled="false" DataType="null" PropName="Turmas"/>
                 <Column Name="Id" DataType="System.Int32"/>
                 <Column Name="DataCadastro" DataType="System.DateTime"/>
+                <Column Name="UsuarioId" DataType="System.Int32"/>
+                <Column Name="Usuario" Enabled="false" DataType="null"/>
               </Column>
               <Column Name="Status" DataType="System.String"/>
               <Column Name="QuantidadeAlunos" DataType="System.Int32"/>
@@ -2214,6 +2272,8 @@ namespace FastReport
               <BusinessObjectDataSource Name="Instrumentos4" Alias="Instrumentos" Enabled="false" DataType="null" PropName="Instrumentos"/>
               <Column Name="Id" DataType="System.Int32"/>
               <Column Name="DataCadastro" DataType="System.DateTime"/>
+              <Column Name="UsuarioId" DataType="System.Int32"/>
+              <Column Name="Usuario" Enabled="false" DataType="null"/>
             </Column>
             <Column Name="AlunoId" DataType="System.Int32"/>
             <Column Name="Cpf" DataType="System.Boolean" BindableControl="CheckBox"/>
@@ -2251,6 +2311,8 @@ namespace FastReport
                 <BusinessObjectDataSource Name="BusinessObjectDataSource200" Alias="Turmas" Enabled="false" DataType="null" PropName="Turmas"/>
                 <Column Name="Id" DataType="System.Int32"/>
                 <Column Name="DataCadastro" DataType="System.DateTime"/>
+                <Column Name="UsuarioId" DataType="System.Int32"/>
+                <Column Name="Usuario" Enabled="false" DataType="null"/>
               </Column>
               <Column Name="Status" DataType="System.String"/>
               <Column Name="QuantidadeAlunos" DataType="System.Int32"/>
@@ -2298,6 +2360,8 @@ namespace FastReport
               <BusinessObjectDataSource Name="Instrumentos5" Alias="Instrumentos" Enabled="false" DataType="null" PropName="Instrumentos"/>
               <Column Name="Id" DataType="System.Int32"/>
               <Column Name="DataCadastro" DataType="System.DateTime"/>
+              <Column Name="UsuarioId" DataType="System.Int32"/>
+              <Column Name="Usuario" Enabled="false" DataType="null"/>
             </Column>
             <Column Name="Id" DataType="System.Int32"/>
             <Column Name="DataCadastro" DataType="System.DateTime"/>
@@ -2358,6 +2422,8 @@ namespace FastReport
               <BusinessObjectDataSource Name="Instrumentos6" Alias="Instrumentos" Enabled="false" DataType="null" PropName="Instrumentos"/>
               <Column Name="Id" DataType="System.Int32"/>
               <Column Name="DataCadastro" DataType="System.DateTime"/>
+              <Column Name="UsuarioId" DataType="System.Int32"/>
+              <Column Name="Usuario" Enabled="false" DataType="null"/>
             </Column>
             <Column Name="Id" DataType="System.Int32"/>
             <Column Name="DataCadastro" DataType="System.DateTime"/>
@@ -2415,6 +2481,8 @@ namespace FastReport
               <BusinessObjectDataSource Name="Instrumentos8" Alias="Instrumentos" Enabled="false" DataType="null" PropName="Instrumentos"/>
               <Column Name="Id" DataType="System.Int32"/>
               <Column Name="DataCadastro" DataType="System.DateTime"/>
+              <Column Name="UsuarioId" DataType="System.Int32"/>
+              <Column Name="Usuario" Enabled="false" DataType="null"/>
             </Column>
             <Column Name="AlunoID" DataType="System.Int32"/>
             <Column Name="Status" DataType="System.String"/>
@@ -2423,6 +2491,8 @@ namespace FastReport
           </BusinessObjectDataSource>
           <Column Name="Id" DataType="System.Int32"/>
           <Column Name="DataCadastro" DataType="System.DateTime"/>
+          <Column Name="UsuarioId" DataType="System.Int32"/>
+          <Column Name="Usuario" Enabled="false" DataType="null"/>
         </Column>
         <Column Name="AlunoId" DataType="System.Int32"/>
         <Column Name="Cpf" DataType="System.Boolean" BindableControl="CheckBox"/>
@@ -2434,10 +2504,12 @@ namespace FastReport
         <Column Name="Id" DataType="System.Int32"/>
         <Column Name="DataCadastro" DataType="System.DateTime"/>
       </Column>
+      <Column Name="ImagemAluno" DataType="System.Byte[]" BindableControl="Picture"/>
     </BusinessObjectDataSource>
   </Dictionary>
   <ReportPage Name="Page1">
-    <GroupHeaderBand Name="GroupHeader1" Width="718.2" Height="226.8" AfterDataEvent="GroupHeader1_AfterData" StartNewPage="true" Condition="[Dados.MatriculaAluno.Id]">
+    <GroupHeaderBand Name="GroupHeader1" Width="718.2" Height="189" AfterDataEvent="GroupHeader1_AfterData" StartNewPage="true" Condition="[Dados.MatriculaAluno.Id]">
+      <ShapeObject Name="Shape1" Left="53.25" Top="34.45" Width="112.75" Height="113.4" Border.Width="2"/>
       <ShapeObject Name="Shape10" Left="189" Top="46.25" Width="491.4" Height="21.45" Fill.Color="LightSkyBlue"/>
       <ShapeObject Name="Shape4" Left="189" Top="104.05" Width="491.4" Height="21.45" Fill.Color="White"/>
       <ShapeObject Name="Shape3" Left="189" Top="84.6" Width="491.4" Height="21.45" Fill.Color="LightSkyBlue"/>
@@ -2461,17 +2533,17 @@ namespace FastReport
       <TextObject Name="Text3" Left="532.65" Top="48.45" Width="47.25" Height="13.45" Text="Código:" Font="Arial, 8pt, style=Bold"/>
       <TextObject Name="Text4" Left="586.45" Top="48" Width="85.05" Height="13.45" Text="[Dados.MatriculaAluno.Id]" Font="Arial, 8pt"/>
       <LineObject Name="Line3" Left="529.2" Top="47" Height="19.35" Diagonal="true"/>
-      <PictureObject Name="Picture1" Left="18.9" Top="21.9" Width="160.65" Height="122.85" SizeMode="Normal" Image="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"/>
-      <DataBand Name="Data1" Top="230.8" Width="718.2" Height="21.9" DataSource="Dados">
+      <PictureObject Name="Picture2" Left="56.7" Top="37.8" Width="105.95" Height="105.95" SizeMode="StretchImage" DataColumn="Dados.ImagemAluno"/>
+      <DataBand Name="Data1" Top="193" Width="718.2" Height="21.9" DataSource="Dados">
         <ShapeObject Name="Shape7" Left="37.8" Width="642.6" Height="20.9" Fill.Color="White"/>
         <TextObject Name="Text20" Left="207.9" Top="2" Width="66.15" Height="14.45" Fill.Color="White" Text="Avaliação" Font="Arial, 8pt, style=Bold"/>
         <LineObject Name="Line8" Left="453.6" Height="18.9" Diagonal="true"/>
         <TextObject Name="Text21" Left="553.1" Top="2" Width="32.8" Height="14.45" Fill.Color="White" Text="Nota" Font="Arial, 8pt, style=Bold"/>
-        <ChildBand Name="Child1" Top="256.7" Width="718.2" Height="21.9" CanGrow="true">
+        <ChildBand Name="Child1" Top="218.9" Width="718.2" Height="21.9" CanGrow="true">
           <SubreportObject Name="Subreport1" Left="37.8" Width="641.6" Height="21.9" ReportPage="Page2" PrintOnParent="true"/>
         </ChildBand>
       </DataBand>
-      <GroupFooterBand Name="GroupFooter1" Top="282.6" Width="718.2" Height="58.85">
+      <GroupFooterBand Name="GroupFooter1" Top="244.8" Width="718.2" Height="88.05">
         <ShapeObject Name="Shape8" Left="274.05" Top="19.6" Width="406.35" Height="20.9" Fill.Color="White"/>
         <LineObject Name="Line9" Left="453.6" Top="19.6" Height="18.9" Diagonal="true"/>
         <TextObject Name="Text22" Left="338.2" Top="23.05" Width="47.25" Height="14.45" Fill.Color="White" Text="Média" HorzAlign="Center" Font="Arial, 8pt, style=Bold"/>
@@ -2482,7 +2554,7 @@ namespace FastReport
         <TextObject Name="Text25" Left="461.5" Top="41.4" Width="209.45" Height="14.45" Fill.Color="White" Text="Situação" HorzAlign="Center" Font="Arial, 8pt, style=Bold"/>
       </GroupFooterBand>
     </GroupHeaderBand>
-    <PageFooterBand Name="PageFooter1" Top="345.45" Width="718.2" Height="37.8">
+    <PageFooterBand Name="PageFooter1" Top="336.85" Width="718.2" Height="37.8">
       <TextObject Name="Text19" Left="165.38" Top="9.45" Width="387.45" Height="18.9" Fill.Color="White" Text="Impresso em: [FormatDateTime([Date],&quot;dd/MM/yyyy&quot;)]" HorzAlign="Center" Font="Arial, 8pt, style=Bold"/>
     </PageFooterBand>
   </ReportPage>

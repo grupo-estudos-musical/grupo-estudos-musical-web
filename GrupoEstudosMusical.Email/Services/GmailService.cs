@@ -72,7 +72,9 @@ namespace GrupoEstudosMusical.Email.Services
                     IsBodyHtml = true,
                     BodyEncoding = Encoding.UTF8,
                     Priority = MailPriority.High
+                    
                 };
+                ConverterAnexos(mailMessage, emailMessage);
 
                 mailMessage.Headers.Add("Importance", "High");
                 mailMessage.From = new MailAddress(_userName);
@@ -80,6 +82,16 @@ namespace GrupoEstudosMusical.Email.Services
 
                 client.Send(mailMessage);
             }
+        }
+        private void ConverterAnexos(MailMessage mailMessage, EmailMessage emailMessage)
+        {
+            if(emailMessage != null && emailMessage.Anexos.Count > 0)
+                foreach (var anexo in emailMessage.Anexos)
+                {
+                    MemoryStream anexoEmMemoria = new MemoryStream(anexo.Arquivo);
+
+                    mailMessage.Attachments.Add(new Attachment(anexoEmMemoria, anexo.NomeDoArquivo));
+                }
         }
     }
 }
