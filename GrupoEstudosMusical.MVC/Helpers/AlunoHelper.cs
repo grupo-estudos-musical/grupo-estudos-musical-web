@@ -24,6 +24,15 @@ namespace GrupoEstudosMusical.MVC.Helpers
             return path;
         }
 
+        public static byte[] ObterByteImagemAluno(string caminhoImagem, HttpServerUtilityBase server)
+        {
+            var imagemCaminho = ObterCaminhoImagemAluno(new AlunoVM() { ImagemUrl = caminhoImagem }, server);
+            if (!File.Exists(imagemCaminho))
+                return (byte[])null;
+            var bytesImagem = File.ReadAllBytes(imagemCaminho);
+            return bytesImagem;
+        }
+   
         public static string ObterNomeArquivo(AlunoVM alunoVM)
         {
             if (alunoVM.ImagemUpload == null)

@@ -22,6 +22,8 @@ namespace GrupoEstudosMusical.POC
             var report = new Report();
             var dados = new List<OcorrenciasParaRelatorio>();
             report.RegisterData(dados, "Dados", 5);
+            report.Load(@"C:\Relatorios\Ocorrencias.frx");
+            
             report.GetDataSource("Dados").Enabled = true;
             report.Design();
             report.Dispose();

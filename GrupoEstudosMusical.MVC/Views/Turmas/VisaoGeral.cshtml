@@ -38,8 +38,6 @@
 
 @Html.Partial("_VisaoGeralTurma", new ViewDataDictionary { { "titulo", "Aulas" }, { "link", @Url.Action("Index", "Aulas", new { idTurma = Model.Id }) }, { "imagem", "/Content/images/menu_aulas.png" }, { "alt", "aulas" } })
 
-@Html.Partial("_VisaoGeralTurma", new ViewDataDictionary { { "titulo", "Avaliações" }, { "link", @Url.Action("AvaliacoesDaTurma", "Avaliacoes", new { id = Model.Id, NomeTurma = Model.Nome }) }, { "imagem", "/Content/images/menu_avaliacoes_turma.png" }, { "alt", "avaliacoes" } })
-
 @Html.Partial("_VisaoGeralTurma", new ViewDataDictionary { { "titulo", "Lançar Notas" }, { "link", @Url.Action("LancarNotas", "Turmas", new { Id = Model.Id }) }, { "imagem", "/Content/images/menu_lancar_notas.png" }, { "alt", "Lançar Notas" } })
 
 @Html.Partial("_VisaoGeralTurma", new ViewDataDictionary { { "titulo", "Recálculo" }, { "link", "#" }, { "imagem", "/Content/images/menu_recalculo.png" }, { "alt", "Recalculo" }, { "attr", $"id=recalculoAcademico onclick=EfetuarRecalculoAcademico('{Model.Id}')" } })

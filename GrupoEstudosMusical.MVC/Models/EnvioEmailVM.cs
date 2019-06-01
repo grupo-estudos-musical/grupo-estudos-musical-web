@@ -8,5 +8,6 @@ namespace GrupoEstudosMusical.MVC.Models
         public string Titulo { get; set; }
         public string Mensagem { get; set; }
         public List<string> IdsTurma { get; set; }
+       
     }
 }
