@@ -7,7 +7,7 @@
             if (tipo === "success")
                 swal("Sucesso", mensagem, "success");
             else if (tipo === "error")
-                swal("Erro", mensagem, "error");
+                swal("Ops!", mensagem, "error");
             else if (tipo === "warning")
                 swal("Atenção", mensagem, "warning");
         }

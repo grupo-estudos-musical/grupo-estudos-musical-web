@@ -541,6 +541,9 @@
     <Content Include="Views\Usuarios\Login.cshtml" />
     <Content Include="Views\Shared\_Head.cshtml" />
     <Content Include="Views\Shared\_Scripts.cshtml" />
+    <Content Include="Views\Shared\_MenuProfessor.cshtml" />
+    <Content Include="Views\Shared\_MenuAdministrador.cshtml" />
+    <Content Include="Views\Shared\_MenuAluno.cshtml" />
     <Content Include="Views\Relatorios\GerarRelatoriosDeOcorrenciasPorTurma.cshtml" />
   </ItemGroup>
   <ItemGroup>

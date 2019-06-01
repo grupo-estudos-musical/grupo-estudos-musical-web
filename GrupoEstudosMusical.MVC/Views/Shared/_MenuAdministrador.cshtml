@@ -1,0 +1,129 @@
+﻿@{
+    string controller = ViewContext.RouteData.Values["controller"].ToString();
+    string rota = Url.RouteUrl(ViewContext.RouteData.Values);
+}
+
+<ul class='wraplist'>
+
+
+    <li class="@(controller == "Home" ? "open" : "" )">
+        <a href="@Url.Action("Index", "Home")">
+            <i class="fa fa-dashboard"></i>
+            <span class="title">Dashboard</span>
+        </a>
+    </li>
+    <li class="@(controller == "Notificacao" ? "open" : "")">
+        <a href="@Url.Action("Index", "Notificacao")">
+            <i class="fa fa-send"></i>
+            <span class="title">Notificação</span>
+        </a>
+    </li>
+    <li class="@(controller == "Professores" ? "open" : "" )">
+        <a href="javascript:;">
+            <i class="fa fa-users"></i>
+            <span class="title">Professores</span>
+            <span class="arrow "></span>
+        </a>
+        <ul class="sub-menu" style="@(controller == "Professores" ? "display-block" : "" )">
+            <li>
+                <a class="@(rota == "/Professores/Index" || rota == "/Professores" ? "active" : "" )" href="@Url.Action("Index", "Professores")">Todos Professores</a>
+            </li>
+            <li>
+                <a class="@(rota == "/Professores/Novo" ? "active" : "" )" href="@Url.Action("Novo", "Professores")">Cadastrar Professor</a>
+            </li>
+        </ul>
+    </li>
+    <li class="@(controller == "Alunos" ? "open" : "" )">
+        <a href="javascript:;">
+            <i class="fa fa-user"></i>
+            <span class="title">Alunos</span>
+            <span class="arrow"></span>
+        </a>
+        <ul class="sub-menu" style="@(controller == "Alunos" ? "display-block" : "" )">
+            <li>
+                <a class="@(rota == "/Alunos/Index" || rota == "/Alunos" ? "active" : "" )" href="@Url.Action("Index", "Alunos")">Todos Alunos</a>
+            </li>
+            <li>
+                <a class="@(rota == "/Alunos/Novo" ? "active" : "" )" href="@Url.Action("Novo", "Alunos")">Cadastrar Aluno</a>
+            </li>
+        </ul>
+    </li>
+    <li class="@(controller == "Modulos" ? "open" : "" )">
+        <a href="javascript:;">
+            <i class="fa fa-graduation-cap"></i>
+            <span class="title">Módulos</span>
+            <span class="arrow "></span>
+        </a>
+        <ul class="sub-menu" style="@(controller == "Modulos" ? "display-block" : "" )">
+            <li>
+                <a class="@(rota == "/Modulos/Index" || rota == "/Modulos" ? "active" : "" )" href="@Url.Action("Index", "Modulos")">Todos Módulos</a>
+            </li>
+            <li>
+                <a class="@(rota == "/Modulos/Novo" ? "active" : "" )" href="@Url.Action("Novo", "Modulos")">Cadastrar Módulo</a>
+            </li>
+        </ul>
+    </li>
+    <li class="@(controller == "Turmas" ? "open" : "" )">
+        <a href="javascript:;">
+            <i class="fa fa-users"></i>
+            <span class="title">Turmas</span>
+            <span class="arrow "></span>
+        </a>
+        <ul class="sub-menu" style="@(controller == "Turmas" ? "display-block" : "" )">
+            <li>
+                <a class="@(rota == "/Turmas/Index" || rota == "/Turmas" ? "active" : "" )" href="@Url.Action("Index", "Turmas")">Todas Turmas</a>
+            </li>
+            <li>
+                <a class="@(rota == "/Turmas/Novo" ? "active" : "" )" href="@Url.Action("Novo", "Turmas")">Cadastrar Turma</a>
+            </li>
+        </ul>
+    </li>
+    <li class="@(controller == "Avaliacoes" ? "open" : "" )">
+        <a href="javascript:;">
+            <i class="fa fa-file"></i>
+            <span class="title">Avaliações</span>
+            <span class="arrow "></span>
+        </a>
+        <ul class="sub-menu" style="@(controller == "Avaliacoes" ? "display-block" : "" )">
+            <li>
+                <a class="@(rota == "/Avaliacoes/Index" || rota == "/Avaliacoes" ? "active" : "" )" href="@Url.Action("Index", "Avaliacoes")">Todas Avaliações</a>
+            </li>
+            <li>
+                <a class="@(rota == "/Avaliacoes/Novo" ? "active" : "" )" href="@Url.Action("Novo", "Avaliacoes")">Cadastrar Avaliação</a>
+            </li>
+        </ul>
+    </li>
+    <li class="@(controller == "Instrumentos" ? "open" : "" )">
+        <a href="javascript:;">
+            <i class="fa fa-music"></i>
+            <span class="title">Estoque de Instrumentos</span>
+            <span class="arrow "></span>
+        </a>
+        <ul class="sub-menu" style="@(controller == "Inventario" ? "display-block" : "" )">
+            <li>
+                <a class="@(rota == "/Instrumentos/Index" || rota == "/Instrumentos" ? "active" : "" )" href="@Url.Action("Index", "Instrumentos")">Instrumentos</a>
+            </li>
+            <li>
+                <a class="@(rota == "/Instrumentos/Novo" ? "active" : "" )" href="@Url.Action("Novo", "Instrumentos")">Cadastrar Instrumento</a>
+            </li>
+            <li>
+                <a class="@(rota == "/Inventario/Index" ? "active" : "" )" href="@Url.Action("Index", "Inventario")">Inventario</a>
+            </li>
+        </ul>
+    </li>
+    <li class="">
+        <a href="javascript:;">
+            <i class="fa fa-bar-chart"></i>
+            <span class="title">Relatórios</span>
+            <span class="arrow "></span>
+        </a>
+        <ul class="sub-menu">
+            <li>
+                <a class="" href="uni-report-student.html">Alunos</a>
+            </li>
+            <li>
+                <a class="" href="uni-report-professors.html">Professores</a>
+            </li>
+        </ul>
+    </li>
+</ul>

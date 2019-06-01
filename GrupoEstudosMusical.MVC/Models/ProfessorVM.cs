@@ -26,5 +26,7 @@ namespace GrupoEstudosMusical.MVC.Models
         [DisplayName("Data de Cadastro")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime DataCadastro { get; set; } = DateTime.Now;
+
+        public int UsuarioId { get; set; }
     }
 }

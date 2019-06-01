@@ -49,6 +49,7 @@ namespace GrupoEstudosMusical.IoC
             container.Register<IBussinesFabricante, BussinesFabricante>();
             container.Register<IBussinesInstrumentoDoAluno, BussinesInstrumentoDoAluno>();
             container.Register<IBussinesInventario, BussinesInventario>();
+            container.Register<IBussinesUsuario, BussinesUsuario>();
 
             container.Register<IViaCepService, ViaCepService>();
             container.Register<IViaCepCliente, ViaCepCliente>();

@@ -61,6 +61,7 @@
     <Compile Include="BussinesPalhetaDeNota.cs" />
     <Compile Include="BussinesProfessor.cs" />
     <Compile Include="BussinesTurma.cs" />
+    <Compile Include="BussinesUsuario.cs" />
     <Compile Include="Exceptions\CrudAvaliacaoException.cs" />
     <Compile Include="Exceptions\CrudEmprestimoException.cs" />
     <Compile Include="Exceptions\CrudInventarioException.cs" />

@@ -22,6 +22,8 @@
                 <h1><a href="#" title="Login Page" tabindex="-1">Complete Admin</a></h1>
                 <hr style="background-color: #000; color: #000; height: 1px" />
                 <h4 class="text-center">Digite seu e-mail e senha para se logar.</h4>
+                @Html.Hidden("mensagem", TempData["mensagem"])
+                @Html.Hidden("tipo", TempData["tipo"])
                 @using (Html.BeginForm("Logar", "Usuarios", FormMethod.Post, new { name = "loginform", id = "loginform" }))
                 {
                     @Html.AntiForgeryToken()
