@@ -552,6 +552,10 @@
       <Project>{5f8e319f-2c99-4336-bdcf-b3b1a70c2c56}</Project>
       <Name>GrupoEstudosMusical.Bussines</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GrupoEstudosMusical.Data\GrupoEstudosMusical.Data.csproj">
+      <Project>{ba8820e8-b1b2-45a2-8de7-9b771aa68e56}</Project>
+      <Name>GrupoEstudosMusical.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GrupoEstudosMusical.Email\GrupoEstudosMusical.Email.csproj">
       <Project>{5b3d68cd-420b-49b5-934a-cb5c78a24b4f}</Project>
       <Name>GrupoEstudosMusical.Email</Name>

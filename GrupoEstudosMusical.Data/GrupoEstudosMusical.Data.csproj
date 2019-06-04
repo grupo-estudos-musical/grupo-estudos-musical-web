@@ -144,7 +144,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\IDataInitializer.cs" />
     <Compile Include="Context\GemContext.cs" />
+    <Compile Include="Configuration\DataInitializer.cs" />
     <Compile Include="Mappings\AlunoMap.cs" />
     <Compile Include="Mappings\AulaMap.cs" />
     <Compile Include="Mappings\AvaliacaoMap.cs" />

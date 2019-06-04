@@ -43,7 +43,7 @@
 
         @if (nivelAcesso == "Administrador")
         {
-            Html.Partial("_MenuAdministrador");
+            @Html.Partial("_MenuAdministrador");
         }
         else if (nivelAcesso == "Professor")
         {
@@ -51,7 +51,7 @@
         }
         else if (nivelAcesso == "Aluno")
         {
-            Html.Partial("_MenuAluno");
+            @Html.Partial("_MenuAluno");
         }
 
     </div>

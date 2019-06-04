@@ -1,12 +1,9 @@
-﻿using GrupoEstudosMusical.Email.Services;
+﻿using GrupoEstudosMusical.Data.Configuration;
+using GrupoEstudosMusical.Email.Services;
 using GrupoEstudosMusical.Email.Services.Generic;
 using GrupoEstudosMusical.IoC;
 using GrupoEstudosMusical.MVC.AutoMapper;
 using SimpleInjector.Integration.Web.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -27,6 +24,10 @@ namespace GrupoEstudosMusical.MVC
 
             DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(container));
             AutoMapperConfig.RegisterMappings();
+
+            var dataInitializer = container.GetInstance<IDataInitializer>();
+            dataInitializer.ExecuteMigrations();
+            dataInitializer.Seed();
         }
     }
 }
