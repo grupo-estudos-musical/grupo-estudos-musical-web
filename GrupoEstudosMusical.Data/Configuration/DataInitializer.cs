@@ -31,7 +31,7 @@ namespace GrupoEstudosMusical.Data.Configuration
                     DataCadastro = DateTime.Now,
                     Email = "adm@gem.com.br",
                     NivelAcesso = NivelAcessoEnum.Administrador,
-                    Nome = "Rafael",
+                    Nome = "Rafael Santos",
                     Senha = "B26631F4D7E7C4C95CFED395A2BB64B0141ADB1F8A38F2823241FCE9EF81A4D61BD445640A25CD548995C4B1BED08BFD74A5D83CB5EF946B5BEACF727E81C8F6"
                 };
 

@@ -7,5 +7,6 @@ namespace GrupoEstudosMusical.Models.Interfaces.Bussines
     {
         Task<Usuario> AutenticarAsync(string email, string senha);
         Task<string> Inserir(Usuario usuario);
+        Task AlterarSenha(int idUsuario, string senha);
     }
 }

@@ -49,5 +49,31 @@ namespace GrupoEstudosMusical.MVC.Controllers
 
             return RedirectToAction("Login");
         }
+
+        public ActionResult Logout()
+        {
+            Session.RemoveAll();
+            return Redirect("/login");
+        }
+
+        public ActionResult AlterarSenha()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> AlterarSenha(AlteraSenhaVM alteraSenhaVM)
+        {
+            if (ModelState.IsValid)
+            {
+                await _bussinesUsuario.AlterarSenha(int.Parse(Session["idUsuario"].ToString()), alteraSenhaVM.NovaSenha);
+                TempData["mensagem"] = "Senha alterada com sucesso!";
+                TempData["tipo"] = "success";
+                return RedirectToAction(nameof(AlterarSenha));
+            }
+
+            return View(alteraSenhaVM);
+        }
     }
 }

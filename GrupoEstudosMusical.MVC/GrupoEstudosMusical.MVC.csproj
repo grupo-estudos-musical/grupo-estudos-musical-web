@@ -267,6 +267,7 @@
     </Compile>
     <Compile Include="Helpers\AlunoHelper.cs" />
     <Compile Include="Helpers\DataHelper.cs" />
+    <Compile Include="Models\AlteraSenhaVM.cs" />
     <Compile Include="Models\AlunoVM.cs" />
     <Compile Include="Models\AulaVM.cs" />
     <Compile Include="Models\AutenticarVM.cs" />
@@ -546,6 +547,7 @@
     <Content Include="Views\Shared\_MenuAdministrador.cshtml" />
     <Content Include="Views\Shared\_MenuAluno.cshtml" />
     <Content Include="Views\Relatorios\GerarRelatoriosDeOcorrenciasPorTurma.cshtml" />
+    <Content Include="Views\Usuarios\AlterarSenha.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GrupoEstudosMusical.Bussines\GrupoEstudosMusical.Bussines.csproj">

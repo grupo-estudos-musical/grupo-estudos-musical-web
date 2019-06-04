@@ -17,6 +17,18 @@ namespace GrupoEstudosMusical.Bussines
             _repositoryUsuario = repositoryUsuario;
         }
 
+        public async Task AlterarSenha(int idUsuario, string senha)
+        {
+            var usuario = await _repositoryUsuario.ObterPorIdAsync(idUsuario);
+
+            var hash = new HashHelper(SHA512.Create());
+            var senhaCriptografada = hash.CriptografarSenha(senha);
+
+            usuario.Senha = senhaCriptografada;
+
+            await _repositoryUsuario.AlterarAsync(usuario);
+        }
+
         public async Task<Usuario> AutenticarAsync(string email, string senha)
         {
             var hash = new HashHelper(SHA512.Create());
