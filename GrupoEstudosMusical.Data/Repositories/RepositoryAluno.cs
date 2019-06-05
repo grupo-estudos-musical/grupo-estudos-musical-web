@@ -28,5 +28,7 @@ namespace GrupoEstudosMusical.Data.Repositories
         {
             return await DbSet.Where(u => u.UsuarioId == idUsuario).FirstOrDefaultAsync();
         }
+
+       
     }
 }

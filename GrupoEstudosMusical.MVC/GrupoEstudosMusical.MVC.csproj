@@ -545,6 +545,7 @@
     <Content Include="Views\Shared\_MenuAdministrador.cshtml" />
     <Content Include="Views\Shared\_MenuAluno.cshtml" />
     <Content Include="Views\Relatorios\GerarRelatoriosDeOcorrenciasPorTurma.cshtml" />
+    <Content Include="Views\Relatorios\GerarAtestadoDeMatricula.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GrupoEstudosMusical.Bussines\GrupoEstudosMusical.Bussines.csproj">

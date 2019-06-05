@@ -1,0 +1,63 @@
+﻿@model GrupoEstudosMusical.Models.Entities.Aluno
+@{
+    ViewBag.Title = "Relatório | Atestado de Matrícula";
+}
+
+
+
+<div class='col-xs-12'>
+    <div class="page-title">
+        <div class="pull-left">
+            <!-- PAGE HEADING TAG - START -->
+            <h1 class="title">Matriculas do Aluno @Model.Nome</h1><!-- PAGE HEADING TAG - END -->
+        </div>
+        <div class="pull-right hidden-xs">
+            <ol class="breadcrumb">
+                <li>
+                    <a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i>Home</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Relatorios")">Relatórios</a>
+                </li>
+                <li class="active">
+                    <strong>Gerar Atestado de Matrícula</strong>
+                </li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+
+@using (Html.BeginForm("GerarAtestadoDeMatricula", "Relatorios", FormMethod.Post, new { id = "general_validate" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="col-lg-12">
+        <section class="box ">
+            <header class="panel_header">
+                <h2 class="title pull-left">Informações das matrículas</h2>
+                <div class="actions panel_actions pull-right">
+                    <a class="box_toggle fa fa-chevron-down"></a>
+                    <a class="box_close fa fa-times"></a>
+                </div>
+            </header>
+            <div class="content-body">
+                @Html.Partial("_MensagemErro")
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-4">
+                            <label class="form-label">Matrículas</label>
+                            @Html.DropDownList("MatriculaID", new SelectList(ViewBag.Matriculas, "Id", "NomeTurma"), new { @class = "form-control m-bot15" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-4">
+                            <label class="form-label"></label>
+                            <button class="btn btn-primary">Gerar Relatório</button>
+                        </div>
+                        </div>
+                    </div>
+                    <br />
+                </div>
+        </section>
+    </div>
+}

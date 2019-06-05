@@ -26,6 +26,7 @@ namespace GrupoEstudosMusical.MVC.Controllers
 
         public async Task<ActionResult> Index()
         {
+           
             var alunosViewModel = Mapper.Map<IList<Aluno>, IList<AlunoVM>>(await _bussinesAluno.ObterTodosAsync());
             return View(alunosViewModel);
         }

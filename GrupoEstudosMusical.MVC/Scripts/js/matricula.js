@@ -82,6 +82,7 @@ function submeterFormularioMatricula() {
     form.submit();
 }
 
+
 function confirmarModal() {
     submeterFormularioMatricula();
 }

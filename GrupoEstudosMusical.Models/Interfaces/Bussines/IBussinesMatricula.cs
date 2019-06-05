@@ -16,5 +16,6 @@ namespace GrupoEstudosMusical.Models.Interfaces.Bussines
         Task<List<Modulo>> ObterModulosEmQueAlunoEstaRetido(int alunoID);
         Task<Boletim> ObterBoletimAluno(int matriculaID);
         Task<List<Boletim>> ObterBoletimDaTurma(int turmaID);
+        Task<AtestadoDeMatricula> ObterAtestadoDeMatricula(int matriculaID);
     }
 }

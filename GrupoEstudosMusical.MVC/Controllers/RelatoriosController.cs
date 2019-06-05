@@ -18,17 +18,19 @@ namespace GrupoEstudosMusical.MVC.Controllers
     {
         // GET: Relatorios
         public RelatoriosController(IBussinesOcorrencia bussinesOcorrencia, IBussinesMatricula bussinesMatricula
-            , IBussinesTurma bussinesTurma, IEmailService email)
+            , IBussinesTurma bussinesTurma, IEmailService email, IBussinesAluno bussinesAluno)
         {
             _bussinesEmail = email;
             this.bussinesOcorrencia = bussinesOcorrencia;
             this.bussinesMatricula = bussinesMatricula;
             this.bussinesTurma = bussinesTurma;
+            this.bussinesAluno = bussinesAluno;
         }
         readonly IBussinesOcorrencia bussinesOcorrencia;
         readonly IBussinesMatricula bussinesMatricula;
         readonly IBussinesTurma bussinesTurma;
         readonly IEmailService _bussinesEmail;
+        readonly IBussinesAluno bussinesAluno;
         public ActionResult Index()
         {
             return View();
@@ -60,6 +62,9 @@ namespace GrupoEstudosMusical.MVC.Controllers
             
         }
 
+
+
+
         private void EnviarEmailAoALunoComRelatorio(Aluno aluno, List<byte[]> Arquivos)
         {
             var emailMessage = new EmailMessage()
@@ -90,6 +95,33 @@ namespace GrupoEstudosMusical.MVC.Controllers
             EnviarEmailAoALunoComRelatorio(listaOcorrenciasAluno.FirstOrDefault().Aluno, new List<byte[]>() { relatorioGerado });
             return File(relatorioGerado, "application/pdf", $"RelatorioOcorrencias{DateTime.Now}.pdf");
         }
+
+
+        public async Task<ActionResult> GerarAtestadoDeMatricula(int alunoID)
+        {
+
+            var aluno = await bussinesAluno.ObterPorIdAsync(alunoID);
+            if (aluno == null)
+                return HttpNotFound("Aluno não encontrado");
+            var matriculas = await bussinesMatricula.ObterMatriculasPorAluno(alunoID);
+            if(matriculas.Count == 0)
+                return HttpNotFound("Aluno não possui matrículas!");
+            ViewBag.Matriculas = matriculas.Select(x => new { Id = x.Id, NomeTurma = x.Turma.Nome });
+            return View(aluno);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> GerarAtestadoDeMatricula(int MatriculaID, string opcao ="")
+        {
+
+            var listaDeAtestadoDeMatricula = new List<AtestadoDeMatricula>()
+            {
+                await bussinesMatricula.ObterAtestadoDeMatricula(MatriculaID)
+            };
+            var relatorioGerado = Relatorios.GerarRelatorio<AtestadoDeMatricula>(System.Web.HttpContext.Current.Server.MapPath("~/Relatorios/boletim.frx"), listaDeAtestadoDeMatricula, "Dados", TiposDeRelatorios.PDF, null);
+            return File(relatorioGerado, "application/pdf", "boletimAluno.pdf");
+        }
+
 
         public async Task<ActionResult> GerarBoletim(int matriculaID)
         {

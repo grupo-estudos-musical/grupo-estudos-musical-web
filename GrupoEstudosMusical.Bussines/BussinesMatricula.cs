@@ -17,14 +17,15 @@ namespace GrupoEstudosMusical.Bussines
         private readonly IRepositoryTurma _repositoryTurma;
         private readonly IRepositoryAluno _repositoryAluno;
         private readonly IRepositoryPalhetaDeNotas _repositoryPalhetaDeNotas;
-
+        private readonly IRepositoryModulo _repositoryModulo;
         public BussinesMatricula(IRepositoryMatricula repositoryMatricula,
-            IRepositoryTurma repositoryTurma, IRepositoryAluno repositoryAluno, IRepositoryPalhetaDeNotas repositoryPalhetaDeNotas) : base(repositoryMatricula)
+            IRepositoryTurma repositoryTurma, IRepositoryAluno repositoryAluno, IRepositoryPalhetaDeNotas repositoryPalhetaDeNotas, IRepositoryModulo repositoryModulo) : base(repositoryMatricula)
         {
             _repositoryMatricula = repositoryMatricula;
             _repositoryTurma = repositoryTurma;
             _repositoryAluno = repositoryAluno;
             _repositoryPalhetaDeNotas = repositoryPalhetaDeNotas;
+            _repositoryModulo = repositoryModulo;
         }
 
         public async Task<bool> VerificarRestricaoMatricula(int alunoID)
@@ -115,6 +116,20 @@ namespace GrupoEstudosMusical.Bussines
         }
         public async Task<List<Matricula>> ObterMatriculasPorTurma(int idTurma) => await _repositoryMatricula.ObterMatriculasPorTurma(idTurma);
 
+        public async Task<AtestadoDeMatricula> ObterAtestadoDeMatricula(int matriculaID)
+        {
+            var matricula = await _repositoryMatricula.ObterPorIdAsync(matriculaID);
+            if (matricula == null)
+                throw new Exception("Matrícula não encontrada!");
+            var atestado = new AtestadoDeMatricula()
+            {
+                DataMatricula = DateTime.Now,
+                Matricula = matricula,
+                Modulo = await _repositoryModulo.ObterPorIdAsync(matricula.Turma.ModuloID)
+            };
+            return atestado;
+        }
+           
 
 
         public async Task<List<Modulo>> ObterModulosEmQueAlunoEstaRetido(int alunoID)
