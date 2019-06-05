@@ -237,6 +237,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\AntiForgeryTokenForAjaxAttribute.cs" />
+    <Compile Include="App_Start\AuthorizeGem.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -266,6 +267,7 @@
     </Compile>
     <Compile Include="Helpers\AlunoHelper.cs" />
     <Compile Include="Helpers\DataHelper.cs" />
+    <Compile Include="Models\AlteraSenhaVM.cs" />
     <Compile Include="Models\AlunoVM.cs" />
     <Compile Include="Models\AulaVM.cs" />
     <Compile Include="Models\AutenticarVM.cs" />
@@ -546,11 +548,16 @@
     <Content Include="Views\Shared\_MenuAluno.cshtml" />
     <Content Include="Views\Relatorios\GerarRelatoriosDeOcorrenciasPorTurma.cshtml" />
     <Content Include="Views\Relatorios\GerarAtestadoDeMatricula.cshtml" />
+    <Content Include="Views\Usuarios\AlterarSenha.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GrupoEstudosMusical.Bussines\GrupoEstudosMusical.Bussines.csproj">
       <Project>{5f8e319f-2c99-4336-bdcf-b3b1a70c2c56}</Project>
       <Name>GrupoEstudosMusical.Bussines</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GrupoEstudosMusical.Data\GrupoEstudosMusical.Data.csproj">
+      <Project>{ba8820e8-b1b2-45a2-8de7-9b771aa68e56}</Project>
+      <Name>GrupoEstudosMusical.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\GrupoEstudosMusical.Email\GrupoEstudosMusical.Email.csproj">
       <Project>{5b3d68cd-420b-49b5-934a-cb5c78a24b4f}</Project>

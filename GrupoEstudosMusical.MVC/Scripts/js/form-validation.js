@@ -3,6 +3,22 @@ $(document).ready(function() {
 
     if ($.isFunction($.fn.validate)) {
 
+        $('#alterar_senha').validate({
+            focusInvalid: false,
+            ignore: "",
+            rules: {
+                NovaSenha: {
+                    required: true,
+                    maxlength: 8,
+                    minlength: 6
+                }
+            },
+            highlight: function (element) { // hightlight error inputs
+                var parent = $(element).parent().parent('.form-group');
+                parent.removeClass('has-success').addClass('has-error');
+            }
+        });
+
         $('#loginform').validate({
             focusInvalid: false,
             ignore: "",

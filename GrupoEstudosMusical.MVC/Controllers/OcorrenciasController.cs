@@ -7,9 +7,11 @@ using AutoMapper;
 using System.Collections.Generic;
 using GrupoEstudosMusical.MVC.Models;
 using GrupoEstudosMusical.Models.Enums;
+using GrupoEstudosMusical.MVC.App_Start;
 
 namespace GrupoEstudosMusical.MVC.Controllers
 {
+    [AuthorizeGem]
     public class OcorrenciasController : Controller
     {
         readonly IBussinesOcorrencia _bussinesOcorrencia;

@@ -3,6 +3,7 @@ using GrupoEstudosMusical.Email;
 using GrupoEstudosMusical.Email.Services.Generic;
 using GrupoEstudosMusical.Models.Entities;
 using GrupoEstudosMusical.Models.Interfaces.Bussines;
+using GrupoEstudosMusical.MVC.App_Start;
 using GrupoEstudosMusical.MVC.Models;
 using GrupoEstudosMusical.MVC.Results;
 using System;
@@ -12,6 +13,7 @@ using System.Web.Mvc;
 
 namespace GrupoEstudosMusical.MVC.Controllers
 {
+    [AuthorizeGem]
     public class NotificacaoController : Controller
     {
         private readonly IEmailService _emailService;

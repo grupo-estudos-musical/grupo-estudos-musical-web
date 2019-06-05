@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using GrupoEstudosMusical.Models;
 using GrupoEstudosMusical.Models.Interfaces.Bussines;
+using GrupoEstudosMusical.MVC.App_Start;
 using GrupoEstudosMusical.MVC.Models;
 using Microsoft.Ajax.Utilities;
 using System;
@@ -10,6 +11,7 @@ using System.Web.Mvc;
 
 namespace GrupoEstudosMusical.MVC.Controllers
 {
+    [AuthorizeGem]
     public class InventarioController : Controller
     {
         // GET: Inventario

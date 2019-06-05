@@ -1,4 +1,5 @@
 ﻿using GrupoEstudosMusical.Bussines;
+using GrupoEstudosMusical.Data.Configuration;
 using GrupoEstudosMusical.Data.Repositories;
 using GrupoEstudosMusical.Models.Interfaces.Bussines;
 using GrupoEstudosMusical.Models.Interfaces.Repository;
@@ -32,6 +33,7 @@ namespace GrupoEstudosMusical.IoC
             container.Register<IRepositoryInstrumentoDoAluno, RepositoryInstrumentoDoAluno>();
             container.Register<IRepositoryInventario, RepositoryInventario>();
             container.Register<IRepositoryUsuario, RepositoryUsuario>();
+            container.Register<IDataInitializer, DataInitializer>();
 
             container.Register(typeof(IBussinesGeneric<>), typeof(BussinesGeneric<>));
             container.Register<IBussinesAluno, BussinesAluno>();

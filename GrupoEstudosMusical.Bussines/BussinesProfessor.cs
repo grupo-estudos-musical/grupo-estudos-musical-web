@@ -2,6 +2,7 @@
 using GrupoEstudosMusical.Models.Interfaces.Bussines;
 using GrupoEstudosMusical.Models.Interfaces.Repository;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace GrupoEstudosMusical.Bussines
@@ -48,6 +49,9 @@ namespace GrupoEstudosMusical.Bussines
             await _repositoryProfessor.InserirAsync(professor);
             return senha;
         }
+
+        public async Task<List<Professor>> ObterTodosPorUsuario(int idUsuario) => 
+            await _repositoryProfessor.ObterTodosPorUsuario(idUsuario);
 
         private void ValidarContato(Professor professor)
         {

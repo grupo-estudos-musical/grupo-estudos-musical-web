@@ -4,6 +4,7 @@ using GrupoEstudosMusical.Email.Services.Generic;
 using GrupoEstudosMusical.Models.Entities;
 using GrupoEstudosMusical.Models.Entities.Relatorios;
 using GrupoEstudosMusical.Models.Interfaces.Bussines;
+using GrupoEstudosMusical.MVC.App_Start;
 using GrupoEstudosMusical.MVC.Helpers;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ using static GrupoEstudosMusical.Email.EmailMessage;
 
 namespace GrupoEstudosMusical.MVC.Controllers
 {
+    [AuthorizeGem]
     public class RelatoriosController : Controller
     {
         // GET: Relatorios
