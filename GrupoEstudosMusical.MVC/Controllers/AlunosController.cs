@@ -14,7 +14,7 @@ using System.Web.Mvc;
 
 namespace GrupoEstudosMusical.MVC.Controllers
 {
-    [AuthorizeGem]
+    
     public class AlunosController : Controller
     {
         private readonly IBussinesAluno _bussinesAluno;

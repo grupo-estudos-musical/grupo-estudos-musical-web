@@ -163,6 +163,34 @@ $(document).ready(function() {
 
         });
 
+        $('#fabricantes_validate').validate({
+            focusInvalid: false,
+            ignore: "",
+            rules: {
+                Nome: {
+                    maxlength: 100,
+                    required: true
+                }
+            },
+
+
+            highlight: function (element) { // hightlight error inputs
+                var parent = $(element).parent().parent('.form-group');
+                parent.removeClass('has-success').addClass('has-error');
+            },
+
+            // unhighlight: function(element) { // revert the change done by hightlight
+
+            // },
+
+            success: function (label, element) {
+                var parent = $(element).parent().parent('.form-group');
+                parent.removeClass('has-error').addClass('has-success');
+            },
+
+        });
+
+
 
 
 

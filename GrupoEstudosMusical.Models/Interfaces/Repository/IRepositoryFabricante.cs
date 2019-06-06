@@ -6,5 +6,6 @@ namespace GrupoEstudosMusical.Models.Interfaces.Repository
     public interface IRepositoryFabricante : IRepositoryGeneric<Fabricante>
     {
         Fabricante ObterPorIdGuid(Guid Id);
+        Fabricante ObterPorNome(string Nome);
     }
 }

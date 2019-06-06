@@ -15,7 +15,7 @@ using static GrupoEstudosMusical.Email.EmailMessage;
 
 namespace GrupoEstudosMusical.MVC.Controllers
 {
-    [AuthorizeGem]
+
     public class RelatoriosController : Controller
     {
         // GET: Relatorios
@@ -120,8 +120,8 @@ namespace GrupoEstudosMusical.MVC.Controllers
             {
                 await bussinesMatricula.ObterAtestadoDeMatricula(MatriculaID)
             };
-            var relatorioGerado = Relatorios.GerarRelatorio<AtestadoDeMatricula>(System.Web.HttpContext.Current.Server.MapPath("~/Relatorios/boletim.frx"), listaDeAtestadoDeMatricula, "Dados", TiposDeRelatorios.PDF, null);
-            return File(relatorioGerado, "application/pdf", "boletimAluno.pdf");
+            var relatorioGerado = Relatorios.GerarRelatorio<AtestadoDeMatricula>(System.Web.HttpContext.Current.Server.MapPath("~/Relatorios/AtestadoDeMatricula.frx"), listaDeAtestadoDeMatricula, "Dados", TiposDeRelatorios.PDF, null);
+            return File(relatorioGerado, "application/pdf", $"AtestadoDeMatricula_{MatriculaID}.pdf");
         }
 
 

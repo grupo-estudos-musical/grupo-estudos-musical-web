@@ -4,7 +4,6 @@ using GrupoEstudosMusical.Bussines.Exceptions;
 using GrupoEstudosMusical.Models;
 using GrupoEstudosMusical.Models.Entities;
 using GrupoEstudosMusical.Models.Interfaces.Bussines;
-using GrupoEstudosMusical.MVC.App_Start;
 using GrupoEstudosMusical.MVC.Models;
 using Microsoft.Ajax.Utilities;
 using System;
@@ -15,7 +14,7 @@ using static GrupoEstudosMusical.Models.Entities.Instrumento;
 
 namespace GrupoEstudosMusical.MVC.Controllers
 {
-    [AuthorizeGem]
+  
     public class InstrumentosController : Controller
     {
         readonly IBussinesFabricante _bussinesFabricante;
@@ -129,10 +128,10 @@ namespace GrupoEstudosMusical.MVC.Controllers
 
         public async Task<ActionResult> Deletar(FormCollection formCollection)
         {
-            int.TryParse(formCollection["id"].ToString(), out var id);
-            
-            
-            TempData["Mensagem"] = "Módulo Apagado com Sucesso.";
+            Guid.TryParse(formCollection["id"].ToString(), out var id);
+            var fabricanteModel = _bussinesInstrumento.ObterPorIdGuid(id);
+            await _bussinesInstrumento.DeletarAsync(fabricanteModel);
+            TempData["Mensagem"] = "Instrumento Apagado com Sucesso.";
             return RedirectToAction(nameof(Index));
         }
 

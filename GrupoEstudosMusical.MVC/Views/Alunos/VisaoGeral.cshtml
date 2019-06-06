@@ -38,7 +38,7 @@
 
 @Html.Partial("_VisaoGeralAlunoMenu", new ViewDataDictionary { { "titulo", "Relatório de Ocorrências" }, { "link", Url.Action("GerarRelatorioOcorrenciasPorAluno", "Relatorios", new { AlunoId = Model.Id }) }, { "imagem", "/Content/images/menu_ocorrencias.png" }, { "alt", "Relatório de Ocorrências" } })
 
-@Html.Partial("_VisaoGeralAlunoMenu", new ViewDataDictionary { { "titulo", "Atestado de Matrícula" }, { "link", Url.Action("GerarAtestadoDeMatricula", "Relatorios", new { alunoID = Model.Id }) }, { "imagem", "/Content/images/menu_ocorrencias.png" }, { "alt", "Relatório de Ocorrências" } })
+@Html.Partial("_VisaoGeralAlunoMenu", new ViewDataDictionary { { "titulo", "Atestado de Matrícula" }, { "link", Url.Action("GerarAtestadoDeMatricula", "Relatorios", new { alunoID = Model.Id }) }, { "imagem", "/Content/images/declaration.png" }, { "alt", "Relatório de Ocorrências" } })
 
 @Html.Partial("_VisaoGeralAlunoMenu", new ViewDataDictionary { { "titulo", "Nova Ocorrência" }, { "link", Url.Action("Novo", "Ocorrencias", new { alunoId = Model.Id }) }, { "imagem", "/Content/images/menu_nova_ocorrencia.png" }, { "alt", "nova-ocorrencia" } })
 

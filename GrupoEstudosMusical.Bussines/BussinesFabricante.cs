@@ -18,6 +18,24 @@ namespace GrupoEstudosMusical.Bussines
             _repositoryFabricante = repository;
         }
 
+        void VerificarExistenciaDoFabricante(Fabricante entity)
+        {
+            var fabricante = _repositoryFabricante.ObterPorNome(entity.Nome);
+            if (fabricante != null && fabricante.Id != entity.Id)
+                throw new Exception("Fabricante já cadastrado! ");
+        }
+        public override Task InserirAsync(Fabricante entity)
+        {
+            VerificarExistenciaDoFabricante(entity);
+            return base.InserirAsync(entity);
+        }
+        public override Task AlterarAsync(Fabricante entity)
+        {
+            VerificarExistenciaDoFabricante(entity);
+            return base.AlterarAsync(entity);
+        }
+
+
         public Fabricante ObterPorIdGuid(Guid Id) =>
             _repositoryFabricante.ObterPorIdGuid(Id);
     }

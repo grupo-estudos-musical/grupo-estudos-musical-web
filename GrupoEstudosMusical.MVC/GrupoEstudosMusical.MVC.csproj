@@ -354,6 +354,7 @@
     <Content Include="Content\ImagensAlunos\9 - Afonso Aguiar.png" />
     <Content Include="Content\ImagensAlunos\9 - Alberto dos Santos.jpeg" />
     <Content Include="Content\images\cancel.png" />
+    <Content Include="Content\images\declaration.png" />
     <Content Include="Content\images\menu_fechar_turma.png" />
     <Content Include="Content\images\contract.png" />
     <Content Include="Content\images\form.png" />
@@ -472,7 +473,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Cep\" />
-    <Folder Include="Views\Fabricantes\" />
     <Folder Include="Views\PalhetaDeNotas\" />
   </ItemGroup>
   <ItemGroup>
@@ -549,6 +549,10 @@
     <Content Include="Views\Relatorios\GerarRelatoriosDeOcorrenciasPorTurma.cshtml" />
     <Content Include="Views\Relatorios\GerarAtestadoDeMatricula.cshtml" />
     <Content Include="Views\Usuarios\AlterarSenha.cshtml" />
+    <Content Include="Relatorios\AtestadoDeMatricula.frx" />
+    <Content Include="Views\Fabricantes\Novo.cshtml" />
+    <Content Include="Views\Fabricantes\Index.cshtml" />
+    <Content Include="Views\Fabricantes\Editar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GrupoEstudosMusical.Bussines\GrupoEstudosMusical.Bussines.csproj">

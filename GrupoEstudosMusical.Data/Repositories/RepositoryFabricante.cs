@@ -1,4 +1,5 @@
 ﻿
+using GrupoEstudosMusical.Models.Entities;
 using GrupoEstudosMusical.Models.Interfaces.Repository;
 using System;
 using System.Linq;
@@ -10,5 +11,9 @@ namespace GrupoEstudosMusical.Data.Repositories
     {
         public Fabricante ObterPorIdGuid(Guid Id) =>
             Context.Fabricantes.FirstOrDefault(f => f.Id == Id);
+
+        public Fabricante ObterPorNome(string Nome) =>
+            Context.Fabricantes.Where(f => f.Nome == Nome).FirstOrDefault();
+        
     }
 }

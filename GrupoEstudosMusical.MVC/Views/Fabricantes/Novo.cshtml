@@ -1,0 +1,71 @@
+﻿@model GrupoEstudosMusical.MVC.Models.FabricanteVM
+@{
+    ViewBag.Title = "Novo";
+}
+
+
+<div class='col-xs-12'>
+    <div class="page-title">
+        <div class="pull-left">
+            <!-- PAGE HEADING TAG - START -->
+            <h1 class="title">Cadastrar um Fabricante</h1><!-- PAGE HEADING TAG - END -->
+        </div>
+        <div class="pull-right hidden-xs">
+            <ol class="breadcrumb">
+                <li>
+                    <a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i>Home</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Fabricantes")">Fabricantes</a>
+                </li>
+                <li class="active">
+                    <strong>Cadastrar um Fabricante</strong>
+                </li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+@using (Html.BeginForm("Novo", "Fabricantes", FormMethod.Post, new { id = "general_validate" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="col-lg-12">
+        <section class="box ">
+            <header class="panel_header">
+                <h2 class="title pull-left">Informações do Fabricante</h2>
+                <div class="actions panel_actions pull-right">
+                    <a class="box_toggle fa fa-chevron-down"></a>
+                    <a class="box_close fa fa-times"></a>
+                </div>
+            </header>
+            <div class="content-body">
+                @Html.Partial("_MensagemErro")
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "form-label" })
+                            <div class="controls">
+                                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="pull-right ">
+                            <button type="submit" class="btn btn-success">Salvar</button>
+                            <a type="button" class="btn" href="@Url.Action("Index", "Fabricantes")">Cancelar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+}
+
+@section Scripts{
+    <script src="~/Scripts/lib/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/lib/jquery-validation/js/additional-methods.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/js/form-validation.js" type="text/javascript"></script>
+    <script src="~/Scripts/lib/jquery-validation/js/jquey.validate.pt-br.js" type="text/javascript"></script>
+}
