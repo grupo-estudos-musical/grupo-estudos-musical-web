@@ -32,7 +32,7 @@
     </div>
 </div>
 
-@using (Html.BeginForm("Novo", "Aulas", FormMethod.Post, htmlAttributes: new { @id = "form_aula" }))
+@using (Html.BeginForm("Novo", "Aulas", FormMethod.Post, htmlAttributes: new { @id = "form_aula", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     @Html.HiddenFor(model => model.TurmaId)

@@ -4375,7 +4375,7 @@ a.cke_button_off:hover, .cke_hc a.cke_button_off:focus, .cke_hc a.cke_button_off
 
 
 .loginpage h1 a {
-    height: 92px;
+    height: 100px;
     margin: 0px auto 0px auto;
     padding: 0;
     text-decoration: none;
@@ -4385,7 +4385,7 @@ a.cke_button_off:hover, .cke_hc a.cke_button_off:focus, .cke_hc a.cke_button_off
     background-color: transparent;
     min-height: 92px;
     width: auto;
-    background-image: url("../images/logo_gem.jpeg");
+    background-image: url("../images/logo_gem.png");
     background-position: center top;
     background-repeat: no-repeat;
     text-indent: -9999px;

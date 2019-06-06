@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Web;
 using GrupoEstudosMusical.MVC.Helpers;
 
 namespace GrupoEstudosMusical.MVC.Models
@@ -22,6 +23,10 @@ namespace GrupoEstudosMusical.MVC.Models
         public int TurmaId { get; set; }
 
         public TurmaVM Turma { get; set; }
+
+        [DataType(DataType.Upload)]
+        [DisplayName("Adicionar arquivo")]
+        public HttpPostedFileBase Arquivo { get; set; }
 
         public List<AvaliacaoTurmaVM> AvaliacoesTurma { get; set; } = new List<AvaliacaoTurmaVM>();
     }

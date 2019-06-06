@@ -2,11 +2,15 @@
 using GrupoEstudosMusical.Models.Entities;
 using GrupoEstudosMusical.Models.Interfaces.Bussines;
 using GrupoEstudosMusical.MVC.App_Start;
+using GrupoEstudosMusical.MVC.GoogleDriveApi;
 using GrupoEstudosMusical.MVC.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net.Mime;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Mvc;
 
 namespace GrupoEstudosMusical.MVC.Controllers
@@ -68,6 +72,14 @@ namespace GrupoEstudosMusical.MVC.Controllers
                 var avaliacoesSelecionadas = aulaVM.AvaliacoesTurma.Where(a => a.Selecionado).ToList();
                 var avaliacoesTurma = Mapper.Map<List<AvaliacaoTurmaVM>, List<AvaliacaoTurma>>(avaliacoesSelecionadas);
                 await _bussinesAula.InserirAsync(aulaModel, avaliacoesTurma);
+
+                aulaVM.Id = aulaModel.Id;
+                var turmaVM = Mapper.Map<Turma, TurmaVM>(await _bussinesTurma.ObterPorIdAsync(aulaVM.TurmaId));
+                using (var driveHelper = new GoogleDriveApiHelper(Server.MapPath("").Replace(@"\Aulas", "")))
+                {
+                    await driveHelper.SalvarArquivoAulaAsync(aulaVM, turmaVM);
+                }
+
                 TempData["mensagem"] = "Aula cadastrada com sucesso!";
                 TempData["tipo"] = "success";
                 return RedirectToAction("Index", "Aulas", new { idTurma = aulaVM.TurmaId });
@@ -97,6 +109,25 @@ namespace GrupoEstudosMusical.MVC.Controllers
             TempData["mensagem"] = "Aula apagada com sucesso!";
             TempData["tipo"] = "success";
             return RedirectToAction(nameof(Index), new { idTurma = aulaModel.TurmaId });
+        }
+
+        public async Task<ActionResult> Download(int idAula)
+        {
+            var aulaVM = Mapper.Map<Aula, AulaVM>(await _bussinesAula.ObterPorIdAsync(idAula));
+
+            using (var driveHelper = new GoogleDriveApiHelper(Server.MapPath("").Replace(@"\Aulas", "")))
+            {
+                var stream = await driveHelper.DownloadArquivoAulaAsync(aulaVM, aulaVM.Turma);
+                if (stream != null)
+                {
+                    var arStream = new MemoryStream(stream.ToArray());
+                    var fileResult = new FileStreamResult(arStream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+                    fileResult.FileDownloadName = "teste.xlsx";
+                    return fileResult;
+                }
+            }
+
+            return RedirectToAction(nameof(Detalhes), new { id = idAula});
         }
     }
 }
