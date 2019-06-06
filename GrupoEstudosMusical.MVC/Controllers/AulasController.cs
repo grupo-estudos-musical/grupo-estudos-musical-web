@@ -77,7 +77,7 @@ namespace GrupoEstudosMusical.MVC.Controllers
                 var turmaVM = Mapper.Map<Turma, TurmaVM>(await _bussinesTurma.ObterPorIdAsync(aulaVM.TurmaId));
                 using (var driveHelper = new GoogleDriveApiHelper(Server.MapPath("").Replace(@"\Aulas", "")))
                 {
-                    await driveHelper.SalvarArquivoAulaAsync(aulaVM, turmaVM);
+                    await driveHelper.UploadArquivoAulaAsync(aulaVM, turmaVM);
                 }
 
                 TempData["mensagem"] = "Aula cadastrada com sucesso!";
@@ -117,12 +117,11 @@ namespace GrupoEstudosMusical.MVC.Controllers
 
             using (var driveHelper = new GoogleDriveApiHelper(Server.MapPath("").Replace(@"\Aulas", "")))
             {
-                var stream = await driveHelper.DownloadArquivoAulaAsync(aulaVM, aulaVM.Turma);
-                if (stream != null)
+                var arquivoDownload = await driveHelper.DownloadArquivoAulaAsync(aulaVM, aulaVM.Turma);
+                if (arquivoDownload != null)
                 {
-                    var arStream = new MemoryStream(stream.ToArray());
-                    var fileResult = new FileStreamResult(arStream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
-                    fileResult.FileDownloadName = "teste.xlsx";
+                    var fileResult = new FileStreamResult(arquivoDownload.Stream, arquivoDownload.MimeType);
+                    fileResult.FileDownloadName = $"{arquivoDownload.Nome}.{arquivoDownload.Extensao}";
                     return fileResult;
                 }
             }

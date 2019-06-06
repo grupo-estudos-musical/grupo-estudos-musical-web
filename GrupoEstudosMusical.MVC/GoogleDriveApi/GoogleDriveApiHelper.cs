@@ -1,5 +1,6 @@
 ﻿using Google.Apis.Drive.v3;
 using GrupoEstudosMusical.MVC.Models;
+using MimeTypes;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -41,20 +42,30 @@ namespace GrupoEstudosMusical.MVC.GoogleDriveApi
             await _googleDriveApi.UploadAsync(_driveService, arquivoUpload, $"{id}-{DateTime.Now.ToString("dd-MM-yyyy")}-{arquivoUpload.FileName}", parents);
         }
 
-        public async Task<MemoryStream> DownloadArquivoAulaAsync(AulaVM aulaVM, TurmaVM turmaVM)
+        public async Task<ArquivoDownload> DownloadArquivoAulaAsync(AulaVM aulaVM, TurmaVM turmaVM)
         {
             var nomeArquivo = $"{aulaVM.Id}-{aulaVM.DataCadastro.ToString("dd-MM-yyyy")}";
             var arquivoAula = (await _googleDriveApi
                 .PesquisarArquivoPorNomeAsync(_driveService, nomeArquivo, "contains"))
                 .FirstOrDefault();
 
-            if (arquivoAula != null)            
-                return await _googleDriveApi.Download(_driveService, arquivoAula.Name);
+            if (arquivoAula != null)
+            {
+                var stream = _googleDriveApi.Download(_driveService, arquivoAula.Id);
+                var arquivoDownload = new ArquivoDownload
+                {
+                    Nome = arquivoAula.Name,
+                    Stream = new MemoryStream(stream.ToArray()),
+                    MimeType = MimeTypeMap.GetMimeType(arquivoAula.FileExtension),
+                    Extensao = arquivoAula.FileExtension
+                };
+                return arquivoDownload;
+            }
 
             return null;
         }
 
-        public async Task SalvarArquivoAulaAsync(AulaVM aulaVM, TurmaVM turmaVM)
+        public async Task UploadArquivoAulaAsync(AulaVM aulaVM, TurmaVM turmaVM)
         {
             var idDirAulas = await CriarDiretorioAsync("Aulas", null);
 

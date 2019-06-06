@@ -286,6 +286,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="GoogleDriveApi\ArquivoDownload.cs" />
     <Compile Include="GoogleDriveApi\GoogleDriveApiHelper.cs" />
     <Compile Include="GoogleDriveApi\GoogleDriveApiService.cs" />
     <Compile Include="Helpers\AlunoHelper.cs" />

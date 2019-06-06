@@ -83,7 +83,7 @@ namespace GrupoEstudosMusical.MVC.GoogleDriveApi
         {
             var request = servico.Files.List();
             request.Q = $"name {operador} '{nomeArquivo}' and trashed=false";
-            request.Fields = "files(id,name,mimeType,parents)";
+            request.Fields = "files(id,name,mimeType,parents,fileExtension)";
             var resultado = await request.ExecuteAsync();
             return resultado.Files;
         }
@@ -97,12 +97,12 @@ namespace GrupoEstudosMusical.MVC.GoogleDriveApi
             return resultado.Files;
         }
 
-        public async Task<MemoryStream> Download(DriveService servico, string nomeArquivo)
+        public MemoryStream Download(DriveService servico, string idArquivo)
         {
-            var arquivo = (await PesquisarArquivoPorNomeAsync(servico, nomeArquivo)).FirstOrDefault();
-            if (arquivo != null)
+            var request = servico.Files.Get(idArquivo);
+
+            if (request != null)
             {
-                var request = servico.Files.Get(arquivo.Id);
                 var stream = new MemoryStream();
                 request.Download(stream);
                 return stream;
