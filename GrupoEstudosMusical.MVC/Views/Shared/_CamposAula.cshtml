@@ -42,16 +42,71 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-xs-6">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Arquivo, htmlAttributes: new { @class = "form-label" })
-                        <div class="controls">
-                            @Html.TextBoxFor(model => model.Arquivo, new { type = "file", @class = "form-control" })
+            @if (string.IsNullOrEmpty(Model.NomeArquivo))
+            {
+                <div class="row">
+                    <div class="col-xs-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Arquivo, htmlAttributes: new { @class = "form-label" })
+                            <div class="controls">
+                                @Html.TextBoxFor(model => model.Arquivo, new { type = "file", @class = "form-control" })
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            }
+            else
+            {
+                <div class="row">
+                    <div class="col-sm-6 col-md-4">
+                        <div class="thumbnail card-aula">
+                            <div class="caption">
+                                <h3>Material da Aula</h3>
+                                <a href="@Url.Action("Download", new { idAula = Model.Id})" style="color: #000">
+                                    <p>
+                                        <span>Nome:</span>
+                                        @Model.NomeArquivo
+                                    </p>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div style="text-align: center">
+                                                @if (Model.ExtensaoArquivo.Equals("pdf"))
+                                                {
+                                                    <img src="~/Content/images/arquivo_pdf.png" alt="PDF" />
+                                                }
+                                                else if (Model.ExtensaoArquivo.Equals("txt"))
+                                                {
+                                                    <img src="~/Content/images/arquivo_txt.png" alt="txt" />
+                                                }
+                                                else if (Model.ExtensaoArquivo.Equals("doc") || Model.ExtensaoArquivo.Equals("docx"))
+                                                {
+                                                    <img src="~/Content/images/arquivo_doc.png" alt="Docx" />
+                                                }
+                                                else if (Model.ExtensaoArquivo.Equals("xls") || Model.ExtensaoArquivo.Equals("xlsx"))
+                                                {
+                                                    <img src="~/Content/images/arquivo_xls.png" alt="Xlxs" />
+                                                }
+                                                else if (Model.ExtensaoArquivo.Equals("ppt") || Model.ExtensaoArquivo.Equals("pptx"))
+                                                {
+                                                    <img src="~/Content/images/arquivo_ppt.png" alt="Pttx" />
+                                                }
+                                                else if (Model.ExtensaoArquivo.Equals("jpg") || Model.ExtensaoArquivo.Equals("png") || Model.ExtensaoArquivo.Equals("jpeg"))
+                                                {
+                                                    <img src="~/Content/images/arquivo_jpg.png" alt="Jpg" />
+                                                }
+                                                else
+                                                {
+                                                    <img src="~/Content/images/arquivo_desconhecido.png" alt="File" />
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
         </div>
     </section>
 </div>

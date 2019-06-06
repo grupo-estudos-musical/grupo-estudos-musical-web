@@ -28,6 +28,10 @@ namespace GrupoEstudosMusical.MVC.Models
         [DisplayName("Adicionar arquivo")]
         public HttpPostedFileBase Arquivo { get; set; }
 
+        public string NomeArquivo { get; set; }
+
+        public string ExtensaoArquivo { get; set; }
+
         public List<AvaliacaoTurmaVM> AvaliacoesTurma { get; set; } = new List<AvaliacaoTurmaVM>();
     }
 }

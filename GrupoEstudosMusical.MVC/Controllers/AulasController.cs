@@ -95,6 +95,14 @@ namespace GrupoEstudosMusical.MVC.Controllers
         {
             var aulaModel = await _bussinesAula.ObterPorIdAsync(id);
             var aulaVM = Mapper.Map<Aula, AulaVM>(aulaModel);
+
+            using (var driveHelper = new GoogleDriveApiHelper(Server.MapPath("").Replace(@"\Aulas", "").Replace(@"\Detalhes", "")))
+            {
+                var arquivo = await driveHelper.PesquisarArquivoPorNome(aulaVM);
+                aulaVM.NomeArquivo = arquivo.Name;
+                aulaVM.ExtensaoArquivo = arquivo.FileExtension;
+            }
+
             return View(aulaVM);
         }
 
@@ -117,7 +125,7 @@ namespace GrupoEstudosMusical.MVC.Controllers
 
             using (var driveHelper = new GoogleDriveApiHelper(Server.MapPath("").Replace(@"\Aulas", "")))
             {
-                var arquivoDownload = await driveHelper.DownloadArquivoAulaAsync(aulaVM, aulaVM.Turma);
+                var arquivoDownload = await driveHelper.DownloadArquivoAulaAsync(aulaVM);
                 if (arquivoDownload != null)
                 {
                     var fileResult = new FileStreamResult(arquivoDownload.Stream, arquivoDownload.MimeType);

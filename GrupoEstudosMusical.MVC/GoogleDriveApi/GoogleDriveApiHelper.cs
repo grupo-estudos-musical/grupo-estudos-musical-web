@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
+using FileGoole = Google.Apis.Drive.v3.Data.File;
 
 namespace GrupoEstudosMusical.MVC.GoogleDriveApi
 {
@@ -42,12 +43,9 @@ namespace GrupoEstudosMusical.MVC.GoogleDriveApi
             await _googleDriveApi.UploadAsync(_driveService, arquivoUpload, $"{id}-{DateTime.Now.ToString("dd-MM-yyyy")}-{arquivoUpload.FileName}", parents);
         }
 
-        public async Task<ArquivoDownload> DownloadArquivoAulaAsync(AulaVM aulaVM, TurmaVM turmaVM)
+        public async Task<ArquivoDownload> DownloadArquivoAulaAsync(AulaVM aulaVM)
         {
-            var nomeArquivo = $"{aulaVM.Id}-{aulaVM.DataCadastro.ToString("dd-MM-yyyy")}";
-            var arquivoAula = (await _googleDriveApi
-                .PesquisarArquivoPorNomeAsync(_driveService, nomeArquivo, "contains"))
-                .FirstOrDefault();
+            FileGoole arquivoAula = await PesquisarArquivoPorNome(aulaVM);
 
             if (arquivoAula != null)
             {
@@ -63,6 +61,15 @@ namespace GrupoEstudosMusical.MVC.GoogleDriveApi
             }
 
             return null;
+        }
+
+        public async Task<FileGoole> PesquisarArquivoPorNome(AulaVM aulaVM)
+        {
+            var nomeArquivo = $"{aulaVM.Id}-{aulaVM.DataCadastro.ToString("dd-MM-yyyy")}";
+            var arquivoAula = (await _googleDriveApi
+                .PesquisarArquivoPorNomeAsync(_driveService, nomeArquivo, "contains"))
+                .FirstOrDefault();
+            return arquivoAula;
         }
 
         public async Task UploadArquivoAulaAsync(AulaVM aulaVM, TurmaVM turmaVM)
