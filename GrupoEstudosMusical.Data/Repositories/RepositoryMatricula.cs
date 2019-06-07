@@ -12,6 +12,13 @@ namespace GrupoEstudosMusical.Data.Repositories
 {
     public class RepositoryMatricula : RepositoryGeneric<Matricula>, IRepositoryMatricula
     {
+        public async Task AlterarSituacaoAcademicaAluno(Matricula matricula)
+        {
+            Context.Entry(matricula.Aluno).State = EntityState.Detached;
+            Context.Entry(matricula.Turma).State = EntityState.Detached;
+            await AlterarAsync(matricula);
+        }
+
         public async Task<int> IncluirMatricula(Matricula matricula)
         {
             await DbSet.AddAsync(matricula);

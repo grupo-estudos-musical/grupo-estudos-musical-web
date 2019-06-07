@@ -98,10 +98,10 @@ namespace GrupoEstudosMusical.Bussines
 
                 turma.Status = "Encerrada";
                 turma.TerminoAula = DateTime.Now;
-                var matriculas = turma.Matriculas;
+                //var matriculas = turma.Matriculas;
                 //turma.Matriculas = null;
                 await _repositoryTurma.AlterarAsync(turma);
-                ConcluirSituacaoAcademicaDosAlunos(matriculas);
+                await ConcluirSituacaoAcademicaDosAlunos(turma.Matriculas);
             }catch(Exception ex)
             {
                 throw new Exception(ex.Message);
@@ -112,9 +112,9 @@ namespace GrupoEstudosMusical.Bussines
 
 
 
-        public void ConcluirSituacaoAcademicaDosAlunos(List<Matricula> matriculas)
+        public async Task ConcluirSituacaoAcademicaDosAlunos(List<Matricula> matriculas)
         {
-            _bussinesMatricula.ConcluirMatriculaDoAluno(matriculas);
+            await _bussinesMatricula.ConcluirMatriculaDoAluno(matriculas);
         }
        
         

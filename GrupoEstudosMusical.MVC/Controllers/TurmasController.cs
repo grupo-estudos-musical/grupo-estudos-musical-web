@@ -57,14 +57,14 @@ namespace GrupoEstudosMusical.MVC.Controllers
         [HttpPost]
         public async Task<JsonResult> FinalizarVigenciaTurma(int ID)
         {
-            try
-            {
+            //try
+            //{
                 await _bussinesTurma.FinalizarVigencia(ID);
                 return Json(new { result = true, mensagem = "Turma Finalizada, \n a situação da matrícula dos alunos foram atualizadas" }, JsonRequestBehavior.AllowGet);
-            }catch(Exception ex)
-            {
-                return Json(new { result = false, mensagem = ex.Message }, JsonRequestBehavior.AllowGet);
-            }
+            //}catch(Exception ex)
+            //{
+            //    return Json(new { result = false, mensagem = ex.Message }, JsonRequestBehavior.AllowGet);
+            //}
         }
 
         public async Task<ActionResult> Novo()
