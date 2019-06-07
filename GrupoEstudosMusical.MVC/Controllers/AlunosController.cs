@@ -14,7 +14,7 @@ using System.Web.Mvc;
 
 namespace GrupoEstudosMusical.MVC.Controllers
 {
-    
+    [AuthorizeGem]
     public class AlunosController : Controller
     {
         private readonly IBussinesAluno _bussinesAluno;
@@ -100,13 +100,25 @@ namespace GrupoEstudosMusical.MVC.Controllers
         }
 
         public async Task<ActionResult> VisaoGeral(int Id)
-        {
+        { 
+            if(!VerificarSeUsuarioPossuiAcesso(Id))
+            {
+                return HttpNotFound("Você não possui acesso a estas informações, contate o administrador!");
+            }
             var obterDadosDoAlunoVm = Mapper.Map<Aluno, AlunoVM>(await _bussinesAluno.ObterPorIdAsync(Id));
             if (obterDadosDoAlunoVm == null)
                 return HttpNotFound();
             return View(obterDadosDoAlunoVm);
         }
 
+        private bool VerificarSeUsuarioPossuiAcesso(int Id)
+        {
+            if (Session["nivelAcesso"].ToString() == "Administrador")
+                return true;
+            if (Session["AlunoID"] != null && Convert.ToInt32(Session["AlunoID"].ToString()) == Id)
+                return true;
+            return false;
+        }
         [Route("Alunos/Editar/{id}")]
         [HttpPost]
         [ValidateAntiForgeryToken]

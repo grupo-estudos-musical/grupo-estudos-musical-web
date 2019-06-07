@@ -115,34 +115,39 @@
         </div>
     </section>
 </div>
+@if (Session["nivelAcesso"].ToString() == "Administrador")
+{
 
-<div class="col-lg-12">
-    <section class="box ">
-        <header class="panel_header">
-            <h2 class="title pull-left">Documentos apresentados</h2>
-            <div class="actions panel_actions pull-right">
-                <a class="box_toggle fa fa-chevron-down"></a>
-                <a class="box_close fa fa-times"></a>
-            </div>
-        </header>
-        <div class="content-body">
-            <div id="documentos">
-                @Html.Partial("_DocumentosApresentados")
-            </div>
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="pull-right ">
-                        @*@using (Html.BeginForm("AlterarDocumentosApresentados", "Matriculas", FormMethod.Post))
-        {
-            @Html.AntiForgeryToken()
-        }*@
-                        <button class="btn btn-success" id="btn-alterar-documentos">Alterar</button>
+
+
+    <div class="col-lg-12">
+        <section class="box ">
+            <header class="panel_header">
+                <h2 class="title pull-left">Documentos apresentados</h2>
+                <div class="actions panel_actions pull-right">
+                    <a class="box_toggle fa fa-chevron-down"></a>
+                    <a class="box_close fa fa-times"></a>
+                </div>
+            </header>
+            <div class="content-body">
+                <div id="documentos">
+                    @Html.Partial("_DocumentosApresentados")
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="pull-right ">
+                            @*@using (Html.BeginForm("AlterarDocumentosApresentados", "Matriculas", FormMethod.Post))
+                                {
+                                    @Html.AntiForgeryToken()
+                                }*@
+                            <button class="btn btn-success" id="btn-alterar-documentos">Alterar</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-</div>
+        </section>
+    </div>
+}
 
 <div class="col-lg-12">
     <section class="box ">

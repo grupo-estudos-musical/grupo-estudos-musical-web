@@ -15,24 +15,28 @@ using static GrupoEstudosMusical.Email.EmailMessage;
 
 namespace GrupoEstudosMusical.MVC.Controllers
 {
-
+    [AuthorizeGem]
     public class RelatoriosController : Controller
     {
         // GET: Relatorios
         public RelatoriosController(IBussinesOcorrencia bussinesOcorrencia, IBussinesMatricula bussinesMatricula
-            , IBussinesTurma bussinesTurma, IEmailService email, IBussinesAluno bussinesAluno)
+            , IBussinesTurma bussinesTurma, IEmailService email, IBussinesAluno bussinesAluno, IBussinesInstrumentoDoAluno bussinesInstrumentoDoAluno)
         {
             _bussinesEmail = email;
             this.bussinesOcorrencia = bussinesOcorrencia;
             this.bussinesMatricula = bussinesMatricula;
             this.bussinesTurma = bussinesTurma;
             this.bussinesAluno = bussinesAluno;
+            this._bussinesInstrumentoDoAluno = bussinesInstrumentoDoAluno;
         }
         readonly IBussinesOcorrencia bussinesOcorrencia;
         readonly IBussinesMatricula bussinesMatricula;
         readonly IBussinesTurma bussinesTurma;
         readonly IEmailService _bussinesEmail;
         readonly IBussinesAluno bussinesAluno;
+        readonly IBussinesInstrumentoDoAluno _bussinesInstrumentoDoAluno;
+
+
         public ActionResult Index()
         {
             return View();
@@ -56,12 +60,13 @@ namespace GrupoEstudosMusical.MVC.Controllers
                 listaDeOcorrenciasPorTurma.ForEach(l => l.ImagemAluno = AlunoHelper.ObterByteImagemAluno(l.Aluno.ImagemUrl, Server));
                 var relatorioGerado = Relatorios.GerarRelatorio<OcorrenciasParaRelatorio>(System.Web.HttpContext.Current.Server.MapPath("~/Relatorios/ocorrencias.frx"), listaDeOcorrenciasPorTurma, "Dados", TiposDeRelatorios.PDF, null);
                 return File(relatorioGerado, "application/pdf", $"RelatorioDeOcorrenciasPorTurma{DateTime.Now}.pdf");
-            }catch(Exception e)
+            }
+            catch (Exception e)
             {
                 TempData["_MensagemErro"] = e.Message;
                 return View();
             }
-            
+
         }
 
 
@@ -86,7 +91,7 @@ namespace GrupoEstudosMusical.MVC.Controllers
 
 
 
-        public async  Task<ActionResult> GerarRelatorioOcorrenciasPorAluno(int AlunoId)
+        public async Task<ActionResult> GerarRelatorioOcorrenciasPorAluno(int AlunoId)
         {
             var listaOcorrenciasAluno = new List<OcorrenciasParaRelatorio>()
             {
@@ -98,6 +103,15 @@ namespace GrupoEstudosMusical.MVC.Controllers
             return File(relatorioGerado, "application/pdf", $"RelatorioOcorrencias{DateTime.Now}.pdf");
         }
 
+        public async Task<ActionResult> GerarDetalhamentoDosEmprestimos(int alunoID)
+        {
+            var detalhesDoEmprestimo = new List<DetalhesDoEmprestimo>()
+                {
+                    await _bussinesInstrumentoDoAluno.ObterDadosDeEmprestimos(alunoID)
+                 };
+            var relatorioGerado = Relatorios.GerarRelatorio<DetalhesDoEmprestimo>(System.Web.HttpContext.Current.Server.MapPath("~/Relatorios/DetalhesDeEmpréstimos.frx"), detalhesDoEmprestimo, "Dados", TiposDeRelatorios.PDF, null);
+            return File(relatorioGerado, "application/pdf", $"RelatorioDeDetalhamentoDeEmprestimo_{DateTime.Now}.pdf");
+        }
 
         public async Task<ActionResult> GerarAtestadoDeMatricula(int alunoID)
         {
@@ -106,14 +120,14 @@ namespace GrupoEstudosMusical.MVC.Controllers
             if (aluno == null)
                 return HttpNotFound("Aluno não encontrado");
             var matriculas = await bussinesMatricula.ObterMatriculasPorAluno(alunoID);
-            if(matriculas.Count == 0)
+            if (matriculas.Count == 0)
                 return HttpNotFound("Aluno não possui matrículas!");
             ViewBag.Matriculas = matriculas.Select(x => new { Id = x.Id, NomeTurma = x.Turma.Nome });
             return View(aluno);
         }
 
         [HttpPost]
-        public async Task<ActionResult> GerarAtestadoDeMatricula(int MatriculaID, string opcao ="")
+        public async Task<ActionResult> GerarAtestadoDeMatricula(int MatriculaID, string opcao = "")
         {
 
             var listaDeAtestadoDeMatricula = new List<AtestadoDeMatricula>()
@@ -143,7 +157,7 @@ namespace GrupoEstudosMusical.MVC.Controllers
             var listaBoletimDaTurma = await bussinesMatricula.ObterBoletimDaTurma(ID);
 
             SetarImagemDosAlunosNoBoletim(listaBoletimDaTurma);
-            var relatorioGerador = Relatorios.GerarRelatorio<Boletim>(System.Web.HttpContext.Current.Server.MapPath("~/Relatorios/boletim.frx"), listaBoletimDaTurma ,"Dados", TiposDeRelatorios.PDF, null);
+            var relatorioGerador = Relatorios.GerarRelatorio<Boletim>(System.Web.HttpContext.Current.Server.MapPath("~/Relatorios/boletim.frx"), listaBoletimDaTurma, "Dados", TiposDeRelatorios.PDF, null);
             return File(relatorioGerador, "application/pdf", $"boletimDaTurma{DateTime.Now}.pdf");
         }
 
@@ -153,7 +167,7 @@ namespace GrupoEstudosMusical.MVC.Controllers
             {
                 item.ImagemAluno = AlunoHelper.ObterByteImagemAluno(item.MatriculaAluno.Aluno.ImagemUrl, Server);
             }
-                
+
         }
 
 

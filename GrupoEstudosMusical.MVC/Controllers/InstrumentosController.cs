@@ -4,6 +4,7 @@ using GrupoEstudosMusical.Bussines.Exceptions;
 using GrupoEstudosMusical.Models;
 using GrupoEstudosMusical.Models.Entities;
 using GrupoEstudosMusical.Models.Interfaces.Bussines;
+using GrupoEstudosMusical.MVC.App_Start;
 using GrupoEstudosMusical.MVC.Models;
 using Microsoft.Ajax.Utilities;
 using System;
@@ -15,6 +16,7 @@ using static GrupoEstudosMusical.Models.Entities.Instrumento;
 namespace GrupoEstudosMusical.MVC.Controllers
 {
   
+    [AuthorizeGem]
     public class InstrumentosController : Controller
     {
         readonly IBussinesFabricante _bussinesFabricante;
@@ -101,6 +103,7 @@ namespace GrupoEstudosMusical.MVC.Controllers
         {
             try
             {
+                instrumentoDoAlunoVM.UsuarioId = Convert.ToInt32(Session["idUsuario"].ToString());
                 var instrumentoEmprestimoModel = Mapper.Map<InstrumentoDoAlunoVM, InstrumentoDoAluno>(instrumentoDoAlunoVM);
                 await _bussinesInstrumentoDoAluno.InserirAsync(instrumentoEmprestimoModel);
                 return Json(new { result = true, mensagem = "Empréstimo realizado com sucesso!" }, JsonRequestBehavior.AllowGet);

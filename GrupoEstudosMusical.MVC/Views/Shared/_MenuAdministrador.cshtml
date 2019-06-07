@@ -101,6 +101,12 @@
         </a>
         <ul class="sub-menu" style="@(controller == "Inventario" ? "display-block" : "" )">
             <li>
+                <a class="@(rota == "/Fabricantes/Index" || rota == "/Fabricantes" ? "active" : "" )" href="@Url.Action("Index", "Fabricantes")">Fabricantes</a>
+            </li>
+            <li>
+                <a class="@(rota == "/Fabricantes/Novo" ? "active" : "" )" href="@Url.Action("Novo", "Fabricantes")">Cadastrar Fabricantes</a>
+            </li>
+            <li>
                 <a class="@(rota == "/Instrumentos/Index" || rota == "/Instrumentos" ? "active" : "" )" href="@Url.Action("Index", "Instrumentos")">Instrumentos</a>
             </li>
             <li>

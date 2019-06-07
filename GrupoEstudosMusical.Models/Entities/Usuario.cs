@@ -1,4 +1,5 @@
 ﻿using GrupoEstudosMusical.Models.Enums;
+using System.Collections.Generic;
 
 namespace GrupoEstudosMusical.Models.Entities
 {
@@ -10,5 +11,6 @@ namespace GrupoEstudosMusical.Models.Entities
         public NivelAcessoEnum NivelAcesso { get; set; }
         public Aluno Aluno { get; set; }
         public Professor Professor { get; set; }
+        public List<InstrumentoDoAluno> InstrumentosDoAluno { get; set; }
     }
 }
