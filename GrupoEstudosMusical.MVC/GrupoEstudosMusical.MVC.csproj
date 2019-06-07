@@ -487,6 +487,7 @@
     <Content Include="Scripts\lib\perfect-scrollbar\perfect-scrollbar.min.js" />
     <Content Include="Scripts\lib\switchery\dist\switchery.js" />
     <Content Include="Scripts\lib\viewport\viewportchecker.js" />
+    <Content Include="Views\Shared\logo.png" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
