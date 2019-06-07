@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Report ScriptLanguage="CSharp" ReportInfo.Created="05/14/2019 19:35:39" ReportInfo.Modified="05/31/2019 23:15:23" ReportInfo.CreatorVersion="1.8.2.0">
+<Report ScriptLanguage="CSharp" ReportInfo.Created="05/14/2019 19:35:39" ReportInfo.Modified="06/07/2019 12:55:33" ReportInfo.CreatorVersion="1.8.2.0">
   <ScriptText>using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -171,6 +171,7 @@ namespace FastReport
               <Column Name="Status" DataType="System.String"/>
               <Column Name="Id" DataType="System.Int32"/>
               <Column Name="DataCadastro" DataType="System.DateTime"/>
+              <Column Name="Faltas" DataType="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"/>
             </BusinessObjectDataSource>
             <BusinessObjectDataSource Name="Ocorrencias" DataType="null" Enabled="true">
               <Column Name="Titulo" DataType="System.String"/>
@@ -608,6 +609,7 @@ namespace FastReport
               <Column Name="Status" DataType="System.String"/>
               <Column Name="Id" DataType="System.Int32"/>
               <Column Name="DataCadastro" DataType="System.DateTime"/>
+              <Column Name="Faltas" DataType="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"/>
             </Column>
             <Column Name="Id" DataType="System.Int32"/>
             <Column Name="DataCadastro" DataType="System.DateTime"/>
@@ -712,6 +714,7 @@ namespace FastReport
               <Column Name="Status" DataType="System.String"/>
               <Column Name="Id" DataType="System.Int32"/>
               <Column Name="DataCadastro" DataType="System.DateTime"/>
+              <Column Name="Faltas" DataType="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"/>
             </BusinessObjectDataSource>
             <BusinessObjectDataSource Name="Ocorrencias2" Alias="Ocorrencias" DataType="null" PropName="Ocorrencias" Enabled="true">
               <Column Name="Titulo" DataType="System.String"/>
@@ -991,6 +994,7 @@ namespace FastReport
               <Column Name="Status" DataType="System.String"/>
               <Column Name="Id" DataType="System.Int32"/>
               <Column Name="DataCadastro" DataType="System.DateTime"/>
+              <Column Name="Faltas" DataType="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"/>
             </Column>
             <Column Name="Id" DataType="System.Int32"/>
             <Column Name="DataCadastro" DataType="System.DateTime"/>
@@ -1074,6 +1078,7 @@ namespace FastReport
               <Column Name="Status" DataType="System.String"/>
               <Column Name="Id" DataType="System.Int32"/>
               <Column Name="DataCadastro" DataType="System.DateTime"/>
+              <Column Name="Faltas" DataType="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"/>
             </BusinessObjectDataSource>
             <BusinessObjectDataSource Name="Ocorrencias3" Alias="Ocorrencias" DataType="null" PropName="Ocorrencias" Enabled="true">
               <Column Name="Titulo" DataType="System.String"/>
@@ -1228,6 +1233,8 @@ namespace FastReport
               <Column Name="Status" DataType="System.String"/>
               <Column Name="Id" DataType="System.Int32"/>
               <Column Name="DataCadastro" DataType="System.DateTime"/>
+              <Column Name="UsuarioId" DataType="System.Int32"/>
+              <Column Name="Usuario" Enabled="false" DataType="null"/>
             </BusinessObjectDataSource>
             <Column Name="Id" DataType="System.Int32"/>
             <Column Name="DataCadastro" DataType="System.DateTime"/>
@@ -1243,6 +1250,7 @@ namespace FastReport
           <Column Name="Status" DataType="System.String"/>
           <Column Name="Id" DataType="System.Int32"/>
           <Column Name="DataCadastro" DataType="System.DateTime"/>
+          <Column Name="Faltas" DataType="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"/>
         </Column>
         <Column Name="Id" DataType="System.Int32"/>
         <Column Name="DataCadastro" DataType="System.DateTime"/>
@@ -1448,6 +1456,7 @@ namespace FastReport
                 <Column Name="Status" DataType="System.String"/>
                 <Column Name="Id" DataType="System.Int32"/>
                 <Column Name="DataCadastro" DataType="System.DateTime"/>
+                <Column Name="Faltas" DataType="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"/>
               </Column>
               <Column Name="Id" DataType="System.Int32"/>
               <Column Name="DataCadastro" DataType="System.DateTime"/>
@@ -1489,6 +1498,7 @@ namespace FastReport
             <Column Name="Status" DataType="System.String"/>
             <Column Name="Id" DataType="System.Int32"/>
             <Column Name="DataCadastro" DataType="System.DateTime"/>
+            <Column Name="Faltas" DataType="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"/>
           </BusinessObjectDataSource>
           <BusinessObjectDataSource Name="Ocorrencias8" Alias="Ocorrencias" DataType="null" PropName="Ocorrencias" Enabled="true">
             <Column Name="Titulo" DataType="System.String"/>
@@ -1691,6 +1701,7 @@ namespace FastReport
                 <Column Name="Status" DataType="System.String"/>
                 <Column Name="Id" DataType="System.Int32"/>
                 <Column Name="DataCadastro" DataType="System.DateTime"/>
+                <Column Name="Faltas" DataType="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"/>
               </Column>
               <Column Name="Id" DataType="System.Int32"/>
               <Column Name="DataCadastro" DataType="System.DateTime"/>
@@ -2016,6 +2027,7 @@ namespace FastReport
                 <Column Name="Status" DataType="System.String"/>
                 <Column Name="Id" DataType="System.Int32"/>
                 <Column Name="DataCadastro" DataType="System.DateTime"/>
+                <Column Name="Faltas" DataType="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"/>
               </Column>
               <Column Name="Id" DataType="System.Int32"/>
               <Column Name="DataCadastro" DataType="System.DateTime"/>
@@ -2101,6 +2113,7 @@ namespace FastReport
                 <Column Name="Status" DataType="System.String"/>
                 <Column Name="Id" DataType="System.Int32"/>
                 <Column Name="DataCadastro" DataType="System.DateTime"/>
+                <Column Name="Faltas" DataType="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"/>
               </Column>
               <Column Name="Id" DataType="System.Int32"/>
               <Column Name="DataCadastro" DataType="System.DateTime"/>
@@ -2142,6 +2155,7 @@ namespace FastReport
             <Column Name="Status" DataType="System.String"/>
             <Column Name="Id" DataType="System.Int32"/>
             <Column Name="DataCadastro" DataType="System.DateTime"/>
+            <Column Name="Faltas" DataType="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"/>
           </Column>
           <Column Name="Id" DataType="System.Int32"/>
           <Column Name="DataCadastro" DataType="System.DateTime"/>
@@ -2243,6 +2257,7 @@ namespace FastReport
                 <Column Name="Status" DataType="System.String"/>
                 <Column Name="Id" DataType="System.Int32"/>
                 <Column Name="DataCadastro" DataType="System.DateTime"/>
+                <Column Name="Faltas" DataType="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"/>
               </Column>
               <Column Name="Id" DataType="System.Int32"/>
               <Column Name="DataCadastro" DataType="System.DateTime"/>
@@ -2284,6 +2299,7 @@ namespace FastReport
             <Column Name="Status" DataType="System.String"/>
             <Column Name="Id" DataType="System.Int32"/>
             <Column Name="DataCadastro" DataType="System.DateTime"/>
+            <Column Name="Faltas" DataType="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"/>
           </BusinessObjectDataSource>
           <BusinessObjectDataSource Name="Ocorrencias19" Alias="Ocorrencias" DataType="null" PropName="Ocorrencias" Enabled="true">
             <Column Name="Titulo" DataType="System.String"/>
@@ -2488,6 +2504,8 @@ namespace FastReport
             <Column Name="Status" DataType="System.String"/>
             <Column Name="Id" DataType="System.Int32"/>
             <Column Name="DataCadastro" DataType="System.DateTime"/>
+            <Column Name="UsuarioId" DataType="System.Int32"/>
+            <Column Name="Usuario" Enabled="false" DataType="null"/>
           </BusinessObjectDataSource>
           <Column Name="Id" DataType="System.Int32"/>
           <Column Name="DataCadastro" DataType="System.DateTime"/>
@@ -2503,6 +2521,7 @@ namespace FastReport
         <Column Name="Status" DataType="System.String"/>
         <Column Name="Id" DataType="System.Int32"/>
         <Column Name="DataCadastro" DataType="System.DateTime"/>
+        <Column Name="Faltas" DataType="System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"/>
       </Column>
       <Column Name="ImagemAluno" DataType="System.Byte[]" BindableControl="Picture"/>
     </BusinessObjectDataSource>
@@ -2543,18 +2562,22 @@ namespace FastReport
           <SubreportObject Name="Subreport1" Left="37.8" Width="641.6" Height="21.9" ReportPage="Page2" PrintOnParent="true"/>
         </ChildBand>
       </DataBand>
-      <GroupFooterBand Name="GroupFooter1" Top="244.8" Width="718.2" Height="88.05">
-        <ShapeObject Name="Shape8" Left="274.05" Top="19.6" Width="406.35" Height="20.9" Fill.Color="White"/>
-        <LineObject Name="Line9" Left="453.6" Top="19.6" Height="18.9" Diagonal="true"/>
-        <TextObject Name="Text22" Left="338.2" Top="23.05" Width="47.25" Height="14.45" Fill.Color="White" Text="Média" HorzAlign="Center" Font="Arial, 8pt, style=Bold"/>
-        <TextObject Name="media" Left="464.05" Top="22.6" Width="207.9" Height="15.9" AfterDataEvent="media_AfterData" Text="[Dados.MatriculaAluno.Media]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="1" Format.DecimalSeparator="," Format.GroupSeparator="." Format.NegativePattern="1" HorzAlign="Center" Font="Arial, 8pt, style=Bold"/>
-        <ShapeObject Name="Shape9" Left="274.05" Top="37.95" Width="406.35" Height="20.9" Fill.Color="White"/>
-        <LineObject Name="Line10" Left="453.6" Top="38.95" Height="17.9" Diagonal="true"/>
-        <TextObject Name="situacaoMatricula" Left="279.05" Top="39.95" Width="170.1" Height="15.9" AfterDataEvent="situacaoMatricula_AfterData" Text="[Dados.MatriculaAluno.Status]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="1" Format.DecimalSeparator="," Format.GroupSeparator="." Format.NegativePattern="1" HorzAlign="Center" Font="Arial, 8pt, style=Bold"/>
-        <TextObject Name="Text25" Left="461.5" Top="41.4" Width="209.45" Height="14.45" Fill.Color="White" Text="Situação" HorzAlign="Center" Font="Arial, 8pt, style=Bold"/>
+      <GroupFooterBand Name="GroupFooter1" Top="244.8" Width="718.2" Height="95.2">
+        <ShapeObject Name="Shape11" Left="122.85" Top="37.8" Width="557.55" Height="20.9" Fill.Color="White"/>
+        <ShapeObject Name="Shape8" Left="122.85" Top="19.6" Width="557.55" Height="20.9" Fill.Color="White"/>
+        <LineObject Name="Line9" Left="491.4" Top="19.6" Height="18.9" Diagonal="true"/>
+        <TextObject Name="Text22" Left="192" Top="23.05" Width="47.25" Height="14.45" Fill.Color="White" Text="Média" HorzAlign="Center" Font="Arial, 8pt, style=Bold"/>
+        <TextObject Name="media" Left="127.5" Top="40.5" Width="170.1" Height="15.9" AfterDataEvent="media_AfterData" Text="[Dados.MatriculaAluno.Media]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="1" Format.DecimalSeparator="," Format.GroupSeparator="." Format.NegativePattern="1" HorzAlign="Center" Font="Arial, 8pt, style=Bold"/>
+        <LineObject Name="Line10" Left="491.4" Top="38.95" Height="17.9" Diagonal="true"/>
+        <TextObject Name="situacaoMatricula" Left="498.4" Top="21.05" Width="170.1" Height="15.9" AfterDataEvent="situacaoMatricula_AfterData" Text="[Dados.MatriculaAluno.Status]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="1" Format.DecimalSeparator="," Format.GroupSeparator="." Format.NegativePattern="1" HorzAlign="Center" Font="Arial, 8pt, style=Bold"/>
+        <TextObject Name="Text25" Left="497.3" Top="41.4" Width="177.65" Height="14.45" Fill.Color="White" Text="Situação" HorzAlign="Center" Font="Arial, 8pt, style=Bold"/>
+        <LineObject Name="Line11" Left="302.4" Top="18.9" Height="18.9" Diagonal="true"/>
+        <LineObject Name="Line12" Left="302.4" Top="28.8" Height="28.35" Diagonal="true"/>
+        <TextObject Name="Text26" Left="311.85" Top="23.05" Width="170.1" Height="14.45" Fill.Color="White" Text="Total de Faltas" HorzAlign="Center" Font="Arial, 8pt, style=Bold"/>
+        <TextObject Name="Text27" Left="311.85" Top="40.5" Width="170.1" Height="15.9" AfterDataEvent="media_AfterData" Text="[Dados.MatriculaAluno.Faltas]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="0" Format.DecimalSeparator="," Format.GroupSeparator="." Format.NegativePattern="1" HorzAlign="Center" Font="Arial, 8pt, style=Bold"/>
       </GroupFooterBand>
     </GroupHeaderBand>
-    <PageFooterBand Name="PageFooter1" Top="336.85" Width="718.2" Height="37.8">
+    <PageFooterBand Name="PageFooter1" Top="344" Width="718.2" Height="37.8">
       <TextObject Name="Text19" Left="165.38" Top="9.45" Width="387.45" Height="18.9" Fill.Color="White" Text="Impresso em: [FormatDateTime([Date],&quot;dd/MM/yyyy&quot;)]" HorzAlign="Center" Font="Arial, 8pt, style=Bold"/>
     </PageFooterBand>
   </ReportPage>

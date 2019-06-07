@@ -5,6 +5,7 @@ using GrupoEstudosMusical.Models.Interfaces.Bussines;
 using GrupoEstudosMusical.Models.Interfaces.Repository;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace GrupoEstudosMusical.Bussines
@@ -114,6 +115,7 @@ namespace GrupoEstudosMusical.Bussines
         public async Task ConcluirSituacaoAcademicaDosAlunos(List<Matricula> matriculas)
         {
             await _bussinesMatricula.ConcluirMatriculaDoAluno(matriculas);
+            await RecalculoAcademico(matriculas.FirstOrDefault().TurmaId);
         }
 
         public IList<Turma> ObterTurmasAtivas() => _repositoryTurma.ObterTurmasAtivas();
