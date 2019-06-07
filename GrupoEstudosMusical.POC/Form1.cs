@@ -20,9 +20,9 @@ namespace GrupoEstudosMusical.POC
         private void button1_Click(object sender, EventArgs e)
         {
             var report = new Report();
-            var dados = new List<DetalhesDoEmprestimo>();
+            var dados = new List<Boletim>();
             report.RegisterData(dados, "Dados", 5);
-           //report.Load(@"C:\Relatorios\Ocorrencias.frx");
+            report.Load(@"C:\Relatorios\boletim.frx");
             
             report.GetDataSource("Dados").Enabled = true;
             report.Design();
