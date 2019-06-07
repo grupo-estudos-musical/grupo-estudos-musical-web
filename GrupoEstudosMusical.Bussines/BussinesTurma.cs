@@ -101,7 +101,7 @@ namespace GrupoEstudosMusical.Bussines
                 var matriculas = turma.Matriculas;
                 //turma.Matriculas = null;
                 await _repositoryTurma.AlterarAsync(turma);
-                await ConcluirSituacaoAcademicaDosAlunos(matriculas);
+                ConcluirSituacaoAcademicaDosAlunos(matriculas);
             }catch(Exception ex)
             {
                 throw new Exception(ex.Message);
@@ -112,9 +112,9 @@ namespace GrupoEstudosMusical.Bussines
 
 
 
-        public async Task ConcluirSituacaoAcademicaDosAlunos(List<Matricula> matriculas)
+        public void ConcluirSituacaoAcademicaDosAlunos(List<Matricula> matriculas)
         {
-            await _bussinesMatricula.ConcluirMatriculaDoAluno(matriculas);
+            _bussinesMatricula.ConcluirMatriculaDoAluno(matriculas);
         }
        
         

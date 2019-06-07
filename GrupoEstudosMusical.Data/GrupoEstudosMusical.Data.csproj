@@ -184,6 +184,10 @@
     <Compile Include="Migrations\20190519211355_AumentandoCampoSenhaUsuario.designer.cs">
       <DependentUpon>20190519211355_AumentandoCampoSenhaUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20190607001404_CampoDeFaltasNaMatricula.cs" />
+    <Compile Include="Migrations\20190607001404_CampoDeFaltasNaMatricula.designer.cs">
+      <DependentUpon>20190607001404_CampoDeFaltasNaMatricula.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\GemContextModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\RepositoryAluno.cs" />

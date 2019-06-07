@@ -80,14 +80,21 @@ namespace GrupoEstudosMusical.Bussines
         //    await base.InserirAsync(entity);
         //}
 
-        public async Task ConcluirMatriculaDoAluno(List<Matricula> matriculas)
+        public void ConcluirMatriculaDoAluno(List<Matricula> matriculas)
         {
-            foreach (var matricula in matriculas)
+            matriculas.ForEach(async matricula =>
             {
+                //var quantFaltas = matricula.Turma.Chamadas
+                //    .Where(c =>
+                //        c.Frequencias
+                //        .Where(f => f.IdAluno == matricula.AlunoId && !f.Presenca)
+                //        .ToList().Count > 0)
+                //    .Count();
+                //matricula.Faltas = quantFaltas;
                 matricula.Turma = null;
-                matricula.Status = matricula.Media < 6 || matricula.Media ==null ? StatusDeMatriculaStaticList.Retido : StatusDeMatriculaStaticList.Aprovado;
+                matricula.Status = matricula.Media < 6 || matricula.Media == null ? StatusDeMatriculaStaticList.Retido : StatusDeMatriculaStaticList.Aprovado;
                 await AlterarAsync(matricula);
-            }
+            });
             
         }
 
