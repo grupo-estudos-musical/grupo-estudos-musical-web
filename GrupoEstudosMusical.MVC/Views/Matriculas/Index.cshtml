@@ -4,31 +4,52 @@
     ViewBag.Title = "Matrículas";
 }
 
-
-
-<div class='col-xs-12'>
-    <div class="page-title">
-        <div class="pull-left">
-            <h1 class="title">Matrículas</h1>
-        </div>
-        <div class="pull-right hidden-xs">
-            <ol class="breadcrumb">
-                <li>
-                    <a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i>Home</a>
-                </li>
-                <li>
-                    <a href="@Url.Action("Index", "Alunos")">Alunos</a>
-                </li>
-                <li>
-                    <a href="@Url.Action("VisaoGeral", "Alunos", new { id = Model[0].Aluno.Id})">Visão Geral do Aluno</a>
-                </li>
-                <li class="active">
-                    <strong>Matrículas</strong>
-                </li>
-            </ol>
+@if (Session["nivelAcesso"] != null && Session["nivelAcesso"].ToString().Equals("Aluno"))
+{
+    <div class='col-xs-12'>
+        <div class="page-title">
+            <div class="pull-left">
+                <h1 class="title">Matrículas</h1>
+            </div>
+            <div class="pull-right hidden-xs">
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="@Url.Action("VisaoGeral", "Alunos", new { Model[0].Aluno.Id})"><i class="fa fa-home"></i>Home</a>
+                    </li>
+                    <li class="active">
+                        <strong>Matrículas</strong>
+                    </li>
+                </ol>
+            </div>
         </div>
     </div>
-</div>
+}
+else
+{
+    <div class='col-xs-12'>
+        <div class="page-title">
+            <div class="pull-left">
+                <h1 class="title">Matrículas</h1>
+            </div>
+            <div class="pull-right hidden-xs">
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i>Home</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index", "Alunos")">Alunos</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("VisaoGeral", "Alunos", new { id = Model[0].Aluno.Id })">Visão Geral do Aluno</a>
+                    </li>
+                    <li class="active">
+                        <strong>Matrículas</strong>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+}
 <div class="col-lg-12">
     <section class="box ">
         <header class="panel_header">

@@ -18,17 +18,19 @@ namespace GrupoEstudosMusical.MVC.Controllers
     public class AlunosController : Controller
     {
         private readonly IBussinesAluno _bussinesAluno;
+        private readonly IBussinesTurma _bussinesTurma;
         private readonly IEmailService _emailService;
 
-        public AlunosController(IBussinesAluno bussinesAluno, IEmailService emailService)
+        public AlunosController(IBussinesAluno bussinesAluno, IBussinesTurma bussinesTurma, IEmailService emailService)
         {
             _bussinesAluno = bussinesAluno;
+            _bussinesTurma = bussinesTurma;
             _emailService = emailService;
         }
 
         public async Task<ActionResult> Index()
         {
-           
+
             var alunosViewModel = Mapper.Map<IList<Aluno>, IList<AlunoVM>>(await _bussinesAluno.ObterTodosAsync());
             return View(alunosViewModel);
         }
@@ -100,8 +102,8 @@ namespace GrupoEstudosMusical.MVC.Controllers
         }
 
         public async Task<ActionResult> VisaoGeral(int Id)
-        { 
-            if(!VerificarSeUsuarioPossuiAcesso(Id))
+        {
+            if (!VerificarSeUsuarioPossuiAcesso(Id))
             {
                 return HttpNotFound("Você não possui acesso a estas informações, contate o administrador!");
             }
@@ -160,6 +162,14 @@ namespace GrupoEstudosMusical.MVC.Controllers
             await _bussinesAluno.DeletarAsync(alunoModel);
             TempData["Mensagem"] = "Aluno apagado com sucesso.";
             return RedirectToAction(nameof(Index));
+        }
+
+        [Route("Aluno/Turmas/{idAluno}")]
+        public async Task<ActionResult> TurmasAluno(int idAluno)
+        {
+            var turmasModel = await _bussinesTurma.ObterTurmasPorAluno(idAluno);
+            var turmasVM = Mapper.Map<IList<Turma>, IList<TurmaVM>>(turmasModel);
+            return View(turmasVM);
         }
     }
 }

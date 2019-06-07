@@ -67,7 +67,7 @@ namespace GrupoEstudosMusical.Bussines
 
             var turmas = new List<Turma>();
 
-            foreach(var matricula in matriculas)
+            foreach (var matricula in matriculas)
             {
                 turmas.Add(new Turma() { Id = matricula.TurmaId, Nome = matricula.Turma.Nome });
             }
@@ -78,8 +78,8 @@ namespace GrupoEstudosMusical.Bussines
         public async Task RecalculoAcademico(int TurmaId)
         {
             var turma = await _repositoryTurma.ObterPorIdAsync(TurmaId);
-           
-            foreach(var matricula in turma.Matriculas)
+
+            foreach (var matricula in turma.Matriculas)
             {
                 matricula.Media = CalculoDeMediaHelper.CalcularMediaDoAluno(_repositoryPalhetaDeNotas.ObterPalhetasPorMatricula(matricula.Id));
                 await _bussinesMatricula.AlterarAsync(matricula);
@@ -102,23 +102,23 @@ namespace GrupoEstudosMusical.Bussines
                 //turma.Matriculas = null;
                 await _repositoryTurma.AlterarAsync(turma);
                 await ConcluirSituacaoAcademicaDosAlunos(turma.Matriculas);
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
-            
-            
+
+
         }
-
-
 
         public async Task ConcluirSituacaoAcademicaDosAlunos(List<Matricula> matriculas)
         {
             await _bussinesMatricula.ConcluirMatriculaDoAluno(matriculas);
         }
-       
-        
 
         public IList<Turma> ObterTurmasAtivas() => _repositoryTurma.ObterTurmasAtivas();
+
+        public async Task<IList<Turma>> ObterTurmasPorAluno(int idAluno) =>
+            await _repositoryTurma.ObterTurmasPorAluno(idAluno);
     }
 }

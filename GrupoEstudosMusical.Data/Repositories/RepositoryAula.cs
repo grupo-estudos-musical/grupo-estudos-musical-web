@@ -12,6 +12,8 @@ namespace GrupoEstudosMusical.Data.Repositories
         public override async Task<Aula> ObterPorIdAsync(int id)
         {
             var aula = await DbSet.Include(a => a.Turma)
+                .ThenInclude(t => t.Matriculas)
+                .ThenInclude(m => m.Aluno)
                 .Where(a => a.Id == id)
                 .FirstOrDefaultAsync();
             aula.AvaliacoesTurma = ObterAvaliacoesPorAula(id);

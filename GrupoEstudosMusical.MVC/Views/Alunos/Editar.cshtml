@@ -4,30 +4,52 @@
     ViewBag.Title = "Alterar Aluno";
 }
 
-<div class='col-xs-12'>
-    <div class="page-title">
-        <div class="pull-left">
-            <!-- PAGE HEADING TAG - START -->
-            <h1 class="title">Alterar um Aluno</h1><!-- PAGE HEADING TAG - END -->
-        </div>
-        <div class="pull-right hidden-xs">
-            <ol class="breadcrumb">
-                <li>
-                    <a href="@Url.Action("Index", "Home")}"><i class="fa fa-home"></i>Home</a>
-                </li>
-                <li>
-                    <a href="@Url.Action("Index", "Alunos")">Alunos</a>
-                </li>
-                <li>
-                    <a href="@Url.Action("VisaoGeral", "Alunos", new { id = Model.Id})">Visão Geral</a>
-                </li>
-                <li class="active">
-                    <strong>Editar Aluno</strong>
-                </li>
-            </ol>
+@if (Session["nivelAcesso"] != null &&  Session["nivelAcesso"].ToString().Equals("Aluno"))
+{
+    <div class='col-xs-12'>
+        <div class="page-title">
+            <div class="pull-left">
+                <h1 class="title">Editar Informações</h1>
+            </div>
+            <div class="pull-right hidden-xs">
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="@Url.Action("VisaoGeral", new { Model.Id})"><i class="fa fa-home"></i>Home</a>
+                    </li>
+                    <li class="active">
+                        <strong>Editar Informações</strong>
+                    </li>
+                </ol>
+            </div>
         </div>
     </div>
-</div>
+}
+else
+{
+    <div class='col-xs-12'>
+        <div class="page-title">
+            <div class="pull-left">
+                <h1 class="title">Alterar um Aluno</h1>
+            </div>
+            <div class="pull-right hidden-xs">
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="@Url.Action("Index", "Home")}"><i class="fa fa-home"></i>Home</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index", "Alunos")">Alunos</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("VisaoGeral", "Alunos", new { id = Model.Id})">Visão Geral</a>
+                    </li>
+                    <li class="active">
+                        <strong>Editar Aluno</strong>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+}
 
 @using (Html.BeginForm("Editar", "Alunos", new { returnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { id = "general_validate", enctype = "multipart/form-data" }))
 {

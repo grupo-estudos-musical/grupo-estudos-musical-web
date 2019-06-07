@@ -1,0 +1,70 @@
+﻿@model List<GrupoEstudosMusical.MVC.Models.TurmaVM>
+
+@{
+    ViewBag.Title = "Minhas Turmas";
+}
+
+<div class='col-xs-12'>
+    <div class="page-title">
+        <div class="pull-left">
+            <h1 class="title">Turmas</h1>
+        </div>
+        <div class="pull-right hidden-xs">
+            <ol class="breadcrumb">
+                <li>
+                    <a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i>Home</a>
+                </li>
+                <li class="active">
+                    <strong>Minhas Turmas</strong>
+                </li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-12">
+    <section class="box ">
+        <header class="panel_header">
+            <h2 class="title pull-left">Minhas Turmas</h2>
+            <div class="actions panel_actions pull-right">
+                <a class="box_toggle fa fa-chevron-down"></a>
+                <a class="box_close fa fa-times"></a>
+            </div>
+        </header>
+        <div class="content-body">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="table table-responsive">
+                        <table class="table table-bordered texto-centralizado">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Período</th>
+                                    <th>Módulo</th>
+                                    <th>Professor</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var turma in Model)
+                                {
+                                    <tr>
+                                        <td>@turma.Nome</td>
+                                        <td>@turma.PeriodoSemestre</td>
+                                        <td>@turma.Modulo.Nome</td>
+                                        <td>@turma.Professor.Nome</td>
+                                        <td>
+                                            <a href="@Url.Action("Index", "Aulas", new { idTurma = turma.Id})" class="btn btn-primary btn-iconic bottom">
+                                                <i class="fa fa-search"> &nbsp; <span>Ver Aulas</span></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

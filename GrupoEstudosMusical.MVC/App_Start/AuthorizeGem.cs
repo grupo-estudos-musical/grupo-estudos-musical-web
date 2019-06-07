@@ -10,7 +10,7 @@ namespace GrupoEstudosMusical.MVC.App_Start
         {
             if (filterContext.HttpContext.Session["idUsuario"] == null)
             {
-                filterContext.HttpContext.Response.Redirect("/Login", false);
+                filterContext.HttpContext.Response.Redirect("/Login", true);
             }
         }
     }

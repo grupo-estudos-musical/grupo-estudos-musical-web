@@ -36,6 +36,14 @@ namespace GrupoEstudosMusical.Data.Repositories
         public IList<Turma> ObterTurmasAtivas() => 
             DbSet.Where(t => t.Status == "Ativo").ToList();
 
-     
+        public async Task<IList<Turma>> ObterTurmasPorAluno(int idAluno)
+        {
+            return await DbSet.
+                Include(t => t.Matriculas)
+                .Where(t => t.Matriculas.Where(m => m.AlunoId == idAluno).FirstOrDefault() != null)
+                .Include(t => t.Professor)
+                .Include(t => t.Modulo)
+                .ToListAsync();
+        }
     }
 }

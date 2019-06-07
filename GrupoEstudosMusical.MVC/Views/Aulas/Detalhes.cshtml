@@ -4,87 +4,121 @@
     ViewBag.Title = "Detalhes da Aula";
 }
 
-<div class='col-xs-12'>
-    <div class="page-title">
-        <div class="pull-left">
-            <!-- PAGE HEADING TAG - START -->
-            <h1 class="title">Detalhes da Aula</h1><!-- PAGE HEADING TAG - END -->
-        </div>
-        <div class="pull-right hidden-xs">
-            <ol class="breadcrumb">
-                <li>
-                    <a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i>Home</a>
-                </li>
-                <li>
-                    <a href="@Url.Action("Index", "Turmas")">Turmas</a>
-                </li>
-                <li>
-                    <a href="@Url.Action("VisaoGeral", "Turmas", new { id = Model.TurmaId})">Visão Geral</a>
-                </li>
-                <li>
-                    <a href="@Url.Action("Index", "Aulas", new { idTurma = Model.TurmaId})">Todas Aulas</a>
-                </li>
-                <li class="active">
-                    <strong>Detalhes da Aula</strong>
-                </li>
-            </ol>
+@if (Session["nivelAcesso"] != null && Session["nivelAcesso"].ToString().Equals("Aluno"))
+{
+    var idAluno = Model.Turma.Matriculas.Where(m => m.Aluno.UsuarioId == int.Parse(Session["idUsuario"].ToString())).Select(m => m.AlunoId).FirstOrDefault();
+    <div class='col-xs-12'>
+        <div class="page-title">
+            <div class="pull-left">
+                <h1 class="title">Aulas Ministradas</h1>
+            </div>
+            <div class="pull-right hidden-xs">
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="@Url.Action("VisaoGeral", "Alunos", new { id = idAluno })">
+                            <i class="fa fa-home"></i>Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href=@($"/Aluno/Turmas/{idAluno}")>Minhas Turmas</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index", "Aulas", new { idTurma = Model.TurmaId})">Minhas Turmas</a>
+                    </li>
+                    <li class="active">
+                        <strong>Detalhes da Aula</strong>
+                    </li>
+                </ol>
+            </div>
         </div>
     </div>
-</div>
-
+}
+else
+{
+    <div class='col-xs-12'>
+        <div class="page-title">
+            <div class="pull-left">
+                <!-- PAGE HEADING TAG - START -->
+                <h1 class="title">Detalhes da Aula</h1><!-- PAGE HEADING TAG - END -->
+            </div>
+            <div class="pull-right hidden-xs">
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i>Home</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index", "Turmas")">Turmas</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("VisaoGeral", "Turmas", new { id = Model.TurmaId })">Visão Geral</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index", "Aulas", new { idTurma = Model.TurmaId })">Todas Aulas</a>
+                    </li>
+                    <li class="active">
+                        <strong>Detalhes da Aula</strong>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+}
 @Html.Partial("_CamposAula")
 
-<div class="col-lg-12">
-    <section class="box ">
-        <header class="panel_header">
-            <h2 class="title pull-left">Avaliações Vinculadas</h2>
-            <div class="actions panel_actions pull-right">
-                <a class="box_toggle fa fa-chevron-down"></a>
-                <a class="box_close fa fa-times"></a>
-            </div>
-        </header>
-        <div class="content-body">
-            <div class="row">
-                <div class="col-xs-12">
-                    @if (Model.AvaliacoesTurma.Count > 0)
-                    {
-                        <table class="table table-bordered texto-centralizado">
-                            <thead>
-                                <tr>
-                                    <th>Avaliação</th>
-                                    <th>Data Prevista</th>
-                                    <th>Data de Realização</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @{ var avaliacoes = Model.AvaliacoesTurma.OrderBy(a => a.AulaId).ToList(); }
-                                @for (int i = 0; i < avaliacoes.Count; i++)
-                                {
-                                    var avaliacaoTurma = avaliacoes[i];
-                                    <tr>
-                                        <td>@avaliacaoTurma.Avaliacao.Nome</td>
-                                        <td>@avaliacaoTurma.DataPrevista.ToString("d")</td>
-                                        <td>@avaliacaoTurma.DataRealizacao.ToString("d")</td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
-                    }
-                    else
-                    {
-                        <div class="alert alert-primary alert-dismissible fade in">
-                            <strong>Informação:</strong> Não existe avaliações vinculadas a está turma.
-                        </div>
-                    }
+@if (Session["nivelAcesso"] != null && !Session["nivelAcesso"].ToString().Equals("Aluno"))
+{
+    <div class="col-lg-12">
+        <section class="box ">
+            <header class="panel_header">
+                <h2 class="title pull-left">Avaliações Vinculadas</h2>
+                <div class="actions panel_actions pull-right">
+                    <a class="box_toggle fa fa-chevron-down"></a>
+                    <a class="box_close fa fa-times"></a>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="pull-right ">
-                        <a type="button" class="btn" href="@Url.Action("Index", "Aulas", new { idTurma = Model.TurmaId})">Voltar</a>
+            </header>
+            <div class="content-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        @if (Model.AvaliacoesTurma.Count > 0)
+                        {
+                            <table class="table table-bordered texto-centralizado">
+                                <thead>
+                                    <tr>
+                                        <th>Avaliação</th>
+                                        <th>Data Prevista</th>
+                                        <th>Data de Realização</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{ var avaliacoes = Model.AvaliacoesTurma.OrderBy(a => a.AulaId).ToList(); }
+                                    @for (int i = 0; i < avaliacoes.Count; i++)
+                                    {
+                                        var avaliacaoTurma = avaliacoes[i];
+                                        <tr>
+                                            <td>@avaliacaoTurma.Avaliacao.Nome</td>
+                                            <td>@avaliacaoTurma.DataPrevista.ToString("d")</td>
+                                            <td>@avaliacaoTurma.DataRealizacao.ToString("d")</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        }
+                        else
+                        {
+                            <div class="alert alert-primary alert-dismissible fade in">
+                                <strong>Informação:</strong> Não existe avaliações vinculadas a está turma.
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="pull-right ">
+                            <a type="button" class="btn" href="@Url.Action("Index", "Aulas", new { idTurma = Model.TurmaId})">Voltar</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-</div>
+        </section>
+    </div>
+}
