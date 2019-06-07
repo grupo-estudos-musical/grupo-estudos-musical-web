@@ -84,9 +84,15 @@ namespace GrupoEstudosMusical.Bussines
         {
             foreach (var matricula in matriculas)
             {
-                matricula.Turma = null;
-                matricula.Status = matricula.Media < 6 || matricula.Media ==null ? StatusDeMatriculaStaticList.Retido : StatusDeMatriculaStaticList.Aprovado;
-                await AlterarAsync(matricula);
+                var quantFaltas = matricula.Turma.Chamadas
+                    .Where(c =>
+                        c.Frequencias
+                        .Where(f => f.IdAluno == matricula.AlunoId && !f.Presenca)
+                        .ToList().Count > 0)
+                    .Count();
+                matricula.Faltas = quantFaltas;
+                matricula.Status = matricula.Media < 6 || matricula.Media == null ? StatusDeMatriculaStaticList.Retido : StatusDeMatriculaStaticList.Aprovado;
+                await _repositoryMatricula.AlterarSituacaoAcademicaAluno(matricula);
             }
             
         }

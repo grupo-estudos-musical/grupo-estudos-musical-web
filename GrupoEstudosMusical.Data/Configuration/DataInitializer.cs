@@ -1,6 +1,7 @@
 ﻿using GrupoEstudosMusical.Data.Context;
 using GrupoEstudosMusical.Models.Entities;
 using GrupoEstudosMusical.Models.Enums;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 
@@ -17,7 +18,7 @@ namespace GrupoEstudosMusical.Data.Configuration
 
         public void ExecuteMigrations()
         {
-            _context.Database.EnsureCreated();
+            _context.Database.Migrate();
         }
 
         public void Seed()

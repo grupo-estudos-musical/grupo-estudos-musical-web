@@ -3,14 +3,16 @@ using System;
 using GrupoEstudosMusical.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GrupoEstudosMusical.Data.Migrations
 {
     [DbContext(typeof(GemContext))]
-    partial class GemContextModelSnapshot : ModelSnapshot
+    [Migration("20190607001404_CampoDeFaltasNaMatricula")]
+    partial class CampoDeFaltasNaMatricula
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -275,8 +277,6 @@ namespace GrupoEstudosMusical.Data.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(11)");
 
-                    b.Property<int>("UsuarioId");
-
                     b.HasKey("IdInstrumentoDoAluno");
 
                     b.HasIndex("AlunoID");
@@ -284,8 +284,6 @@ namespace GrupoEstudosMusical.Data.Migrations
                     b.HasIndex("FabricanteID");
 
                     b.HasIndex("InstrumentoIntrumentoID");
-
-                    b.HasIndex("UsuarioId");
 
                     b.HasIndex("InventarioID", "FabricanteID", "AlunoID")
                         .IsUnique();
@@ -642,11 +640,6 @@ namespace GrupoEstudosMusical.Data.Migrations
                     b.HasOne("GrupoEstudosMusical.Models.Inventario", "Inventario")
                         .WithMany("InstrumentosDoAluno")
                         .HasForeignKey("InventarioID")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("GrupoEstudosMusical.Models.Entities.Usuario", "Usuario")
-                        .WithMany("InstrumentosDoAluno")
-                        .HasForeignKey("UsuarioId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

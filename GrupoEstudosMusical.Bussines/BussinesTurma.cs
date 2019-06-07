@@ -98,10 +98,10 @@ namespace GrupoEstudosMusical.Bussines
 
                 turma.Status = "Encerrada";
                 turma.TerminoAula = DateTime.Now;
-                var matriculas = turma.Matriculas;
+                //var matriculas = turma.Matriculas;
                 //turma.Matriculas = null;
                 await _repositoryTurma.AlterarAsync(turma);
-                await ConcluirSituacaoAcademicaDosAlunos(matriculas);
+                await ConcluirSituacaoAcademicaDosAlunos(turma.Matriculas);
             }catch(Exception ex)
             {
                 throw new Exception(ex.Message);

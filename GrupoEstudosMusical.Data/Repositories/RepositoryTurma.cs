@@ -20,6 +20,8 @@ namespace GrupoEstudosMusical.Data.Repositories
                 .Include(t => t.Modulo)
                 .Include(t => t.Matriculas)
                 .ThenInclude(t => t.Aluno)
+                .Include(t => t.Chamadas)
+                .ThenInclude(c => c.Frequencias)
                 .FirstOrDefaultAsync( t => t.Id==id);
 
         public Turma VerificarExistenciaDaTurmaPorNomePeriodoSemestre(string nomeTurma, int periodo, int semestre, int Id) =>

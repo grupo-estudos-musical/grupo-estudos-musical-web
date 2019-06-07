@@ -377,7 +377,13 @@
     <Content Include="Content\ImagensAlunos\8 - mario dos santos.jpeg" />
     <Content Include="Content\ImagensAlunos\9 - Afonso Aguiar.png" />
     <Content Include="Content\ImagensAlunos\9 - Alberto dos Santos.jpeg" />
+    <Content Include="Content\images\arquivo_desconhecido.png" />
+    <Content Include="Content\images\arquivo_doc.png" />
+    <Content Include="Content\images\arquivo_jpg.png" />
     <Content Include="Content\images\arquivo_pdf.png" />
+    <Content Include="Content\images\arquivo_ppt.png" />
+    <Content Include="Content\images\arquivo_txt.png" />
+    <Content Include="Content\images\arquivo_xls.png" />
     <Content Include="Content\images\cancel.png" />
     <Content Include="Content\images\declaration.png" />
     <Content Include="Content\images\logo_gem.png" />
