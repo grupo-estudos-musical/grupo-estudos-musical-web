@@ -377,6 +377,9 @@
     <Content Include="Content\ImagensAlunos\8 - mario dos santos.jpeg" />
     <Content Include="Content\ImagensAlunos\9 - Afonso Aguiar.png" />
     <Content Include="Content\ImagensAlunos\9 - Alberto dos Santos.jpeg" />
+    <Content Include="favicon.ico" />
+    <Content Include="Content\images\logo_gem1.png" />
+    <Content Include="Content\images\menu_nova_ocorrencia.png" />
     <Content Include="Content\images\arquivo_desconhecido.png" />
     <Content Include="Content\images\arquivo_doc.png" />
     <Content Include="Content\images\arquivo_jpg.png" />
@@ -398,7 +401,7 @@
     <Content Include="Content\images\menu_deletar_turma.png" />
     <Content Include="Content\images\menu_matriculas.png" />
     <Content Include="Content\images\menu_nova_matricula.png" />
-    <Content Include="Content\images\menu_nova_ocorrencia.png" />
+    <Content Include="Content\images\menu_nova_ocorrencia1.png" />
     <Content Include="Content\images\menu_student_edit.png" />
     <Content Include="Content\images\menu_ocorrencias.png" />
     <Content Include="Content\images\menu_editar_turma.png" />
@@ -406,6 +409,7 @@
     <Content Include="Content\images\menu_recalculo.png" />
     <Content Include="Content\images\presentation.png" />
     <Content Include="Content\images\menu_alunos_turma.png" />
+    <Content Include="Content\images\menu_relatorio_ocorrencias.png" />
     <Content Include="Content\images\sem_foto.png" />
     <Content Include="Content\images\violin.png" />
     <Content Include="Content\lib\bootstrap\css\bootstrap-theme.min.css" />
@@ -426,7 +430,6 @@
     <Content Include="Content\lib\multi-select\multi-select.css" />
     <Content Include="Content\lib\perfect-scrollbar\perfect-scrollbar.css" />
     <Content Include="Content\lib\switchery\dist\switchery.css" />
-    <Content Include="favicon.ico" />
     <Content Include="fonts\font-awesome\css\font-awesome.css" />
     <Content Include="fonts\font-awesome\css\font-awesome.min.css" />
     <Content Include="fonts\font-awesome\fonts\fontawesome-webfont.svg" />
@@ -497,8 +500,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>

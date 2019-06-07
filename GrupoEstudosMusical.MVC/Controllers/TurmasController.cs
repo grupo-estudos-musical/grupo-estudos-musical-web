@@ -81,6 +81,7 @@ namespace GrupoEstudosMusical.MVC.Controllers
             if (turma == null)
                 return HttpNotFound("Turma não encontrada");
             ViewBag.Turma = turma;
+            ViewBag.IdTurma = turma.Id;
             return View(turma.Matriculas);
         }
         [HttpGet]

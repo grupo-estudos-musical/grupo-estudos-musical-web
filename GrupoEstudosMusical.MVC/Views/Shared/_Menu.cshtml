@@ -13,22 +13,22 @@
         <div class="profile-info row">
 
             <div class="profile-image col-xs-4">
-                <a href="ui-profile.html">
-                    @if (nivelAcesso == "Aluno")
-                    {
-                        <img alt="" src="~/Content/imagensAlunos/@Context.Session["imagemUrl"]" class="img-responsive img-circle">
-                    }
-                    else
-                    {
-                        <img alt="" src="~/Content/images/user.png" class="img-responsive img-circle">
-                    }
-                </a>
+
+                @if (nivelAcesso == "Aluno")
+                {
+                    <img alt="" src="~/Content/imagensAlunos/@Context.Session["imagemUrl"]" class="img-responsive img-circle">
+                }
+                else
+                {
+                    <img alt="" src="~/Content/images/user.png" class="img-responsive img-circle">
+                }
+
             </div>
 
             <div class="profile-details col-xs-8">
 
                 <h3>
-                    <a href="ui-profile.html">@(Context.Session["nomeUsuario"]?.ToString().Split(' ')[0])</a>
+                    <a>@(Context.Session["nomeUsuario"]?.ToString().Split(' ')[0])</a>
 
                     <!-- Available statuses: online, idle, busy, away and offline -->
                     <span class="profile-status online"></span>

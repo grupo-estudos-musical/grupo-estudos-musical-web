@@ -169,6 +169,7 @@ namespace GrupoEstudosMusical.MVC.Controllers
         {
             var turmasModel = await _bussinesTurma.ObterTurmasPorAluno(idAluno);
             var turmasVM = Mapper.Map<IList<Turma>, IList<TurmaVM>>(turmasModel);
+            ViewBag.IdAluno = idAluno;
             return View(turmasVM);
         }
     }
