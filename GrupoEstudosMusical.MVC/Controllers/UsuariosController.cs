@@ -1,5 +1,6 @@
 ﻿using GrupoEstudosMusical.Models.Enums;
 using GrupoEstudosMusical.Models.Interfaces.Bussines;
+using GrupoEstudosMusical.MVC.App_Start;
 using GrupoEstudosMusical.MVC.Models;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -58,12 +59,14 @@ namespace GrupoEstudosMusical.MVC.Controllers
             return Redirect("/login");
         }
 
+        [AuthorizeGem]
         public ActionResult AlterarSenha()
         {
             return View();
         }
 
         [HttpPost]
+        [AuthorizeGem]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> AlterarSenha(AlteraSenhaVM alteraSenhaVM)
         {

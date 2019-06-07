@@ -2,11 +2,15 @@
 using GrupoEstudosMusical.Models.Entities;
 using GrupoEstudosMusical.Models.Interfaces.Bussines;
 using GrupoEstudosMusical.MVC.App_Start;
+using GrupoEstudosMusical.MVC.GoogleDriveApi;
 using GrupoEstudosMusical.MVC.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net.Mime;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Mvc;
 
 namespace GrupoEstudosMusical.MVC.Controllers
@@ -68,6 +72,14 @@ namespace GrupoEstudosMusical.MVC.Controllers
                 var avaliacoesSelecionadas = aulaVM.AvaliacoesTurma.Where(a => a.Selecionado).ToList();
                 var avaliacoesTurma = Mapper.Map<List<AvaliacaoTurmaVM>, List<AvaliacaoTurma>>(avaliacoesSelecionadas);
                 await _bussinesAula.InserirAsync(aulaModel, avaliacoesTurma);
+
+                aulaVM.Id = aulaModel.Id;
+                var turmaVM = Mapper.Map<Turma, TurmaVM>(await _bussinesTurma.ObterPorIdAsync(aulaVM.TurmaId));
+                using (var driveHelper = new GoogleDriveApiHelper(Server.MapPath("").Replace(@"\Aulas", "")))
+                {
+                    await driveHelper.UploadArquivoAulaAsync(aulaVM, turmaVM);
+                }
+
                 TempData["mensagem"] = "Aula cadastrada com sucesso!";
                 TempData["tipo"] = "success";
                 return RedirectToAction("Index", "Aulas", new { idTurma = aulaVM.TurmaId });
@@ -83,6 +95,14 @@ namespace GrupoEstudosMusical.MVC.Controllers
         {
             var aulaModel = await _bussinesAula.ObterPorIdAsync(id);
             var aulaVM = Mapper.Map<Aula, AulaVM>(aulaModel);
+
+            using (var driveHelper = new GoogleDriveApiHelper(Server.MapPath("").Replace(@"\Aulas", "").Replace(@"\Detalhes", "")))
+            {
+                var arquivo = await driveHelper.PesquisarArquivoPorNome(aulaVM);
+                aulaVM.NomeArquivo = arquivo.Name;
+                aulaVM.ExtensaoArquivo = arquivo.FileExtension;
+            }
+
             return View(aulaVM);
         }
 
@@ -97,6 +117,24 @@ namespace GrupoEstudosMusical.MVC.Controllers
             TempData["mensagem"] = "Aula apagada com sucesso!";
             TempData["tipo"] = "success";
             return RedirectToAction(nameof(Index), new { idTurma = aulaModel.TurmaId });
+        }
+
+        public async Task<ActionResult> Download(int idAula)
+        {
+            var aulaVM = Mapper.Map<Aula, AulaVM>(await _bussinesAula.ObterPorIdAsync(idAula));
+
+            using (var driveHelper = new GoogleDriveApiHelper(Server.MapPath("").Replace(@"\Aulas", "")))
+            {
+                var arquivoDownload = await driveHelper.DownloadArquivoAulaAsync(aulaVM);
+                if (arquivoDownload != null)
+                {
+                    var fileResult = new FileStreamResult(arquivoDownload.Stream, arquivoDownload.MimeType);
+                    fileResult.FileDownloadName = $"{arquivoDownload.Nome}.{arquivoDownload.Extensao}";
+                    return fileResult;
+                }
+            }
+
+            return RedirectToAction(nameof(Detalhes), new { id = idAula});
         }
     }
 }
