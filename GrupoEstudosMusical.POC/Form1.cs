@@ -20,7 +20,7 @@ namespace GrupoEstudosMusical.POC
         private void button1_Click(object sender, EventArgs e)
         {
             var report = new Report();
-            var dados = new List<AtestadoDeMatricula>();
+            var dados = new List<DetalhesDoEmprestimo>();
             report.RegisterData(dados, "Dados", 5);
            //report.Load(@"C:\Relatorios\Ocorrencias.frx");
             

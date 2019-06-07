@@ -28,21 +28,33 @@
 
 @Html.Hidden("mensagem", TempData["Mensagem"])
 
-@Html.Partial("_VisaoGeralAlunoMenu", new ViewDataDictionary { { "titulo", "Editar Aluno" }, { "link", @Url.Action("Editar", new { id = Model.Id }) }, { "imagem", "/Content/images/menu_student_edit.png" }, { "alt", "student-edit" } })
+@if (Session["nivelAcesso"].ToString() == "Aluno")
+{
+    @Html.Partial("_VisaoGeralAlunoMenu", new ViewDataDictionary { { "titulo", "Editar Aluno" }, { "link", @Url.Action("Editar", new { id = Model.Id }) }, { "imagem", "/Content/images/menu_student_edit.png" }, { "alt", "student-edit" } })
+    @Html.Partial("_VisaoGeralAlunoMenu", new ViewDataDictionary { { "titulo", "Matrículas" }, { "link", Url.Action("Index", "Matriculas", new { idAluno = Model.Id }) }, { "imagem", "/Content/images/menu_matriculas.png" }, { "alt", "matriculas" } })
 
-@Html.Partial("_VisaoGeralAlunoMenu", new ViewDataDictionary { { "titulo", "Nova Matrícula" }, { "Link", Url.RouteUrl("Matricular", new { idAluno = Model.Id }) }, { "imagem", "/Content/images/menu_nova_matricula.png" }, { "alt", "nova_matricula" } })
+}
+else
+{
 
-@Html.Partial("_VisaoGeralAlunoMenu", new ViewDataDictionary { { "titulo", "Matrículas" }, { "link", Url.Action("Index", "Matriculas", new { idAluno = Model.Id }) }, { "imagem", "/Content/images/menu_matriculas.png" }, { "alt", "matriculas" } })
+    @Html.Partial("_VisaoGeralAlunoMenu", new ViewDataDictionary { { "titulo", "Editar Aluno" }, { "link", @Url.Action("Editar", new { id = Model.Id }) }, { "imagem", "/Content/images/menu_student_edit.png" }, { "alt", "student-edit" } })
 
-@Html.Partial("_VisaoGeralAlunoMenu", new ViewDataDictionary { { "titulo", "Ocorrências" }, { "link", Url.Action("Index", "Ocorrencias", new { alunoId = Model.Id }) }, { "imagem", "/Content/images/menu_ocorrencias.png" }, { "alt", "ocorrencias" } })
+    @Html.Partial("_VisaoGeralAlunoMenu", new ViewDataDictionary { { "titulo", "Nova Matrícula" }, { "Link", Url.RouteUrl("Matricular", new { idAluno = Model.Id }) }, { "imagem", "/Content/images/menu_nova_matricula.png" }, { "alt", "nova_matricula" } })
 
-@Html.Partial("_VisaoGeralAlunoMenu", new ViewDataDictionary { { "titulo", "Relatório de Ocorrências" }, { "link", Url.Action("GerarRelatorioOcorrenciasPorAluno", "Relatorios", new { AlunoId = Model.Id }) }, { "imagem", "/Content/images/menu_ocorrencias.png" }, { "alt", "Relatório de Ocorrências" } })
+    @Html.Partial("_VisaoGeralAlunoMenu", new ViewDataDictionary { { "titulo", "Matrículas" }, { "link", Url.Action("Index", "Matriculas", new { idAluno = Model.Id }) }, { "imagem", "/Content/images/menu_matriculas.png" }, { "alt", "matriculas" } })
 
-@Html.Partial("_VisaoGeralAlunoMenu", new ViewDataDictionary { { "titulo", "Atestado de Matrícula" }, { "link", Url.Action("GerarAtestadoDeMatricula", "Relatorios", new { alunoID = Model.Id }) }, { "imagem", "/Content/images/declaration.png" }, { "alt", "Relatório de Ocorrências" } })
+    @Html.Partial("_VisaoGeralAlunoMenu", new ViewDataDictionary { { "titulo", "Ocorrências" }, { "link", Url.Action("Index", "Ocorrencias", new { alunoId = Model.Id }) }, { "imagem", "/Content/images/menu_ocorrencias.png" }, { "alt", "ocorrencias" } })
 
-@Html.Partial("_VisaoGeralAlunoMenu", new ViewDataDictionary { { "titulo", "Nova Ocorrência" }, { "link", Url.Action("Novo", "Ocorrencias", new { alunoId = Model.Id }) }, { "imagem", "/Content/images/menu_nova_ocorrencia.png" }, { "alt", "nova-ocorrencia" } })
+    @Html.Partial("_VisaoGeralAlunoMenu", new ViewDataDictionary { { "titulo", "Relatório de Ocorrências" }, { "link", Url.Action("GerarRelatorioOcorrenciasPorAluno", "Relatorios", new { AlunoId = Model.Id }) }, { "imagem", "/Content/images/menu_ocorrencias.png" }, { "alt", "Relatório de Ocorrências" } })
 
-@Html.Partial("_VisaoGeralAlunoMenu", new ViewDataDictionary { { "titulo", "Instrumentos" }, { "link", Url.Action("InstrumentosDoAluno", "Instrumentos", new { alunoId = Model.Id, nomeAluno = Model.Nome }) }, { "imagem", "/Content/images/violin.png" }, { "alt", "instrumentos" } })
+    @Html.Partial("_VisaoGeralAlunoMenu", new ViewDataDictionary { { "titulo", "Atestado de Matrícula" }, { "link", Url.Action("GerarAtestadoDeMatricula", "Relatorios", new { alunoID = Model.Id }) }, { "imagem", "/Content/images/declaration.png" }, { "alt", "Relatório de Ocorrências" } })
+
+    @Html.Partial("_VisaoGeralAlunoMenu", new ViewDataDictionary { { "titulo", "Nova Ocorrência" }, { "link", Url.Action("Novo", "Ocorrencias", new { alunoId = Model.Id }) }, { "imagem", "/Content/images/menu_nova_ocorrencia.png" }, { "alt", "nova-ocorrencia" } })
+
+    @Html.Partial("_VisaoGeralAlunoMenu", new ViewDataDictionary { { "titulo", "Instrumentos" }, { "link", Url.Action("InstrumentosDoAluno", "Instrumentos", new { alunoId = Model.Id, nomeAluno = Model.Nome }) }, { "imagem", "/Content/images/violin.png" }, { "alt", "instrumentos" } })
+
+}
+
 
 @section styles {
     <link href="~/Content/lib/messenger/messenger.css" rel="stylesheet" type="text/css" media="screen" />

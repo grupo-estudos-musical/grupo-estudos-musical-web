@@ -40,6 +40,8 @@ namespace GrupoEstudosMusical.MVC.Controllers
                     {
                         var aluno = await _bussinesAluno.ObterPorUsuario(usuario.Id);
                         Session["imagemUrl"] = aluno.ImagemUrl;
+                        Session["AlunoID"] = aluno.Id;
+                        return RedirectToAction("VisaoGeral", "Alunos", new { Id = aluno.Id });
                     }
                     return Redirect("/");
                 }

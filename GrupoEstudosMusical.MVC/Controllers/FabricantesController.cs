@@ -12,6 +12,7 @@ using static GrupoEstudosMusical.Models.Entities.Instrumento;
 namespace GrupoEstudosMusical.MVC.Controllers
 {
    
+    [AuthorizeGem]
     public class FabricantesController : Controller
     {
         // GET: Fabricantes

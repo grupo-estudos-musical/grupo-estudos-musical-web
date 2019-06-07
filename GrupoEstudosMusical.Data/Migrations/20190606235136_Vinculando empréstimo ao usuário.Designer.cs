@@ -3,14 +3,16 @@ using System;
 using GrupoEstudosMusical.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GrupoEstudosMusical.Data.Migrations
 {
     [DbContext(typeof(GemContext))]
-    partial class GemContextModelSnapshot : ModelSnapshot
+    [Migration("20190606235136_Vinculando empréstimo ao usuário")]
+    partial class Vinculandoempréstimoaousuário
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -307,9 +309,6 @@ namespace GrupoEstudosMusical.Data.Migrations
                         .HasColumnType("bit");
 
                     b.Property<DateTime>("DataCadastro");
-
-                    b.Property<int?>("Faltas")
-                        .HasColumnType("integer");
 
                     b.Property<double?>("Media")
                         .HasColumnType("double");

@@ -1,6 +1,7 @@
 ﻿using GrupoEstudosMusical.Bussines.Exceptions;
 using GrupoEstudosMusical.Bussines.StaticList;
 using GrupoEstudosMusical.Models.Entities;
+using GrupoEstudosMusical.Models.Entities.Relatorios;
 using GrupoEstudosMusical.Models.Interfaces.Bussines;
 using GrupoEstudosMusical.Models.Interfaces.Repository;
 using System;
@@ -13,10 +14,14 @@ namespace GrupoEstudosMusical.Bussines
     {
         readonly IRepositoryInstrumentoDoAluno _repositoryInstrumentoDoAluno;
         readonly IBussinesInventario _bussinesInventario;
-        public BussinesInstrumentoDoAluno(IRepositoryInstrumentoDoAluno repository, IBussinesInventario bussinesInventario) : base(repository)
+        readonly IRepositoryUsuario _repositoryUsuario;
+        readonly IRepositoryAluno repositoryAluno;
+        public BussinesInstrumentoDoAluno(IRepositoryInstrumentoDoAluno repository, IBussinesInventario bussinesInventario, IRepositoryUsuario repositoryUsuario, IRepositoryAluno repositoryAluno) : base(repository)
         {
             _repositoryInstrumentoDoAluno = repository;
             _bussinesInventario = bussinesInventario;
+            _repositoryUsuario = repositoryUsuario;
+            this.repositoryAluno = repositoryAluno;
         }
 
         public List<InstrumentoDoAluno> ObterInstrumentosDoAluno(int alunoId) =>
@@ -44,6 +49,15 @@ namespace GrupoEstudosMusical.Bussines
             {
                 throw new CrudEmprestimoException("O campo cor, ano de fabricação, data de empréstimo e fabricante não podem ser nulos!");
             }
+        }
+
+        public async Task<DetalhesDoEmprestimo> ObterDadosDeEmprestimos(int alunoid)
+        {
+            var emprestimos = _repositoryInstrumentoDoAluno.ObterInstrumentosDoAluno(alunoid);
+            if (emprestimos.Count <= 0)
+                throw new Exception("Empréstimos não localizado");
+            var aluno = await repositoryAluno.ObterPorIdAsync(alunoid);
+            return new DetalhesDoEmprestimo() { Instrumentos = emprestimos, Aluno = aluno };
         }
 
         public InstrumentoDoAluno ObterPorAlunoEInventarioGuid(int alunoID, Guid inventarioID) =>

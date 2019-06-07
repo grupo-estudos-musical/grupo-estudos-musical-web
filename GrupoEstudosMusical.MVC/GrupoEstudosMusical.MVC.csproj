@@ -585,6 +585,7 @@
     <Content Include="Views\Fabricantes\Novo.cshtml" />
     <Content Include="Views\Fabricantes\Index.cshtml" />
     <Content Include="Views\Fabricantes\Editar.cshtml" />
+    <Content Include="Relatorios\DetalhesDeEmpréstimos.frx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GrupoEstudosMusical.Bussines\GrupoEstudosMusical.Bussines.csproj">

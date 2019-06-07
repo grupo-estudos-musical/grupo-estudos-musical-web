@@ -1,6 +1,6 @@
 ﻿@model List<GrupoEstudosMusical.MVC.Models.InstrumentoDoAlunoVM>
 @{
-    ViewBag.Title = "LançarNotas";
+    ViewBag.Title = "Empréstimos | Instrumentos";
 }
 
 
@@ -36,7 +36,8 @@
         </header>
 
         <div class="content-body">
-            <button type="button" class="btn btn-primary btn-icon bottom15 right15" onclick="AbrirModal();"><i class="fa fa-check-circle"></i>Efetuar empréstimo</button><br /><br />
+            <button type="button" class="btn btn-primary btn-icon bottom15 right15" onclick="AbrirModal();"><i class="fa fa-check-circle"></i>Efetuar empréstimo</button>
+            <a href="@Url.Action("GerarDetalhamentoDosEmprestimos","Relatorios", new { alunoID =  ViewBag.AlunoID })"><button type="button" class="btn btn-success btn-icon bottom15 right15 "><i class="fa fa-file-archive-o"></i>Detalhes de empréstimos</button></a>
             @Html.Partial("_MensagemSucesso")
             <div class="row">
                 <div class="col-xs-12">
@@ -78,15 +79,16 @@
                                             }
                                         </p>
                                     </td>
-                                    
-                                    <td style="width:160px;">
+
+                                    <td style="width:200px;">
                                         @if (!instrumento.Status.Equals(GrupoEstudosMusical.Bussines.StaticList.StatusDeEmprestimoStaticList.Devolvido()))
                                         {
                                             <button type="button" class="btn btn-danger" onclick="EfetuarDevolucao('@instrumento.IdInstrumentoDoAluno')">Devolver</button>
                                         }
+
                                     </td>
-                                    
-                                    
+
+
                                 </tr>
                             }
                         </tbody>

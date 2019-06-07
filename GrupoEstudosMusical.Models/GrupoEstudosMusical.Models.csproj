@@ -59,6 +59,7 @@
     <Compile Include="Entities\Relatorios\AtestadoDeMatricula.cs" />
     <Compile Include="Entities\Relatorios\Boletim.cs" />
     <Compile Include="Entities\Relatorios\OcorrenciasParaRelatorio.cs" />
+    <Compile Include="Entities\Relatorios\DetalhesDoEmprestimo.cs" />
     <Compile Include="Entities\Usuario.cs" />
     <Compile Include="Enums\NivelAcessoEnum.cs" />
     <Compile Include="Enums\TiposOcorrenciaEnum.cs" />
