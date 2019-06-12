@@ -33,6 +33,7 @@ namespace GrupoEstudosMusical.MVC.Controllers
                 var usuario = await _bussinesUsuario.AutenticarAsync(autenticarVM.Email, autenticarVM.Senha);
                 if (usuario != null)
                 {
+                    Session.Timeout = 30;
                     Session["idUsuario"] = usuario.Id;
                     Session["nivelAcesso"] = usuario.NivelAcesso.ToString();
                     Session["nomeUsuario"] = usuario.Nome;

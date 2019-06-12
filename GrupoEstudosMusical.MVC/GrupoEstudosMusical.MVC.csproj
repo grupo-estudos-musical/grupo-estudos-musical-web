@@ -324,6 +324,7 @@
     <Compile Include="Results\JsonSuccesResult.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="500.html" />
     <Content Include="ConfiguracaoEmail\template.html" />
     <Content Include="Content\css\animate.min.css" />
     <Content Include="Content\css\radiobutton.css" />
@@ -589,6 +590,8 @@
     <Content Include="Views\Fabricantes\Editar.cshtml" />
     <Content Include="Relatorios\DetalhesDeEmpréstimos.frx" />
     <Content Include="Views\Alunos\TurmasAluno.cshtml" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GrupoEstudosMusical.Bussines\GrupoEstudosMusical.Bussines.csproj">
