@@ -74,7 +74,7 @@
                                         </span>
                                     </td>
                                     <td>@Html.DisplayFor(item => matricula.Aluno.Nome)</td>
-                                    <td>@Html.DisplayFor(item => matricula.Media)</td>
+                                    <td>@(matricula.Media != null ? matricula.Media.Value.ToString("N1") : "")</td>
 
                                 </tr>
                             }

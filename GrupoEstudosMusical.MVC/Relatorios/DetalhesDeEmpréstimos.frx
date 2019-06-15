@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Report ScriptLanguage="CSharp" ReportInfo.Created="06/06/2019 21:47:25" ReportInfo.Modified="06/06/2019 23:39:02" ReportInfo.CreatorVersion="1.8.2.0">
+<Report ScriptLanguage="CSharp" ReportInfo.Created="06/06/2019 21:47:25" ReportInfo.Modified="06/07/2019 19:56:41" ReportInfo.CreatorVersion="1.8.2.0">
   <Dictionary>
     <BusinessObjectDataSource Name="Dados" ReferenceName="Dados" DataType="null" Enabled="true">
       <BusinessObjectDataSource Name="Instrumentos" DataType="null" Enabled="true">
@@ -4429,16 +4429,19 @@
         <LineObject Name="Line2" Left="359.1" Top="37.8" Height="14.9" Diagonal="true"/>
         <TextObject Name="Text28" Left="364.55" Top="36.8" Width="74.05" Height="15.9" Text="Fabricante: " Font="Arial, 9pt, style=Bold"/>
         <ShapeObject Name="Shape13" Left="56.25" Top="52.25" Width="604.8" Height="18.9" Fill.Color="LightSkyBlue"/>
-        <TextObject Name="Text29" Left="68.6" Top="52.7" Width="36.25" Height="15.9" Text="Ano:" Font="Arial, 9pt, style=Bold"/>
-        <LineObject Name="Line7" Left="359.1" Top="53.25" Height="17.35" Diagonal="true"/>
-        <TextObject Name="Text30" Left="367" Top="53.7" Width="50.7" Height="15.9" Text="Status:" Font="Arial, 9pt, style=Bold"/>
+        <TextObject Name="Text29" Left="285.4" Top="52.7" Width="36.25" Height="15.9" Text="Ano:" Font="Arial, 9pt, style=Bold"/>
+        <LineObject Name="Line7" Left="434.7" Top="53.25" Height="17.35" Diagonal="true"/>
+        <TextObject Name="Text30" Left="439.6" Top="53.7" Width="50.7" Height="15.9" Text="Status:" Font="Arial, 9pt, style=Bold"/>
         <ShapeObject Name="Shape14" Left="56.7" Top="69.15" Width="604.8" Height="18.9" Fill.Color="Azure"/>
         <TextObject Name="Text31" Left="68.6" Top="70.6" Width="234.7" Height="15.9" Text="Colaborador que realizou empréstimo:" Font="Arial, 9pt, style=Bold"/>
         <TextObject Name="Text32" Left="141.75" Top="36.8" Width="211.35" Height="15.9" Text="[Dados.Instrumentos.Inventario.Instrumento.Nome]" Font="Arial, 9pt"/>
         <TextObject Name="Text33" Left="444.15" Top="37.8" Width="211.35" Height="15.9" Text="[Dados.Instrumentos.Fabricante.Nome]" Font="Arial, 9pt"/>
-        <TextObject Name="Text34" Left="110.4" Top="52.7" Width="237.25" Height="15.9" Text="[Dados.Instrumentos.AnoDeFabricacaoInstrumento]" Font="Arial, 9pt"/>
-        <TextObject Name="Text35" Left="423.25" Top="52.7" Width="227.8" Height="15.9" Text="[Dados.Instrumentos.Status]" Font="Arial, 9pt"/>
+        <TextObject Name="Text34" Left="327.2" Top="52.7" Width="93.75" Height="15.9" Text="[Dados.Instrumentos.AnoDeFabricacaoInstrumento]" Font="Arial, 9pt"/>
+        <TextObject Name="Text35" Left="495.85" Top="52.7" Width="161.65" Height="15.9" Text="[Dados.Instrumentos.Status]" Font="Arial, 9pt"/>
         <TextObject Name="Text36" Left="308.85" Top="70.6" Width="341.2" Height="15.9" Text="[Dados.Instrumentos.Usuario.Nome]" Font="Arial, 9pt"/>
+        <TextObject Name="Text39" Left="68.6" Top="52.7" Width="36.25" Height="15.9" Text="Cor:" Font="Arial, 9pt, style=Bold"/>
+        <TextObject Name="Text40" Left="107.95" Top="52.7" Width="160.65" Height="15.9" Text="[Dados.Instrumentos.Cor]" Font="Arial, 9pt"/>
+        <LineObject Name="Line8" Left="279.05" Top="53.25" Height="17.35" Diagonal="true"/>
       </DataBand>
       <GroupFooterBand Name="GroupFooter1" Top="159.2" Width="718.2" Height="56.7">
         <TextObject Name="Text13" Left="235.25" Top="18.9" Width="94.5" Height="18.9" Fill.Color="LightSkyBlue" Text="[Total]" Font="Arial, 9pt"/>

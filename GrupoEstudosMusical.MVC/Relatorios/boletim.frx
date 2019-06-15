@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Report ScriptLanguage="CSharp" ReportInfo.Created="05/14/2019 19:35:39" ReportInfo.Modified="06/07/2019 12:55:33" ReportInfo.CreatorVersion="1.8.2.0">
+<Report ScriptLanguage="CSharp" ReportInfo.Created="05/14/2019 19:35:39" ReportInfo.Modified="06/07/2019 20:13:00" ReportInfo.CreatorVersion="1.8.2.0">
   <ScriptText>using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -2563,17 +2563,17 @@ namespace FastReport
         </ChildBand>
       </DataBand>
       <GroupFooterBand Name="GroupFooter1" Top="244.8" Width="718.2" Height="95.2">
-        <ShapeObject Name="Shape11" Left="122.85" Top="37.8" Width="557.55" Height="20.9" Fill.Color="White"/>
         <ShapeObject Name="Shape8" Left="122.85" Top="19.6" Width="557.55" Height="20.9" Fill.Color="White"/>
+        <ShapeObject Name="Shape11" Left="122.85" Top="37.8" Width="557.55" Height="20.9" Fill.Color="White"/>
         <LineObject Name="Line9" Left="491.4" Top="19.6" Height="18.9" Diagonal="true"/>
-        <TextObject Name="Text22" Left="192" Top="23.05" Width="47.25" Height="14.45" Fill.Color="White" Text="Média" HorzAlign="Center" Font="Arial, 8pt, style=Bold"/>
+        <TextObject Name="Text22" Left="192" Top="22.05" Width="47.25" Height="14.45" Fill.Color="White" Text="Média" HorzAlign="Center" Font="Arial, 8pt, style=Bold"/>
         <TextObject Name="media" Left="127.5" Top="40.5" Width="170.1" Height="15.9" AfterDataEvent="media_AfterData" Text="[Dados.MatriculaAluno.Media]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="1" Format.DecimalSeparator="," Format.GroupSeparator="." Format.NegativePattern="1" HorzAlign="Center" Font="Arial, 8pt, style=Bold"/>
         <LineObject Name="Line10" Left="491.4" Top="38.95" Height="17.9" Diagonal="true"/>
-        <TextObject Name="situacaoMatricula" Left="498.4" Top="21.05" Width="170.1" Height="15.9" AfterDataEvent="situacaoMatricula_AfterData" Text="[Dados.MatriculaAluno.Status]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="1" Format.DecimalSeparator="," Format.GroupSeparator="." Format.NegativePattern="1" HorzAlign="Center" Font="Arial, 8pt, style=Bold"/>
-        <TextObject Name="Text25" Left="497.3" Top="41.4" Width="177.65" Height="14.45" Fill.Color="White" Text="Situação" HorzAlign="Center" Font="Arial, 8pt, style=Bold"/>
+        <TextObject Name="situacaoMatricula" Left="496.4" Top="40.5" Width="178.1" Height="15.9" AfterDataEvent="situacaoMatricula_AfterData" Text="[Dados.MatriculaAluno.Status]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="1" Format.DecimalSeparator="," Format.GroupSeparator="." Format.NegativePattern="1" HorzAlign="Center" Font="Arial, 8pt, style=Bold"/>
+        <TextObject Name="Text25" Left="497.3" Top="21.5" Width="177.65" Height="14.45" Fill.Color="White" Text="Situação" HorzAlign="Center" Font="Arial, 8pt, style=Bold"/>
         <LineObject Name="Line11" Left="302.4" Top="18.9" Height="18.9" Diagonal="true"/>
         <LineObject Name="Line12" Left="302.4" Top="28.8" Height="28.35" Diagonal="true"/>
-        <TextObject Name="Text26" Left="311.85" Top="23.05" Width="170.1" Height="14.45" Fill.Color="White" Text="Total de Faltas" HorzAlign="Center" Font="Arial, 8pt, style=Bold"/>
+        <TextObject Name="Text26" Left="311.85" Top="22.05" Width="170.1" Height="14.45" Fill.Color="White" Text="Total de Faltas" HorzAlign="Center" Font="Arial, 8pt, style=Bold"/>
         <TextObject Name="Text27" Left="311.85" Top="40.5" Width="170.1" Height="15.9" AfterDataEvent="media_AfterData" Text="[Dados.MatriculaAluno.Faltas]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="0" Format.DecimalSeparator="," Format.GroupSeparator="." Format.NegativePattern="1" HorzAlign="Center" Font="Arial, 8pt, style=Bold"/>
       </GroupFooterBand>
     </GroupHeaderBand>
