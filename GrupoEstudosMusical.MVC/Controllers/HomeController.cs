@@ -8,6 +8,11 @@ namespace GrupoEstudosMusical.MVC.Controllers
     {
         public ActionResult Index()
         {
+            if(TempData["Error"] != null)
+            {
+                ViewBag.Error = TempData["Error"];
+            }
+
             return View();
         }
     }

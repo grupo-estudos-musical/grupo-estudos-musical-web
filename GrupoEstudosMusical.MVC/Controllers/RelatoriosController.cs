@@ -93,14 +93,23 @@ namespace GrupoEstudosMusical.MVC.Controllers
 
         public async Task<ActionResult> GerarRelatorioOcorrenciasPorAluno(int AlunoId)
         {
-            var listaOcorrenciasAluno = new List<OcorrenciasParaRelatorio>()
+            try
             {
-                await bussinesOcorrencia.ObterOcorrenciasParaRelatorio(AlunoId)
-            };
-            listaOcorrenciasAluno.ForEach(l => l.ImagemAluno = AlunoHelper.ObterByteImagemAluno(l.Aluno.ImagemUrl, Server));
-            var relatorioGerado = Relatorios.GerarRelatorio<OcorrenciasParaRelatorio>(System.Web.HttpContext.Current.Server.MapPath("~/Relatorios/ocorrencias.frx"), listaOcorrenciasAluno, "Dados", TiposDeRelatorios.PDF, null);
-            EnviarEmailAoALunoComRelatorio(listaOcorrenciasAluno.FirstOrDefault().Aluno, new List<byte[]>() { relatorioGerado });
-            return File(relatorioGerado, "application/pdf", $"RelatorioOcorrencias{DateTime.Now}.pdf");
+                var listaOcorrenciasAluno = new List<OcorrenciasParaRelatorio>()
+                {
+                    await bussinesOcorrencia.ObterOcorrenciasParaRelatorio(AlunoId)
+                };
+                listaOcorrenciasAluno.ForEach(l => l.ImagemAluno = AlunoHelper.ObterByteImagemAluno(l.Aluno.ImagemUrl, Server));
+                var relatorioGerado = Relatorios.GerarRelatorio<OcorrenciasParaRelatorio>(System.Web.HttpContext.Current.Server.MapPath("~/Relatorios/ocorrencias.frx"), listaOcorrenciasAluno, "Dados", TiposDeRelatorios.PDF, null);
+                EnviarEmailAoALunoComRelatorio(listaOcorrenciasAluno.FirstOrDefault().Aluno, new List<byte[]>() { relatorioGerado });
+                return File(relatorioGerado, "application/pdf", $"RelatorioOcorrencias{DateTime.Now}.pdf");
+
+            }
+            catch(Exception ex) {
+                TempData["Error"] = ex.Message + ex.StackTrace;
+                return RedirectToAction("Index", "Home");
+            }
+            
         }
 
         public async Task<ActionResult> GerarDetalhamentoDosEmprestimos(int alunoID)

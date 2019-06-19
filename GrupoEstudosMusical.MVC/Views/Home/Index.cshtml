@@ -1,3 +1,10 @@
 ﻿@{
     ViewBag.Title = "Dashboard";
 }
+
+@if(ViewBag.Error != null)
+{
+    <script>
+        swal("Atenção", '@ViewBag.Error',"error");
+    </script>
+}
