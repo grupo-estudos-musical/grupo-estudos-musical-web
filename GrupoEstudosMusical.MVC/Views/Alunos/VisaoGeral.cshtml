@@ -69,7 +69,7 @@ else
 
     @Html.Partial("_VisaoGeralAlunoMenu", new ViewDataDictionary { { "titulo", "Ocorrências" }, { "link", Url.Action("Index", "Ocorrencias", new { alunoId = Model.Id }) }, { "imagem", "/Content/images/menu_ocorrencias.png" }, { "alt", "ocorrencias" } })
 
-    @Html.Partial("_VisaoGeralAlunoMenu", new ViewDataDictionary { { "titulo", "Gerar Ocorrências" }, { "link", Url.Action("GerarRelatorioOcorrenciasPorAluno", "Relatorios", new { AlunoId = Model.Id }) }, { "imagem", "/Content/images/menu_relatorio_ocorrencias.png" }, { "alt", "Relatório de Ocorrências" } })
+    @Html.Partial("_VisaoGeralAlunoMenu", new ViewDataDictionary { { "titulo", "Gerar Ocorrências" }, { "link", Url.Action("GerarRelatorioOcorrenciasPorAluno", "Relatorio", new { AlunoId = Model.Id }) }, { "imagem", "/Content/images/menu_relatorio_ocorrencias.png" }, { "alt", "Relatório de Ocorrências" } })
 
     @Html.Partial("_VisaoGeralAlunoMenu", new ViewDataDictionary { { "titulo", "Instrumentos" }, { "link", Url.Action("InstrumentosDoAluno", "Instrumentos", new { alunoId = Model.Id, nomeAluno = Model.Nome }) }, { "imagem", "/Content/images/violin.png" }, { "alt", "instrumentos" } })
 

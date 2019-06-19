@@ -280,6 +280,7 @@
     <Compile Include="Controllers\OcorrenciasController.cs" />
     <Compile Include="Controllers\PalhetaDeNotasController.cs" />
     <Compile Include="Controllers\ProfessoresController.cs" />
+    <Compile Include="Controllers\RelatorioController.cs" />
     <Compile Include="Controllers\RelatoriosController.cs" />
     <Compile Include="Controllers\TurmasController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
@@ -514,6 +515,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Views\Cep\" />
     <Folder Include="Views\PalhetaDeNotas\" />
+    <Folder Include="Views\Relatorio\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\font-awesome\fonts\fontawesome-webfont.eot" />
