@@ -23,9 +23,9 @@ namespace GrupoEstudosMusical.Email.Services
         {
             var smtpClient = new SmtpClient
             {
-                Host = "smtp.gmail.com",
+                Host = "smtpi.gemcosmopolita.com.br",
                 Port = 587,
-                EnableSsl = true,
+                EnableSsl = false,
                 DeliveryMethod = SmtpDeliveryMethod.Network,
                 UseDefaultCredentials = false
             };
@@ -83,6 +83,7 @@ namespace GrupoEstudosMusical.Email.Services
                 client.Send(mailMessage);
             }
         }
+
         private void ConverterAnexos(MailMessage mailMessage, EmailMessage emailMessage)
         {
             if(emailMessage != null && emailMessage.Anexos.Count > 0)
