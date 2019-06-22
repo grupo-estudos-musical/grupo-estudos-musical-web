@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Report ScriptLanguage="CSharp" ReportInfo.Created="06/05/2019 21:28:59" ReportInfo.Modified="06/05/2019 22:19:08" ReportInfo.CreatorVersion="1.8.2.0">
+<Report ScriptLanguage="CSharp" ReportInfo.Created="06/05/2019 21:28:59" ReportInfo.Modified="06/22/2019 17:02:46" ReportInfo.CreatorVersion="1.8.2.0">
   <Dictionary>
     <BusinessObjectDataSource Name="Dados" ReferenceName="Dados" DataType="null" Enabled="true">
       <Column Name="Matricula" DataType="null">
@@ -2177,7 +2177,7 @@
       <TextObject Name="Text2" Left="9.45" Top="9.45" Width="699.3" Height="103.95" CanGrow="true" Text="Declaramos para os devidos fins que o aluno(a) [Dados.Matricula.Aluno.Nome], com matrícula de nº [Dados.Matricula.Id], é aluno(a) do módulo de [Dados.Modulo.Nome] no nível [Dados.Matricula.Turma.Nivel] nesta intituição, regularmente matrículado(a) e frequente na turma [Dados.Matricula.Turma.Nome]  no [Dados.Matricula.Turma.Semestre]º semestre do ano de [Dados.Matricula.Turma.Periodo].&#13;&#10;" HorzAlign="Justify" Font="Arial, 11pt"/>
     </DataBand>
     <ReportSummaryBand Name="ReportSummary1" Top="352.2" Width="718.2" Height="151.2">
-      <TextObject Name="Text3" Left="9.45" Top="9.45" Width="311.85" Height="18.9" Text="[Date]" Format="Custom" Format.Format="'São Paulo,' dd 'de' mm 'de' yyyy." HorzAlign="Center" Font="Arial, 10pt, style=Bold"/>
+      <TextObject Name="Text3" Left="9.45" Top="9.45" Width="311.85" Height="18.9" Text="[Date]" Format="Custom" Format.Format="'São Paulo,' dd 'de' MMMM 'de' yyyy." HorzAlign="Center" Font="Arial, 10pt, style=Bold"/>
       <LineObject Name="Line1" Left="9.45" Top="73.7" Width="311.85" Diagonal="true"/>
       <TextObject Name="Text4" Left="9.45" Top="75.6" Width="308.3" Height="18.9" Text="Rafael de Freitas Santos" HorzAlign="Center" Font="Arial, 10pt, style=Bold"/>
       <TextObject Name="Text5" Left="9.45" Top="113.4" Width="308.85" Height="18.9" Text="Secretaria" HorzAlign="Center" Font="Arial, 10pt, style=Bold"/>

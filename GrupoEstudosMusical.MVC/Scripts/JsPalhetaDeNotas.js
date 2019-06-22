@@ -17,9 +17,12 @@
 
 
 function ObterNotasPelaTabela() {
+    var notaMaximaAvaliacao = $("#NotaMaximaAvaliacao").val();
     if (VerificarIrregularidesNasNotas() > 0) {
         swal("Atenção", "Existe uma ou mais notas inválidas!", "warning");
-    } else {
+    } else if (VerificarSeExisteNotasSuperiorNotaMaxima(notaMaximaAvaliacao) > 0) {
+        swal("Atenção", "A nota máxima para esta avaliação é " + notaMaximaAvaliacao, "warning");
+    }else {
         $('table tbody tr').each(function () {
             var nota = $(this).find('#palheta_Nota').val().replace('.', ',');
             var idpalheta = $(this).find('#PalhetaId').val();
@@ -27,8 +30,22 @@ function ObterNotasPelaTabela() {
         });
     }
 }
+
+function VerificarSeExisteNotasSuperiorNotaMaxima(notaMaxima) {
+    var qntNotasSuperiorNotaMaxima = 0;
+
+    $('table tbody tr').each(function () {
+        console.log("TO dentro do for das notas maximas");
+        var nota = $(this).find('#palheta_Nota').val().replace('.', ',');
+        console.log("Nota to" + nota);
+        if (parseFloat(nota) > parseFloat(notaMaxima)) {
+            console.log("Sou maior que a nota maxima =)");
+            qntNotasSuperiorNotaMaxima = qntNotasSuperiorNotaMaxima + 1;
+        }
+    });
+    return qntNotasSuperiorNotaMaxima;
+}
 function VerificarIrregularidesNasNotas() {
-    console.log("Entrei na verificação das irregularidades");
     var qntNotasIrregulares = 0;
     $('table tbody tr').each(function () {
         var nota = $(this).find('#palheta_Nota').val().replace('.', ',');
@@ -61,7 +78,6 @@ function LancarNotaAluno(nota, idpalheta) {
     });
 }
 function ValidarCampoNota(nota) {
-    
     var verificarSeEhUmValorValido = parseFloat(nota);
     return isNaN(verificarSeEhUmValorValido);
 }

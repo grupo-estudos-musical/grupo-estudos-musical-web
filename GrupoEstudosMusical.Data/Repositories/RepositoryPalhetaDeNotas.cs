@@ -12,6 +12,8 @@ namespace GrupoEstudosMusical.Data.Repositories
         public IList<PalhetaDeNota> ObterPalhetasPorAvaliacaoEhTurma(Guid avaliacaoID, int turmaID) =>
             Context.PalhetaDeNotas.Include(m => m.Matricula)
             .ThenInclude(m => m.Aluno)
+            .Include(m => m.AvaliacaoTurma)
+            .ThenInclude(m => m.Avaliacao)
             .Where(p => p.Matricula.TurmaId == turmaID && p.AvaliacaoID == avaliacaoID).ToList();
 
         public PalhetaDeNota ObterPorId(Guid id) =>

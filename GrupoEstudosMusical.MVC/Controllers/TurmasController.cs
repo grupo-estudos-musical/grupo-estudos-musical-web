@@ -22,14 +22,16 @@ namespace GrupoEstudosMusical.MVC.Controllers
         private readonly IBussinesProfessor _bussinesProfessor;
         private readonly IBussinesAvaliacaoTurma _bussinesAvaliacaoTurma;
         private readonly IBussinesPalhetaDeNotas _bussinesPalhetaDeNotas;
+        private readonly IBussinesAvaliacao _bussinesAvaliacao;
         public TurmasController(IBussinesTurma bussinesTurma, IBussinesModulo bussinesModulo, IBussinesProfessor bussinesProfessor,
-            IBussinesAvaliacaoTurma bussinesAvaliacaoTurma, IBussinesPalhetaDeNotas bussinesPalhetaDeNotas)
+            IBussinesAvaliacaoTurma bussinesAvaliacaoTurma, IBussinesPalhetaDeNotas bussinesPalhetaDeNotas, IBussinesAvaliacao bussinesAvaliacao)
         {
             _bussinesTurma = bussinesTurma;
             _bussinesModulo = bussinesModulo;
             _bussinesProfessor = bussinesProfessor;
             _bussinesAvaliacaoTurma = bussinesAvaliacaoTurma;
             _bussinesPalhetaDeNotas = bussinesPalhetaDeNotas;
+            _bussinesAvaliacao = bussinesAvaliacao;
         }
         // GET: Turmas
         public async Task<ActionResult> Index()
@@ -88,6 +90,8 @@ namespace GrupoEstudosMusical.MVC.Controllers
         public ActionResult ObterPalhetasDeNotasPorAvaliacaoEhTurma(string AvaliacaoID, int TurmaID)
         {
             var palhetasDeNotas = _bussinesPalhetaDeNotas.ObterPalhetasPorAvaliacaoEhTurma(Guid.Parse(AvaliacaoID), TurmaID);
+            ViewBag.NotaMaxima = palhetasDeNotas.Count > 0 ? palhetasDeNotas.FirstOrDefault()
+                .AvaliacaoTurma.Avaliacao.NotaMaxima: 0;
             return PartialView("_PalhetaDeNotas", palhetasDeNotas);
         }
         
