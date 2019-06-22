@@ -81,6 +81,7 @@
     <Compile Include="Interfaces\Bussines\IBussinesOcorrencia.cs" />
     <Compile Include="Interfaces\Bussines\IBussinesPalhetaDeNotas.cs" />
     <Compile Include="Interfaces\Bussines\IBussinesProfessor.cs" />
+    <Compile Include="Interfaces\Bussines\IBussinesRelatorio.cs" />
     <Compile Include="Interfaces\Bussines\IBussinesTurma.cs" />
     <Compile Include="Interfaces\Bussines\IBussinesUsuario.cs" />
     <Compile Include="Interfaces\Repository\IRepositoryAula.cs" />

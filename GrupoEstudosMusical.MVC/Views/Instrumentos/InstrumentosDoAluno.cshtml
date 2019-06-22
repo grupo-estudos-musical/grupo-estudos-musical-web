@@ -37,7 +37,7 @@
 
         <div class="content-body">
             <button type="button" class="btn btn-primary btn-icon bottom15 right15" onclick="AbrirModal();"><i class="fa fa-check-circle"></i>Efetuar empréstimo</button>
-            <a href="@Url.Action("GerarDetalhamentoDosEmprestimos","Relatorios", new { alunoID =  ViewBag.AlunoID })"><button type="button" class="btn btn-success btn-icon bottom15 right15 "><i class="fa fa-file-archive-o"></i>Detalhes de empréstimos</button></a>
+            <button type="button" class="btn btn-success btn-icon bottom15 right15 " onclick="GerarRelatorioDeDetalhamentoDeEmprestimo(@ViewBag.AlunoID);"><i class="fa fa-file-archive-o"></i>Detalhes de empréstimos</button>
             @Html.Partial("_MensagemSucesso")
             <div class="row">
                 <div class="col-xs-12">
@@ -186,4 +186,5 @@
     <script src="~/Scripts/lib/jquery-validation/js/additional-methods.min.js" type="text/javascript"></script>
     <script src="~/Scripts/js/form-validation.js" type="text/javascript"></script>
     <script src="~/Scripts/lib/jquery-validation/js/jquey.validate.pt-br.js" type="text/javascript"></script>
+    <script src="~/Scripts/js/relatorio.js"></script>
 }

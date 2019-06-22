@@ -103,6 +103,7 @@ namespace GrupoEstudosMusical.MVC.Controllers
 
         public async Task<ActionResult> VisaoGeral(int Id)
         {
+            
             if (!VerificarSeUsuarioPossuiAcesso(Id))
             {
                 return HttpNotFound("Você não possui acesso a estas informações, contate o administrador!");

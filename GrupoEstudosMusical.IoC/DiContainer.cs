@@ -15,7 +15,7 @@ namespace GrupoEstudosMusical.IoC
         public static Container RegisterDependencies()
         {
             var container = new Container();
-
+            #region Repository
             container.Register(typeof(IRepositoryGeneric<>), typeof(RepositoryGeneric<>));
             container.Register<IRepositoryAluno, RepositoryAluno>();
             container.Register<IRepositoryProfessor, RepositoryProfessor>();
@@ -34,7 +34,9 @@ namespace GrupoEstudosMusical.IoC
             container.Register<IRepositoryInventario, RepositoryInventario>();
             container.Register<IRepositoryUsuario, RepositoryUsuario>();
             container.Register<IDataInitializer, DataInitializer>();
+            #endregion
 
+            #region Bussines
             container.Register(typeof(IBussinesGeneric<>), typeof(BussinesGeneric<>));
             container.Register<IBussinesAluno, BussinesAluno>();
             container.Register<IBussinesProfessor, BussinesProfessor>();
@@ -52,6 +54,8 @@ namespace GrupoEstudosMusical.IoC
             container.Register<IBussinesInstrumentoDoAluno, BussinesInstrumentoDoAluno>();
             container.Register<IBussinesInventario, BussinesInventario>();
             container.Register<IBussinesUsuario, BussinesUsuario>();
+            container.Register<IBussinesRelatorio, BussinesRelatorio>();
+            #endregion
 
             container.Register<IViaCepService, ViaCepService>();
             container.Register<IViaCepCliente, ViaCepCliente>();
