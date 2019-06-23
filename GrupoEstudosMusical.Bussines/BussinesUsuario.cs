@@ -50,6 +50,7 @@ namespace GrupoEstudosMusical.Bussines
                     break;
             }
 
+            usuario.Guid = Guid.NewGuid().ToString();
             usuario.Senha = hash.CriptografarSenha(senha);
             await _repositoryUsuario.InserirAsync(usuario);
             return senha;

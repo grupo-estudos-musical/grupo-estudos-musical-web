@@ -55,7 +55,7 @@ namespace GrupoEstudosMusical.Bussines
         {
             var emprestimos = _repositoryInstrumentoDoAluno.ObterInstrumentosDoAluno(alunoid);
             if (emprestimos.Count <= 0)
-                throw new Exception("Empréstimos não localizado");
+                throw new Exception("Não há dados a serem apresentados!");
             var aluno = await repositoryAluno.ObterPorIdAsync(alunoid);
             return new DetalhesDoEmprestimo() { Instrumentos = emprestimos, Aluno = aluno };
         }

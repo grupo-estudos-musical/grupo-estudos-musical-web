@@ -45,12 +45,19 @@ namespace GrupoEstudosMusical.Bussines
 
         public async Task<Boletim> ObterBoletimAluno(int matriculaID)
         {
+
+            var matriculaAluno = await _repositoryMatricula.ObterPorIdAsync(matriculaID);
+            var palhetasDeNotas = _repositoryPalhetaDeNotas.ObterPalhetasPorMatricula(matriculaID);
+
+            if (matriculaAluno == null || palhetasDeNotas.Count <= 0)
+                throw new Exception("Não há dados a serem apresentados!");
+
             return new Boletim()
             {
-                MatriculaAluno = await _repositoryMatricula.ObterPorIdAsync(matriculaID),
-                PalhetasDeNotasDoAluno = _repositoryPalhetaDeNotas.ObterPalhetasPorMatricula(matriculaID)
-                
+                MatriculaAluno = matriculaAluno,
+                PalhetasDeNotasDoAluno = palhetasDeNotas
             };
+
         }
 
         public async Task<List<Boletim>> ObterBoletimDaTurma(int turmaID)
@@ -62,6 +69,9 @@ namespace GrupoEstudosMusical.Bussines
                 var boletim = await ObterBoletimAluno(matricula.Id);
                 boletimDaTurma.Add(boletim);
             }
+
+            if (boletimDaTurma.Count <= 0)
+                throw new Exception("Não há dados a serem apresentados");
             return boletimDaTurma;
         }
 

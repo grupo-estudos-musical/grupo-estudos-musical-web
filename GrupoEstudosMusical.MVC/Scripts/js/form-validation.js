@@ -36,6 +36,23 @@ $(document).ready(function() {
             }
         });
 
+        $('#ocorrenciasPorTurma').validate({
+            focusInvalid: false,
+            ignore: "",
+            rules: {
+                dataInicial: {
+                    required: true
+                },
+                dataFinal: {
+                    required: true
+                }
+            },
+            highlight: function (element) { // hightlight error inputs
+                var parent = $(element).parent().parent().parent('.form-group');
+                parent.removeClass('has-success').addClass('has-error');
+            }
+        });
+
         $('#form_aula').validate({
             focusInvalid: false,
             ignore: "",

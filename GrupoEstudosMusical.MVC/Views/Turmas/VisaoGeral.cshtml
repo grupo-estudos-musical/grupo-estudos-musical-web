@@ -32,7 +32,7 @@
 
 @Html.Partial("_VisaoGeralTurma", new ViewDataDictionary { { "titulo", "Lançar Faltas" }, { "link", @Url.Action("Index", "Chamadas", new { idTurma = Model.Id }) }, { "imagem", "/Content/images/menu_chamadas.png" }, { "alt", "Chamadas" } })
 
-@Html.Partial("_VisaoGeralTurma", new ViewDataDictionary { { "titulo", "Emitir ocorrências " }, { "link", @Url.Action("GerarRelatoriosDeOcorrenciasPorTurma", "Relatorios", new { turmaID = Model.Id }) }, { "imagem", "/Content/images/contract.png" }, { "alt", "Gerar ocorrências dos Alunos" } })
+@Html.Partial("_VisaoGeralTurma", new ViewDataDictionary { { "titulo", "Emitir ocorrências " }, { "link", @Url.Action("GerarRelatoriosDeOcorrenciasPorTurma", "Relatorio", new { turmaID = Model.Id }) }, { "imagem", "/Content/images/contract.png" }, { "alt", "Gerar ocorrências dos Alunos" } })
 
 @Html.Partial("_VisaoGeralTurma", new ViewDataDictionary { { "titulo", "Avaliações" }, { "link", @Url.Action("AvaliacoesDaTurma", "Avaliacoes", new { id = Model.Id, NomeTurma = Model.Nome }) }, { "imagem", "/Content/images/menu_avaliacoes_turma.png" }, { "alt", "avaliacoes" } })
 
@@ -42,7 +42,7 @@
 
 @Html.Partial("_VisaoGeralTurma", new ViewDataDictionary { { "titulo", "Recálculo" }, { "link", "#" }, { "imagem", "/Content/images/menu_recalculo.png" }, { "alt", "Recalculo" }, { "attr", $"id=recalculoAcademico onclick=EfetuarRecalculoAcademico('{Model.Id}')" } })
 
-@Html.Partial("_VisaoGeralTurma", new ViewDataDictionary { { "titulo", "Gerar Boletim" }, { "link", @Url.Action("GerarBoletimdaTurma", "Relatorios", new { id = Model.Id }) }, { "imagem", "/Content/images/form.png" }, { "alt", "Gerar boletim da Turma" } })
+@Html.Partial("_VisaoGeralTurma", new ViewDataDictionary { { "titulo", "Gerar Boletim" }, { "link", "#"}, { "imagem", "/Content/images/form.png" }, { "alt", "Gerar boletim da Turma" }, { "attr", $"onclick=GerarRelatorioBoletimTurma('{Model.Id}')" } })
 
 @Html.Partial("_VisaoGeralTurma", new ViewDataDictionary { { "titulo", "Finalizar Turma" }, { "link", "#" }, { "imagem", "/Content/images/menu_fechar_turma.png" }, { "alt", "Finalizar" }, { "attr", $"id=finalizarTurma onclick=FinalizarVigenciaTurma('{Model.Id}')" } })
 
@@ -132,5 +132,6 @@
     <script src="~/Scripts/lib/messenger/messenger-theme-future.js" type="text/javascript"></script>
     <script src="~/Scripts/lib/messenger/messenger-theme-flat.js" type="text/javascript"></script>
     <script src="~/Scripts/js/messenger.js" type="text/javascript"></script>
+    <script src="~/Scripts/js/relatorio.js"></script>
     @*<script src="~/Scripts/js/visao-geral-aluno.js"></script>*@
 }

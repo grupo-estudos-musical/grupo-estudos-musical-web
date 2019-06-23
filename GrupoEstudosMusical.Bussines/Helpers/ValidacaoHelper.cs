@@ -15,7 +15,7 @@ namespace GrupoEstudosMusical.Bussines.Helpers
         }
         public static void ValidarSeDataInicialEhMaiorQueAFinal(DateTime dataInicial, DateTime dataFinal)
         {
-            if (dataInicial > dataFinal)
+            if (dataInicial > dataFinal )
                 throw new Exception("Data inicial não pode ser superior a data final");
         }
 

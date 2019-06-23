@@ -4,6 +4,7 @@
 }
 
 @Html.Partial("_MensagemSucesso")
+<input type="hidden" id="NotaMaximaAvaliacao" value="@ViewBag.NotaMaxima" />
 <div class="row">
     <div class="col-md-6">
         <button type="button" id="EfetuarLancamento" class="btn btn-primary btn-icon bottom15 right15" onclick="ObterNotasPelaTabela();"><i class="fa fa-check-circle"></i> Processar Notas</button>

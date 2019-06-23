@@ -1,4 +1,5 @@
-﻿using GrupoEstudosMusical.MVC.Models;
+﻿using GrupoEstudosMusical.Models.Entities;
+using GrupoEstudosMusical.MVC.Models;
 using System;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,7 @@ namespace GrupoEstudosMusical.MVC.Helpers
     {
         private string _secretKey = "grupomusical";
 
-        public string GenerateToken(UsuarioVM usuario)
+        public string GenerateToken(Usuario usuario)
         {
             byte[] key = Encoding.ASCII.GetBytes(_secretKey);
             byte[] guid = Encoding.ASCII.GetBytes(usuario.Guid);
@@ -23,7 +24,7 @@ namespace GrupoEstudosMusical.MVC.Helpers
             return Convert.ToBase64String(data.ToArray());
         }
 
-        public bool ValidateToken(UsuarioVM usuario, string token)
+        public bool ValidateToken(Usuario usuario, string token)
         {
             byte[] data = Convert.FromBase64String(token);
             byte[] key = data.Take(12).ToArray();
@@ -33,11 +34,11 @@ namespace GrupoEstudosMusical.MVC.Helpers
             if (Encoding.UTF8.GetString(key) != _secretKey)
                 return false;
 
-            if (Encoding.UTF8.GetString(guid) != usuario.Guid)
-                return false;
+            //if (Encoding.UTF8.GetString(guid) != usuario.Guid)
+            //    return false;
 
-            if (Encoding.UTF8.GetString(id) != usuario.Id.ToString())
-                return false;
+            //if (Encoding.UTF8.GetString(id) != usuario.Id.ToString())
+            //    return false;
 
             return true;
         }

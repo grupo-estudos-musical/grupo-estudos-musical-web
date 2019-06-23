@@ -5,6 +5,8 @@ namespace GrupoEstudosMusical.MVC.Models
 {
     public class AlteraSenhaVM
     {
+        public int Id { get; set; }
+
         [Required]
         [DisplayName("Senha")]
         [MinLength(6)]

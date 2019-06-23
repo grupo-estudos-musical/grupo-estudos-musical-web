@@ -1,0 +1,118 @@
+﻿@model GrupoEstudosMusical.MVC.Models.AlteraSenhaVM
+
+@{
+    Layout = null;
+    //ViewBag.Title = "Resetar Senha";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Resetar Senha - Sistema GEM</title>
+
+    <!-- CORE CSS FRAMEWORK - START -->
+    <link href="~/Content/lib/pace/pace-theme-flash.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="~/Content/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/lib/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/fonts/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/animate.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/lib/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" type="text/css" />
+    <!-- CORE CSS FRAMEWORK - END -->
+
+    <link href="~/Content/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/responsive.css" rel="stylesheet" type="text/css" />
+</head>
+<body class=" ">
+    <!-- START TOPBAR -->
+    <div class='page-topbar '>
+        <div class='logo-area'>
+
+        </div>
+        <div class='quick-area'>
+            <div class='pull-left'>
+                <ul class="info-menu left-links list-inline list-unstyled">
+                    <li class="sidebar-toggle-wrap">
+                        <a href="#" data-toggle="sidebar" class="sidebar_toggle">
+                            <i class="fa fa-bars"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <!-- END TOPBAR -->
+    <!-- START CONTENT -->
+    <section id="main-content" class=" ">
+        <section class="wrapper main-wrapper row" style=''>
+            @using (Html.BeginForm("ResetarSenha", "Usuarios", FormMethod.Post, new { id = "alterar_senha" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(model => model.Id)
+                <div class="col-lg-12">
+                    <section class="box ">
+                        <header class="panel_header">
+                            <h2 class="title pull-left">Digite uma nova senha</h2>
+                            <div class="actions panel_actions pull-right">
+                                <a class="box_toggle fa fa-chevron-down"></a>
+                                <a class="box_close fa fa-times"></a>
+                            </div>
+                        </header>
+                        <div class="content-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.NovaSenha, htmlAttributes: new { @class = "form-label" })
+                                        <div class="controls">
+                                            @Html.EditorFor(model => model.NovaSenha, new { htmlAttributes = new { @class = "form-control" } })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <div class="pull-left ">
+                                        <button type="submit" class="btn btn-success" value="Salvar">
+                                            <i class="fa fa-check"> &nbsp; <span>Salvar</span></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            }
+        </section>
+    </section>
+    <!-- END CONTENT -->
+    <!-- CORE JS FRAMEWORK - START -->
+    <script src="~/Scripts/js/jquery-1.11.2.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/js/jquery.easing.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/lib/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/lib/pace/pace.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/lib/perfect-scrollbar/perfect-scrollbar.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/lib/viewport/viewportchecker.js" type="text/javascript"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Scripts/js/sweetalert.min.js"></script>
+
+    <script>window.jQuery || document.write('<script src="~/Scripts/js/jquery-1.11.2.min.js"><\/script>');</script>
+    <!-- CORE JS FRAMEWORK - END -->
+
+    <script src="~/Scripts/lib/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/lib/jquery-validation/js/additional-methods.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/js/form-validation.js" type="text/javascript"></script>
+    <script src="~/Scripts/lib/jquery-validation/js/jquey.validate.pt-br.js" type="text/javascript"></script>
+
+    <script src="~/Scripts/js/scripts.js" type="text/javascript"></script>
+    <script src="~/Scripts/js/app.js"></script>
+    <!-- END CORE TEMPLATE JS - END -->
+</body>
+</html>

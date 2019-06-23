@@ -5,6 +5,7 @@ using GrupoEstudosMusical.Models.Entities;
 using GrupoEstudosMusical.Models.Enums;
 using GrupoEstudosMusical.Models.Interfaces.Bussines;
 using GrupoEstudosMusical.MVC.App_Start;
+using GrupoEstudosMusical.MVC.Helpers;
 using GrupoEstudosMusical.MVC.Models;
 using System;
 using System.Collections.Generic;
@@ -17,11 +18,13 @@ namespace GrupoEstudosMusical.MVC.Controllers
     public class ProfessoresController : Controller
     {
         private readonly IBussinesProfessor _bussinesProfessor;
+        private readonly IBussinesUsuario _bussinesUsuario;
         private readonly IEmailService _emailService;
 
-        public ProfessoresController(IBussinesProfessor bussinesProfessor, IEmailService emailService)
+        public ProfessoresController(IBussinesProfessor bussinesProfessor, IBussinesUsuario bussinesUsuario, IEmailService emailService)
         {
             _bussinesProfessor = bussinesProfessor;
+            _bussinesUsuario = bussinesUsuario;
             _emailService = emailService;
         }
 
@@ -56,7 +59,16 @@ namespace GrupoEstudosMusical.MVC.Controllers
 
                 var professorModel = Mapper.Map<ProfessorVM, Professor>(professorVM);
                 var senhaProfessor = await _bussinesProfessor.InserirAsync(professorModel, usuarioModel);
-                EnviarEmailProfessor(professorVM, senhaProfessor);
+
+                usuarioModel = await _bussinesUsuario.ObterPorIdAsync(professorModel.UsuarioId);
+                
+                var tokenHelper = new TokenHelper();
+                var token = tokenHelper.GenerateToken(usuarioModel);
+
+                var link = Url.Action("ResetarSenha", "Usuarios", new { token = token, usuarioId = usuarioModel.Id }, Request.Url.Scheme);
+
+                EnviarEmailProfessor(professorVM, link);
+
                 TempData["Mensagem"] = "Professor Cadastrado com Sucesso.";
                 return RedirectToAction(nameof(Index));
             }
@@ -67,7 +79,7 @@ namespace GrupoEstudosMusical.MVC.Controllers
             }
         }
 
-        private void EnviarEmailProfessor(ProfessorVM professorVM, string senhaProfessor)
+        private void EnviarEmailProfessor(ProfessorVM professorVM, string link)
         {
             var nomeProfessor = professorVM.Nome.Split(' ')[0];
             _emailService.SendEmailMessage(new EmailMessage
@@ -75,8 +87,8 @@ namespace GrupoEstudosMusical.MVC.Controllers
                 Subject = "Bem-Vindo ao GEM",
                 Title = $"Seja Bem-Vindo ao GEM {nomeProfessor}",
                 Body = $@"Olá {nomeProfessor}, você acaba de entrar para o time de instrutores do Grupo de Estudos Musical.
-                            Desejamos boa sorte a você e aproveite muito está aportunidade.<br/> Para começar, a área do professor já está
-                            disponível para acesso e sua senha é: <b>{senhaProfessor}</b>.
+                            Desejamos boa sorte a você e aproveite muito está aportunidade.<br/> Para começar, Para começar, <a href='{link}'>Clique Aqui</a> para definir sua senha de acesso
+                            a área do professor.
                             Aqui você poderá consultar suas informações pessoais, administrar suas turmas, lançar notas, faltas etc.",
                 ToEmails = new List<string> { professorVM.Email }
             });

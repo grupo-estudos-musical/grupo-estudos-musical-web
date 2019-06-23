@@ -26,7 +26,7 @@ namespace GrupoEstudosMusical.Bussines
         }
 
         public IList<PalhetaDeNota> ObterPalhetasPorAvaliacaoEhTurma(Guid avaliacaoID, int turmaID) =>
-            _repositoryPalhetaDeNotas.ObterPalhetasPorAvaliacaoEhTurma(avaliacaoID, turmaID);
+            _repositoryPalhetaDeNotas.ObterPalhetasPorAvaliacaoEhTurma(avaliacaoID, turmaID).OrderBy(p => p.MatriculaID).ToList();
 
         public PalhetaDeNota ObterPorId(Guid id) =>
             _repositoryPalhetaDeNotas.ObterPorId(id);

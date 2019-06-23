@@ -28,9 +28,10 @@
 </div>
 
 
-@using (Html.BeginForm("GerarAtestadoDeMatricula", "Relatorios", FormMethod.Post, new { id = "general_validate" }))
+@using (Html.BeginForm("GerarAtestadoDeMatricula", "Relatorio", FormMethod.Post, new { id = "general_validate" }))
 {
     @Html.AntiForgeryToken()
+    @Html.Hidden("alunoID", Model.Id);
     <div class="col-lg-12">
         <section class="box ">
             <header class="panel_header">
@@ -54,10 +55,10 @@
                             <label class="form-label"></label>
                             <button class="btn btn-primary">Gerar Relatório</button>
                         </div>
-                        </div>
                     </div>
-                    <br />
                 </div>
+                <br />
+            </div>
         </section>
     </div>
 }

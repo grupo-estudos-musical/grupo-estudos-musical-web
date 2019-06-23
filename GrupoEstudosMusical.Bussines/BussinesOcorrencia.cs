@@ -35,6 +35,9 @@ namespace GrupoEstudosMusical.Bussines
             {
                 listaDeOcorrenciasParaRelatorio.Ocorrencias.Add(ocorrencia);
             }
+
+            if (listaDeOcorrenciasParaRelatorio.Ocorrencias.Count == 0)
+                throw new Exception("Não há dados a serem apresentados");
             return listaDeOcorrenciasParaRelatorio;
         }
 
@@ -56,7 +59,8 @@ namespace GrupoEstudosMusical.Bussines
                 }
                 listaDeOcorrenciasParaRelatorio.Add(ocorrenciasParaRelatorio);
             }
-            
+            if (listaDeOcorrenciasParaRelatorio.Count <= 0)
+                throw new Exception("Não há dados a serem apresentados");
             return listaDeOcorrenciasParaRelatorio;
         }
     }
