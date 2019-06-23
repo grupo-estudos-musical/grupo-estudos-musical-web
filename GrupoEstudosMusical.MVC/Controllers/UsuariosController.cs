@@ -6,6 +6,8 @@ using GrupoEstudosMusical.MVC.App_Start;
 using GrupoEstudosMusical.MVC.Helpers;
 using GrupoEstudosMusical.MVC.Models;
 using System.Net;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -15,11 +17,13 @@ namespace GrupoEstudosMusical.MVC.Controllers
     {
         private readonly IBussinesUsuario _bussinesUsuario;
         private readonly IBussinesAluno _bussinesAluno;
+        private readonly IBussinesProfessor _bussinesProfessor;
 
-        public UsuariosController(IBussinesUsuario bussinesUsuario, IBussinesAluno bussinesAluno)
+        public UsuariosController(IBussinesUsuario bussinesUsuario, IBussinesAluno bussinesAluno, IBussinesProfessor bussinesProfessor)
         {
             _bussinesUsuario = bussinesUsuario;
             _bussinesAluno = bussinesAluno;
+            _bussinesProfessor = bussinesProfessor;
         }
 
         [Route("Login")]
@@ -47,6 +51,11 @@ namespace GrupoEstudosMusical.MVC.Controllers
                         Session["imagemUrl"] = aluno.ImagemUrl;
                         Session["AlunoID"] = aluno.Id;
                         return RedirectToAction("VisaoGeral", "Alunos", new { Id = aluno.Id });
+                    }
+                    if(usuario.NivelAcesso == NivelAcessoEnum.Professor)
+                    {
+                        var professor = Mapper.Map<IList<Professor>, IList<ProfessorVM>>(await _bussinesProfessor.ObterTodosPorUsuario(usuario.Id));
+                        Session["ProfessorID"] = professor.FirstOrDefault().Id;
                     }
                     return Redirect("/");
                 }

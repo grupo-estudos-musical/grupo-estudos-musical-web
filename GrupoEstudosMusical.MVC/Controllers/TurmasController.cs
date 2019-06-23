@@ -42,6 +42,12 @@ namespace GrupoEstudosMusical.MVC.Controllers
 
         }
 
+
+        public ActionResult TurmasDoProfessor(int professorID)
+        {
+                var turmasViewModel = Mapper.Map<IList<Turma>, IList<TurmaVM>>(_bussinesTurma.ObterTurmasDoProfessor(professorID));
+                return View(turmasViewModel);
+        }
         
 
         public async Task<ActionResult> VisaoGeral(int Id)

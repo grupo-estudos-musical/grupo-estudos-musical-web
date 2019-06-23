@@ -45,5 +45,13 @@ namespace GrupoEstudosMusical.Data.Repositories
                 .Include(t => t.Modulo)
                 .ToListAsync();
         }
+
+        public List<Turma> ObterTurmasDoProfessor( int professorID)
+        {
+            return Context.Turmas.Where(t => t.ProfessorID == professorID)
+                .Include(t => t.Matriculas)
+                .ThenInclude(m => m.Aluno)
+                .ToList();
+        }
     }
 }

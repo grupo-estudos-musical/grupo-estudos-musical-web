@@ -10,5 +10,6 @@ namespace GrupoEstudosMusical.Models.Interfaces.Repository
         IList<Turma> ObterTurmasAtivasPorModulo(int moduloId);
         IList<Turma> ObterTurmasAtivas();
         Task<IList<Turma>> ObterTurmasPorAluno(int idAluno);
+        List<Turma> ObterTurmasDoProfessor(int professorID);
     }
 }

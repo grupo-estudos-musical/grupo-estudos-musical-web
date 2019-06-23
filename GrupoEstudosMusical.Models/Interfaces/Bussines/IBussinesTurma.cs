@@ -12,5 +12,7 @@ namespace GrupoEstudosMusical.Models.Interfaces.Bussines
         Task FinalizarVigencia(int turmaId);
         IList<Turma> ObterTurmasAtivas();
         Task<IList<Turma>> ObterTurmasPorAluno(int idAluno);
+
+        List<Turma> ObterTurmasDoProfessor(int professorID);
     }
 }
