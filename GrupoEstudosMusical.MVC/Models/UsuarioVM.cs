@@ -10,5 +10,6 @@ namespace GrupoEstudosMusical.MVC.Models
         public string Nome { get; set; }
         public string Senha { get; set; }
         public NivelAcessoEnum NivelAcesso { get; set; }
+        public string Guid { get; set; }
     }
 }

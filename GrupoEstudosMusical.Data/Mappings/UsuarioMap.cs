@@ -30,6 +30,9 @@ namespace GrupoEstudosMusical.Data.Mappings
 
             builder.Property(u => u.DataCadastro)
                 .HasColumnType("date");
+
+            builder.Property(u => u.Guid)
+                .HasColumnType("varchar(36)");
         }
     }
 }
