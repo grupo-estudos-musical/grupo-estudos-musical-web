@@ -92,6 +92,13 @@ namespace GrupoEstudosMusical.MVC.Controllers
             return View(professorVM);
         }
 
+        public async Task<ActionResult> PortalProfessor(int professorID)
+        {
+            var professorLogado = Mapper.Map<Professor,ProfessorVM>(await _bussinesProfessor.ObterPorIdAsync(professorID));
+            if (professorLogado == null)
+                return HttpNotFound("Professor não encontrado");
+            return View(professorLogado);
+        }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Editar(ProfessorVM professorVM)

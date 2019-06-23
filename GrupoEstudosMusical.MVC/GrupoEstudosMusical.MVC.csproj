@@ -602,6 +602,9 @@
     <Content Include="Views\Relatorio\GerarRelatoriosDeOcorrenciasPorTurma.cshtml" />
     <Content Include="Views\Relatorio\GerarAtestadoDeMatricula.cshtml" />
     <Content Include="Views\Shared\_VisaoGeralAlunoAjax.cshtml" />
+    <Content Include="Views\Professores\PortalProfessor.cshtml" />
+    <Content Include="Views\Shared\_VisaoGeralProfessor.cshtml" />
+    <Content Include="Views\Turmas\TurmasDoProfessor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GrupoEstudosMusical.Bussines\GrupoEstudosMusical.Bussines.csproj">

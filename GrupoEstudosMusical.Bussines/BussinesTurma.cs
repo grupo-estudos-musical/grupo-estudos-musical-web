@@ -122,5 +122,13 @@ namespace GrupoEstudosMusical.Bussines
 
         public async Task<IList<Turma>> ObterTurmasPorAluno(int idAluno) =>
             await _repositoryTurma.ObterTurmasPorAluno(idAluno);
+
+        public List<Turma> ObterTurmasDoProfessor(int professorID)
+        {
+            var turmasDoProfessor = _repositoryTurma.ObterTurmasDoProfessor(professorID);
+
+            return turmasDoProfessor;
+
+        }
     }
 }

@@ -1,0 +1,24 @@
+﻿@model GrupoEstudosMusical.MVC.Models.ProfessorVM
+@{
+    ViewBag.Title = "PortalProfessor";
+}
+
+<div class='col-xs-12'>
+    <div class="page-title">
+        <div class="pull-left">
+            <h1 class="title">Portal do Professor <span style="font-weight: bold">@Model.Nome</span></h1>
+        </div>
+        <div class="pull-right hidden-xs">
+            <ol class="breadcrumb">
+                <li>
+                    <a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i>Home</a>
+                </li>
+                <li class="active">
+                    <strong>Portal do Professor</strong>
+                </li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+@Html.Partial("_VisaoGeralProfessor", new ViewDataDictionary { { "titulo", "Turmas" }, { "link", @Url.Action("TurmasDoProfessor", "Turmas", new { id = Model.Id }) }, { "imagem", "/Content/images/menu_alunos_turma.png" }, { "alt", "Turmas" } })

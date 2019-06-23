@@ -8,5 +8,6 @@ namespace GrupoEstudosMusical.Models.Interfaces.Repository
     {
         Task<Professor> ObterPorEmail(string email);
         Task<List<Professor>> ObterTodosPorUsuario(int idUsuario);
+
     }
 }
