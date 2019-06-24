@@ -19,12 +19,15 @@ namespace GrupoEstudosMusical.MVC.Controllers
     {
         private readonly IBussinesAluno _bussinesAluno;
         private readonly IBussinesTurma _bussinesTurma;
+        private readonly IBussinesUsuario _bussinesUsuario;
         private readonly IEmailService _emailService;
 
-        public AlunosController(IBussinesAluno bussinesAluno, IBussinesTurma bussinesTurma, IEmailService emailService)
+        public AlunosController(IBussinesAluno bussinesAluno, IBussinesTurma bussinesTurma,
+            IBussinesUsuario bussinesUsuario, IEmailService emailService)
         {
             _bussinesAluno = bussinesAluno;
             _bussinesTurma = bussinesTurma;
+            _bussinesUsuario = bussinesUsuario;
             _emailService = emailService;
         }
 
@@ -61,7 +64,14 @@ namespace GrupoEstudosMusical.MVC.Controllers
                 var senhaAluno = await _bussinesAluno.InserirAsync(alunoModel, usuarioModel);
                 AlunoHelper.SalvarImagemAluno(alunoVM.ImagemUpload, AlunoHelper.ObterCaminhoImagemAluno(alunoVM, Server));
 
-                EnviarEmailAluno(alunoVM, senhaAluno);
+                usuarioModel = await _bussinesUsuario.ObterPorIdAsync(alunoModel.UsuarioId);
+
+                var tokenHelper = new TokenHelper();
+                var token = tokenHelper.GenerateToken(usuarioModel);
+
+                var link = Url.Action("ResetarSenha", "Usuarios", new { token = token, usuarioId = usuarioModel.Id }, Request.Url.Scheme);
+
+                EnviarEmailAluno(alunoVM, link);
                 return RedirectToRoute("Matricular", new { controller = "Matriculas", idAluno = alunoVM.Id });
             }
             catch (ArgumentException ex)
@@ -72,7 +82,7 @@ namespace GrupoEstudosMusical.MVC.Controllers
             }
         }
 
-        private void EnviarEmailAluno(AlunoVM alunoVM, string senhaAluno)
+        private void EnviarEmailAluno(AlunoVM alunoVM, string link)
         {
             var nomeAluno = alunoVM.Nome.Split(' ')[0];
             _emailService.SendEmailMessage(new EmailMessage
@@ -81,8 +91,8 @@ namespace GrupoEstudosMusical.MVC.Controllers
                 Title = $"Seja Bem-Vindo ao GEM {nomeAluno}",
                 Body = $@"Olá {nomeAluno}, você acaba de entrar para o Grupo de Estudos Musical, 
                             aqui você irá aprender tudo relacionado a música desda teoria até a prática com o instrumento.
-                            Desejamos boa sorte a você e aproveite muito está aportunidade.<br/> Para começar, a área do aluno já está
-                            disponível para acesso e sua senha é: <b>{senhaAluno}</b>.
+                            Desejamos boa sorte a você e aproveite muito está aportunidade.<br/> Para começar, <a href='{link}'>Clique Aqui</a> para definir sua senha de acesso
+                            ao portal do aluno.
                             Aqui você poderá consultar suas informações pessoais, notas, faltas, calendário etc.",
                 ToEmails = new List<string> { alunoVM.Email }
             });

@@ -3,7 +3,9 @@ using GrupoEstudosMusical.Models.Entities;
 using GrupoEstudosMusical.Models.Enums;
 using GrupoEstudosMusical.Models.Interfaces.Bussines;
 using GrupoEstudosMusical.MVC.App_Start;
+using GrupoEstudosMusical.MVC.Helpers;
 using GrupoEstudosMusical.MVC.Models;
+using System.Net;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -21,6 +23,7 @@ namespace GrupoEstudosMusical.MVC.Controllers
         {
             _bussinesUsuario = bussinesUsuario;
             _bussinesAluno = bussinesAluno;
+            _bussinesProfessor = bussinesProfessor;
         }
 
         [Route("Login")]
@@ -83,6 +86,50 @@ namespace GrupoEstudosMusical.MVC.Controllers
                 TempData["mensagem"] = "Senha alterada com sucesso!";
                 TempData["tipo"] = "success";
                 return RedirectToAction(nameof(AlterarSenha));
+            }
+
+            return View(alteraSenhaVM);
+        }
+
+        public async Task<ActionResult> ResetarSenha(string token, int? usuarioId)
+        {
+            if (string.IsNullOrEmpty(token) && !usuarioId.HasValue)
+                return new HttpStatusCodeResult(HttpStatusCode.BadGateway);
+
+            var usuarioModel = await _bussinesUsuario.ObterPorIdAsync(usuarioId.Value);
+            if (usuarioModel == null)
+                return HttpNotFound("Aluno não encontrado.");
+
+            var tokenHelper = new TokenHelper();
+            if (!tokenHelper.ValidateToken(usuarioModel, token))
+                return new HttpStatusCodeResult(HttpStatusCode.BadGateway);
+
+            var alterarSenhaVM = new AlteraSenhaVM { Id = usuarioModel.Id };
+
+
+            return View(alterarSenhaVM);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> ResetarSenha(AlteraSenhaVM alteraSenhaVM)
+        {
+            if (ModelState.IsValid)
+            {
+                await _bussinesUsuario.AlterarSenha(alteraSenhaVM.Id, alteraSenhaVM.NovaSenha);
+                var usuario = await _bussinesUsuario.ObterPorIdAsync(alteraSenhaVM.Id);
+                Session.Timeout = 30;
+                Session["idUsuario"] = usuario.Id;
+                Session["nivelAcesso"] = usuario.NivelAcesso.ToString();
+                Session["nomeUsuario"] = usuario.Nome;
+                if (usuario.NivelAcesso == NivelAcessoEnum.Aluno)
+                {
+                    var aluno = await _bussinesAluno.ObterPorUsuario(usuario.Id);
+                    Session["imagemUrl"] = aluno.ImagemUrl;
+                    Session["AlunoID"] = aluno.Id;
+                    return RedirectToAction("VisaoGeral", "Alunos", new { Id = aluno.Id });
+                }
+                return Redirect("/");
             }
 
             return View(alteraSenhaVM);
