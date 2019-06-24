@@ -43,10 +43,17 @@ namespace GrupoEstudosMusical.MVC.Controllers
         }
 
 
-        public ActionResult TurmasDoProfessor(int professorID)
+        public async Task<ActionResult> TurmasDoProfessor()
         {
-                var turmasViewModel = Mapper.Map<IList<Turma>, IList<TurmaVM>>(_bussinesTurma.ObterTurmasDoProfessor(professorID));
-                return View(turmasViewModel);
+            if(Session["nivelAcesso"].ToString() != "Professor")
+            {
+                return HttpNotFound("Você não possui permissão a este recurso!");
+            }
+            var usuarioID = Session["idUsuario"] != null ? Convert.ToInt32(Session["idUsuario"].ToString()) : 0;
+            var professor = Mapper.Map<IList<Professor>, IList<ProfessorVM>>( await _bussinesProfessor.ObterTodosPorUsuario(usuarioID)).FirstOrDefault();
+            var professorID = professor != null ? professor.Id : 0;
+            var turmasViewModel = Mapper.Map<IList<Turma>, IList<TurmaVM>>(_bussinesTurma.ObterTurmasDoProfessor(professorID));
+            return View(turmasViewModel);
         }
         
 

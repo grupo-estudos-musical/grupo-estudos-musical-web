@@ -36,7 +36,7 @@ function VerificarSeExisteNotasSuperiorNotaMaxima(notaMaxima) {
 
     $('table tbody tr').each(function () {
         var nota = $(this).find('#palheta_Nota').val().replace('.', ',');
-        if (nota > parseFloat(notaMaxima)) {
+        if (nota > parseInt(notaMaxima)) {
             console.log("Sou maior que a nota maxima =)");
             qntNotasSuperiorNotaMaxima = qntNotasSuperiorNotaMaxima + 1;
         }

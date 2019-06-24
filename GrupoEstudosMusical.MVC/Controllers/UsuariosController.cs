@@ -49,11 +49,7 @@ namespace GrupoEstudosMusical.MVC.Controllers
                         Session["AlunoID"] = aluno.Id;
                         return RedirectToAction("VisaoGeral", "Alunos", new { Id = aluno.Id });
                     }
-                    if(usuario.NivelAcesso == NivelAcessoEnum.Professor)
-                    {
-                        var professor = Mapper.Map<IList<Professor>, IList<ProfessorVM>>(await _bussinesProfessor.ObterTodosPorUsuario(usuario.Id));
-                        Session["ProfessorID"] = professor.FirstOrDefault().Id;
-                    }
+                    
                     return Redirect("/");
                 }
 
