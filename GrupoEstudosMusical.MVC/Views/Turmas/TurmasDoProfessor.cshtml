@@ -14,7 +14,7 @@
                     <a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i>Home</a>
                 </li>                
                 <li class="active">
-                    <strong>Todos suas Turmas</strong>
+                    <strong>Todas suas Turmas</strong>
                 </li>
             </ol>
         </div>
@@ -41,7 +41,6 @@
                                 <th>Módulo</th>
                                 <th>@Html.DisplayNameFor(m => m.Nivel)</th>
                                 <th>@Html.DisplayNameFor(m => m.DataInicio)</th>
-                                <th>Professor</th>
                                 <th>@Html.DisplayNameFor(m => m.Status)</th>
                                 <th>Opções</th>
                             </tr>
@@ -52,7 +51,6 @@
                                 <th>Módulo</th>
                                 <th>@Html.DisplayNameFor(m => m.Nivel)</th>
                                 <th>@Html.DisplayNameFor(m => m.DataInicio)</th>
-                                <th>Professor</th>
                                 <th>@Html.DisplayNameFor(m => m.Status)</th>
                                 <th>Opções</th>
                             </tr>
@@ -65,7 +63,6 @@
                                     <td>@Html.DisplayFor(item => turma.Modulo.Nome)</td>
                                     <td>@Html.DisplayFor(item => turma.Nivel)</td>
                                     <td>@turma.DataInicio.ToString("dd/MM/yyyy")</td>
-                                    <td>@Html.DisplayFor(item => turma.Professor.Nome)</td>
                                     <td id="status_turma">@Html.DisplayFor(item => turma.Status)</td>
                                     <td style="width: 160px">
                                         @if (turma.Status != "Encerrada")

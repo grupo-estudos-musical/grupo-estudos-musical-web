@@ -12,7 +12,7 @@
         </a>
         <ul class="sub-menu" style="@(controller == "Turmas" ? "display-block" : "" )">
             <li>
-                <a class="@(rota == "/Turmas/TurmasDoProfessor" || rota == "/Turmas" ? "active" : "" )" href="@Url.Action("Index", "TurmasDoProfessor")">Todas Turmas</a>
+                <a class="@(rota == "/Turmas/TurmasDoProfessor" || rota == "/Turmas" ? "active" : "" )" href="@Url.Action("TurmasDoProfessor","Turmas")">Todas Turmas</a>
             </li>
             @*<li>
                 <a class="@(rota == "/Turmas/Novo" ? "active" : "" )" href="@Url.Action("Novo", "Turmas")">Cadastrar Turma</a>

@@ -49,6 +49,7 @@ namespace GrupoEstudosMusical.Data.Repositories
         public List<Turma> ObterTurmasDoProfessor( int professorID)
         {
             return Context.Turmas.Where(t => t.ProfessorID == professorID)
+                .Include(t => t.Modulo)
                 .Include(t => t.Matriculas)
                 .ThenInclude(m => m.Aluno)
                 .ToList();
