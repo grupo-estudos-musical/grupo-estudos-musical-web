@@ -37,7 +37,7 @@ namespace GrupoEstudosMusical.Data.Mappings
                 .WithMany(m => m.Turmas);
 
             builder.HasOne(t => t.Professor)
-                .WithMany(p => p.Turmas);
+                .WithMany(p => p.Turmas).OnDelete(DeleteBehavior.Restrict);
 
             builder.HasIndex(t => new { t.Nome, t.Periodo, t.Semestre }).IsUnique();
             builder.Ignore(m => m.Matriculas);

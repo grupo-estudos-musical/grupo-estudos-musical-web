@@ -196,6 +196,10 @@
     <Compile Include="Migrations\20190621193453_AdicionandoCampoTabelaUsuario.Designer.cs">
       <DependentUpon>20190621193453_AdicionandoCampoTabelaUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20190630010427_Ajustes na relacao de turmas com professor.cs" />
+    <Compile Include="Migrations\20190630010427_Ajustes na relacao de turmas com professor.designer.cs">
+      <DependentUpon>20190630010427_Ajustes na relacao de turmas com professor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\GemContextModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\RepositoryAluno.cs" />

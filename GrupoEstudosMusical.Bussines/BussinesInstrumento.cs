@@ -1,5 +1,6 @@
 ﻿
 
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +29,13 @@ namespace GrupoEstudosMusical.Bussines
             if (_repositoryInstrumento.ObterPorNome(entity.Nome) != null)
                 throw new Exception($"Já existe um instrumento com a descrição {entity.Nome}");
         }
-        
+
+        public override Task AlterarAsync(Instrumento entity)
+        {
+            ValidarCrudInstrumento(entity);
+            return base.AlterarAsync(entity);
+        }
+
 
         public Instrumento ObterPorIdGuid(Guid Id) =>
             _repositoryInstrumento.ObterPorIdGuid(Id);

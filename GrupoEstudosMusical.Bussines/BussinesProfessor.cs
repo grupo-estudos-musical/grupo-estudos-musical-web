@@ -11,11 +11,13 @@ namespace GrupoEstudosMusical.Bussines
     {
         private readonly IRepositoryProfessor _repositoryProfessor;
         private readonly IBussinesUsuario _bussinesUsuario;
+        private readonly IRepositoryTurma _repositoryTurma;
 
-        public BussinesProfessor(IRepositoryProfessor repositoryProfessor, IBussinesUsuario bussinesUsuario) : base(repositoryProfessor)
+        public BussinesProfessor(IRepositoryProfessor repositoryProfessor, IBussinesUsuario bussinesUsuario, IRepositoryTurma repositoryTurma) : base(repositoryProfessor)
         {
             _repositoryProfessor = repositoryProfessor;
             _bussinesUsuario = bussinesUsuario;
+            _repositoryTurma = repositoryTurma;
         }
 
         public override async Task AlterarAsync(Professor entity)
@@ -33,6 +35,14 @@ namespace GrupoEstudosMusical.Bussines
             await base.AlterarAsync(entity);
         }
 
+        public override Task DeletarAsync(Professor entity)
+        {
+            var turmasProfessor = _repositoryTurma.ObterTurmasDoProfessor(entity.Id);
+
+            if (turmasProfessor.Count > 0)
+                throw new Exception("Não é possível excluir este professor, pois o mesmo está atribuido a uma ou mais turmas.");
+            return base.DeletarAsync(entity);
+        }
         public override Task InserirAsync(Professor entity) => throw new NotImplementedException();
 
         public async Task<string> InserirAsync(Professor professor, Usuario usuario)

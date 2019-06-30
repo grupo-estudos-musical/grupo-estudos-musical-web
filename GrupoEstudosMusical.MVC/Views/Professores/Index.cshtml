@@ -113,4 +113,11 @@
     <script src="~/Scripts/lib/datatables/extensions/TableTools/js/dataTables.tableTools.min.js" type="text/javascript"></script>
     <script src="~/Scripts/lib/datatables/extensions/Responsive/js/dataTables.responsive.min.js" type="text/javascript"></script>
     <script src="~/Scripts/lib/datatables/extensions/Responsive/bootstrap3/dataTables.bootstrap.js" type="text/javascript"></script>
+    <script src="~/Scripts/js/sweetalert.min.js"></script>
+    @if(TempData["Error"] != null)
+    {
+        <script>
+            swal("Atenção", "@Html.Raw(TempData["Error"].ToString())", "error");
+        </script>
+    }
 }

@@ -78,6 +78,35 @@ namespace GrupoEstudosMusical.MVC.Controllers
             
         }
 
+        public ActionResult Editar(Guid ID)
+        {
+            var instrumento = Mapper.Map<Instrumento,InstrumentoVM>(_bussinesInstrumento.ObterPorIdGuid(ID));
+
+            return View(instrumento);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Editar(InstrumentoVM instrumento)
+        {
+            try
+            {
+                var instrumentoModel = Mapper.Map<InstrumentoVM, Instrumento>(instrumento);
+
+                await _bussinesInstrumento.AlterarAsync(instrumentoModel);
+
+                TempData["Mensagem"] = "Instrumento editado com sucesso";
+
+                return RedirectToAction("Index");
+
+            }
+            catch (Exception ex)
+            {
+                TempData["Mensagem"] = ex.Message;
+
+                return View(instrumento);
+            }
+        }
         async Task AdicionarInstrumentoNoInventario(Instrumento instrumento)
         {
             await _bussinesInventario.InserirAsync(new Inventario()

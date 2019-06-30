@@ -133,11 +133,20 @@ namespace GrupoEstudosMusical.MVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Deletar(FormCollection formCollection)
         {
-            int.TryParse(formCollection["id"].ToString(), out var id);
-            var professorModel = await _bussinesProfessor.ObterPorIdAsync(id);
-            await _bussinesProfessor.DeletarAsync(professorModel);
-            TempData["Mensagem"] = "Professor Apagado com Sucesso.";
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                int.TryParse(formCollection["id"].ToString(), out var id);
+                var professorModel = await _bussinesProfessor.ObterPorIdAsync(id);
+                await _bussinesProfessor.DeletarAsync(professorModel);
+                TempData["Mensagem"] = "Professor Apagado com Sucesso.";
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = ex.Message;
+                return RedirectToAction("Index");
+            }
+            
         }
     }
 }

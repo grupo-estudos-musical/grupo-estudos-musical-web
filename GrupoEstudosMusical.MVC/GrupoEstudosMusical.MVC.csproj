@@ -607,6 +607,7 @@
     <Content Include="Views\Professores\PortalProfessor.cshtml" />
     <Content Include="Views\Shared\_VisaoGeralProfessor.cshtml" />
     <Content Include="Views\Turmas\TurmasDoProfessor.cshtml" />
+    <Content Include="Views\Instrumentos\Editar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GrupoEstudosMusical.Bussines\GrupoEstudosMusical.Bussines.csproj">
